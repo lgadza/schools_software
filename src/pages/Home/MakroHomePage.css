@@ -1,0 +1,347 @@
+
+.role_card {
+  position: relative;
+  display: block;
+  height: 250px;
+  margin: 20px auto; 
+  overflow: hidden;
+  border-radius: 10px;
+  transition: all 0.4s;
+}
+
+
+.info_section {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-blend-mode: multiply;
+  z-index: 2;
+  border-radius: 10px;
+}
+
+.role_desc {
+  padding: 25px;
+  height: 50%;
+  
+}
+
+.blur_back {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  height: 100%; 
+  right: 25px;
+  background-size: cover;
+  border-radius: 11px;
+  
+}
+
+.Teachers_back{
+  background: url("../../assets/imgs/teacher.jpg");
+background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat
+
+}
+
+
+.Schools_back{
+  background: url("../../assets/imgs/schoolChairs.jpg") ;
+background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat
+
+}
+
+.better-for-card h3{
+  display: inline-block;
+  display: flex;
+  background: linear-gradient(90deg, #2a86bb, #00ff00, #225b81);
+  background-clip: text;
+  -webkit-background-clip: text; 
+  color: transparent;
+  animation: colorMove 3s ease-in-out infinite;
+}
+@keyframes colorMove {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 100% center;
+  }
+}
+
+.Students_back {
+  background: url("../../assets/imgs/student.jpg");
+background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.Parents_back {
+    background: url("../../assets/imgs/parent.jpg");
+background-size: cover; 
+  background-position: center;
+  background-repeat: no-repeat
+  }
+  .better-for-card{
+    background : linear-gradient(132deg, rgba(80, 124, 124, 0.3), rgba(13, 22, 29, 0.3), rgba(40, 80, 57, 0.3), rgba(78, 126, 112, 0.2), rgba(59, 57, 59,.2)); 
+    background-size : 400% 400%;
+     animation : Gradient 15s ease infinite; 
+     border-radius: 3px;
+}
+
+
+
+/* SimplifyFeatures */
+
+.simplify-feature{
+  background: #283048; 
+background: linear-gradient(132deg,  rgba(59, 57, 59,.4),rgba(80, 87, 90,0.3), rgba(40, 48, 72,0.6));  
+animation: Gradient 5s ease infinite;
+border-radius: 3px;
+
+
+}
+@keyframes Gradient {
+  0% {
+       background-position: 0% 50%
+     }
+ 50% { 
+       background-position: 100% 50%
+     }
+100% {
+    background-position: 0% 50%
+    }
+}
+.simplify-feature-container h2{
+  font-weight: 700;
+  
+  
+}
+.simplify-feature-container .h3{
+  position: sticky;
+  top: 58px;
+  background-color: black !important ;
+  width: 100%;
+  height: 100px;
+  z-index: 20;
+  
+}
+.simplify-feature .simplify-progressbar {
+	background: rgb(0, 0, 0);
+}
+
+.simplify-feature li{
+position: relative;
+overflow: hidden;
+
+}
+.simplify-feature .simplify-progressbar:hover {
+	background: rgb(14, 178, 190);
+}
+.simplify-feature input {
+  display: none;
+}
+.simplify-feature .simplify-progressbar .simplify-progressbar-fill {
+    position: inherit;
+	width: inherit;
+	height: inherit;
+	margin-left: -100%;
+    background-color: rgb(14, 178, 190) !important;
+    
+}
+.simplify-feature .simplify-progressbar .simplify-progressbar-fill {
+    position: inherit;
+	width: inherit;
+	height: inherit;
+	margin-left: -100%;
+	
+}
+.simplify-feature .simplify-progressbar {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	height: 3px;
+	width: 100%;
+	background: #f6eac5;
+	z-index: 10;
+}
+
+
+
+#feature1:checked ~ .row ul li:nth-of-type(1) .simplify-progressbar .simplify-progressbar-fill,
+#feature2:checked ~ .row ul li:nth-of-type(2) .simplify-progressbar .simplify-progressbar-fill,
+#feature3:checked ~ .row ul li:nth-of-type(3) .simplify-progressbar .simplify-progressbar-fill {
+  animation: barFill 5s linear;
+}
+
+@keyframes barFill {
+  from {
+    margin-left: -100%;
+  }
+  to {
+    margin-left: 0;
+  }
+}
+
+
+.admission-card-bg .cards {
+  position: relative;
+  list-style-type: none;
+  padding: 0;
+  max-width: 90%;
+  height: 90%;
+  margin: 15% auto 0;
+}
+
+.admission-card-bg .admission-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  background: #3b3a3a;
+  border-radius: 5px;
+  padding: 0px;
+  box-shadow: 0 0 10px rgba(14, 178, 190, 0.5);
+  box-shadow: rgba(14, 178, 190, 0.4) 0px 2px 4px, rgba(80, 179, 121, 0.3) 0px 7px 13px -3px, rgba(173, 63, 63, 0.2) 0px -10px 0px inset;
+  transform: translateY(0) rotate(4deg) translateX(4px) scale(1);
+  transform-origin: 0 0;
+  transition: transform 0.6s cubic-bezier(.8, .2, .1, 0.8) 0.1s, background 0.4s linear;
+  cursor: pointer;
+  user-select: none;
+}
+
+.admission-card-bg .admission-card:last-child {
+  margin-bottom: 0;
+}
+
+
+.admission-card-bg .card--next {
+  z-index: 5;
+  transform: translateY(-75px) rotate(10deg) translateX(25px) scale(1);
+}
+
+.admission-card-bg .card--out {
+  animation: card-out 0.6s cubic-bezier(.8, .2, .1, 0.8);
+  transform: translateY(-50px) rotate(8deg) translateX(55px) scale(0.95);
+  z-index: 1;
+  background: #968d8d;
+}
+
+
+@keyframes card-out {
+  0% {
+    z-index: 20;
+    transform: translateY(0px) rotate(-4deg);
+  }
+  50% {
+    transform: translateY(120%) rotate(-5deg) translateX(-40px);
+  }
+  80% {
+    z-index: 1;
+  }
+  100% {
+    transform: translateY(-50px) rotate(8deg) translateX(55px) scale(0.95);
+  }
+}
+
+
+.admission-card-bg .card--current {
+  cursor: auto;
+  user-select: auto;
+  position: relative;
+  z-index: 10;
+  opacity: 1;
+  background: #363232;
+  transform: rotate(-1deg) translateX(0%) scale(1);
+}
+@media screen and (min-width: 768px) {
+  .role_header {
+    width: 60%;
+  }
+  
+  .role_desc {
+    width: 50%;
+  }
+  
+  .info_section {
+    background: linear-gradient(to right, rgb(13, 13, 12) 30%, transparent 100%);
+  }
+  
+  .blur_back {
+    width: 80%;
+    background-position: -100% 10% !important;  
+  }
+ 
+}
+
+@media screen and (max-width: 768px) {
+  .role_card {
+    width: 95%;
+    margin: 10px auto; 
+    min-height: 200px;
+    height: auto;
+  }
+ .color-header{
+    font-size: 1.1rem !important;
+    }
+  .blur_back {
+    width: 100%;
+    background-position: 50% 50% !important;  
+  }
+  
+  .role_header {
+    width: 100%;
+    margin-top: 85px;
+  }
+  
+  .role_desc {
+    width: 100%;
+  }
+  
+  .info_section {
+    background: linear-gradient(to top, rgb(20, 20, 19) 50%, transparent 100%);
+    display: inline-grid;
+  }
+  .container-fluid .container{
+    padding-left:0 !important;
+    padding-right:0 !important ;
+  }
+
+  .simplify-feature-container .h3 br{
+display: none;
+  }
+  .simplify-feature-container .h3{
+   
+    height: 120px;
+   
+    
+  }
+  .simplify-feature  h4{
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 650px){
+  .container-fluid .container{
+    padding-left:20px !important;
+    padding-right:20px !important ;
+  }
+
+  .simplify-feature-container .h3 br{
+display: none;
+  }
+  .simplify-feature-container .h3{
+   
+    height: 80px;
+   
+    
+  }
+  .simplify-feature  h4{
+    font-size: 16px;
+  }
+  .info_section {
+    border-radius: 0px !important;
+    
+  }
+}

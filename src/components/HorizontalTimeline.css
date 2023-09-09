@@ -1,0 +1,264 @@
+#horizontal-process {
+    margin-bottom: 40px;
+    /* overflow-x: hidden; */
+    text-align: center;
+  }
+  
+  #horizontal-process .section-heading {
+    margin-bottom: 40px;
+  }
+  
+  #horizontal-process .steps-pane img {
+    height: 100%;
+    width: 100%;
+  }
+  .timeline-content{
+    background-color: black;
+  }
+  #horizontal-process .pane-warp {
+    height: 140px;
+    width: 25px;
+    width: 10px;
+    margin-left: 20%;
+    margin-top: 20px;
+    transform: skewX(15deg);
+  }
+  
+  #horizontal-process .steps-pane {
+    height: 140px;
+    position: relative;
+    width: 155px;
+    margin-left: 10px;
+    box-shadow: -7px 0px 5px rgb(51, 51, 51);
+  }
+  #horizontal-process .Icon{
+    position: absolute;
+    right: 3px;
+    bottom: 0;
+    box-shadow: rgba(196, 0, 0, 0.4) 0px 15px 25px, rgba(211, 79, 79, 0.4) 0px 5px 10px;
+  }
+  #horizontal-process .Icon.fileExe{
+   background-color: rgb(32, 32, 32);
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 15px 25px, rgba(0, 0, 0, 0.7) 0px 5px 10px;
+    border-radius: 2px;
+    padding: 3px;
+  }
+  #horizontal-process .Icon.bookmark{
+   background-color: rgb(255, 255, 255);
+    box-shadow: rgba(255, 255, 255, 0.4) 0px 15px 25px, rgba(255, 255, 255, 0.4) 0px 5px 10px;
+    border-radius: 2px;
+    padding: 3px;
+  }
+  #horizontal-process .Icon.chat{
+   background-color: rgba(2, 44, 136, 0.5);
+    box-shadow: rgba(13, 109, 253, 0.4) 0px 15px 25px, rgba(36, 115, 218, 0.4) 0px 5px 10px;
+    border-radius: 2px;
+    padding: 3px;
+  }
+  #horizontal-process .Icon.light-bulb{
+   background-color:black;
+    box-shadow: rgba(0, 0, 0, 0.9) 0px 15px 25px, rgba(0, 0, 0, 0.9) 0px 5px 10px;
+    border-radius: 2px;
+    padding: 3px;
+  }
+ 
+  #horizontal-process .inverted-pane-warp {
+    height: 140px;
+    width: 25px;
+    width: 10px;
+    margin-left: 20%;
+    transform: skewX(-15deg);
+  }
+  
+  #horizontal-process .inverted-steps-pane {
+    height: 140px;
+    width: 155px;
+    background: #9b3636;
+    margin-left: 10px;
+    background: #0F2027;  
+    background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027); 
+    background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+    box-shadow: 0 20px 25px -5px rgba(69, 146, 209, 0.3);
+  }
+  #horizontal-process .steps-two .inverted-steps-pane,
+  #horizontal-process .steps-four .inverted-steps-pane
+  {
+    background: #b92b27; 
+background: -webkit-linear-gradient(to right, #1565C0, #b92b27);  
+background: linear-gradient(to right, rgba(21, 101, 192,0.5), rgba(185, 43, 39,0.5));
+box-shadow: 0 20px 25px -5px rgba(209, 69, 209, 0.3);
+
+
+  }
+  
+  #horizontal-process .inverted-steps-pane p {
+    transform: skewX(15deg);
+    padding: 20px 10px 10px 10px;
+  }
+  
+  @media (min-width: 1000px) {
+    #horizontal-process .steps-timeline {
+      border-top: 2px dotted rgb(2, 130, 136);
+      padding-top: 60px;
+      margin-top: 40px;
+      
+    }
+    #horizontal-process .steps-one,
+    #horizontal-process .steps-two,
+    #horizontal-process .steps-three,
+    #horizontal-process .steps-four,
+    #horizontal-process .steps-five {
+      float: left;
+      width: 20%;
+      margin-top: -105px;
+    }
+    #horizontal-process .step-wrap {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background: transparent;
+      margin-left: 39%;
+      border: 2px solid rgb(2, 130, 136);
+    }
+    #horizontal-process .verticle-line {
+      position: absolute;
+      height: 57px;
+      width: 5px;
+      margin-left: 10px;
+      margin-top: 10px;
+    }
+   
+    #horizontal-process .steps-stops {
+      height: 15px;
+      width: 15px;
+      margin: 11px 10.1px;
+      border-radius: 50%;
+      background: rgb(2, 130, 136)
+    }
+    #horizontal-process .end-circle {
+      height: 15px;
+      width: 15px;
+      border-radius: 50%;
+      position: absolute;
+      margin-top: 19px;
+      margin-left: -10px;
+    }
+    #horizontal-process .inverted-end-circle {
+      height: 15px;
+      width: 15px;
+      border-radius: 50%;
+      position: absolute;
+      margin-top: 19px;
+      margin-left: 18.1%;
+    }
+  }
+  @media (max-width:1000px) {
+    #horizontal-process h5{
+      margin-top: 20px;
+    }
+    
+  }
+ 
+  @media (max-width: 899px) {
+    #horizontal-process .container-fluid {
+      width: 50%;
+    }
+    #horizontal-process .steps-timeline {
+      border-left: 5px double rgb(2, 130, 136);
+      margin-left: 35px;
+    }
+    #horizontal-process .steps-one,
+    #horizontal-process .steps-two,
+    #horizontal-process .steps-three,
+    #horizontal-process .steps-four,
+    #horizontal-process .steps-five {
+      margin-left: -25px;
+    }
+   
+   
+    #horizontal-process .step-wrap,
+    .steps-stops {
+      float: left;
+    }
+    #horizontal-process .steps-timeline {
+      border-left: 2px solid rgb(255, 255, 255);
+      margin-left: 30px;
+    }
+    #horizontal-process .pane-warp {
+      margin-left: 30%;
+    }
+    #horizontal-process .inverted-pane-warp {
+      margin-left: 30%;
+    }
+    #horizontal-process .verticle-line {
+      position: absolute;
+      width: 125px;
+      height: 5px;
+      margin-left: 5px;
+      margin-top: 10px;
+    }
+    #horizontal-process .steps-stops {
+      height: 25px;
+      width: 25px;
+      width: 10px;
+      margin: 11px 10px;
+      border-radius: 50%;
+      background: rgb(2, 130, 136);
+    }
+    #horizontal-process .step-wrap {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      background: transparent;
+      margin-top: 125px;
+      margin-left: -2px;
+      border: 2px solid rgb(2, 130, 136);
+    }
+    #horizontal-process .end-circle {
+      height: 15px;
+      width: 15px;
+      border-radius: 50%;
+      position: absolute;
+      margin-top: -45px;
+      margin-left: 15px;
+    }
+    #horizontal-process .inverted-end-circle {
+      height: 15px;
+      width: 15px;
+      border-radius: 50%;
+      position: absolute;
+      margin-top: 280px;
+      margin-left: 15px;
+    }
+  }
+  
+  @media (max-width: 600px) {
+    #horizontal-process .container-fluid {
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 400px) {
+    #horizontal-process .verticle-line {
+      width: 105px;
+    }
+  }
+  
+  #horizontal-process  .back-orange {
+    background: rgb(2, 130, 136);
+    margin-left: 5.5px;
+  }
+  
+  #horizontal-process .back-blue {
+background-image: linear-gradient(90deg, rgba(139, 142, 155, 0.2) 0%, rgba(80, 200, 154, 0.1) 46%, rgba(112, 250, 255, 0.2) 100%);
+   
+
+  }
+   /* #horizontal-process .steps-two .back-blue,
+    #horizontal-process .steps-four .back-blue
+    {
+      background: #bdc3c7; 
+background: -webkit-linear-gradient(to right, #2c3e50, #bdc3c7); 
+background: linear-gradient(to right, #2c3e50, #bdc3c7); 
+
+    } */

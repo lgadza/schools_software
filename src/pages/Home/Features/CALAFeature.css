@@ -1,0 +1,208 @@
+
+
+  
+  .text.typing {
+    
+    font-weight: bold;
+    white-space: nowrap;
+    padding: 0.5em 0;
+    border-left: 2px solid transparent;
+    color: white;
+    font-size: 3em;
+    padding: 0 5rem;
+/* background-image: linear-gradient(160deg, rgba(0, 147, 233,.3) 0%, rgba(128, 208, 199,.8) 100%); */
+/* background: linear-gradient( 90deg, rgba(30, 87, 153,.5) 0%, rgba(44, 224, 191,.5) 19%, rgba(118, 221, 44,.5) 40%, rgba(219, 166, 43,.5) 60%, rgba(224, 46, 191,.5) 83%, rgba(30, 87, 153,.5) 100%); */
+animation: bg 1s ease-in-out infinite;
+
+    box-shadow: rgba(10, 43, 80, 0.5) -5px 5px, rgba(18, 53, 58, 0.4)  -10px 10px, rgba(11, 12, 11, 0.3) -15px 15px, rgba(32, 11, 11, 0.2) -20px 20px, rgba(30, 87, 153,.1) -25px 25px;
+    width: 100%;
+    width: 100px;
+    height: 5rem;
+    border-radius: 5px;
+  }
+  .more-features::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+    background: linear-gradient( 180deg, #1e5799 0%, #2ce0bf 19%, #76dd2c 40%, #dba62b 60%, #e02cbf 83%, #1e5799 100%);
+    animation: bg 1s ease-in-out infinite;
+  }
+  
+  .more-features::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    border-radius: 5px;
+
+  }
+  .cala-main-feature{
+    overflow-x: hidden;
+  }
+  /* .cala-background-ai {
+    position: fixed;
+    left: 30%;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 0;
+  } */
+@keyframes bg {
+  0% {
+    background-position-x: 0;
+  }
+  100% {
+    background-position-x: 4px;
+  }
+}
+  .timeline-item {
+    width: 100%;
+    margin-bottom: 70px;
+    
+  }
+  .typing::after {
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: -25px;
+    background-color: var(--background-color);
+    animation: type var(--char-count)/5s steps(var(--char-count)) forwards infinite, blink 1s steps(2) infinite;
+  }
+  
+  @keyframes blink {
+    from {
+      border-left-color: transparent;
+    }
+    to {
+      border-left-color: var(--background-color);
+    }
+  }
+  
+  @keyframes type {
+    0% {
+      width: 100%;
+    }
+    50% {
+      width: 0;
+    }
+    100% {
+      width: 0;
+    }
+  }
+  
+  .text3d {
+    text-shadow: 0 1px 0 #7f8a85, 0 2px 0 #bac7c6, 0 3px 0 #bbb, 0 4px 0 #a6acb4, 0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, .1), 0 0 5px rgba(0, 0, 0, .1), 0 1px 3px rgba(0, 0, 0, .3), 0 3px 5px rgba(0, 0, 0, .2), 0 5px 10px rgba(0, 0, 0, .25), 0 10px 10px rgba(0, 0, 0, .2), 0 20px 20px rgba(0, 0, 0, .15);
+  }
+  .cala-content h2{
+    font-weight: 700;
+    text-transform: capitalize ;
+
+  }
+  .cala-content {
+	background: linear-gradient(-45deg, rgba(237, 118, 82,0.15), rgba(231, 60, 126,0.15), rgba(35, 166, 213,0.15), rgba(35, 213, 171,0.15));
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+    border-radius: 5px;
+
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+.teacher{
+    background-color: rgba(35, 213, 171);
+    border-radius: 50%;
+   
+    
+}
+.student{
+    background-color: rgba(252, 252, 252);
+    border-radius: 50%;
+}
+
+@media screen and (max-width: 1200px){
+  .text.typing .text3d{
+    font-weight: 700;
+  }
+  .text.typing{
+    width: fit-content;
+    font-weight: bold;
+    white-space: nowrap;
+    padding: 0.5em ;
+    border-left: 2px solid transparent;
+    color: white;
+    font-size: 2em;
+    height:4.5rem;
+
+   
+  }
+  .cala-hero-container h1{
+    font-weight: 600 ;
+    font-size: 2rem;
+
+  }
+}
+@media screen and (max-width:768px){
+
+  .text.typing{
+    width: fit-content;
+    text-align: center;
+    font-weight: bold;
+    white-space: nowrap;
+    padding: 0.5em ;
+    border-left: 2px solid transparent;
+    color: white;
+    font-size: 1.5em;
+    height:3rem;
+   
+   
+  }
+  .cala-hero-container h1{
+    font-weight: 500 ;
+    font-size: 1.5rem;
+
+  }
+  .cala-hero-container .ms-5{
+    margin-left: 10px !important;
+
+  }
+  }
+@media screen and (max-width:532px){
+
+  .text.typing{
+  
+    padding: 0.5em ;
+    border-left: 2px solid transparent;
+    color: white;
+    font-size: 1.2em;
+    height:2.5rem;
+    
+  }
+  .cala-hero-container h1{
+    font-weight: 700 ;
+    font-size: 1.2rem;
+
+  }
+  
+  }
+@media screen and (max-width:378px){
+
+  .text.typing{
+    padding: 0.5em ;
+    border-left: 2px solid transparent;
+    color: white;
+    font-size: 1em; 
+  }
+  .cala-hero-container h1{
+    font-weight: 700 ;
+    font-size: 1rem;
+
+  }
+  
+  }

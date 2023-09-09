@@ -1,0 +1,213 @@
+:root {
+    --brand-color: rgb(11, 94, 215);
+    --body-color: #999;
+    --textColor:rgb(27, 27, 29)
+  }
+
+
+/* STATUS */
+.steps-bar {
+  margin: 0 auto;
+  width: 100%;
+ }
+ ul.steps-indicator {
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  left: 0;
+  list-style: outside none none;
+  margin: 0;
+  right: 0;
+  width: 100%;
+  padding: 24px 0 10px;
+ }
+ ul.steps-indicator.steps-3:before {
+  left: 16.6667%;
+  right: 16.6667%;
+ }
+ ul.steps-indicator li {
+  padding: 20px 0 0;
+  margin: 0;
+  position: relative;
+  width: 33.3333%;
+  pointer-events: none;
+ }
+ ul.steps-indicator li:after {
+  background-color: #a6a6a6;
+  box-shadow: 0 0 0 6px #e7eaf1, 0 0 0 7px #fff;
+  height: 10px;
+  top: -12px;
+  width: 10px;
+  border-radius: 100%;
+  content: "";
+  left: calc(50% - 7px);
+  line-height: 14px;
+  position: absolute;
+  text-align: center;
+  transition: all 0.25s ease 0s;
+  vertical-align: middle;
+ }
+ ul.steps-indicator li:not(:last-child):before {
+  background-color: #a6a6a6;
+  content: "";
+  height: 2px;
+  left: calc(50% + 7px);
+  position: absolute;
+  top: -7px;
+  width: calc(100% - 14px);
+ }
+ ul.steps-indicator li div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+ }
+ ul.steps-indicator li div a {
+  color: #a6a6a6;
+  cursor: pointer;
+  font-family: arial;
+  font-size: 11px;
+  font-weight: normal;
+  line-height: 14px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.25s ease 0s;
+ }
+ 
+ ul.steps-indicator li.done:after,
+ ul.steps-indicator li.current:after,
+ ul.steps-indicator li.done:not(:last-child):before {
+  background-color: #2384f7;
+ }
+ ul.steps-indicator li.current div a {
+  color: #3e4350;
+ }
+/* STATUS */
+
+.student_account li {
+  cursor: pointer;
+}
+
+.student_account li:hover {
+  cursor: pointer;
+}
+
+.register-alert{
+  position: absolute;
+  right: 10px;
+  top: 5px;
+}
+
+.box-shadow{
+ box-shadow: 0px 0px 5px var(--bg-2) ;
+}
+.box-shadow-right{
+ box-shadow: 2px -2px 3px var(--bg-2) ;
+}
+
+.application_page .img_component{
+height: 50px;
+}
+.application_page{
+ min-height: 100vh;
+}
+.error-bg{
+  background-color: rgb(255, 206, 197);
+}
+.reg-welcome{
+  position: relative;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  background-color: var(--main-bg);
+  background-image: url("../../assets/md_logo.png_2.png");
+  background-image: url("../../assets/md_logo.png_2.png");
+  background-size:contain; 
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+.reg-welcome::before {
+  content: "";
+  display: block;
+  position: absolute;
+ inset: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: white;
+  padding: 20px; 
+  box-sizing: border-box; 
+}
+
+ /* studentNavbar */
+
+ ul li{
+  list-style:none;
+ }
+ .dropdown-toggle::after {
+  display: none;
+}
+.show > .btn-success.dropdown-toggle {
+  background-color: transparent !important;
+}
+.dropdown-item:focus,
+.dropdown-item:focus-visible,
+.dropdown-item:active:focus,
+.dropdown-item.active:focus,
+.dropdown-item.focus,
+.dropdown-item:active.focus,
+.dropdown-item.active.focus.dropdown-item:active {
+  background-color: transparent !important;
+  color: #0cc4f2 !important;
+}
+.dropdown-item {
+  color: var(--textColor);
+}
+.dropdown-item:hover {
+  background-color: var(--main-bg);
+  color: var(--textColor);
+}
+.dropdown-menu.show {
+  background-color: var(--bg-2);
+  min-width: 15rem;
+  z-index: 4 !important;
+  border-radius: 5px;
+  box-shadow: rgba(65, 117, 126, 0.4) 0px 2px 4px, rgba(87, 134, 153, 0.3) 0px 7px 13px -3px inset, rgba(3, 238, 255, 0.2) 0px -3px 0px inset;
+  
+}
+.dropdown-toggle.btn {
+  background-color: transparent;
+  outline: none;
+  border: none;
+}
+.dropdown-toggle.btn:focus,
+.dropdown-toggle.btn:focus-visible {
+  background-color: transparent;
+  outline: none !important;
+  border: none;
+  box-shadow: none;
+}
+.student_account_all_border button.dropdown-toggle.btn {
+  padding: 5px;
+}
+
+.student_account_all_border button.dropdown-toggle.btn img {
+  width: 20px !important;
+  height: 20px !important;
+}
+.student_navbar.content_bg.justify-content-between{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 55;
+  border-bottom: 1px solid rgba(58, 56, 56,0.5);
+}
+.student-profile-bar.content_bg{
+  transform: translate(0px,50px);
+}

@@ -1,0 +1,125 @@
+
+.FAQ .FAQ-item {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.FAQ button {
+  position: relative;
+  display: block;
+  text-align: left;
+  width: 100%;
+  padding: 1em 0;
+  font-size: 1.15rem;
+  font-weight: 400;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.FAQ button:hover,
+.FAQ button:focus {
+  cursor: pointer;
+  color: rgb(7, 172, 190);
+}
+
+.FAQ button:hover::after,
+.FAQ button:focus::after {
+  cursor: pointer;
+  color: rgb(7, 172, 190);
+  border: 1px solid rgb(7, 172, 190);
+}
+
+.FAQ .FAQ-title {
+  padding: 0em 1.5em 1em 0;
+}
+
+.FAQ .icon {
+  display: inline-block;
+  position: absolute;
+  top: 18px;
+  right: 0;
+  margin-left: 4px;
+  width: 22px;
+  height: 22px;
+  border: 1px solid;
+  border-radius: 22px;
+}
+
+.FAQ .icon::before {
+  display: block;
+  position: absolute;
+  content: '';
+  top: 9px;
+  left: 5px;
+  width: 10px;
+  height: 2px;
+  background: currentColor;
+}
+
+.FAQ .icon::after {
+  display: block;
+  position: absolute;
+  content: '';
+  top: 5px;
+  left: 9px;
+  width: 2px;
+  height: 10px;
+  background: currentColor;
+}
+
+.FAQ button[aria-expanded='true'] {
+  color: rgb(7, 172, 190);
+}
+
+.FAQ button[aria-expanded='true'] .icon::after {
+  width: 0;
+}
+
+.FAQ .FAQ-content {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 200ms linear, max-height 200ms linear;
+  will-change: opacity, max-height;
+}
+
+.FAQ button[aria-expanded='true'] + .FAQ-content {
+  opacity: 1;
+  max-height: 9em;
+  transition: all 200ms linear;
+  will-change: opacity, max-height;
+}
+
+.FAQ .FAQ-content p {
+  font-size: 1rem;
+  font-weight: 300;
+  margin: 2em 0;
+  text-align: left;
+}
+@media only screen and (max-width: 860px) {
+  .FAQ .FAQ-content p {
+    font-size: 14px !important;
+  }
+  .FAQ .FAQ-title {
+   font-size: 1rem;
+   color: white !important;
+   width: 100% !important;
+   display: block;
+  }
+  .FAQ h2{
+    font-size: 1.5rem;
+  }
+  .FAQ button .icon{
+    margin-left: 10px;
+  }
+  .FAQ .FAQ-content p {
+   height: 100px;
+   overflow-y: scroll;
+  }
+  .FAQ .FAQ-content p {
+    font-size: 1rem;
+    font-weight: 300;
+    margin: 0.5em 0;
+    text-align: left;
+  }
+}

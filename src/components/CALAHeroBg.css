@@ -1,0 +1,523 @@
+
+  .cala-hero.container {
+    width: 10rem;
+    height: 10rem;
+    position: relative;
+  
+    margin: 10rem 3rem 0 7rem;
+  }
+  .cala-hero.container::before {
+    content: "";
+    width: 20rem;
+    height: 20rem;
+    position: absolute;
+    top: -10rem;
+    left: -7rem;
+
+  }
+  
+  .cell {
+    background-color: #eee;
+    position: absolute;
+    transform-style: preserve-3d;
+  }
+  .cell.nucleus {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+  }
+  .cell.nucleus.start {
+    opacity: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    top: -0.3rem;
+    left: -0.15rem;
+    animation: nucleus-pulse 0.5s ease-out 0s infinite forwards;
+  }
+  .cell.nucleus.midlow {
+    opacity: 0;
+    animation: nucleus-pulse 0.5s ease-out 0.5s infinite infinite forwards;
+  }
+  .cell.nucleus.midlow.n1 {
+    top: -2rem;
+    left: -2rem;
+  }
+  .cell.nucleus.midlow.n2 {
+    top: 0.5rem;
+    left: -2rem;
+  }
+  .cell.nucleus.midlow.n3 {
+    top: 2rem;
+    left: 0rem;
+  }
+  .cell.nucleus.midlow.n4 {
+    top: 0.5rem;
+    left: 3rem;
+  }
+  .cell.nucleus.midlow.n5 {
+    top: -4.2rem;
+    left: 3.7rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .cell.nucleus.midhigh {
+    left: 0;
+    top: -4rem;
+    opacity: 0;
+    animation: nucleus-pulse 0.5s ease-out 1s infinite forwards;
+  }
+  .cell.nucleus.midhigh.n1 {
+    left: 1rem;
+    top: -5.7rem;
+  }
+  .cell.nucleus.midhigh.n2 {
+    left: 3.8rem;
+    top: -6.5rem;
+  }
+  .cell.nucleus.midhigh.n3 {
+    left: 7rem;
+    top: -4.5rem;
+  }
+  .cell.nucleus.midhigh.n4 {
+    left: 6rem;
+    top: -2rem;
+  }
+  .cell.nucleus.midhigh.n5 {
+    top: 2.7rem;
+    left: 4.2rem;
+  }
+  .cell.nucleus.finish {
+    opacity: 0;
+    animation: nucleus-pulse 0.5s ease-out 1.5s  forwards;
+  }
+  .cell.nucleus.finish.n1 {
+    top: 4.2rem;
+    left: 2.6rem;
+  }
+  .cell.nucleus.finish.n2 {
+    top: 4.5rem;
+    left: 6.8rem;
+  }
+  .cell.neuron {
+    width: 0.2rem;
+    height: 4rem;
+    transform-origin: center top;
+    transform-style: preserve-3d;
+  }
+  .cell.neuron.wave1 {
+    left: 0.4rem;
+    top: 0.5rem;
+  }
+  .cell.neuron.wave1.n1 {
+    animation: pulse-neuron-wave1-n1 0.5s ease-out 0s infinite forwards;
+  }
+  .cell.neuron.wave1.n1::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.2rem;
+    height: 3rem;
+    background-color: #fff;
+    animation: fire-neuron-wave1-n1 1s ease-out 0s infinite;
+  }
+  .cell.neuron.wave1.n2 {
+    animation: pulse-neuron-wave1-n2 0.5s ease-out 0s infinite forwards;
+  }
+  .cell.neuron.wave1.n2::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.2rem;
+    height: 2rem;
+    background-color: #fff;
+    animation: fire-neuron-wave1-n2 1s ease-out 0s infinite;
+  }
+  .cell.neuron.wave1.n3 {
+    animation: pulse-neuron-wave1-n3 0.5s ease-out 0s infinite forwards;
+  }
+  .cell.neuron.wave1.n3::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.2rem;
+    height: 2rem;
+    background-color: #fff;
+    animation: fire-neuron-wave1-n3 1s ease-out 0s infinite;
+  }
+  .cell.neuron.wave1.n4 {
+    animation: pulse-neuron-wave1-n4 0.5s ease-out 0s infinite forwards;
+  }
+  .cell.neuron.wave1.n4::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.2rem;
+    height: 3rem;
+    background-color: #fff;
+    animation: fire-neuron-wave1-n4 1s ease-out 0s infinite;
+  }
+  .cell.neuron.wave1.n5 {
+    animation: pulse-neuron-wave1-n5 0.5s ease-out 0s infinite forwards;
+  }
+  .cell.neuron.wave1.n5::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.2rem;
+    height: 5.5rem;
+    background-color: #fff;
+    animation: fire-neuron-wave1-n5 1s ease-out 0s infinite;
+  }
+  .cell.neuron.wave2 {
+    opacity: 0;
+    top: -3.5rem;
+    left: 4.4rem;
+  }
+  .cell.neuron.wave2.n1 {
+    animation: pulse-neuron-wave2-n1 0.5s ease-out 0.5s infinite forwards;
+  }
+  .cell.neuron.wave2.n1::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.2rem;
+    height: 3.2rem;
+    background-color: #fff;
+    animation: fire-neuron-wave2-n1 1s ease-out 0.5s infinite;
+  }
+  .cell.neuron.wave2.n2 {
+    animation: pulse-neuron-wave2-n2 0.5s ease-out 0.5s infinite forwards;
+  }
+  .cell.neuron.wave2.n2::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.2rem;
+    height: 2.5rem;
+    background-color: #fff;
+    animation: fire-neuron-wave2-n2 1s ease-out 0.5s infinite;
+  }
+  .cell.neuron.wave2.n3 {
+    animation: pulse-neuron-wave2-n3 0.5s ease-out 0.5s infinite forwards;
+  }
+  .cell.neuron.wave2.n3::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.2rem;
+    height: 3.2rem;
+    background-color: #fff;
+    animation: fire-neuron-wave2-n3 1s ease-out 0.5s infinite;
+  }
+  .cell.neuron.wave2.n4 {
+    animation: pulse-neuron-wave2-n4 0.5s ease-out 0.5s infinite forwards;
+  }
+  .cell.neuron.wave2.n4::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.2rem;
+    height: 3rem;
+    background-color: #fff;
+    animation: fire-neuron-wave2-n4 1s ease-out 0.5s infinite;
+  }
+  .cell.neuron.wave2.n5 {
+    top: 1rem;
+    left: 3.4rem;
+    height: 2.5rem;
+    animation: pulse-neuron-wave2-n5 0.5s ease-out 0.5s infinite forwards;
+  }
+  .cell.neuron.wave2.n5::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.2rem;
+    height: 2.5rem;
+    background-color: #fff;
+    animation: fire-neuron-wave2-n5 1s ease-out 0.5s infinite;
+  }
+  .cell.neuron.wave3 {
+    top: 3.2rem;
+    left: 4.6rem;
+    opacity: 0;
+  }
+  .cell.neuron.wave3.n1 {
+    animation: pulse-neuron-wave3-n1 0.5s ease-out 1s infinite forwards;
+  }
+  .cell.neuron.wave3.n1::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.2rem;
+    height: 2.5rem;
+    background-color: #fff;
+    animation: fire-neuron-wave3-n1 1s ease-out 1s infinite;
+  }
+  .cell.neuron.wave3.n2 {
+    animation: pulse-neuron-wave3-n2 0.5s ease-out 1s infinite forwards;
+  }
+  .cell.neuron.wave3.n2::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0.2rem;
+    height: 3.2rem;
+    background-color: #fff;
+    animation: fire-neuron-wave3-n2 1s ease-out 1s infinite;
+  }
+  
+  @keyframes pulse-neuron-wave1-n1 {
+    0% {
+      transform: scale(0) rotate(135deg);
+    }
+    100% {
+      transform: scale(1.0) rotate(135deg);
+    }
+  }
+  @keyframes fire-neuron-wave1-n1 {
+    from {
+      box-shadow: 0 0 0px 0 white;
+    }
+    to {
+      box-shadow: 0 0 3rem 1rem white;
+      opacity: 0;
+    }
+  }
+  @keyframes pulse-neuron-wave1-n2 {
+    0% {
+      transform: scale(0) rotate(76deg);
+    }
+    100% {
+      transform: scale(1.0) rotate(76deg);
+    }
+  }
+  @keyframes fire-neuron-wave1-n2 {
+    from {
+      box-shadow: 0 0 0px 0 white;
+    }
+    to {
+      box-shadow: 0 0 3rem 1rem white;
+      opacity: 0;
+    }
+  }
+  @keyframes pulse-neuron-wave1-n3 {
+    0% {
+      transform: scale(0) rotate(0deg);
+    }
+    100% {
+      transform: scale(1.0) rotate(0deg);
+    }
+  }
+  @keyframes fire-neuron-wave1-n3 {
+    from {
+      box-shadow: 0 0 0px 0 white;
+    }
+    to {
+      box-shadow: 0 0 3rem 1rem white;
+      opacity: 0;
+    }
+  }
+  @keyframes pulse-neuron-wave1-n4 {
+    0% {
+      transform: scale(0) rotate(-81deg);
+    }
+    100% {
+      transform: scale(1.0) rotate(-81deg);
+    }
+  }
+  @keyframes fire-neuron-wave1-n4 {
+    from {
+      box-shadow: 0 0 0px 0 white;
+    }
+    to {
+      box-shadow: 0 0 3rem 1rem white;
+      opacity: 0;
+    }
+  }
+  @keyframes pulse-neuron-wave1-n5 {
+    0% {
+      transform: scale(0) rotate(-135deg);
+    }
+    100% {
+      transform: scale(1.0) rotate(-135deg);
+    }
+  }
+  @keyframes fire-neuron-wave1-n5 {
+    from {
+      box-shadow: 0 0 0px 0 white;
+    }
+    to {
+      box-shadow: 0 0 3rem 1rem white;
+      opacity: 0;
+    }
+  }
+  @keyframes pulse-neuron-wave2-n1 {
+    from {
+      transform: scale(0) rotate(120deg);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1.0) rotate(120deg);
+    }
+  }
+  @keyframes fire-neuron-wave2-n1 {
+    from {
+      box-shadow: 0 0 0px 0 white;
+    }
+    to {
+      box-shadow: 0 0 3rem 1rem white;
+      opacity: 0;
+    }
+  }
+  @keyframes pulse-neuron-wave2-n2 {
+    from {
+      transform: scale(0) rotate(175deg);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1.0) rotate(175deg);
+    }
+  }
+  @keyframes fire-neuron-wave2-n2 {
+    from {
+      box-shadow: 0 0 0px 0 white;
+    }
+    to {
+      box-shadow: 0 0 3rem 1rem white;
+      opacity: 0;
+    }
+  }
+  @keyframes pulse-neuron-wave2-n3 {
+    from {
+      transform: scale(0) rotate(-100deg);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1.0) rotate(-100deg);
+    }
+  }
+  @keyframes fire-neuron-wave2-n3 {
+    from {
+      box-shadow: 0 0 0px 0 white;
+    }
+    to {
+      box-shadow: 0 0 3rem 1rem white;
+      opacity: 0;
+    }
+  }
+  @keyframes pulse-neuron-wave2-n4 {
+    from {
+      transform: scale(0) rotate(-45deg);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1.0) rotate(-45deg);
+    }
+  }
+  @keyframes fire-neuron-wave2-n4 {
+    from {
+      box-shadow: 0 0 0px 0 white;
+    }
+    to {
+      box-shadow: 0 0 3rem 1rem white;
+      opacity: 0;
+    }
+  }
+  @keyframes pulse-neuron-wave2-n5 {
+    from {
+      transform: scale(0) rotate(-30deg);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1.0) rotate(-30deg);
+    }
+  }
+  @keyframes fire-neuron-wave2-n5 {
+    from {
+      box-shadow: 0 0 0px 0 white;
+    }
+    to {
+      box-shadow: 0 0 3rem 1rem white;
+      opacity: 0;
+    }
+  }
+  @keyframes pulse-neuron-wave3-n1 {
+    from {
+      transform: scale(0) rotate(48deg);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1.0) rotate(48deg);
+    }
+  }
+  @keyframes fire-neuron-wave3-n1 {
+    from {
+      box-shadow: 0 0 0px 0 white;
+    }
+    to {
+      box-shadow: 0 0 3rem 1rem white;
+      opacity: 0;
+    }
+  }
+  @keyframes pulse-neuron-wave3-n2 {
+    from {
+      transform: scale(0) rotate(-55deg);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1.0) rotate(-55deg);
+    }
+  }
+  @keyframes fire-neuron-wave3-n2 {
+    from {
+      box-shadow: 0 0 0px 0 white;
+    }
+    to {
+      box-shadow: 0 0 3rem 1rem white;
+      opacity: 0;
+    }
+  }
+  @keyframes nucleus-pulse {
+    from {
+      transform: scale(0);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  @keyframes nucleus-fire {
+    from {
+      box-shadow: 0 0 0px 0 white;
+    }
+    to {
+      box-shadow: 0 0 3rem 1rem white;
+      opacity: 0;
+    }
+  }
+  @media screen and (max-width:768px){
+    .cala-hero.container {
+  
+      margin: 10rem 2rem 0 4rem;
+    }
+  }
+  @media screen and (max-width:486px){
+    .cala-hero.container {
+      width: 4rem;
+      height: 4rem;
+      margin: 10rem 4rem 0 2rem;
+    }
+    
+  }
