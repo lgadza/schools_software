@@ -3,11 +3,11 @@ import { configureStore, combineReducers, getDefaultMiddleware } from "@reduxjs/
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import persistReducer from "redux-persist/lib/persistReducer";
 import persistStore from "redux-persist/es/persistStore";
-import applicantRegistration from "../reducers/applicantRegistration";
+import userRegistration from "../reducers/userRegistration";
 import AsyncStorage from "@react-native-async-storage/async-storage"; 
-import getApplicantData from "../reducers/getApplicantData";
+import getUserData from "../reducers/getUserData";
 import activeNav from "../reducers/activeNav";
-import loginApplicant from "../reducers/loginApplicant";
+import loginUser from "../reducers/loginUser";
 import editPersonalData from "../reducers/editPersonaData";
 import getUserAddress from "../reducers/getUserAddress";
 import getGuardianTypes from "../reducers/getGuardianTypes";
@@ -28,10 +28,10 @@ const persistConfig = {
 };
 
 const mainReducer = combineReducers({
-  applicantRegistration: applicantRegistration,
-  applicantData:getApplicantData,
+  userRegistration: userRegistration,
+  userData:getUserData,
   activeNav:activeNav,
-  accessToken:loginApplicant,
+  accessToken:loginUser,
   editPersonalData:editPersonalData,
   getUserAddress:getUserAddress,
   getGuardianTypes:getGuardianTypes,

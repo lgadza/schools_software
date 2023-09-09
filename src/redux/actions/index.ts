@@ -1,17 +1,17 @@
 import { Dispatch } from "redux";
-import { AddressInterface, ApplicantRegistration, UserChatting } from "../../Types";
+import { AddressInterface, UserRegistration, UserChatting } from "../../Types";
 import { LoginCredentialsInterface } from "../../components/Login";
 import { Message } from "../../components/MakronexusAI";
 export const IS_TOKEN_EXPIRED="IS_TOKEN_EXPIRED"
 
-export const APPLICANT_REGISTRATION_ERROR_RESPONSE="APPLICANT_REGISTRATION_ERROR_RESPONSE"
-export const APPLICANT_REGISTRATION="APPLICANT_REGISTRATION"
-export const APPLICANT_REGISTRATION_ERROR="APPLICANT_REGISTRATION_ERROR"
-export const APPLICANT_REGISTRATION_LOADING="APPLICANT_REGISTRATION_LOADING"
+export const USER_REGISTRATION_ERROR_RESPONSE="USER_REGISTRATION_ERROR_RESPONSE"
+export const USER_REGISTRATION="USER_REGISTRATION"
+export const USER_REGISTRATION_ERROR="USER_REGISTRATION_ERROR"
+export const USER_REGISTRATION_LOADING="USER_REGISTRATION_LOADING"
 
-export const GET_APPLICANT_DATA="GET_APPLICANT_DATA"
-export const GET_APPLICANT_DATA_ERROR="GET_APPLICANT_DATA_ERROR"
-export const GET_APPLICANT_DATA_LOADING="GET_APPLICANT_DATA_LOADING"
+export const GET_USER_DATA="GET_USER_DATA"
+export const GET_USER_DATA_ERROR="GET_USER_DATA_ERROR"
+export const GET_USER_DATA_LOADING="GET_USER_DATA_LOADING"
 
 
 export const GET_ALL_AI_CHATS="GET_ALL_AI_CHATS"
@@ -37,12 +37,12 @@ export const GET_USER_ADDRESS_LOADING="GET_USER_ADDRESS_LOADING"
 export const LOGOUT_USER="LOGOUT_USER"
 
 
-export const EDIT_APPLICANT_DATA="EDIT_APPLICANT_DATA"
-export const EDIT_APPLICANT_DATA_ERROR="EDIT_APPLICANT_DATA_ERROR"
-export const EDIT_APPLICANT_DATA_LOADING="EDIT_APPLICANT_DATA_LOADING"
-export const LOGIN_APPLICANT="LOGIN_APPLICANT"
-export const LOGIN_APPLICANT_ERROR="LOGIN_APPLICANT_ERROR"
-export const LOGIN_APPLICANT_LOADING="LOGIN_APPLICANT_LOADING"
+export const EDIT_USER_DATA="EDIT_USER_DATA"
+export const EDIT_USER_DATA_ERROR="EDIT_USER_DATA_ERROR"
+export const EDIT_USER_DATA_LOADING="EDIT_USER_DATA_LOADING"
+export const LOGIN_USER="LOGIN_USER"
+export const LOGIN_USER_ERROR="LOGIN_USER_ERROR"
+export const LOGIN_USER_LOADING="LOGIN_USER_LOADING"
 export const ACTIVE_NAV="ACTIVE_NAV"
 
 const BE_PROD_URL=import.meta.env.VITE_BE_PROD_URL
@@ -76,7 +76,7 @@ export const setChatMessages = (messages: Message[]) => ({
     }
   };
 
-export const ApplicantLogin=(cred:LoginCredentialsInterface)=>{
+export const UserLogin=(cred:LoginCredentialsInterface)=>{
     return async(dispatch:Dispatch)=>{
         const options={
             method:"POST",
@@ -87,27 +87,27 @@ export const ApplicantLogin=(cred:LoginCredentialsInterface)=>{
             body:JSON.stringify(cred)
         }
         try{
-            const response=await fetch(`${BE_PROD_URL}/applicants/login`,options)
+            const response=await fetch(`${BE_PROD_URL}/users/login`,options)
             if(response.ok){
                 const accessToken=await response.json()
                 dispatch({
-                    type:LOGIN_APPLICANT,
+                    type:LOGIN_USER,
                     payload:accessToken
                 })
                 setTimeout(()=>{
                     dispatch({
-                     type:LOGIN_APPLICANT_LOADING,
+                     type:LOGIN_USER_LOADING,
                      payload:false,
                     });
                  },100);
             }else{
                 console.log("error")
                 dispatch({
-                    type:LOGIN_APPLICANT_LOADING,
+                    type:LOGIN_USER_LOADING,
                     payload:false,
                 });
                 dispatch({
-                    type:LOGIN_APPLICANT_ERROR,
+                    type:LOGIN_USER_ERROR,
                     payload:true,
                 })
                 
@@ -115,11 +115,11 @@ export const ApplicantLogin=(cred:LoginCredentialsInterface)=>{
         }catch(error){
             console.log(error)
             dispatch({
-                type:LOGIN_APPLICANT_LOADING,
+                type:LOGIN_USER_LOADING,
                 payload:false,
             });
             dispatch({
-                type:LOGIN_APPLICANT_ERROR,
+                type:LOGIN_USER_ERROR,
                 payload:true,
             })
         }
@@ -193,7 +193,8 @@ export const getAllAiChats = async(token:string,user_id?:string) => {
                 const chats=await response.json();
                 return chats
             }else{
-                console.log("error")
+                const error=response.json()
+                return error
             }
         }catch(error){
             console.log(error)
@@ -220,7 +221,7 @@ export const getChatMessages = async(token:string,chat_id:string,user_id?:string
             console.log(error)
         }
     };
-export const chatWithAi = async (token:string,messages: UserChatting[],model:string,question:string,currentChat:string,applicant_id?:string) => {
+export const chatWithAi = async (token:string,messages: UserChatting[],model:string,question:string,currentChat:string,user_id?:string) => {
     const options:RequestInit={
                     method:"POST",
                     headers:{
@@ -228,7 +229,7 @@ export const chatWithAi = async (token:string,messages: UserChatting[],model:str
                         "Content-Type":"application/json",
                         Authorization: `Bearer ${token}`,
                     },
-                    body:JSON.stringify({message:messages.map((message)=>message.message).join("\n"),model,applicant_id,question})
+                    body:JSON.stringify({message:messages.map((message)=>message.message).join("\n"),model,user_id,question})
                 }
     try {
       const response=await fetch(`${BE_PROD_URL}/ai/chats/${currentChat}/messages`,options)
@@ -242,7 +243,7 @@ export const chatWithAi = async (token:string,messages: UserChatting[],model:str
       console.log(error)
     }
   };
-export const imageQuery = async (token:string,model:string,prompt:string,currentChat:string,applicant_id?:string) => {
+export const imageQuery = async (token:string,model:string,prompt:string,currentChat:string,user_id?:string) => {
     const options:RequestInit={
                     method:"POST",
                     headers:{
@@ -250,7 +251,7 @@ export const imageQuery = async (token:string,model:string,prompt:string,current
                         "Content-Type":"application/json",
                         Authorization: `Bearer ${token}`,
                     },
-                    body:JSON.stringify({model,applicant_id,prompt})
+                    body:JSON.stringify({model,user_id,prompt})
                 }
     try {
       const response=await fetch(`${BE_PROD_URL}/ai/chats/${currentChat}/image-search`,options)
@@ -264,7 +265,7 @@ export const imageQuery = async (token:string,model:string,prompt:string,current
       console.log(error)
     }
   };
-export const newChat = async (token:string,applicant_id:string,) => {
+export const newChat = async (token:string,user_id:string,) => {
     const options:RequestInit={
                     method:"POST",
                     headers:{
@@ -275,7 +276,7 @@ export const newChat = async (token:string,applicant_id:string,) => {
                    
                 }
     try {
-      const response=await fetch(`${BE_PROD_URL}/ai/${applicant_id}/chats`,options)
+      const response=await fetch(`${BE_PROD_URL}/ai/${user_id}/chats`,options)
       if (response.ok) {
         const newChat = await response.json();
         return newChat.id; 
@@ -286,7 +287,7 @@ export const newChat = async (token:string,applicant_id:string,) => {
       console.log(error)
     }
   };
-export const deleteChat = async (token:string,chat_id:string,applicant_id?:string,) => {
+export const deleteChat = async (token:string,chat_id:string,user_id?:string,) => {
     const options:RequestInit={
                     method:"DELETE",
                     headers:{
@@ -297,7 +298,7 @@ export const deleteChat = async (token:string,chat_id:string,applicant_id?:strin
                    
                 }
     try {
-      const response=await fetch(`${BE_PROD_URL}/ai/${applicant_id}/chats/${ chat_id}`,options)
+      const response=await fetch(`${BE_PROD_URL}/ai/${user_id}/chats/${ chat_id}`,options)
       if (response.ok) {
         const res = await response.json();
         console.log(res," CHAT DELETED")
@@ -306,7 +307,7 @@ export const deleteChat = async (token:string,chat_id:string,applicant_id?:strin
       console.log(error,"ERROR DELETING  CHAT")
     }
   };
-export const deleteAllChats = async (token:string,applicant_id?:string,) => {
+export const deleteAllChats = async (token:string,user_id?:string,) => {
     const options:RequestInit={
                     method:"DELETE",
                     headers:{
@@ -316,9 +317,9 @@ export const deleteAllChats = async (token:string,applicant_id?:string,) => {
                    
                 }
     try {
-      const response=await fetch(`${BE_PROD_URL}/ai/${applicant_id}/chats`,options)
+      const response=await fetch(`${BE_PROD_URL}/ai/${user_id}/chats`,options)
       if (response.ok) {
-        getAllAiChats(token,applicant_id)
+        getAllAiChats(token,user_id)
         const res = await response.json();
         console.log(res," ALL CHATS DELETED")
       } 
@@ -347,7 +348,7 @@ export const getEngines = async () => {
       console.log(error)
     }
   };
-export const ApplicantRegister = (formData:ApplicantRegistration) => {
+export const UserRegister = (formData:UserRegistration) => {
     
     return async (dispatch:Dispatch)=>{
         const options:RequestInit={
@@ -359,50 +360,50 @@ export const ApplicantRegister = (formData:ApplicantRegistration) => {
             body:JSON.stringify(formData)
         }
         try{
-            const response=await fetch(`${BE_PROD_URL}/applicants/register`,options)
+            const response=await fetch(`${BE_PROD_URL}/users/register`,options)
             if(response.ok){
                 const status=await response.json();
                 dispatch({
-                    type:APPLICANT_REGISTRATION,
+                    type:USER_REGISTRATION,
                     payload:status
                 });
                 setTimeout(()=>{
                    dispatch({
-                    type:APPLICANT_REGISTRATION_LOADING,
+                    type:USER_REGISTRATION_LOADING,
                     payload:false,
                    });
                 },100);
             }else{
                 console.log("error")
                 dispatch({
-                    type:APPLICANT_REGISTRATION_LOADING,
+                    type:USER_REGISTRATION_LOADING,
                     payload:false,
                 });
                 dispatch({
-                    type:APPLICANT_REGISTRATION_ERROR,
+                    type:USER_REGISTRATION_ERROR,
                     payload:true,
                 })
                 const errorStatus=await response.json()
                 console.log(errorStatus)
                 dispatch({
-                    type:APPLICANT_REGISTRATION_ERROR_RESPONSE,
+                    type:USER_REGISTRATION_ERROR_RESPONSE,
                     payload:errorStatus,
                 })
             }
         }catch(error){
             console.log(error)
             dispatch({
-                type:APPLICANT_REGISTRATION_LOADING,
+                type:USER_REGISTRATION_LOADING,
                 payload:false,
             });
             dispatch({
-                type:APPLICANT_REGISTRATION_ERROR,
+                type:USER_REGISTRATION_ERROR,
                 payload:true,
             })
         }
     }
   };
-export const editApplicantData = (accessToken:string,formData:ApplicantRegistration,user_id:string) => {
+export const editUserData = (accessToken:string,formData:UserRegistration,user_id:string) => {
     
     return async (dispatch:Dispatch)=>{
         const options:RequestInit={
@@ -416,38 +417,38 @@ export const editApplicantData = (accessToken:string,formData:ApplicantRegistrat
             
         }
         try{
-            const response=await fetch(`${BE_PROD_URL}/applicants/${user_id}`,options)
+            const response=await fetch(`${BE_PROD_URL}/users/${user_id}`,options)
             if(response.ok){
                 const personalData=await response.json();
                 dispatch({
-                    type:EDIT_APPLICANT_DATA,
+                    type:EDIT_USER_DATA,
                     payload:personalData
                 });
                 setTimeout(()=>{
                    dispatch({
-                    type:EDIT_APPLICANT_DATA_LOADING,
+                    type:EDIT_USER_DATA_LOADING,
                     payload:false,
                    });
                 },100);
             }else{
                 console.log("error")
                 dispatch({
-                    type:EDIT_APPLICANT_DATA_LOADING,
+                    type:EDIT_USER_DATA_LOADING,
                     payload:false,
                 });
                 dispatch({
-                    type:EDIT_APPLICANT_DATA_ERROR,
+                    type:EDIT_USER_DATA_ERROR,
                     payload:true,
                 })
             }
         }catch(error){
             console.log(error)
             dispatch({
-                type:EDIT_APPLICANT_DATA_LOADING,
+                type:EDIT_USER_DATA_LOADING,
                 payload:false,
             });
             dispatch({
-                type:EDIT_APPLICANT_DATA_ERROR,
+                type:EDIT_USER_DATA_ERROR,
                 payload:true,
             })
         }
@@ -557,7 +558,7 @@ export const editUserAddress = (accessToken:string,address:AddressInterface,addr
     }
   };
 
-  export const  getApplicantData=(accessToken:string)=>{
+  export const  getUserData=(accessToken:string)=>{
     
 
     
@@ -572,7 +573,7 @@ export const editUserAddress = (accessToken:string,address:AddressInterface,addr
         };
 
             try{
-                const response=await fetch(`${BE_PROD_URL}/applicants/me`,options)
+                const response=await fetch(`${BE_PROD_URL}/users/me`,options)
                 
                 if(response.ok){
                     const data= await response.json()
@@ -581,12 +582,12 @@ export const editUserAddress = (accessToken:string,address:AddressInterface,addr
                         payload:false,
                     })
                     dispatch({
-                        type:GET_APPLICANT_DATA,
+                        type:GET_USER_DATA,
                         payload:data,
                     })
                     setTimeout(()=>{
                         dispatch({
-                            type:GET_APPLICANT_DATA_LOADING,
+                            type:GET_USER_DATA_LOADING,
                             payload:false
                         })
                     },100);
@@ -600,11 +601,11 @@ export const editUserAddress = (accessToken:string,address:AddressInterface,addr
                 }else{
                     console.log("ERROR")
                     dispatch({
-                        type:GET_APPLICANT_DATA_LOADING,
+                        type:GET_USER_DATA_LOADING,
                         payload:false,
                     })
                     dispatch({
-                        type:GET_APPLICANT_DATA_ERROR,
+                        type:GET_USER_DATA_ERROR,
                         payload:true
                     })
                 }
@@ -612,11 +613,11 @@ export const editUserAddress = (accessToken:string,address:AddressInterface,addr
             catch(error){
                 console.log(error,"Error")
                 dispatch({
-                    type:GET_APPLICANT_DATA_LOADING,
+                    type:GET_USER_DATA_LOADING,
                     payload:false,
                 })
                 dispatch({
-                    type:GET_APPLICANT_DATA_ERROR,
+                    type:GET_USER_DATA_ERROR,
                     payload:true,
                 })
             }

@@ -130,6 +130,9 @@ nav.mobile-nav{
     }
     .nav-links{
       width: 60%;
+      overflow-x:hidden ;
+    border-left: 1px solid rgb(23, 24, 28) ;
+    border-top: 1px solid rgb(23, 24, 28) ;
     }
 }
 @media screen and (max-width:420px){

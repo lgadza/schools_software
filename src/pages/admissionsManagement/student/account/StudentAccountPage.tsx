@@ -13,14 +13,14 @@ import { useEffect, useState } from "react"
 import StudentNavbar from "../StudentNavbar"
 // import { useDispatch } from "react-redux"
 // import { Dispatch } from "redux"
-// import { getApplicantData } from "../../../../redux/actions"
+// import { getUserData } from "../../../../redux/actions"
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../redux/store"
 
 const StudentAccountPage=():JSX.Element=>{
-const personalInfo=useSelector((state:RootState)=>state.applicantData.data)
+const personalInfo=useSelector((state:RootState)=>state.userData.data)
 // const accessToken=useSelector((state:RootState)=>state.accessToken.accessToken)
-// const isError=useSelector((state:RootState)=>state.applicantData.isError)
+// const isError=useSelector((state:RootState)=>state.userData.isError)
     const [activeComponent,setActiveComponent]=useState<string>("PersonalData")
     const handleNavigationClick=(component:string)=>{
         setActiveComponent(component)
@@ -29,7 +29,7 @@ const personalInfo=useSelector((state:RootState)=>state.applicantData.data)
 
     // const dispatch:Dispatch<any> =useDispatch()
     useEffect(()=>{
-// dispatch(getApplicantData(accessToken.accessToken))
+// dispatch(getUserData(accessToken.accessToken))
     },[])
   
     return(

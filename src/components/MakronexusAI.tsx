@@ -11,7 +11,7 @@ import { RootState } from "../redux/store"
 import { chatWithAi, deleteChat, getAllAiChats, getChatMessages, imageQuery, logoutUser, newChat } from "../redux/actions"
 // import { Dispatch } from "redux"
 import "./MakronexusAi.css"
-import { ApplicantRegistration } from "../Types"
+import { UserRegistration } from "../Types"
 import AlertBox from "./Alerts"
 import * as Icon from "react-bootstrap-icons"
 import { useNavigate } from "react-router-dom"
@@ -94,9 +94,9 @@ export interface Message {
     updatedAt:string;
   }
   const MakronexusAI: React.FC = () => {
-    const user:ApplicantRegistration=useSelector((state:RootState)=>state.applicantData.data)
+    const user:UserRegistration=useSelector((state:RootState)=>state.userData.data)
     const token=useSelector((state:RootState)=>state.accessToken.accessToken)
-    const isTokenExpired=useSelector((state:RootState)=>state.applicantData.isTokenExpired)
+    const isTokenExpired=useSelector((state:RootState)=>state.userData.isTokenExpired)
     // const allChats=useSelector((state:RootState)=>state.getAllAiChats.chats)
     // const allChatsLoading=useSelector((state:RootState)=>state.getAllAiChats.isLoading)
     // const allError=useSelector((state:RootState)=>state.getAllAiChats.isError)
@@ -104,6 +104,8 @@ export interface Message {
     const [currentChat, setCurrentChat] = useState(""); 
     // const [deleteNowChat, setDeleteNowChat] = useState<boolean>(false); 
     const [chats, setChats] = useState<chatProps[]>([]); 
+    const [isChatLoading, setIsChatLoading] = useState<boolean>(false);
+  const [isChatError, setIsChatError] = useState<string | null>(null);
     const [currentModel]=useState("gpt-3.5-turbo")
     const [messages, setMessages] = useState<Message[]>([]);
     const [question, setQuestion] = useState<string>("");
@@ -114,6 +116,8 @@ export interface Message {
     const [blinkerVisible, setBlinkerVisible] = useState(true);
     const [alertVisible, setAlertVisible] = useState(true);
     const [autoFilled, setAutoFilled] = useState<boolean>(false);
+    const [isChatMessagesLoading, setIsChatMessagesLoading] = useState(false);
+const [errorChatMessages, setErrorChatMessages] = useState("");
     const navigate=useNavigate()
     // const dispatch: Dispatch<any> = useDispatch();
     const dispatch = useDispatch();
@@ -174,8 +178,7 @@ export interface Message {
     };
     const lastMessageRef = useRef<HTMLDivElement | null>(null);
     
-  const handleAsk = async () => {
-     
+  const handleAsk = async () => {   
     if (question !== "") {
       if (question.startsWith('/img:')) {
         const prompt = question.slice(5); 
@@ -188,8 +191,6 @@ export interface Message {
           setLoading(true); 
           const answer = await imageQuery(token.accessToken,currentModel,prompt,currentChat, user.id);
           if (answer) {
-            console.log(answer.message,"IMAGE ANSWER")
-            // setCurrentAnswer(answer)
             setMessages((prev) => [...prev, {type: "imageUrl",message:answer.message,from:"makronexa"}]);
           }else{
             setAiError(true)
@@ -237,17 +238,29 @@ export interface Message {
     }
     }
   };
+
   const getAllChats=async()=>{
-    if(user.id){
-      const allChats=await getAllAiChats(token.accessToken,user.id)
-      if(allChats){
-        setChats(allChats)
+    
+    if (user.id) {
+      setIsChatLoading(true);
+      try {
+        const allChats = await getAllAiChats(token.accessToken, user.id);
+        if(allChats.length>=0){
+          setChats(allChats)
+          setIsChatLoading(false);  
+          setIsChatError(null); 
+        }else{
+          setIsChatError(allChats.error);
+          setIsChatLoading(false);   
+        }
+      } catch (error) {
+        setIsChatError('An error occurred while fetching data.');
+        setIsChatLoading(false);
       }
     }
   }
 
   const handleNewChat=async()=>{
-    // setCurrentChat("")
     setMessages([])
     try{
      
@@ -258,7 +271,6 @@ export interface Message {
       const newAiChat = await newChat(token.accessToken,user.id)
       if(newAiChat){
         setCurrentChat(newAiChat)
-        // getAllChats()
       }else{
         setAiError(true)
       }
@@ -267,14 +279,33 @@ export interface Message {
       console.log(error,"ERROR")
     }
   }
- const handleGetChatMessages=async()=>{
-  if(currentChat){
-    const chatMessages:chatProps[]=await getChatMessages(token.accessToken,currentChat,user.id)
-    if(chatMessages[0].makronexaQAs.length>0){
-      setMessages(chatMessages[0].makronexaQAs)
-    } 
+//  const handleGetChatMessages=async()=>{
+//   if(currentChat){
+//     const chatMessages:chatProps[]=await getChatMessages(token.accessToken,currentChat,user.id)
+//     if(chatMessages[0].makronexaQAs.length>0){
+//       setMessages(chatMessages[0].makronexaQAs)
+//     } 
+//   }
+//  }
+const handleGetChatMessages = async () => {
+  setIsChatMessagesLoading(true);
+  if (currentChat) {
+    try {
+      const chatMessages = await getChatMessages(token.accessToken, currentChat, user.id);
+
+      if (chatMessages[0].makronexaQAs.length > 0) {
+        setMessages(chatMessages[0].makronexaQAs);
+        setIsChatMessagesLoading(false);
+      }
+
+      setErrorChatMessages(""); 
+    } catch (err) {
+      setErrorChatMessages("An error occurred while fetching data"); 
+    } finally {
+      setIsChatMessagesLoading(false); 
+    }
   }
- }
+};
 const handleChatItemClick = (chat_id: string) => {
   setMessages([]);
   setCurrentChat(chat_id);
@@ -450,19 +481,25 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
           </div>
       </div>
       
-      <div className={`nav-links content_bg d-flex flex-column justify-content-between ms-3 ${navActive ? 'nav-active pt-3' : ''}`}>
+      <div className={`nav-links content_bg d-flex main_bg  flex-column justify-content-between ms-3 ${navActive ? 'nav-active pt-3' : ''}`}>
         <div>
-          <ul className="d-flex flex-column  ">  
-       <div className={`${chats.length>0?"d-flex w-75 mb-2  ps-5 justify-content-between px-2":"d-flex w-100  justify-content-between px-2"}`}>
-            <Button className="btn-primary d-flex me-2 main_bg header" onClick={async()=>{
+          <ul className="d-flex flex-column ">  
+       <div className={`${chats.length>0?"d-flex w-100 mb-2  ps-5 justify-content-between px-2":"d-flex  justify-content-between px-2"}`}>
+            <Button className="btn-primary  w-75 d-flex me-2 content_bg header" onClick={async()=>{
               await handleNewChat()
               }}>
               <FontAwesomeIcon className="d-xl-block me-1 d-none" icon={faPlus} /> <small className="text-nowrap">New chat</small>
             </Button>
          
           </div>
-      {chats.length>0 ?(
-              chats
+      {!isChatLoading||chats.length>0 ?(
+        <div className="my-3">
+           {isChatError ?(
+            <div className="mt-5">
+              <span className="text-muted">{isChatError}</span>
+            </div>):(
+        <div>
+             { chats
               .filter((chat) => chat.makronexaQAs.length !==0)
               .map((chat,index)=>{
                 return(
@@ -485,7 +522,10 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                 setMessages([])
                 }} 
                 icon={faTrashCan} style={{color:"red",fontSize:"0.8rem"}} />
-            </li>)}))
+            </li>)})}
+            </div>)}
+            </div>
+            )
             
             :(
               <li className="mt-5">
@@ -497,7 +537,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
           
           
             </div>
-            <div className="user-logout w-100 main_bg pb-2">
+            <div className="user-logout w-100 content_bg pb-2">
             <Dropdown>
 <Dropdown.Toggle className="navbar-item w-100 d-flex justify-content-between align-items-center">
       <div className="pt-2">
@@ -507,7 +547,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
              <FontAwesomeIcon style={{fontSize:"0.8rem"}} icon={faChevronUp}/>         
 </Dropdown.Toggle>
 
-<Dropdown.Menu className="py-0 main_bg w-75"  style={{width:"20rem"}}>
+<Dropdown.Menu className="py-0 w-75"  style={{width:"20rem"}}>
   <Dropdown.Item className="py-2">
     <Link to="" className="textColor px-2">
     <FontAwesomeIcon icon={faGear}/>
@@ -544,8 +584,8 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
         <div>
           <MobileNav chats={chats}/>
         </div>
-        <div className="col col-md-8 helper">
-          <div className={`makronexa-alert ${showAlert ? 'visible' : 'hidden'}`}>
+        <div className="col col-md-8 mb-4 helper">
+          <div className={`d-none d-lg-block makronexa-alert ${showAlert ? 'visible' : 'hidden'}`}>
             {loading?(
               <AlertBox type="info" message="Makronexa is thinking..." loading={loading} />
             ):(
@@ -553,7 +593,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
             )}
           </div>
           {messages.length > 0 || currentChat ?
-            (<div className="mt-5"> {messages.length>0?( messages.map((section, index) => (
+            (<div className="mt-5"> {messages.length>0 && !isChatMessagesLoading?( messages.map((section, index) => (
               <div key={index}>
                 <div className="d-flex chats-messages justify-content-center text-start mt-2">
                   <div className="pe-2">
@@ -667,7 +707,11 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                   )}
              
                   </div>
-                  ):(<MakronexaOverview/>)}
+                  ):(
+                    <div>
+                      {!currentChat && <MakronexaOverview/>}
+                    </div>
+                  )}
   
          {currentChat &&(
           <div className="pb-3 ask-input-nav main_bg py-3">
@@ -715,9 +759,13 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
             }}>
               <FontAwesomeIcon className="d-xl-block me-1 d-none" icon={faPlus} /> <small className="text-nowrap">New chat</small>
             </Button>
-           {chats.length>0 ?(
+           {!isChatLoading||chats.length>0?(
           <div className="my-3">
-            <ul>
+            {isChatError ?(
+            <div className="mt-5">
+              <span className="text-muted">{isChatError}</span>
+            </div>):(
+              <ul>
               {chats.length>0 &&(
                 chats
                 .filter((chat) => chat.makronexaQAs.length !==0)
@@ -743,7 +791,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                   }} 
                   icon={faTrashCan} style={{color:"red",fontSize:"0.8rem"}} />
               </li>)}))}
-            </ul>
+            </ul>)}
           </div>
           ):(
           <div className="mt-5" >

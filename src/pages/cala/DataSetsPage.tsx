@@ -4,18 +4,18 @@ import { useEffect } from "react"
 import { useSelector,useDispatch } from "react-redux"
 import { RootState } from "../../redux/store"
 import { Dispatch } from "redux"
-import { getApplicantData } from "../../redux/actions"
+import { getUserData } from "../../redux/actions"
 import "./MobileNav.css"
 import CalaSideNavbar from "./CalaSideNavbar"
 import DataSets from "./DataSets"
   
 const DataSetsPage=():JSX.Element=>{
   const dispatch:Dispatch<any> =useDispatch()
-  const user=useSelector((state:RootState)=>state.applicantData.data)
+  const user=useSelector((state:RootState)=>state.userData.data)
   const accessToken=useSelector((state:RootState)=>state.accessToken.accessToken)
    
       useEffect(()=>{
-        dispatch(getApplicantData(accessToken.accessToken))
+        dispatch(getUserData(accessToken.accessToken))
       },[])
     return(
         <Container fluid className="ps-0 ms-0 pages scrollbar">

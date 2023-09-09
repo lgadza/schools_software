@@ -1,6 +1,6 @@
 
 
-import { EDIT_APPLICANT_DATA, EDIT_APPLICANT_DATA_ERROR, EDIT_APPLICANT_DATA_LOADING } from "../actions";
+import { EDIT_USER_DATA, EDIT_USER_DATA_ERROR, EDIT_USER_DATA_LOADING } from "../actions";
 
 export interface EditPersonalDataActionPayload {
     data: any;
@@ -13,15 +13,15 @@ interface EditPersonalDataActionBase{
 }
 
 export interface EditPersonalDataAction extends EditPersonalDataActionBase {
-    type: typeof EDIT_APPLICANT_DATA;
+    type: typeof EDIT_USER_DATA;
   }
   
   export interface EditPersonalDataLoadingAction extends EditPersonalDataActionBase {
-    type: typeof EDIT_APPLICANT_DATA_LOADING;
+    type: typeof EDIT_USER_DATA_LOADING;
   }
   
   export interface EditPersonalDataErrorAction extends EditPersonalDataActionBase {
-    type: typeof EDIT_APPLICANT_DATA_ERROR;
+    type: typeof EDIT_USER_DATA_ERROR;
   }
   type AllActions = EditPersonalDataAction | EditPersonalDataLoadingAction | EditPersonalDataErrorAction
 
@@ -33,17 +33,17 @@ const initialState: EditPersonalDataActionPayload = {
 
 const editPersonalData = (state: EditPersonalDataActionPayload = initialState, action: AllActions): EditPersonalDataActionPayload=> {
   switch (action.type) {
-    case EDIT_APPLICANT_DATA:
+    case EDIT_USER_DATA:
       return {
         ...state,
         data: action.payload,
       };
-    case EDIT_APPLICANT_DATA_LOADING:
+    case EDIT_USER_DATA_LOADING:
       return {
         ...state,
         isLoading: action.payload.isLoading,
       };
-    case EDIT_APPLICANT_DATA_ERROR:
+    case EDIT_USER_DATA_ERROR:
       return {
         ...state,
         isError: action.payload.isError,

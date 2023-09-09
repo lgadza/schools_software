@@ -4,11 +4,11 @@ import SearchBar from "./SearchBar"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faBell, faCalendar, faCheck, faChevronDown, faEnvelope, faGear, faListCheck, faMessage, faPowerOff, faUser } from "@fortawesome/free-solid-svg-icons"
 import { Dropdown } from "react-bootstrap"
-import { ApplicantRegistration } from "../Types"
+import { UserRegistration } from "../Types"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import { logoutUser } from "../redux/actions"
-const AccountTopNavigationBar=({user}:{user:ApplicantRegistration}):JSX.Element=>{
+const AccountTopNavigationBar=({user}:{user:UserRegistration}):JSX.Element=>{
   const navigate=useNavigate()
   const dispatch = useDispatch();
   

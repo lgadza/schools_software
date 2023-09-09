@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './SchoolAccountLogin.css'; 
 import {  useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { ApplicantLogin, getApplicantData } from '../redux/actions';
+import { UserLogin, getUserData } from '../redux/actions';
 import { RootState } from '../redux/store';
 import { Dispatch } from 'redux';
 import { LoginCredentialsInterface } from './Login';
@@ -14,7 +14,7 @@ const SchoolAccountLogin: React.FC = () => {
   const navigate = useNavigate()
   const accessToken = useSelector((state: RootState) => state.accessToken.accessToken)
   const isError = useSelector((state: RootState) => state.accessToken.isError)
-  const userData=useSelector((state:RootState)=>state.applicantData.data)
+  const userData=useSelector((state:RootState)=>state.userData.data)
 
   const initialLoginCred: LoginCredentialsInterface = {
     email: "",
@@ -37,7 +37,7 @@ const SchoolAccountLogin: React.FC = () => {
 useEffect(() => {
 
     if (accessToken) {
-      dispatch(getApplicantData(accessToken.accessToken));
+      dispatch(getUserData(accessToken.accessToken));
     }
   
 }, [accessToken,dispatch]);
@@ -47,7 +47,7 @@ useEffect(()=>{
   }
 },[userData,navigate])
   const handleLogin =  () => {
-   dispatch(ApplicantLogin(loginCredentials))
+   dispatch(UserLogin(loginCredentials))
 console.log(isError, "ERROR")
   }
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {

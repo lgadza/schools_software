@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { Alert, Col, Form, Row } from "react-bootstrap"
-import { ApplicantRegistration, PersonalDataInterface } from "../../../../Types"
+import { UserRegistration, PersonalDataInterface } from "../../../../Types"
 import { useSelector } from "react-redux"
-import { editApplicantData, getApplicantData } from "../../../../redux/actions"
+import { editUserData, getUserData } from "../../../../redux/actions"
 import { useDispatch } from "react-redux"
 import { Button } from "react-bootstrap"
 import { RootState } from "../../../../redux/store"
@@ -33,7 +33,7 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({
 
 const PersonalData=():JSX.Element=>{
     const dispatch:Dispatch<any>=useDispatch()
-    const user=useSelector((state:RootState)=>state.applicantData.data)
+    const user=useSelector((state:RootState)=>state.userData.data)
     const accessToken=useSelector((state:RootState)=>state.accessToken.accessToken)
     const editIsError = useSelector(
       (state: RootState) => state.editUserAddress.isError
@@ -78,7 +78,7 @@ setPersonalData((data)=>({
 }
 
 useEffect(() => {
-  // dispatch(getApplicantData(accessToken));
+  // dispatch(getUserData(accessToken));
   // if (user) {
   //   setPersonalData(user);
   // }
@@ -88,9 +88,9 @@ const handleEditClick = () => {
 };
 
 const handleSave=async()=>{
-  await dispatch(editApplicantData(accessToken.accessToken,personalData as ApplicantRegistration,user?.id))
+  await dispatch(editUserData(accessToken.accessToken,personalData as UserRegistration,user?.id))
   setEditMode(false)
-  dispatch(getApplicantData(accessToken.accessToken))
+  dispatch(getUserData(accessToken.accessToken))
   setShowSuccessMessage(true);
 }
 

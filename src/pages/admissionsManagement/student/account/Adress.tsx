@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../../../redux/store";
 import {
   editUserAddress,
-  getApplicantData,
+  getUserData,
   postUserAddress,
 } from "../../../../redux/actions";
 import { AddressInterface } from "../../../../Types";
@@ -46,7 +46,7 @@ const Address = (): JSX.Element => {
     (state: RootState) => state.postUserAddress.isError
   );
 
-  const user = useSelector((state: RootState) => state.applicantData.data);
+  const user = useSelector((state: RootState) => state.userData.data);
 
   const initialAddress: AddressInterface = user && user.address
     ? {
@@ -102,7 +102,7 @@ e.preventDefault()
 
   const handleSave = async () => {
     await dispatch(editUserAddress(accessToken.accessToken, address, user.address.id));
-    dispatch(getApplicantData(accessToken.accessToken));
+    dispatch(getUserData(accessToken.accessToken));
     setEditMode(false);
     setShowSuccessMessage(true);
     setSave(true)
@@ -110,12 +110,12 @@ e.preventDefault()
 
   const handleUpdate = async () => {
     await dispatch(postUserAddress(accessToken.accessToken, address, user.id));
-    dispatch(getApplicantData(accessToken.accessToken));
+    dispatch(getUserData(accessToken.accessToken));
     setShowSuccessMessage(true);
   };
 
   useEffect(() => {
-    dispatch(getApplicantData(accessToken.accessToken));
+    dispatch(getUserData(accessToken.accessToken));
   }, []);
 
   const handleEditClick = () => {

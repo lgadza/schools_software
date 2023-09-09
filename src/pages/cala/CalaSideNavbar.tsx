@@ -3,9 +3,9 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import md_logo_small from "../../assets/md_logo_small.png"
 import { CompanyName } from '../../assets/data/company';
-import { ApplicantRegistration } from "../../Types";
+import { UserRegistration } from "../../Types";
 
-const CalaSideNavbar=({user}:{user:ApplicantRegistration}):JSX.Element=>{
+const CalaSideNavbar=({user}:{user:UserRegistration}):JSX.Element=>{
   
     const [activeComponent,setActiveComponent]=useState<string>("MakronexusAI")
 

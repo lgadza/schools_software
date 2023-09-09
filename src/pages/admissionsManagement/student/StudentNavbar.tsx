@@ -4,11 +4,11 @@ import md_logo from "../../../assets/md_logo_small.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {faBell, faChevronDown, faMessage } from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom"
-import { ApplicantRegistration } from "../../../Types"
+import { UserRegistration } from "../../../Types"
 import { CompanyName } from "../../../assets/data/company"
 
 interface StudentNavbarProps{
-  personalInfo:ApplicantRegistration | null
+  personalInfo:UserRegistration | null
 }
 const StudentNavbar:React.FC<StudentNavbarProps> =({personalInfo})=>{
 

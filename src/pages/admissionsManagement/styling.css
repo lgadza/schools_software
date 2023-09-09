@@ -3,8 +3,20 @@
     --body-color: #999;
     --textColor:rgb(27, 27, 29)
   }
+.password-input-container {
+  position: relative;
+  display: inline-block;
+}
+.password-toggle {
+  position: absolute;
+  top: 55%;
+  right: 20px; 
+  cursor: pointer;
+}
 
-
+.password-icon {
+  font-size: 1rem;
+}
 /* STATUS */
 .steps-bar {
   margin: 0 auto;

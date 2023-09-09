@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, Button, Spinner} from 'react-bootstrap';
 import m_logo from "../assets/md_logo_small.png"
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { ApplicantLogin, getApplicantData} from '../redux/actions';
+import { UserLogin, getUserData} from '../redux/actions';
 import { RootState } from '../redux/store';
 import { Dispatch } from 'redux';
 import { CompanyName } from '../assets/data/company';
@@ -21,7 +21,7 @@ const Login = (): JSX.Element => {
   const isLoading = useSelector((state: RootState) => state.accessToken.isLoading)
   const isError = useSelector((state: RootState) => state.accessToken.isError)
   console.log(isError,"LOGIN ISERROR")
-  const userData=useSelector((state:RootState)=>state.applicantData.data)
+  const userData=useSelector((state:RootState)=>state.userData.data)
 
   const initialLoginCred: LoginCredentialsInterface = {
     email: "",
@@ -46,20 +46,20 @@ console.log(accessToken,"CRED")
   }
 
   const handleLogin = () => {
-    dispatch(ApplicantLogin(loginCredentials));
+    dispatch(UserLogin(loginCredentials));
     setSign_in(true)
   };
   
   useEffect(() => {
     if (accessToken) {
-      dispatch(getApplicantData(accessToken.accessToken));
+      dispatch(getUserData(accessToken.accessToken));
     }
   }, [accessToken, dispatch]);
 
   useEffect(() => {
     if (userData && accessToken) {
       // navigate(`/account/${userData.id}`);
-      navigate(`/ask/${userData.id}`);
+      navigate(`/ask.makronexus.com/${userData.id}`);
     }
   }, [userData, navigate]);
 

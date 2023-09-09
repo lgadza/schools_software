@@ -2,7 +2,7 @@ import { useEffect, useState} from "react"
 import { Alert, Col, Form, Row } from "react-bootstrap"
 // import {  GuardianInterface } from "../../../../Types"
 // import { useSelector } from "react-redux"
-// import { getApplicantData } from "../../../../redux/actions"
+// import { getUserData } from "../../../../redux/actions"
 // import { useDispatch } from "react-redux"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTriangleExclamation } from "@fortawesome/free-solid-svg-icons"
@@ -12,7 +12,7 @@ import UploadFileModal from "../../../../components/UploadFileModal"
 
 const Documents=():JSX.Element=>{
     // const dispatch:any=useDispatch()
-    // const data=useSelector((state:any)=>state.applicantData.data)
+    // const data=useSelector((state:any)=>state.userData.data)
 // const initialGuardian:GuardianInterface={
 //     first_name:"",
 //     last_name:"",
@@ -36,7 +36,7 @@ e.preventDefault()
 // }
     // const [guardian,setGuardian]=useState<GuardianInterface>(initialGuardian)
     useEffect(()=>{
-        // dispatch(getApplicantData())
+        // dispatch(getUserData())
     },[])
     const handleFileUpload = (uploadedFile: File) => {
       setFile(uploadedFile);

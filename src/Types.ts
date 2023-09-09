@@ -6,7 +6,7 @@ export interface ImageProps {
   height: number;
 }
 
-export interface ApplicantRegistration{
+export interface UserRegistration{
   id?:string;
   first_name:string;
   last_name:string;
