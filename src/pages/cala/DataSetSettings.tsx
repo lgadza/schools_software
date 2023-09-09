@@ -30,7 +30,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({dataSet}) => {
   const [activeComponent,setActiveComponent]=useState<string>("uploadDocs")
   const [currentModel,setCurrentModel]=useState("gpt-3.5-turbo")
 
-  
+  console.log(currentModel)
   const handleTempAlert=()=>{
     setIsTempAlert(!isTempAlert)
   }

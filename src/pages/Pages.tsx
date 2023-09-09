@@ -6,7 +6,7 @@ import AllCandidates from "./admin/AllCandidates"
 import AllNewCandidate from "./admin/AddNewCandidate"
 import ResourceUploadForm from "./cala/ResourceUploadForm"
 import CALAOverView from "./cala/Dashboard"
-import MakronexusAI from "../components/MakronexusAI"
+// import MakronexusAI from "../components/MakronexusAI"
 import { useSelector } from "react-redux"
 import { RootState } from "../redux/store"
 import { useDispatch } from "react-redux"
@@ -89,7 +89,7 @@ const [addResources, setAddResources] = useState<Resource[]>([]);
                   { activeComponent ==="NewCandidate" && <AllNewCandidate/> }
                 
                   { activeComponent ==="ResourceUploadForm" && <ResourceUploadForm onResourceUpload={handleResourceUpload}/> }
-                  { activeComponent ==="MakronexusAI" && <MakronexusAI/> }
+                  {/* { activeComponent ==="MakronexusAI" && <MakronexusAI/> } */}
                   {/* { activeComponent ==="Settings" && <Settings/>} */}
                 </div>
                 </div>
