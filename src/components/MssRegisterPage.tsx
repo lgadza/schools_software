@@ -1,13 +1,13 @@
 import { Container,Col, Row } from "react-bootstrap"
 import RegisterInfo from "../pages/admissionsManagement/student/RegisterInfo"
-import md_logo_small from "../assets/md_logo_small.png"
-import * as Icon from "react-bootstrap-icons";
-import { CompanyName } from "../assets/data/company";
+// import md_logo_small from "../assets/md_logo_small.png"
+// import * as Icon from "react-bootstrap-icons";
+// import { CompanyName } from "../assets/data/company";
 const MssRegisterPage=():JSX.Element=>{
    return(
     <Container className="application_page  d-flex align-items-center justify-content-center">
-        <Row>
-        <Col md={4} className="d-flex d-none d-md-block flex-column justify-content-between reg-welcome">
+        <Row className="d-flex align-items-center justify-content-center">
+        {/* <Col md={4} className="d-flex d-none d-md-block flex-column justify-content-between reg-welcome">
             <div className="wrapper  d-flex flex-column justify-content-between pb-5">
             <div className="p-3 d-flex justify-content-center">
             <img
@@ -27,7 +27,7 @@ const MssRegisterPage=():JSX.Element=>{
             <Icon.Linkedin size={20}/>
             </div>
             </div>
-         </Col>
+         </Col> */}
             <Col md={6}>
             <RegisterInfo/>
             </Col>

@@ -118,6 +118,7 @@ export interface Message {
     const [autoFilled, setAutoFilled] = useState<boolean>(false);
     const [isChatMessagesLoading, setIsChatMessagesLoading] = useState(false);
 const [errorChatMessages, setErrorChatMessages] = useState("");
+console.log(errorChatMessages)
     const navigate=useNavigate()
     // const dispatch: Dispatch<any> = useDispatch();
     const dispatch = useDispatch();
@@ -485,10 +486,10 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
         <div>
           <ul className="d-flex flex-column ">  
        <div className={`${chats.length>0?"d-flex w-100 mb-2  ps-5 justify-content-between px-2":"d-flex  justify-content-between px-2"}`}>
-            <Button className="btn-primary  w-75 d-flex me-2 content_bg header" onClick={async()=>{
+            <Button className="btn-primary  w-75 content_bg-2 " onClick={async()=>{
               await handleNewChat()
               }}>
-              <FontAwesomeIcon className="d-xl-block me-1 d-none" icon={faPlus} /> <small className="text-nowrap">New chat</small>
+              <FontAwesomeIcon className="me-1 " icon={faPlus} /> <small className="text-nowrap">New chat</small>
             </Button>
          
           </div>
@@ -534,8 +535,6 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
           )
             }
             </ul>
-          
-          
             </div>
             <div className="user-logout w-100 content_bg pb-2">
             <Dropdown>
@@ -576,6 +575,11 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
         <div className="line2"></div>
         <div className="line3"></div>
       </div>
+      <Button className="btn-primary content_bg-2 " onClick={async()=>{
+              await handleNewChat()
+              }}>
+              <FontAwesomeIcon className="d-xl-block me-1 d-none" icon={faPlus} /> <small className="text-nowrap">New chat</small>
+            </Button>
     </nav>
   );
 }

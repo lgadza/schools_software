@@ -119,9 +119,8 @@ const HomeAIInfo: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="text-start">
+      <div>
         <PushButton message="Learn more!" url="/features/makronexa" />
-
       </div>
     </div>
   );

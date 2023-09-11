@@ -11,7 +11,21 @@ import AlertBox from "../../../components/Alerts.js";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-
+const initialFormData: UserRegistration = {
+  first_name: "",
+  email: "",
+  last_name: "",
+  role: "user",
+  second_name: "",
+  date_of_birth: "",
+  gender: "",
+  citizenship: "",
+  phone_number: "",
+  policy_acceptance: false,
+  data_process_acceptance: false,
+  password: "",
+  country_code: "",
+};
 const RegisterInfo = (): JSX.Element => {
   const response = useSelector((state: RootState) => state.userRegistration.data);
   const isError = useSelector((state: RootState) => state.userRegistration.isError);
@@ -24,22 +38,9 @@ const RegisterInfo = (): JSX.Element => {
   const [signUpClicked, setSignUpClicked] = useState(false);
   const [passwordsDoNotMatch, setPasswordsDoNotMatch] = useState(false);
   const [passwordValid, setPasswordValid] = useState(true); 
+  const [formData, setFormData] = useState<UserRegistration>(initialFormData);
   const [emailValid, setEmailValid] = useState(true); 
-  const initialFormData: UserRegistration = {
-    first_name: "",
-    email: "",
-    last_name: "",
-    role: "student",
-    second_name: "",
-    date_of_birth: "",
-    gender: "",
-    citizenship: "",
-    phone_number: "",
-    policy_acceptance: false,
-    data_process_acceptance: false,
-    password: "",
-    country_code: "",
-  };
+
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevState) => !prevState);
@@ -53,16 +54,16 @@ const RegisterInfo = (): JSX.Element => {
     }
   };
 
-  const [formData, setFormData] = useState<UserRegistration>(initialFormData);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
   };
 
   const isFormValid = (): boolean => {
-    // Check if the form is valid
     return (
       formData.first_name.trim() !== "" &&
+      formData.country_code.trim() !== "" &&
+      formData.phone_number.trim().length === 9 &&
       formData.last_name.trim() !== "" &&
       formData.gender.trim() !== "" &&
       isValidEmail(formData.email) && 
@@ -71,14 +72,16 @@ const RegisterInfo = (): JSX.Element => {
       formData.password===confirmPassword
     );
   };
-
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
+console.log(formData,"FORM DATA")
+const handleChange = (e: any) => {
+  const { name, value } = e.target;
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
-    }));
-  };
+    }));45
+  
+};
+
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
@@ -195,6 +198,39 @@ const RegisterInfo = (): JSX.Element => {
         <Row>
           <Col>
             <Form.Label className="d-flex">
+              Code <span className="text-danger">*</span>
+            </Form.Label>
+            <Form.Control as="select" required name="country_code" value={formData.country_code} onChange={handleChange}>
+              <option value="">Select</option>
+              <option value="+263">+263</option>
+              <option value="+27">+27</option>
+            </Form.Control>
+          </Col>
+          <Col>
+            <Form.Label className="d-flex">
+              Phone <span className="text-danger">*</span>
+            </Form.Label>
+            <Form.Control
+              placeholder="Phone"
+              required
+              type="number"
+              maxLength={9} 
+              name="phone_number"
+              value={formData.phone_number}
+              onChange={handleChange}
+              onKeyPress={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                const inputElement = e.target as HTMLInputElement;
+                if (inputElement.value.length >= 9) {
+                  e.preventDefault();
+                }}}
+            />
+          </Col>
+        </Row>
+      </Form>
+      <Form className="my-3" onSubmit={handleSubmit}>
+        <Row>
+          <Col>
+            <Form.Label className="d-flex">
               Password <span className="text-danger">*</span>
             </Form.Label>
             <Form.Control
@@ -206,7 +242,6 @@ const RegisterInfo = (): JSX.Element => {
               onChange={handleChange}
               isInvalid={!passwordValid && !!formData.password} 
             />
-           
           </Col>
           <Col className="password-input-container">
             <Form.Label className="d-flex">

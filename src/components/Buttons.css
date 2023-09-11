@@ -7,11 +7,9 @@
   
   .push-btn {
     background: rgb(14, 178, 190);
-              font-size: 20px;
               color: white;
-              border-radius: 7px;
     text-shadow: 1px 1px 0px #000;
-              box-shadow: 0 7px 0px #083766;
+              /* box-shadow: 0 7px 0px #083766; */
               display: inline-block;
     min-width:10rem;
               transition: all .2s;
@@ -29,7 +27,6 @@
               box-shadow: 0 2px 0px #387796;
               transition: all .1s;
           }
-  /* Buton 9 Bitti */
   .error {
      background: #e10008;
      box-shadow: 0 7px 0px #500;

@@ -69,7 +69,7 @@ import HomeAIInfo from "./HomeAIInfo";
               </div>
               <div className="simplify-feature-container my-5 main-bg">
               <div className="h3">
-                <h4 className="text-start d-flex color-header p-3">Streamline your institute's management<br/> with intelligent simplicity. </h4>
+                <h4 className="text-start d-flex color-header p-3">Streamline your institute's management<br/> with simplicity. </h4>
                 </div> 
                 <SimplifyProcess/>
               </div>
