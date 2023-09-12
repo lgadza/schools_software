@@ -182,7 +182,7 @@ const HomeNavbar: React.FC = () => {
             </Button>
             <Button
               className="btn btn-primary  d-flex justify-content-end">
-              <Link to="/register"> Sign up</Link>
+              <Link to="/register"> Register</Link>
             </Button>
           </div>
         </nav>

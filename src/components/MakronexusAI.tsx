@@ -758,7 +758,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
         </div>
         <div className="col chat-nav d-none d-md-block col-md-4 border-round pt-3 border-radius-round">
           <div>    
-            <Button className="btn-primary py-2 d-flex justify-content-center me-2 w-100 content_bg header" onClick={async()=>{
+            <Button className="btn-primary py-2 d-flex justify-content-center me-2 w-100 content_bg-2" onClick={async()=>{
               await handleNewChat()
             }}>
               <FontAwesomeIcon className="d-xl-block me-1 d-none" icon={faPlus} /> <small className="text-nowrap">New chat</small>

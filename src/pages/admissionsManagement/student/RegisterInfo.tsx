@@ -20,11 +20,11 @@ const initialFormData: UserRegistration = {
   date_of_birth: "",
   gender: "",
   citizenship: "",
-  phone_number: "",
+  phone_number: "+263",
   policy_acceptance: false,
   data_process_acceptance: false,
   password: "",
-  country_code: "",
+  country_code: "+263",
 };
 const RegisterInfo = (): JSX.Element => {
   const response = useSelector((state: RootState) => state.userRegistration.data);
@@ -78,7 +78,7 @@ const handleChange = (e: any) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
       [name]: value,
-    }));45
+    }));
   
 };
 
@@ -204,6 +204,7 @@ const handleChange = (e: any) => {
               <option value="">Select</option>
               <option value="+263">+263</option>
               <option value="+27">+27</option>
+              <option value="+27">+48</option>
             </Form.Control>
           </Col>
           <Col>
@@ -211,19 +212,19 @@ const handleChange = (e: any) => {
               Phone <span className="text-danger">*</span>
             </Form.Label>
             <Form.Control
-              placeholder="Phone"
-              required
-              type="number"
-              maxLength={9} 
-              name="phone_number"
-              value={formData.phone_number}
-              onChange={handleChange}
-              onKeyPress={(e: React.KeyboardEvent<HTMLInputElement>) => {
-                const inputElement = e.target as HTMLInputElement;
-                if (inputElement.value.length >= 9) {
-                  e.preventDefault();
-                }}}
-            />
+                placeholder="Phone"
+                required
+                type="number"
+                maxLength={9}  
+                name="phone_number"
+                value={formData.phone_number}
+                onChange={handleChange}
+                onKeyPress={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                  const inputElement = e.target as HTMLInputElement;
+                  if (inputElement.value.length >= 9) {
+                    e.preventDefault();
+                  }}}
+              />
           </Col>
         </Row>
       </Form>
@@ -293,7 +294,7 @@ const handleChange = (e: any) => {
               disabled={!isFormValid()}
             >
               {isLoading && signUpClicked && <Spinner className="spinner-border-sm me-2" />}
-              <span>Sign Up</span>
+              <span>Register</span>
             </Button>
           </Col>
         </Row>
