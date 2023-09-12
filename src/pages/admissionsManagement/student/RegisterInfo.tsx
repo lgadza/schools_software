@@ -204,7 +204,7 @@ const handleChange = (e: any) => {
               <option value="">Select</option>
               <option value="+263">+263</option>
               <option value="+27">+27</option>
-              <option value="+27">+48</option>
+              <option value="+48">+48</option>
             </Form.Control>
           </Col>
           <Col>
