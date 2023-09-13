@@ -136,7 +136,7 @@ console.log(errorChatMessages)
           clearInterval(interval); 
           setBlinkerVisible(false);
         }
-      }, 20); 
+      }, 5); 
     };
     useEffect(()=>{
       if(!token){
@@ -781,7 +781,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                   icon={faComments} style={{color:"gray"}} />
                   {chat.makronexaQAs.length > 0 &&(
                   <span className=" ms-2 text-start chat_header_name">
-                    {chat.makronexaQAs[chat.makronexaQAs.length-1].message}
+                    {chat.makronexaQAs[0].message}
                   </span>
                   )}
                 </small>
