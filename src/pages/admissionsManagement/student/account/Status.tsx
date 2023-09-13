@@ -5,7 +5,7 @@ const Status=():JSX.Element=>{
         <div>
     <h5 className="d-flex my-3">Status</h5>
   <div className="steps-bar">
- <ul className="steps-indicator">
+ {/* <ul className="steps-indicator">
   <li className="done">
    <div>
     <a href="">1. Delivered</a>
@@ -21,7 +21,8 @@ const Status=():JSX.Element=>{
     <a href="">3. Accepted</a>
    </div>
   </li>
- </ul>
+ </ul> */}
+ <h6>No application available</h6>
 </div>
     </div>
     )

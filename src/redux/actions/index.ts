@@ -75,7 +75,23 @@ export const setChatMessages = (messages: Message[]) => ({
         return state;
     }
   };
-
+  export const deleteUser = () => {
+    return async () => {
+      const options = {
+        method: "DELETE",
+      };
+      
+      try {
+        const response = await fetch(`${BE_PROD_URL}/users/me`, options);
+       
+        if (response.ok) {
+          console.log("user Deleted")
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+  };
 export const UserLogin=(cred:LoginCredentialsInterface)=>{
     return async(dispatch:Dispatch)=>{
         const options={

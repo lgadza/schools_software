@@ -48,6 +48,9 @@ color: white !important;
   /* min-height: 100vh !important; */
   
 }
+.textColor {
+  color: white !important;
+}
 .icon-bg{
   height: 30px;
   width: 30px;

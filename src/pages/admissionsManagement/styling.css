@@ -17,6 +17,28 @@
 .password-icon {
   font-size: 1rem;
 }
+.profile-picture {
+  position: relative !important;
+}
+
+.profile-picture:hover .flex-column.align-items-center.change-profile {
+  visibility: visible !important;
+}
+.change-profile {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(17, 27, 33, 0.9);
+  border-radius: 50%;
+  visibility: hidden;
+}
+.student-profile-bar .dropdown-menu.show {
+  z-index: 1;
+  background-color: rgb(29, 39, 46);
+  isolation: isolate;
+}
 /* STATUS */
 .steps-bar {
   margin: 0 auto;
@@ -109,6 +131,7 @@
   position: absolute;
   right: 10px;
   top: 5px;
+  z-index: 199;
 }
 
 .box-shadow{
@@ -208,10 +231,10 @@ height: 50px;
   padding: 5px;
 }
 
-.student_account_all_border button.dropdown-toggle.btn img {
+/* .student_account_all_border button.dropdown-toggle.btn img {
   width: 20px !important;
   height: 20px !important;
-}
+} */
 .student_navbar.content_bg.justify-content-between{
   position: fixed;
   top: 0;

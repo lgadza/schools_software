@@ -17,7 +17,7 @@ const initialFormData: UserRegistration = {
   last_name: "",
   role: "user",
   second_name: "",
-  date_of_birth: "",
+  date_of_birth: null,
   gender: "",
   citizenship: "",
   phone_number: "+263",
@@ -95,7 +95,7 @@ const handleChange = (e: any) => {
     setSignUpClicked(true);
     setAlertVisible(true)
     const success = await dispatch<any>(UserRegister(formData));
-
+    console.log(response,'RESTENDSS')
     if (response) {
       navigate("/login");
     } else {

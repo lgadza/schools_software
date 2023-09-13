@@ -600,22 +600,19 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
             (<div className="mt-5"> {messages.length>0 && !isChatMessagesLoading?( messages.map((section, index) => (
               <div key={index}>
                 <div className="d-flex chats-messages justify-content-center text-start mt-2">
-                  <div className="pe-2">
-                    <img
-                      src={
-                        section.from === "user"
-                        ? "https://whatsondisneyplus.com/wp-content/uploads/2021/12/merida-avatar-wodp.png"
-                        : md_logo_small
-                      }
-                      alt={section.from}
-                      style={{
-                        width: "30px",
-                        height: "30px",
-                        borderRadius: "0%",
-                      }}
-                      className="img_component"
-                    />
-                  </div>
+                <div className="pe-2">
+                  <img
+                    src={section.from === "user" ? user.avatar : md_logo_small}
+                    alt={section.from}
+                    style={{
+                      width: "30px",
+                      height: "30px",
+                      borderRadius: "0%",
+                    }}
+                    className="img_component"
+                  />
+                </div>
+
                       <div ref={lastMessageRef} />
                   {section.from === "user" ? (
                     <div className="d-flex justify-content-between w-75 ">

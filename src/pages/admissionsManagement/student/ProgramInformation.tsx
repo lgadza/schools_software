@@ -8,32 +8,32 @@ const ProgramInformation=():JSX.Element=>{
 <Row className="mb-4">
     <Col><span className="d-flex">Institution:</span></Col>
     <Col><span className="d-flex">
-        Founders High School
+        _
     </span>
     </Col>
 </Row>
 <Row className="mb-4">
     <Col><span className="d-flex">Level:</span></Col>
     <Col>
-    <span className="d-flex">Form 5</span>
+    <span className="d-flex">_</span>
     </Col>
 </Row>
 <Row className="mb-4">
     <Col><span className="d-flex">Program:</span></Col>
     <Col>
-    <span className="d-flex">Sciences</span>
+    <span className="d-flex">_</span>
     </Col>
 </Row>
 <Row className="mb-4">
     <Col><span className="d-flex">Intake:</span></Col>
     <Col>
-    <span className="d-flex">February 2024</span>
+    <span className="d-flex">_</span>
     </Col>
 </Row>
 <Row className="mb-4 bottom-border">
     <Col><span className="d-flex">Academic year:</span></Col>
     <Col>
-    <span className="d-flex">2024</span>
+    <span className="d-flex">_</span>
     </Col>
 </Row>
         </div>

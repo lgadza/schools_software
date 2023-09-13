@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import Image from "./Image"
 import SearchBar from "./SearchBar"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBell, faCalendar, faCheck, faChevronDown, faEnvelope, faGear, faListCheck, faMessage, faPowerOff, faUser } from "@fortawesome/free-solid-svg-icons"
+import {faChevronDown, faPowerOff, faUser } from "@fortawesome/free-solid-svg-icons"
 import { Dropdown } from "react-bootstrap"
 import { UserRegistration } from "../Types"
 import { useNavigate } from "react-router-dom"
@@ -21,7 +21,7 @@ const AccountTopNavigationBar=({user}:{user:UserRegistration}):JSX.Element=>{
     return(
       <div className=" d-none d-lg-block">
           {user && (
-        <div className="search-bar py-2 px-3 mb-4 d-flex align-items-center sidebar-head justify-content-between">
+        <div className="search-bar py-2 px-4 mb-4 d-flex align-items-center sidebar-head justify-content-between">
         <SearchBar placeholder="Find Something . . ."/>
         <ul className="d-flex align-items-center">
             <li className="navbar-item d-flex align-items-center">         
@@ -33,7 +33,9 @@ const AccountTopNavigationBar=({user}:{user:UserRegistration}):JSX.Element=>{
                
             <span className="d-flex px-4">{user.role} </span>
             </div>
-            <Image src="https://img.freepik.com/free-icon/user_318-159711.jpg?size=626&ext=jpg&uid=R36208328&ga=GA1.1.377730112.1687240299&semt=ais" height={40} width={40} alt="avatar"/>
+            {user.avatar && user.avatar!==""&&(
+            <Image src={user.avatar} height={40} width={40} alt="avatar"/>
+            )}
 </Dropdown.Toggle>
 
 <Dropdown.Menu className="py-0"  style={{width:"20rem"}}>
@@ -46,7 +48,7 @@ const AccountTopNavigationBar=({user}:{user:UserRegistration}):JSX.Element=>{
       <span className="px-2">My profile</span>
     </Link>
   </Dropdown.Item>
-  <Dropdown.Item className="py-2">
+  {/* <Dropdown.Item className="py-2">
     <Link to="" className="textColor px-2">
     <FontAwesomeIcon icon={faListCheck}/>
       <span className="px-2">Task</span>
@@ -63,7 +65,7 @@ const AccountTopNavigationBar=({user}:{user:UserRegistration}):JSX.Element=>{
     <FontAwesomeIcon icon={faGear}/>
       <span className="px-2">Account settings</span>
     </Link>
-  </Dropdown.Item>
+  </Dropdown.Item> */}
   <hr className="my-0 py-0" />
   <Dropdown.Item className="py-2">
     <div
@@ -80,7 +82,7 @@ const AccountTopNavigationBar=({user}:{user:UserRegistration}):JSX.Element=>{
 </Dropdown.Menu>
 </Dropdown>
 </li>
-<li className="navbar-item header-message px-0">              
+{/* <li className="navbar-item header-message px-0">              
 <Dropdown>
 <Dropdown.Toggle className="navbar-item d-flex align-items-center">
 <FontAwesomeIcon icon={faEnvelope}/>
@@ -174,7 +176,7 @@ const AccountTopNavigationBar=({user}:{user:UserRegistration}):JSX.Element=>{
   </Dropdown.Item>
 </Dropdown.Menu>
 </Dropdown>
-</li>
+</li> */}
         </ul>
     </div>
         )}

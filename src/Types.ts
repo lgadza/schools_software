@@ -11,8 +11,9 @@ export interface UserRegistration{
   first_name:string;
   last_name:string;
   second_name?:string;
-  date_of_birth:string;
+  date_of_birth:string|null;
   gender:string;
+  avatar?:string
   citizenship:string;
   phone_number:string;
   email:string;
