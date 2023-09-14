@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { emailVerification } from '../redux/actions'; 
 import * as Icon from 'react-bootstrap-icons';
 import { Dispatch } from 'redux';
+import { RootState } from '../redux/store';
 
 
 const EmailVerification: React.FC = () => {
@@ -13,14 +14,13 @@ const EmailVerification: React.FC = () => {
 
   const isLoading = useSelector((state: any) => state.emailVerification.isLoading);
   const isError = useSelector((state: any) => state.emailVerification.isError);
-  const emailVerificationResponse = useSelector((state: any) => state.emailVerification.response);
+  const emailVerificationResponse = useSelector((state:RootState ) => state.verifyEmail.data);
   const [signUp, setSignUp] = useState<boolean>(false);
   const [response, setResponse] = useState<boolean>(false);
   const dispatch:Dispatch<any> = useDispatch();
 
-  useEffect(() => {
-    console.log(emailVerificationResponse, 'ME');
-  }, [emailVerificationResponse]);
+  console.log(emailVerificationResponse, 'ME');
+  
 
   const handleVerification = async () => {
     setSignUp(true);
@@ -56,7 +56,7 @@ const EmailVerification: React.FC = () => {
                   <small>Something went wrong on our side, we are working on it, we apologies for the inconvenience caused</small>
                 </Alert>
               )}
-              {response && !isError && <Alert variant="primary">{emailVerificationResponse.data}</Alert>}
+              {response && !isError && <Alert variant="primary">{emailVerificationResponse.data.message}</Alert>}
               <hr />
             </Col>
           </Row>

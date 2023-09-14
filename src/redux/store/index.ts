@@ -29,7 +29,7 @@ const persistConfig = {
 };
 
 const mainReducer = combineReducers({
-  emailVerification: emailVerification,
+  verifyEmail: emailVerification,
   userRegistration: userRegistration,
   userData:getUserData,
   activeNav:activeNav,
