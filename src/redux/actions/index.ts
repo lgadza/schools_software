@@ -36,6 +36,9 @@ export const GET_USER_ADDRESS_LOADING="GET_USER_ADDRESS_LOADING"
 
 export const LOGOUT_USER="LOGOUT_USER"
 
+export const EMAIL_VERIFICATION = "EMAIL_VERIFICATION";
+export const EMAIL_VERIFICATION_LOADING = "EMAIL_VERIFICATION_LOADING";
+export const EMAIL_VERIFICATION_ERROR = "EMAIL_VERIFICATION_ERROR";
 
 export const EDIT_USER_DATA="EDIT_USER_DATA"
 export const EDIT_USER_DATA_ERROR="EDIT_USER_DATA_ERROR"
@@ -64,6 +67,63 @@ export const setChatMessages = (messages: Message[]) => ({
     
     type: LOGOUT_USER,
   });
+  export const emailVerification = ( userId:string) => {
+    return async (dispatch:Dispatch) => {
+      const options = {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({emailVerified:true}),
+      };
+    
+      try {
+        const response = await fetch(
+          `${BE_PROD_URL}/users/verifyEmail/${userId}`,
+          options
+        );
+  
+        if (response.ok) {
+          const emailVerificationResponse = await response.json();
+          console.log(emailVerificationResponse);
+          dispatch({
+            type: EMAIL_VERIFICATION,
+            payload: emailVerificationResponse,
+          });
+          setTimeout(() => {
+            dispatch({
+              type: EMAIL_VERIFICATION_LOADING,
+              payload: false,
+            });
+          }, 100);
+        } else {
+          console.log("error");
+  
+          dispatch({
+            type: EMAIL_VERIFICATION_LOADING,
+            payload: false,
+          });
+          dispatch({
+            type: EMAIL_VERIFICATION_ERROR,
+            payload: true,
+          });
+        }
+      } catch (error) {
+        console.log(error);
+  
+        dispatch({
+          type: EMAIL_VERIFICATION_LOADING,
+          payload: false,
+        });
+  
+        dispatch({
+          type: EMAIL_VERIFICATION_ERROR,
+          payload: true,
+        });
+      }
+    };
+  };
  export const chatReducer = (state = initialState, action: { type: string; payload: Message[] }) => {
     switch (action.type) {
       case 'SET_CHAT_MESSAGES':

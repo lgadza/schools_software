@@ -33,7 +33,7 @@ const RegisterInfo = (): JSX.Element => {
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [alertVisible, setAlertVisible] = useState(false);
   const [signUpClicked, setSignUpClicked] = useState(false);
   const [passwordsDoNotMatch, setPasswordsDoNotMatch] = useState(false);
@@ -94,13 +94,12 @@ const handleChange = (e: any) => {
   const handleRegistration = async () => {
     setSignUpClicked(true);
     setAlertVisible(true)
-    const success = await dispatch<any>(UserRegister(formData));
-    console.log(response,'RESTENDSS')
-    if (response) {
-      navigate("/login");
-    } else {
-      console.log(success);
-    }
+     await dispatch<any>(UserRegister(formData));
+    // if (response) {
+    //   navigate("/login");
+    // } else {
+    //   console.log(success);
+    // }
     const timer = setTimeout(() => {
       setAlertVisible(false);
     }, 3000);
@@ -146,9 +145,9 @@ const handleChange = (e: any) => {
           <AlertBox type="danger" message={`${isError && "Error during registration, try again later!"}`} />
         </div>
       )}
-      {response && response.message == "This email has already been registered. Please login." && alertVisible && (
+      {response && response.message !== "" && alertVisible && (
         <div className="register-alert">
-          <AlertBox type="danger" message={`This email has already been registered. Please login.`} />
+          <AlertBox type="info" message={response.message} />
         </div>
       )}
       <Form onSubmit={handleSubmit}>

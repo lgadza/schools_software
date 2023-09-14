@@ -15,6 +15,7 @@ import editUserAddress from "../reducers/editUserAddress";
 import postUserAddress from "../reducers/postUserAddress";
 import getAllAiChats from "../reducers/getAllAiChats";
 import { chatReducer } from "../actions";
+import emailVerification from "../reducers/emailVerification";
 
 
 const persistConfig = {
@@ -28,6 +29,7 @@ const persistConfig = {
 };
 
 const mainReducer = combineReducers({
+  emailVerification: emailVerification,
   userRegistration: userRegistration,
   userData:getUserData,
   activeNav:activeNav,

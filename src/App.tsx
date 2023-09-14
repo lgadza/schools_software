@@ -22,6 +22,7 @@ import Makronexa from "./pages/cala/Makronexa.js"
 import Plans from "./pages/Home/Plans.js"
 import DataSetsPage from "./pages/cala/DataSetsPage.js"
 import DataSetSettingsPage from "./pages/cala/DataSetSettingsPage.js"
+import EmailVerification from "./components/EmailVerification.js"
 
 // mss makro_school_solution
 function App() {
@@ -49,6 +50,10 @@ function App() {
        <Route path="ask/:user_id" element={<Makronexa/>}/>
        <Route path="/:user_id/datasets" element={<DataSetsPage/>}/>
        <Route path="/:user_id/datasets/:dataset_id" element={<DataSetSettingsPage/>}/>
+       <Route
+              element={<EmailVerification />}
+              path={`user/verifyEmail/:user_id/:user_name`}
+            />
        <Route path='*' element={<Page404/>} />
       </Routes>
     </BrowserRouter>
