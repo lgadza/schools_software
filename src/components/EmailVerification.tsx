@@ -33,9 +33,9 @@ const EmailVerification: React.FC = () => {
   const navigate=useNavigate()
   
   return (
-    <Container style={{height:"100vh"}} className='d-flex justify-content-center align-items-center'>
-      <Row className="d-flex justify-content-center align-items-center pt-5 textColor">
-        <Col lg={8} className=" content_bg">
+    <Container style={{height:"100vh"}} >
+      <Row style={{height:"100%"}} className="d-flex justify-content-center align-items-center pt-5 textColor">
+        <Col lg={6}  className="content_bg">
           <Row>
             <Col>
               <div className=" ml-3 mt-3  d-flex justify-content-between align-items-center">
