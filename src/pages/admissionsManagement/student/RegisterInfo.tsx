@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { UserRegister } from "../../../redux/actions";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store/index.js";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import AlertBox from "../../../components/Alerts.js";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
