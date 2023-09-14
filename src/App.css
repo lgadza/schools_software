@@ -96,6 +96,7 @@ color: white !important;
 .content_bg-2{
   background-color: var(--content-bg-2) !important;
 }
+
 .main_bg.list-group-flush{
   background-color: var(--main-bg) !important;
 }

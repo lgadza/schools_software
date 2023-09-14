@@ -1,23 +1,28 @@
-import { useEffect, useState } from 'react';
-import './Loader.css';
+import React from 'react';
+import './Loader.css'; 
+import { Container } from 'react-bootstrap';
 
-const Loader = () => {
-  const [isFilling, setIsFilling] = useState(true);
+const Loader: React.FC = () => {
+  const listItems: JSX.Element[] = [];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIsFilling((prev) => !prev);
-    }, 3000); // 6 seconds for the entire life cycle (filling and emptying)
-
-    return () => clearInterval(interval);
-  }, []);
+  for (let i = 0; i < 8; i++) {  
+    const animationName = `page-${i}`;
+    listItems.push(
+      <li key={i} className={`animated-li ${animationName}`}></li>
+    );
+  }
 
   return (
-    <div className="loader">
-      <div className="bar" style={{ backgroundColor: isFilling ? 'blue' : 'blue' }} />
-      <div className="bar bar-2" style={{ backgroundColor: isFilling ? 'blue' : 'blue' }} />
-      <div className="circle mx-3" style={{ backgroundColor: isFilling ? 'blue' : 'blue' }} />
+    <Container className='loader_container'>
+    <div className="book-loader">
+      <div className="inner">
+        <div className="left"></div>
+        <div className="middle"></div>
+        <div className="right"></div>
+      </div>
+      <ul>{listItems}</ul>
     </div>
+    </Container>
   );
 };
 

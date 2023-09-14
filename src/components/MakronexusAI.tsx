@@ -470,7 +470,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
   };
 
   return (
-    <nav className="mobile-nav d-md-none border-round mb-5  px-4">
+    <nav className="mobile-nav d-md-none border-round mb-5  px-2">
       <div className="logo">
       <div className="d-flex px-2">
             <img
@@ -548,7 +548,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
 
 <Dropdown.Menu className="py-0 w-75"  style={{width:"20rem"}}>
   <Dropdown.Item className="py-2">
-    <Link to="" className="textColor px-2">
+    <Link to={`/${user.id}/datasets`} className="textColor px-2">
     <FontAwesomeIcon icon={faGear}/>
       <span className="px-2">Settings</span>
     </Link>
@@ -717,7 +717,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
          {currentChat &&(
           <div className="pb-3 ask-input-nav main_bg py-3">
             <div className="d-flex input-container justify-content-center ms-3">
-          {!loading && (
+          
               <div className="d-flex justify-content-between w-75 align-items-center">
                  {aiError &&alertVisible&&(
                 <div className="regenerate-btn-container">
@@ -739,11 +739,12 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                     onChange={handleInput}
                   />
                 </div>
+                {!loading && (
                 <div className="btn btn-primary" onClick={handleAsk}>
                   <FontAwesomeIcon icon={faPaperPlane} />
                 </div>
-              </div>
                   )}
+              </div>
             </div>
             <FontAwesomeIcon
               className="go-bottom d-none d-md-block cursor-pointer"

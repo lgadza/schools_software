@@ -10,6 +10,9 @@ import { Container } from 'react-bootstrap';
 import DragAndDropFile from '../../components/DragAndDropFile';
 import UploadedDocs from './UploadedDocs';
 import { DataSetItem } from './DataSets';
+import md_logo_small from "../../assets/md_logo_small.png"
+import { useNavigate } from 'react-router-dom';
+
 
 interface Engine{
   created:string|null;
@@ -21,15 +24,18 @@ interface Engine{
 }
 interface DataSetSettingsProps {
   dataSet: DataSetItem; 
+  user_id:string
+
 }
 
-const DataSetSettings: React.FC<DataSetSettingsProps> = ({dataSet}) => {
+const DataSetSettings: React.FC<DataSetSettingsProps> = ({dataSet,user_id}) => {
   const [isAlert,setIsAlert]=useState(true)
   const [isTempAlert,setIsTempAlert]=useState(true)
   const [models, setModels] = useState<Engine[]>([]); 
   const [activeComponent,setActiveComponent]=useState<string>("uploadDocs")
   const [currentModel,setCurrentModel]=useState("gpt-3.5-turbo")
 
+const navigate=useNavigate()
   console.log(currentModel)
   const handleTempAlert=()=>{
     setIsTempAlert(!isTempAlert)
@@ -51,10 +57,18 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({dataSet}) => {
 
   return (
       <Container className=" component-margin-top mb-5">
-        <div className='d-flex'><small className='link-item cursor-pointer'>Makronexa</small> <span>/</span><small className='link-item cursor-pointer'>Datasets</small> <span>/</span><small className='header'>{dataSet.name}</small></div>
-        <h4 className='d-flex pb-2 my-3'>{dataSet.name}</h4>
+          <div className="d-flex d-md-none justify-content-end mt-2">
+                   <img
+              src={md_logo_small}
+              alt="makronexa"
+              style={{ width: `${50}px`, height: `${50}px`, borderRadius: "0%",objectFit:"contain" }}
+              className="img_component"
+            />
+            </div>
+        <div className='d-flex'><small className='link-item header cursor-pointer' onClick={()=>navigate(`/ask/${user_id}`)}>Makronexa</small> <span>/</span><small className='link-item header cursor-pointer' onClick={()=>navigate(`/${user_id}/datasets`)}>Datasets</small> <span>/</span><small >{dataSet.name}</small></div>
+        <h6 className='d-flex pb-2 my-3'>{dataSet.name}</h6>
        <Row>
-       <div className='  col-sm-12 col-xl-6'>
+       <div className='  col-sm-12 mb-4 col-xl-6'>
         <div className='d-flex align-items-center justify-content-between content_bg px-3'>
         <span className='me-5'>Shared</span>
         <ToggleSwitch/>
@@ -124,7 +138,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({dataSet}) => {
 - You NEVER answer that you are an AI language model.' className='px-3 py-2 '/>
         </div>
         <div className='d-flex mt-3 justify-content-end'>
-            <button className='header content_bg'><small>Update</small></button>
+            <button className='content_bg content_bg-2'><small>Update</small></button>
         </div>
         </div>
         <div className='col-xl-6'>

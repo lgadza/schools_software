@@ -36,7 +36,7 @@ const DataSetSettingsPage=():JSX.Element=>{
                 <Col className="px-0 makronexa-container" md={10}>
         <div className="py-0" style={{ height: "100vh", overflowY: "scroll" }}>
                    <AccountTopNavigationBar user={user}/>
-                   <DataSetSettings dataSet={dataSetItems}/> 
+                   <DataSetSettings user_id={user.id} dataSet={dataSetItems}/> 
                 </div>
                 </Col>
             </Row>   

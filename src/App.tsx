@@ -23,6 +23,7 @@ import Plans from "./pages/Home/Plans.js"
 import DataSetsPage from "./pages/cala/DataSetsPage.js"
 import DataSetSettingsPage from "./pages/cala/DataSetSettingsPage.js"
 import EmailVerification from "./components/EmailVerification.js"
+import Loader from "./components/Loader.js"
 
 // mss makro_school_solution
 function App() {
@@ -54,6 +55,7 @@ function App() {
               element={<EmailVerification />}
               path={`user/verifyEmail/:user_id/:user_name`}
             />
+       <Route path='loader' element={<Loader/>} />
        <Route path='*' element={<Page404/>} />
       </Routes>
     </BrowserRouter>
