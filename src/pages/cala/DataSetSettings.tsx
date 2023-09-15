@@ -5,13 +5,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment, faFolder, faFolderPlus, faInfoCircle, faX } from '@fortawesome/free-solid-svg-icons';
 import ToggleSwitch from '../../components/ToggleSwitch';
 import RangeSlider from '../../components/RangesSlider';
-import { getEngines } from '../../redux/actions';
+import { getAllUserAISettings, getEngines } from '../../redux/actions';
 import { Container } from 'react-bootstrap';
 import DragAndDropFile from '../../components/DragAndDropFile';
 import UploadedDocs from './UploadedDocs';
-import { DataSetItem } from './DataSets';
 import md_logo_small from "../../assets/md_logo_small.png"
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { UserAISettingsPayload } from '../../Types';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
 
 
 interface Engine{
@@ -23,19 +25,32 @@ interface Engine{
   ready:boolean
 }
 interface DataSetSettingsProps {
-  dataSet: DataSetItem; 
-  user_id:string
+  user_id:string;
+  token:string
 
 }
+const initialState={
+  shared: false,
+  dataset_name:"",
+  temperature: null,
+  model:  null,
+  name:  null,
+  personality:  null,
+  userId: ""
+}
 
-const DataSetSettings: React.FC<DataSetSettingsProps> = ({dataSet,user_id}) => {
+
+const DataSetSettings: React.FC<DataSetSettingsProps> = ({token,user_id}) => {
+  const allDatasets:UserAISettingsPayload[]=useSelector((state:RootState)=>state.getAllUserAISettings.data)
   const [isAlert,setIsAlert]=useState(true)
   const [isTempAlert,setIsTempAlert]=useState(true)
   const [models, setModels] = useState<Engine[]>([]); 
   const [activeComponent,setActiveComponent]=useState<string>("uploadDocs")
   const [currentModel,setCurrentModel]=useState("gpt-3.5-turbo")
-
+  const [shared, setShared] = useState(false);
+  const [dataSet,setDataSet]=useState<UserAISettingsPayload>(initialState)
 const navigate=useNavigate()
+const params=useParams()
   console.log(currentModel)
   const handleTempAlert=()=>{
     setIsTempAlert(!isTempAlert)
@@ -54,10 +69,21 @@ const navigate=useNavigate()
     getModels()
 
   },[])
+  useEffect(()=>{
+    getAllUserAISettings(token,user_id)
+  },[])
+  useEffect(()=>{
+    if(allDatasets.length>0){
+      const foundDataset= allDatasets.find((dataset)=>dataset.dataset_name===params.dataset_id)
+       if(foundDataset){
+         setDataSet(foundDataset)
+       }
+     }
+  },[params.dataset_id])
 
   return (
       <Container className=" component-margin-top mb-5">
-          <div className="d-flex d-md-none justify-content-end mt-2">
+          <div className="d-flex d-md-none justify-content-end mb-3 mt-2">
                    <img
               src={md_logo_small}
               alt="makronexa"
@@ -65,13 +91,13 @@ const navigate=useNavigate()
               className="img_component"
             />
             </div>
-        <div className='d-flex'><small className='link-item header cursor-pointer' onClick={()=>navigate(`/ask/${user_id}`)}>Makronexa</small> <span>/</span><small className='link-item header cursor-pointer' onClick={()=>navigate(`/${user_id}/datasets`)}>Datasets</small> <span>/</span><small >{dataSet.name}</small></div>
-        <h6 className='d-flex pb-2 my-3'>{dataSet.name}</h6>
+        <div className='d-flex'><small className='link-item header cursor-pointer' onClick={()=>navigate(`/ask/${user_id}`)}>Makronexa</small> <span>/</span><small className='link-item header cursor-pointer' onClick={()=>navigate(`/${user_id}/datasets`)}>Datasets</small> <span>/</span><small >{dataSet.dataset_name}</small></div>
+        <h6 className='d-flex pb-2 my-3'>{dataSet.dataset_name}</h6>
        <Row>
        <div className='  col-sm-12 mb-4 col-xl-6'>
         <div className='d-flex align-items-center justify-content-between content_bg px-3'>
         <span className='me-5'>Shared</span>
-        <ToggleSwitch/>
+        <ToggleSwitch checked={shared} onChange={() => setShared(!shared)} />
         </div>
         {isTempAlert && (
           <Alert variant='success' className='d-flex flex-column my-4  text-start'>

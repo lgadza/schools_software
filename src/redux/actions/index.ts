@@ -1,5 +1,5 @@
 import { Dispatch } from "redux";
-import { AddressInterface, UserRegistration, UserChatting } from "../../Types";
+import { AddressInterface, UserRegistration, UserChatting, UserAISettingsPayload } from "../../Types";
 import { LoginCredentialsInterface } from "../../components/Login";
 import { Message } from "../../components/MakronexusAI";
 export const IS_TOKEN_EXPIRED="IS_TOKEN_EXPIRED"
@@ -34,6 +34,22 @@ export const GET_USER_ADDRESS="GET_USER_ADDRESS"
 export const GET_USER_ADDRESS_ERROR="GET_USER_ADDRESS_ERROR"
 export const GET_USER_ADDRESS_LOADING="GET_USER_ADDRESS_LOADING"
 
+export const POST_USER_AI_SETTINGS="POST_USER_AI_SETTINGS"
+export const POST_USER_AI_SETTINGS_ERROR="POST_USER_AI_SETTINGS_ERROR"
+export const POST_USER_AI_SETTINGS_LOADING="POST_USER_AI_SETTINGS_LOADING"
+
+export const GET_USER_AI_SETTINGS="GET_USER_AI_SETTINGS"
+export const GET_USER_AI_SETTINGS_ERROR="GET_USER_AI_SETTINGS_ERROR"
+export const GET_USER_AI_SETTINGS_LOADING="GET_USER_AI_SETTINGS_LOADING"
+
+export const GET_ALL_USER_AI_SETTINGS="GET_ALL_USER_AI_SETTINGS"
+export const GET_ALL_USER_AI_SETTINGS_ERROR="GET_ALL_USER_AI_SETTINGS_ERROR"
+export const GET_ALL_USER_AI_SETTINGS_LOADING="GET_ALL_USER_AI_SETTINGS_LOADING"
+
+export const PUT_USER_AI_SETTINGS="PUT_USER_AI_SETTINGS"
+export const PUT_USER_AI_SETTINGS_ERROR="PUT_USER_AI_SETTINGS_ERROR"
+export const PUT_USER_AI_SETTINGS_LOADING="PUT_USER_AI_SETTINGS_LOADING"
+
 export const LOGOUT_USER="LOGOUT_USER"
 
 export const EMAIL_VERIFICATION = "EMAIL_VERIFICATION";
@@ -67,6 +83,252 @@ export const setChatMessages = (messages: Message[]) => ({
     
     type: LOGOUT_USER,
   });
+  export const deleteUserAISettings = async (token:string,settings_id:string,user_id:string,) => {
+    const options:RequestInit={
+                    method:"DELETE",
+                    headers:{
+                        Accept:"application.json",
+                        "Content-Type":"application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                   
+                }
+    try {
+      const response=await fetch(`${BE_PROD_URL}/makronexa/users/${user_id}/settings/${ settings_id}`,options)
+      if (response.ok) {
+        const res = await response.json();
+        console.log(res," AI SETTINGS DELETED")
+      }
+    } catch (error) {
+      console.log(error,"ERROR DELETING  AI SETTINGS")
+    }
+  };
+
+  export const postUserAISettings = ( userId:string,settings:UserAISettingsPayload,token:string) => {
+    return async (dispatch:Dispatch) => {
+      const options = {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(settings),
+      };
+    
+      try {
+        const response = await fetch(
+          `${BE_PROD_URL}/makronexa/users/${userId}/settings`,
+          options
+        );
+  
+        if (response.ok) {
+          const newSettings = await response.json();
+          console.log(newSettings);
+          dispatch({
+            type: POST_USER_AI_SETTINGS,
+            payload: newSettings,
+          });
+          setTimeout(() => {
+            dispatch({
+              type: POST_USER_AI_SETTINGS_LOADING,
+              payload: false,
+            });
+          }, 100);
+        } else {
+          console.log("error");
+  
+          dispatch({
+            type: POST_USER_AI_SETTINGS_LOADING,
+            payload: false,
+          });
+          dispatch({
+            type: POST_USER_AI_SETTINGS_ERROR,
+            payload: true,
+          });
+        }
+      } catch (error) {
+        console.log(error);
+  
+        dispatch({
+          type: POST_USER_AI_SETTINGS_LOADING,
+          payload: false,
+        });
+  
+        dispatch({
+          type: POST_USER_AI_SETTINGS_ERROR,
+          payload: true,
+        });
+      }
+    };
+  };
+  export const putUserAISettings = ( userId:string,settings:UserAISettingsPayload,token:string,settings_id:string) => {
+    return async (dispatch:Dispatch) => {
+      const options = {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(settings),
+      };
+    
+      try {
+        const response = await fetch(
+          `${BE_PROD_URL}/makronexa/users/${userId}/settings/${settings_id}`,
+          options
+        );
+  
+        if (response.ok) {
+          const updatedSettings = await response.json();
+          console.log(updatedSettings);
+          dispatch({
+            type: PUT_USER_AI_SETTINGS,
+            payload: updatedSettings,
+          });
+          setTimeout(() => {
+            dispatch({
+              type: PUT_USER_AI_SETTINGS_LOADING,
+              payload: false,
+            });
+          }, 100);
+        } else {
+          console.log("error");
+  
+          dispatch({
+            type: PUT_USER_AI_SETTINGS_LOADING,
+            payload: false,
+          });
+          dispatch({
+            type: PUT_USER_AI_SETTINGS_ERROR,
+            payload: true,
+          });
+        }
+      } catch (error) {
+        console.log(error);
+  
+        dispatch({
+          type: PUT_USER_AI_SETTINGS_LOADING,
+          payload: false,
+        });
+  
+        dispatch({
+          type: PUT_USER_AI_SETTINGS_ERROR,
+          payload: true,
+        });
+      }
+    };
+  };
+
+  export const  getUserAISettings=(accessToken:string,user_id:string,settings_id:string)=>{
+
+    return async(dispatch:Dispatch)=>{
+        const options:RequestInit={
+            method:"GET",
+            headers:{
+                Accept:"application/json",
+                "Content-Type":"application/json",
+                Authorization:"Bearer " + `${accessToken}`
+            },
+        };
+
+            try{
+                const response=await fetch(`${BE_PROD_URL}/makronexa/users/${user_id}/settings/${settings_id}`,options)
+                
+                if(response.ok){
+                    const settings= await response.json()
+                    
+                    dispatch({
+                        type:GET_USER_AI_SETTINGS,
+                        payload:settings,
+                    })
+                    setTimeout(()=>{
+                        dispatch({
+                            type:GET_USER_AI_SETTINGS_LOADING,
+                            payload:false
+                        })
+                    },100);
+
+                }else{
+                    console.log("ERROR")
+                    dispatch({
+                        type:GET_USER_AI_SETTINGS_LOADING,
+                        payload:false,
+                    })
+                    dispatch({
+                        type:GET_USER_AI_SETTINGS_ERROR,
+                        payload:true
+                    })
+                }
+            }
+            catch(error){
+                console.log(error,"Error")
+                dispatch({
+                    type:GET_USER_AI_SETTINGS_LOADING,
+                    payload:false,
+                })
+                dispatch({
+                    type:GET_USER_AI_SETTINGS_ERROR,
+                    payload:true,
+                })
+            }
+    }
+}
+  export const  getAllUserAISettings=(accessToken:string,user_id:string)=>{
+
+    return async(dispatch:Dispatch)=>{
+        const options:RequestInit={
+            method:"GET",
+            headers:{
+                Accept:"application/json",
+                "Content-Type":"application/json",
+                Authorization:"Bearer " + `${accessToken}`
+            },
+        };
+
+            try{
+                const response=await fetch(`${BE_PROD_URL}/makronexa/users/${user_id}/settings`,options)
+                
+                if(response.ok){
+                    const settings= await response.json()
+                    
+                    dispatch({
+                        type:GET_ALL_USER_AI_SETTINGS,
+                        payload:settings,
+                    })
+                    setTimeout(()=>{
+                        dispatch({
+                            type:GET_ALL_USER_AI_SETTINGS_LOADING,
+                            payload:false
+                        })
+                    },100);
+
+                }else{
+                    console.log("ERROR")
+                    dispatch({
+                        type:GET_ALL_USER_AI_SETTINGS_LOADING,
+                        payload:false,
+                    })
+                    dispatch({
+                        type:GET_ALL_USER_AI_SETTINGS_ERROR,
+                        payload:true
+                    })
+                }
+            }
+            catch(error){
+                console.log(error,"Error")
+                dispatch({
+                    type:GET_ALL_USER_AI_SETTINGS_LOADING,
+                    payload:false,
+                })
+                dispatch({
+                    type:GET_ALL_USER_AI_SETTINGS_ERROR,
+                    payload:true,
+                })
+            }
+    }
+}
   export const emailVerification = ( userId:string) => {
     return async (dispatch:Dispatch) => {
       const options = {
@@ -635,9 +897,7 @@ export const editUserAddress = (accessToken:string,address:AddressInterface,addr
   };
 
   export const  getUserData=(accessToken:string)=>{
-    
 
-    
     return async(dispatch:Dispatch)=>{
         const options:RequestInit={
             method:"GET",

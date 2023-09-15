@@ -1,22 +1,47 @@
-import React, { useState } from 'react';
-import { Modal, Button, Form } from 'react-bootstrap';
+import React, { Dispatch, useState } from 'react';
+import { Modal, Button, Form, Spinner } from 'react-bootstrap';
 import ToggleSwitch from '../../components/ToggleSwitch';
+import { useDispatch } from 'react-redux';
+import { getAllUserAISettings, postUserAISettings } from '../../redux/actions';
+import { UserAISettingsPayload } from '../../Types';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import AlertBox from '../../components/Alerts';
 interface MyVerticallyCenteredModalProps {
   show: boolean;
   onHide: () => void;
+  user_id:string,
+  token:string
 }
 
+
 const CreateDatasetModal: React.FC<MyVerticallyCenteredModalProps> = (props) => {
-  const [datasetName, setDatasetName] = useState<string>(''); 
-  
+  // const [settings, setSettings] = useState<UserAISettingsPayload>(initialState); 
+  const [shared, setShared] = useState(false);
+  const [datasetName, setDatasetName] = useState<string>(""); 
+  const isLoading=useSelector((state:RootState)=>state.postUserAISettings.isLoading)
+  const [createDataset, setCreateDataset] = useState(false);
+  const isError=useSelector((state:RootState)=>state.postUserAISettings.isError)
+  const dispatch:Dispatch<any> =useDispatch()
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDatasetName(event.target.value);
   };
+  const settings={
+    shared: false,
+    dataset_name:datasetName,
+    temperature: null,
+    model:  null,
+    name:  null,
+    personality:  null,
+    userId: props.user_id
+  }
 
-
-  const handleCreateDataset = () => {
-    if (datasetName.trim() !== '') {
+  const handleCreateDataset = async() => {
+    if (datasetName.trim() !== '' && props.user_id) {
+      setCreateDataset(true)
       console.log('Dataset Name:', datasetName);
+      await dispatch(postUserAISettings(props.user_id,settings,props.token))
+      dispatch(getAllUserAISettings(props.token,props.user_id))
       props.onHide();
       setDatasetName("")
     }
@@ -28,6 +53,9 @@ const CreateDatasetModal: React.FC<MyVerticallyCenteredModalProps> = (props) => 
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
+      {isError &&
+      <AlertBox type="danger" message='Error during dataset creation'/>
+      }
       <Modal.Header closeButton className='main_bg'>
         <Modal.Title id="contained-modal-title-vcenter">
           <h5>Create Dataset</h5>
@@ -45,7 +73,7 @@ const CreateDatasetModal: React.FC<MyVerticallyCenteredModalProps> = (props) => 
         </Form.Group>
         <div className='d-flex mt-3 align-items-center justify-content-between content_bg px-3'>
         <span>Shared</span>
-        <ToggleSwitch/>
+        <ToggleSwitch checked={shared} onChange={() => setShared(!shared)}/>
         </div>
         <div className='mt-3'>
           <Button
@@ -54,6 +82,9 @@ const CreateDatasetModal: React.FC<MyVerticallyCenteredModalProps> = (props) => 
             onClick={handleCreateDataset}
             disabled={datasetName.trim() === ''}
           >
+             {isLoading && createDataset&& (
+                <Spinner className='spinner-border-sm me-2'/>
+                )}
             CREATE DATASET
           </Button>
         </div>

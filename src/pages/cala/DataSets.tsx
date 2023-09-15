@@ -1,9 +1,18 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDatabase, faComment,faTrashCan, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Container, Row, Col, Button } from 'react-bootstrap';
 import CreateDatasetModal from './CreateDatasetModal';
 import { useNavigate, useParams } from 'react-router-dom';
+import Loader from '../../components/Loader';
+import { deleteUserAISettings, getAllUserAISettings } from '../../redux/actions';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { useDispatch } from 'react-redux';
+import { Dispatch } from "redux"
+import { UserAISettingsPayload } from '../../Types';
+import AlertBox from '../../components/Alerts';
+
 
 export interface DataSetItem {
   icon: any;
@@ -11,38 +20,38 @@ export interface DataSetItem {
   created: string;
 }
 
-const DataSets= ({user_id}:{user_id:string}):JSX.Element => {
+const DataSets= ({token,user_id}:{token:string,user_id:string}):JSX.Element => {
+  const datasets:UserAISettingsPayload[]=useSelector((state:RootState)=>state.getAllUserAISettings.data)
+  const isLoading=useSelector((state:RootState)=>state.getAllUserAISettings.isLoading)
+  const isError=useSelector((state:RootState)=>state.getAllUserAISettings.isError)
   const navigate=useNavigate()
   const params=useParams()
+  const dispatch:Dispatch<any> =useDispatch()
+
  
   const [modalShow, setModalShow] = useState(false);
-  const dataSetItems: DataSetItem[] = [
-    {
-      icon: <FontAwesomeIcon icon={faDatabase} />,
-      name: 'DataSet 1',
-      created: '2023-07-17',
-    },
-    {
-      icon: <FontAwesomeIcon icon={faDatabase} />,
-      name: 'DataSet 2',
-      created: '2023-07-16',
-    },
-   
-  ];
- 
- 
+  useEffect(()=>{
+    dispatch(getAllUserAISettings(token,user_id))
+  },[])
+ const handleDeleteDataset=async(settings_id:string)=>{
+  await dispatch(deleteUserAISettings(token,settings_id,user_id))
+  dispatch(getAllUserAISettings(token,user_id))
+  
+ }
   return (
     <Container className="component-margin-top">
+      {isError && <AlertBox type="danger" message='Error fetching data'/>}
       <div>
         <div className='d-flex'><small className='link-item header  cursor-pointer' onClick={()=>navigate(`/ask/${user_id}`)}>Makronexa</small> <span>/</span><small>Datasets</small></div>
       
-       <h6 className='d-flex pb-2 mb-3'>Datasets</h6>
-       <div className='d-flex justify-content-end mb-4'>
-       <Button className="btn-primary d-flex py-2 px-4 content_bg header" onClick={() => setModalShow(true)}>
+            <h6 className='d-flex pb-2 mb-3'>Datasets</h6>
+       <div className='content_bg'>
+       <div className='d-flex justify-content-end p-4'>
+       <Button className="btn-primary d-flex py-2 px-4 content_bg content_bg-2 " onClick={() => setModalShow(true)}>
               <FontAwesomeIcon className="d-xl-block me-2 d-none" icon={faPlus} /> <span className="text-nowrap">New</span>
             </Button>
        </div>
-       <Row className="dataset-item mx-1  mb-3">
+       <Row className="dataset-item main_bg py-2 mx-1 mb-3">
           <Col xs={1} className="icon-column d-none d-md-block text-start">
             
           </Col>
@@ -59,27 +68,39 @@ const DataSets= ({user_id}:{user_id:string}):JSX.Element => {
            <strong className='d-none d-md-block'>Delete</strong>
           </Col>
         </Row>
-      {dataSetItems.map((item, index) => (
+        {isLoading?(
+       <Loader/>
+      ):(
+        <div>
+      {datasets && datasets.length>0?( datasets.map((item, index) => (
         <Row key={index}   className="dataset-item mx-1  pe-2 my-2 content_bg py-2">
           <Col xs={1} className="icon-column d-none d-md-block text-start">
-            {item.icon}
+          <FontAwesomeIcon icon={faDatabase} />
           </Col>
-          <Col xs={5} className="name-column text-start header cursor-pointer" onClick={() => navigate(`/${params.user_id}/datasets/${item.name}`)}>
-            {item.name}
+          <Col xs={5} className="name-column text-start header cursor-pointer" onClick={() => navigate(`/${params.user_id}/datasets/${item.dataset_name}`)}>
+            {item.dataset_name}
           </Col>
-          <Col xs={4} className="strong<strong>Created</strong>-column text-start">
-            {item.created}
-          </Col>
+          <Col xs={4} className="created-column text-start">
+        {new Date(item.createdAt!).toLocaleDateString('en-GB')}
+        </Col>
+
           <Col xs={1} className="chat-icon-column">
             <FontAwesomeIcon icon={faComment} className='header cursor-pointer' />
           </Col>
           <Col xs={1} className="delete-icon-column">
-            <FontAwesomeIcon icon={faTrashCan} className='text-danger cursor-pointer' />
+            <FontAwesomeIcon icon={faTrashCan} onClick={()=>handleDeleteDataset(item.id!)} className='text-danger cursor-pointer' />
           </Col>
         </Row>
-      ))}
+      ))):(
+        <div className='pb-4'>
+          <small className='text-muted'>No dataset available, create one</small>
+        </div>
+      )}
+        </div>
+      )}
+     </div>
       </div>
-      <CreateDatasetModal  show={modalShow}
+      <CreateDatasetModal user_id={user_id} token={token}  show={modalShow}
         onHide={() => setModalShow(false)}/>
     </Container>
   );

@@ -1,31 +1,22 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './ToggleSwitch.css'; // Import your CSS file for styling
 
-const ToggleSwitch: React.FC = () => {
-  const [isChecked1, setIsChecked1] = useState(true);
-  const [isChecked2, setIsChecked2] = useState(false);
+interface ToggleSwitchProps {
+  checked: boolean;
+  onChange: (checked: boolean) => void;
+}
 
-  const handleToggle1 = () => {
-    setIsChecked1(true);
-    setIsChecked2(false);
-  };
-
-  const handleToggle2 = () => {
-    setIsChecked1(false);
-    setIsChecked2(true);
+const ToggleSwitch: React.FC<ToggleSwitchProps> = ({ checked, onChange }) => {
+  const handleToggle = () => {
+    onChange(!checked);
   };
 
   return (
     <div className="toggle_switcher d-flex align-items-center">
-      <div className="toggle">
-        <input type="checkbox" checked={isChecked1} onChange={handleToggle1} />
-        <span className="button no"></span>
-        <small className="label">No</small>
-      </div>
-      <div className="toggle">
-        <input type="checkbox" checked={isChecked2} onChange={handleToggle2} />
-        <span className="button yes"></span>
-        <small className="label">Yes</small>
+      <div className={`toggle ${checked ? 'checked' : ''}`}>
+        <input type="checkbox" checked={checked} onChange={handleToggle} />
+        <span className="button"></span>
+        <small className={`label`}>{checked ? 'Yes' : 'No'}</small>
       </div>
     </div>
   );

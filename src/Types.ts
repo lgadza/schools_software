@@ -5,7 +5,17 @@ export interface ImageProps {
   width: number;
   height: number;
 }
-
+export interface UserAISettingsPayload {
+  id?:"string"
+  shared: boolean;
+  dataset_name:string;
+  createdAt?:string;
+  temperature: number | null;
+  model: string | null;
+  name: string | null;
+  personality: string | null;
+  userId: string;
+}
 export interface UserRegistration{
   id?:string;
   first_name:string;

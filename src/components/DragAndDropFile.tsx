@@ -3,13 +3,15 @@ import "./DragAndDropFile.css"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFile, faTrashCan, faUpload } from '@fortawesome/free-solid-svg-icons';
 import { Alert, Button } from 'react-bootstrap';
-
+import axios from 'axios';
+import AlertBox from './Alerts';
 const MAX_FILE_SIZE_MB = 50;
 const ALLOWED_FILE_TYPES = ['application/pdf', 'text/plain', 'text/csv'];
 const DragAndDropFile: React.FC = () => {
     const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
+    const [showSuccessMessage,setShowSuccessMessage] = useState(false);
+    const [showErrorMessage,setShowErrorMessage] = useState(false);
     const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files;
         if (files) {
@@ -62,9 +64,59 @@ setSelectedFiles(remainingFiles)
   
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)).toLocaleString() + ' ' + sizes[i];
   }
+  const handleResourceUpload = async () => {
+    if (selectedFiles.length > 0) {
+      const formData = new FormData();
+      selectedFiles.forEach((file, index) => {
+        const fileExtension = file.name.split('.').pop();
+        formData.append(`file`, file);
+        if (fileExtension) {
+          formData.append(`fileExtension${index}`, fileExtension);
+        }
+      });
+  
+      try {
+        const response = await axios.post(
+          'http://localhost:3001/langchain/qdrant/save',
+          formData,
+          {
+            headers: {
+              'Content-Type': 'multipart/form-data',
+            },
+          }
+        );
+  
+        if (response.status === 200) {
+          setSelectedFiles([]); 
+          setShowSuccessMessage(true);
+          setTimeout(() => {
+            setShowSuccessMessage(false);
+          }, 5000);
+        } else {
+          setShowErrorMessage(true);
+          setTimeout(() => {
+            setShowErrorMessage(false);
+          }, 5000);
+          console.error('Error uploading resource');
+        }
+      } catch (error) {
+        setShowErrorMessage(true);
+        setTimeout(() => {
+          setShowErrorMessage(false);
+        }, 5000);
+        console.error('Error uploading resource:', error);
+      }
+    }
+  };
   
   return (
-    <div className="mx-2">
+    <div className="mx-2 my-3">
+      <div className={`makronexa-alert ${showSuccessMessage ? 'visible' : 'hidden'}`}>
+      <AlertBox type='success' message='Resource upload successful'/>
+      </div>
+      <div className={`makronexa-alert ${showErrorMessage ? 'visible' : 'hidden'}`}>
+      <AlertBox type='warning' message='Error uploading resource'/>
+      </div>
       <div className="upload-card content_bg" onDragOver={handleDragOver} onDrop={handleDrop}>
         <div className="upload-card-body">
           <div className="upload-card-title">Upload your files</div>
@@ -157,7 +209,7 @@ setSelectedFiles(remainingFiles)
               </ul>
               <div> 
                 <Button variant="primary"
-            className='content_bg-2 w-100 font-weight-bold' disabled={selectedFiles.length===0}> <FontAwesomeIcon icon={faUpload} className='me-2'/>Upload</Button>
+            className='content_bg-2 w-100 font-weight-bold' disabled={selectedFiles.length===0} onClick={handleResourceUpload}> <FontAwesomeIcon icon={faUpload} className='me-2'/>Upload</Button>
               </div>
             </div>
           )}

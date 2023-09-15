@@ -16,6 +16,10 @@ import postUserAddress from "../reducers/postUserAddress";
 import getAllAiChats from "../reducers/getAllAiChats";
 import { chatReducer } from "../actions";
 import emailVerification from "../reducers/emailVerification";
+import postUserAISettings from "../reducers/postUserAISettings";
+import getUserAISettings from "../reducers/getUserAISettings";
+import putUserAISettings from "../reducers/putUserAISettings";
+import getAllUserAISettings from "../reducers/getAllUserAISettings";
 
 
 const persistConfig = {
@@ -40,6 +44,10 @@ const mainReducer = combineReducers({
   editUserAddress:editUserAddress,
   postUserAddress:postUserAddress,
   getAllAiChats:getAllAiChats,
+  postUserAISettings:postUserAISettings,
+  getUserAISettings:getUserAISettings,
+  putUserAISettings:putUserAISettings,
+  getAllUserAISettings:getAllUserAISettings,
   chat:chatReducer
 });
 
