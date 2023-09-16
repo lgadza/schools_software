@@ -11,7 +11,7 @@ import { RootState } from "../redux/store"
 import { chatWithAi, deleteChat, getAllAiChats, getChatMessages, imageQuery, logoutUser, newChat } from "../redux/actions"
 // import { Dispatch } from "redux"
 import "./MakronexusAi.css"
-import { UserRegistration } from "../Types"
+import { SearchImage, UserRegistration } from "../Types"
 import AlertBox from "./Alerts"
 import * as Icon from "react-bootstrap-icons"
 import { useNavigate } from "react-router-dom"
@@ -20,6 +20,7 @@ import Image from "./Image"
 import { Link } from "react-router-dom"
 import katex from 'katex';
 import 'katex/dist/katex.min.css'
+import ImageCard from "./ImageCard"
 interface MathEquationProps {
   latex: string;
 }
@@ -181,15 +182,15 @@ console.log(errorChatMessages)
   const handleAsk = async () => {   
     if (question !== "") {
       if (question.startsWith('/img:')) {
-        const prompt = question.slice(5); 
-      const newMessage = { message: prompt, type:"text", from: "user" };
+        const query = question.slice(5); 
+      const newMessage = { message: query, type:"text", from: "user" };
       setMessages((prev) => [...prev, newMessage]);
       setQuestion("");
       setAutoFilled(false);
 
         try {
           setLoading(true); 
-          const answer = await imageQuery(token.accessToken,currentModel,prompt,currentChat, user.id);
+          const answer = await imageQuery(token.accessToken,currentModel,query,currentChat, user.id);
           if (answer) {
             setMessages((prev) => [...prev, {type: "imageUrl",message:answer.message,from:"makronexa"}]);
           }else{
@@ -441,8 +442,7 @@ const OverviewSection: React.FC<{ icon: IconDefinition; title: string; items: st
       <ul>
         {items.map((item, index) => (
           <li key={index} className={`text-start content_bg my-3 p-2 ${className}`}
-          onClick={() => {onItemClick && onItemClick(item)
-console.log(question,"QUESTION")}
+          onClick={() => {onItemClick && onItemClick(item)}
 
           }
           >
@@ -600,6 +600,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
               <div key={index}>
                 <div className="d-flex chats-messages justify-content-center text-start mt-2">
                 <div className="pe-2">
+                {section.type!=="imageUrl"&&(
                   <img
                     src={section.from === "user" ? user.avatar : md_logo_small}
                     alt={section.from}
@@ -610,6 +611,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                     }}
                     className="img_component"
                   />
+                )}
                 </div>
 
                       <div ref={lastMessageRef} />
@@ -635,16 +637,11 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                       } text-start p-2 w-75`}
                     > {section.type==="imageUrl"?(
                       <div className="row">
-                        {JSON.parse(section.message).map((imgUrl:string,index:number)=>{
-                        
+                        {JSON.parse(section.message).map((imgUrl:SearchImage,index:number)=>{
+                        console.log("IMAGES:",imgUrl)
                           return(
                             <div key={index} className="col-12 mb-3">
-                              <img
-                                src={imgUrl}
-                                alt={"img"}
-                                style={{width: `${100}%`, height: `${100}%`, borderRadius: "0%", objectFit:"contain" }}
-                                className="img_component"
-                              />
+                              <ImageCard headline={imgUrl.title} context={imgUrl.context} imageUrl={imgUrl.link} altText="img"/>
                             </div>
                           )
                         })}

@@ -16,6 +16,12 @@ export interface UserAISettingsPayload {
   personality: string | null;
   userId: string;
 }
+export interface SearchImage{
+  title: string;
+  link: string;
+  thumbnail: string;
+  context: string;
+}
 export interface DatasetFile{
   id: string;
   type: string;

@@ -674,7 +674,7 @@ export const chatWithAi = async (token:string,messages: UserChatting[],model:str
       console.log(error)
     }
   };
-export const imageQuery = async (token:string,model:string,prompt:string,currentChat:string,user_id?:string) => {
+export const imageQuery = async (token:string,model:string,query:string,currentChat:string,user_id?:string) => {
     const options:RequestInit={
                     method:"POST",
                     headers:{
@@ -682,7 +682,7 @@ export const imageQuery = async (token:string,model:string,prompt:string,current
                         "Content-Type":"application/json",
                         Authorization: `Bearer ${token}`,
                     },
-                    body:JSON.stringify({model,user_id,prompt})
+                    body:JSON.stringify({model,user_id,query})
                 }
     try {
       const response=await fetch(`${BE_PROD_URL}/ai/chats/${currentChat}/image-search`,options)
