@@ -3,7 +3,6 @@ import { Modal, Button, Form, Spinner } from 'react-bootstrap';
 import ToggleSwitch from '../../components/ToggleSwitch';
 import { useDispatch } from 'react-redux';
 import { getAllUserAISettings, postUserAISettings } from '../../redux/actions';
-import { UserAISettingsPayload } from '../../Types';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import AlertBox from '../../components/Alerts';

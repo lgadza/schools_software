@@ -116,7 +116,7 @@
     margin-top: 8%;
   }
   .makronexa-alert.hidden{
-  display: none;
+  display: none !important;
   }
 
 

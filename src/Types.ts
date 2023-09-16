@@ -16,6 +16,15 @@ export interface UserAISettingsPayload {
   personality: string | null;
   userId: string;
 }
+export interface DatasetFile{
+  id: string;
+  type: string;
+  name: string;
+  size: number;
+  createdAt: string;
+  updatedAt: string;
+  userAISettings_id: string;
+}
 export interface UserRegistration{
   id?:string;
   first_name:string;

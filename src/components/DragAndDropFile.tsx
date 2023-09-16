@@ -5,13 +5,16 @@ import { faFile, faTrashCan, faUpload } from '@fortawesome/free-solid-svg-icons'
 import { Alert, Button } from 'react-bootstrap';
 import axios from 'axios';
 import AlertBox from './Alerts';
+import Loader from './Loader';
 const MAX_FILE_SIZE_MB = 50;
+const BE_PROD_URL=import.meta.env.VITE_BE_PROD_URL
 const ALLOWED_FILE_TYPES = ['application/pdf', 'text/plain', 'text/csv'];
-const DragAndDropFile: React.FC = () => {
+const DragAndDropFile = ({user_id,dataset_id}:{user_id:string,dataset_id:string}):JSX.Element => {
     const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
     const [showSuccessMessage,setShowSuccessMessage] = useState(false);
     const [showErrorMessage,setShowErrorMessage] = useState(false);
+    const [isLoading,setIsLoading] = useState(false);
     const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files;
         if (files) {
@@ -66,6 +69,7 @@ setSelectedFiles(remainingFiles)
   }
   const handleResourceUpload = async () => {
     if (selectedFiles.length > 0) {
+      setIsLoading(true);
       const formData = new FormData();
       selectedFiles.forEach((file, index) => {
         const fileExtension = file.name.split('.').pop();
@@ -77,7 +81,7 @@ setSelectedFiles(remainingFiles)
   
       try {
         const response = await axios.post(
-          'http://localhost:3001/langchain/qdrant/save',
+          `${BE_PROD_URL}/langchain/qdrant/${user_id}/${dataset_id}/files/save`,
           formData,
           {
             headers: {
@@ -86,13 +90,15 @@ setSelectedFiles(remainingFiles)
           }
         );
   
-        if (response.status === 200) {
+        if (response.status === 201) {
           setSelectedFiles([]); 
           setShowSuccessMessage(true);
+          setIsLoading(false)
           setTimeout(() => {
             setShowSuccessMessage(false);
           }, 5000);
         } else {
+          setIsLoading(false)
           setShowErrorMessage(true);
           setTimeout(() => {
             setShowErrorMessage(false);
@@ -100,6 +106,7 @@ setSelectedFiles(remainingFiles)
           console.error('Error uploading resource');
         }
       } catch (error) {
+        setIsLoading(false)
         setShowErrorMessage(true);
         setTimeout(() => {
           setShowErrorMessage(false);
@@ -185,9 +192,11 @@ setSelectedFiles(remainingFiles)
       </div>
           {selectedFiles.length > 0 && (
             <div className='text-start mt-4'>
-                <div className='mb-4'>
+               {isLoading?(<Loader/>):(
+                <div>
+                   <div className='mb-4'>
               <h5>Documents to upload</h5>
-              <span className='text-muted'>bytes upload credit:<strong className='ms-1'>6434.43434</strong></span>
+              <span className='text-muted'>bytes upload credit:<strong className='ms-1'>UNKNOWN</strong></span>
                 </div>
               <ul>
               {selectedFiles.map((file, index) => (
@@ -211,6 +220,8 @@ setSelectedFiles(remainingFiles)
                 <Button variant="primary"
             className='content_bg-2 w-100 font-weight-bold' disabled={selectedFiles.length===0} onClick={handleResourceUpload}> <FontAwesomeIcon icon={faUpload} className='me-2'/>Upload</Button>
               </div>
+                </div>
+               )}
             </div>
           )}
            {errorMessage && (

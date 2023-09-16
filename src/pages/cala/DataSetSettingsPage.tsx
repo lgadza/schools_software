@@ -8,20 +8,14 @@ import { getUserData } from "../../redux/actions"
 import "./MobileNav.css"
 import CalaSideNavbar from "./CalaSideNavbar"
 import DataSetSettings from "./DataSetSettings"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faDatabase } from "@fortawesome/free-solid-svg-icons"
-import { DataSetItem } from "./DataSets"
+
   
 const DataSetSettingsPage=():JSX.Element=>{
   const dispatch:Dispatch<any> =useDispatch()
   const user=useSelector((state:RootState)=>state.userData.data)
   const accessToken=useSelector((state:RootState)=>state.accessToken.accessToken)
-  const dataSetItems: DataSetItem = 
-    {
-      icon: <FontAwesomeIcon icon={faDatabase} />,
-      name: 'DataSet 1',
-      created: '2023-07-17',
-    }
+
+  
   
    
       useEffect(()=>{

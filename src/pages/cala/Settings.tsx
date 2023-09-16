@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Alert } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle, faX } from '@fortawesome/free-solid-svg-icons';
-import ToggleSwitch from '../../components/ToggleSwitch';
+// import ToggleSwitch from '../../components/ToggleSwitch';
 import RangeSlider from '../../components/RangesSlider';
 
   
@@ -18,7 +18,7 @@ const Settings: React.FC = () => {
         <h4 className='d-flex pb-2 my-3'>Settings</h4>
         <div className='d-flex align-items-center justify-content-between content_bg px-3'>
         <span className='me-5'>Shared</span>
-        <ToggleSwitch/>
+        {/* <ToggleSwitch/> */}
         </div>
         <div className='d-flex align-items-center content_bg my-4 px-3'>
           <span className='me-3'>

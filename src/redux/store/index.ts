@@ -20,6 +20,7 @@ import postUserAISettings from "../reducers/postUserAISettings";
 import getUserAISettings from "../reducers/getUserAISettings";
 import putUserAISettings from "../reducers/putUserAISettings";
 import getAllUserAISettings from "../reducers/getAllUserAISettings";
+import getAllDatasetFiles from "../reducers/getAllDataetFiles";
 
 
 const persistConfig = {
@@ -33,6 +34,7 @@ const persistConfig = {
 };
 
 const mainReducer = combineReducers({
+  getAllDatasetFiles:getAllDatasetFiles,
   verifyEmail: emailVerification,
   userRegistration: userRegistration,
   userData:getUserData,

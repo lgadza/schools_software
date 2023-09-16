@@ -46,6 +46,14 @@ export const GET_ALL_USER_AI_SETTINGS="GET_ALL_USER_AI_SETTINGS"
 export const GET_ALL_USER_AI_SETTINGS_ERROR="GET_ALL_USER_AI_SETTINGS_ERROR"
 export const GET_ALL_USER_AI_SETTINGS_LOADING="GET_ALL_USER_AI_SETTINGS_LOADING"
 
+export const GET_ALL_DATASET_FILES="GET_ALL_DATASET_FILES"
+export const GET_ALL_DATASET_FILES_ERROR="GET_ALL_DATASET_FILES_ERROR"
+export const GET_ALL_DATASET_FILES_LOADING="GET_ALL_DATASET_FILES_LOADING"
+
+// export const DELETE_DATASET_FILE="DELETE_DATASET_FILE"
+// export const DELETE_DATASET_FILE_ERROR="DELETE_DATASET_FILE_ERROR"
+// export const DELETE_DATASET_FILE_LOADING="DELETE_DATASET_FILE_LOADING"
+
 export const PUT_USER_AI_SETTINGS="PUT_USER_AI_SETTINGS"
 export const PUT_USER_AI_SETTINGS_ERROR="PUT_USER_AI_SETTINGS_ERROR"
 export const PUT_USER_AI_SETTINGS_LOADING="PUT_USER_AI_SETTINGS_LOADING"
@@ -70,7 +78,6 @@ export const setChatMessages = (messages: Message[]) => ({
     payload: messages,
   });
   
-  // redux/reducers/chatReducer.ts
   interface ChatState {
     messages: Message[];
   }
@@ -83,7 +90,88 @@ export const setChatMessages = (messages: Message[]) => ({
     
     type: LOGOUT_USER,
   });
-  export const deleteUserAISettings = async (token:string,settings_id:string,user_id:string,) => {
+  export const  getAllDataFiles=(accessToken:string,user_id:string,dataset_id:string)=>{
+
+    return async(dispatch:Dispatch)=>{
+        const options:RequestInit={
+            method:"GET",
+            headers:{
+                Accept:"application/json",
+                "Content-Type":"application/json",
+                Authorization:"Bearer " + `${accessToken}`
+            },
+        };
+
+            try{
+                const response=await fetch(`${BE_PROD_URL}/langchain/qdrant/datasets/${user_id}/${dataset_id}/files`,options)
+                
+                if(response.ok){
+                    const files= await response.json()
+                    
+                    dispatch({
+                        type:GET_ALL_DATASET_FILES,
+                        payload:files,
+                    })
+                    setTimeout(()=>{
+                        dispatch({
+                            type:GET_ALL_DATASET_FILES_LOADING,
+                            payload:false
+                        })
+                    },100);
+
+                }else{
+                    console.log("ERROR")
+                    dispatch({
+                        type:GET_ALL_DATASET_FILES_LOADING,
+                        payload:false,
+                    })
+                    dispatch({
+                        type:GET_ALL_DATASET_FILES_ERROR,
+                        payload:true
+                    })
+                }
+            }
+            catch(error){
+                console.log(error,"Error")
+                dispatch({
+                    type:GET_ALL_DATASET_FILES_LOADING,
+                    payload:false,
+                })
+                dispatch({
+                    type:GET_ALL_DATASET_FILES_ERROR,
+                    payload:true,
+                })
+            }
+    }
+}
+  export const deleteDatasetFile =  (token:string,dataset_id:string,file_id:string,user_id:string,) => {
+    return async (dispatch:Dispatch) =>{
+    const options:RequestInit={
+                    method:"DELETE",
+                    headers:{
+                        Accept:"application.json",
+                        "Content-Type":"application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                   
+                }
+    try {
+      const response=await fetch(`${BE_PROD_URL}/langchain/qdrant/datasets/${user_id}/${dataset_id}/files/${ file_id}`,options)
+      if (response.ok) {
+      
+        const res = await response.json();
+        console.log(res," DATASET_FILE DELETED")
+        dispatch({
+          type:"DELETE_DATASET_FILE",
+          payload:res
+        })
+      }
+    } catch (error) {
+      console.log(error,"ERROR DELETING  DATASET_FILE")
+    }
+  }};
+  export const deleteUserAISettings =  (token:string,settings_id:string,user_id:string,) => {
+    return async (dispatch:Dispatch) =>{
     const options:RequestInit={
                     method:"DELETE",
                     headers:{
@@ -96,13 +184,18 @@ export const setChatMessages = (messages: Message[]) => ({
     try {
       const response=await fetch(`${BE_PROD_URL}/makronexa/users/${user_id}/settings/${ settings_id}`,options)
       if (response.ok) {
+      
         const res = await response.json();
         console.log(res," AI SETTINGS DELETED")
+        dispatch({
+          type:"AI_DELETE",
+          payload:res
+        })
       }
     } catch (error) {
       console.log(error,"ERROR DELETING  AI SETTINGS")
     }
-  };
+  }};
 
   export const postUserAISettings = ( userId:string,settings:UserAISettingsPayload,token:string) => {
     return async (dispatch:Dispatch) => {
@@ -115,7 +208,6 @@ export const setChatMessages = (messages: Message[]) => ({
         },
         body: JSON.stringify(settings),
       };
-    
       try {
         const response = await fetch(
           `${BE_PROD_URL}/makronexa/users/${userId}/settings`,
@@ -165,7 +257,7 @@ export const setChatMessages = (messages: Message[]) => ({
   export const putUserAISettings = ( userId:string,settings:UserAISettingsPayload,token:string,settings_id:string) => {
     return async (dispatch:Dispatch) => {
       const options = {
-        method: "POST",
+        method: "PUT",
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -175,6 +267,7 @@ export const setChatMessages = (messages: Message[]) => ({
       };
     
       try {
+        console.log("puting dispatch")
         const response = await fetch(
           `${BE_PROD_URL}/makronexa/users/${userId}/settings/${settings_id}`,
           options

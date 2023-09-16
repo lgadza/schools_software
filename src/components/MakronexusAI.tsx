@@ -123,7 +123,7 @@ console.log(errorChatMessages)
     // const dispatch: Dispatch<any> = useDispatch();
     const dispatch = useDispatch();
   
-    const [showAlert, setShowAlert] = useState(true);
+    const [showAlert, setShowAlert] = useState(false);
     const startTypewriterAnimation = (text: string) => {
       setAnimatedText(text.charAt(0))
       setBlinkerVisible(true);
@@ -152,7 +152,6 @@ console.log(errorChatMessages)
         handleLogout()
       }
     },[isTokenExpired])
-
     useEffect(() => {
       let timeout: NodeJS.Timeout;
       if (loading) {
