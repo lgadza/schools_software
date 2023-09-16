@@ -1,4 +1,4 @@
-import { DatasetFile, UserAISettingsPayload } from "../../Types";
+import { DatasetFile } from "../../Types";
 import {
     GET_ALL_DATASET_FILES,
     GET_ALL_DATASET_FILES_ERROR,

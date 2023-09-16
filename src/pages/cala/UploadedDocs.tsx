@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import  { useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFile, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { useSelector } from 'react-redux';

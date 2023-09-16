@@ -20,7 +20,7 @@ import postUserAISettings from "../reducers/postUserAISettings";
 import getUserAISettings from "../reducers/getUserAISettings";
 import putUserAISettings from "../reducers/putUserAISettings";
 import getAllUserAISettings from "../reducers/getAllUserAISettings";
-import getAllDatasetFiles from "../reducers/getAllDataetFiles";
+import getAllDatasetFiles from "../reducers/getAllDatasetFiles";
 
 
 const persistConfig = {

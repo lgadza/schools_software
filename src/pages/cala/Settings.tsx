@@ -4,7 +4,7 @@ import { Alert } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInfoCircle, faX } from '@fortawesome/free-solid-svg-icons';
 // import ToggleSwitch from '../../components/ToggleSwitch';
-import RangeSlider from '../../components/RangesSlider';
+// import RangeSlider from '../../components/RangesSlider';
 
   
 const Settings: React.FC = () => {
@@ -24,7 +24,7 @@ const Settings: React.FC = () => {
           <span className='me-3'>
           Temperature
           </span>
-          <RangeSlider/>
+          {/* <RangeSlider/> */}
         </div>
         {isAlert && (
           <Alert variant='success' className='d-flex flex-column text-start'>

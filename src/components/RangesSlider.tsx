@@ -9,7 +9,7 @@ interface RangeSliderProps {
 const RangeSlider: React.FC<RangeSliderProps> = ({ onTemperatureChange,currentTemperature }) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const labelRef = useRef<HTMLLabelElement | null>(null);
-
+console.log(currentTemperature,"we have to fix range here")
   useEffect(() => {
     const handleInput = () => {
       if (inputRef.current && labelRef.current) {
