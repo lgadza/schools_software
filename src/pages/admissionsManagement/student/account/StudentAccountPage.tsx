@@ -335,7 +335,7 @@ dispatch(getUserData(accessToken.accessToken))
                     {activeComponent === "PersonalData" && <PersonalData />}
                     {activeComponent === "Address" && <Address />}
                     {activeComponent === "Guardian" && <Guardian />}
-                    {activeComponent === "Documents" && <Documents />}
+                    {activeComponent === "Documents" && <Documents user_id={personalInfo.id} />}
                     {activeComponent === "Settings" && <Settings />}
                     {activeComponent === "Interview" && <Interview />}
                     {activeComponent === "Status" && <ApplicationStatus />}
