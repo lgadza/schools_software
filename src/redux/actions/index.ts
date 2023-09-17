@@ -501,6 +501,7 @@ export const setChatMessages = (messages: Message[]) => ({
        
         if (response.ok) {
           console.log("user Deleted")
+          return response.json()
         }
       } catch (error) {
         console.log(error);

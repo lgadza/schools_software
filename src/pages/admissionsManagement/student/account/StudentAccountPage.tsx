@@ -1,4 +1,4 @@
-import { Col, Container,Dropdown,Row } from "react-bootstrap"
+import { Button, Col, Container,Dropdown,Row } from "react-bootstrap"
 import StudentSideBar from "../StudentSideBar"
 import PersonalData from "./PersonalData"
 import Image from "../../../../components/Image"
@@ -13,16 +13,158 @@ import { useEffect, useState } from "react"
 import StudentNavbar from "../StudentNavbar"
 import { useDispatch } from "react-redux"
 import { Dispatch } from "redux"
-import { getUserData, logoutUser } from "../../../../redux/actions"
+import { deleteUser, getUserData, logoutUser } from "../../../../redux/actions"
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../redux/store"
 import * as Icon from "react-bootstrap-icons"
 import AlertBox from "../../../../components/Alerts"
 import { useNavigate } from "react-router-dom"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faChevronUp, faCircleInfo, faCircleNotch, faFile, faGear, faLocation, faPenToSquare, faPeopleGroup, faPowerOff, faUser } from "@fortawesome/free-solid-svg-icons"
+import md_logo_small from "../../../../assets/md_logo_small.png"
+import { CompanyName } from "../../../../assets/data/company"
+import { UserRegistration } from "../../../../Types"
+import { Link } from "react-router-dom"
 const URL = import.meta.env.VITE_BE_PROD_URL;
 // import { Button } from "react-bootstrap"
 
+const MobileNav= ({source,activeComponent,handleNavigationClick,user}:{activeComponent:string;source:string;handleNavigationClick:(component:string)=>void,user:UserRegistration}):JSX.Element => {
+  const [navActive, setNavActive] = useState(false);
+  const navigate=useNavigate()
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    localStorage.removeItem('accessToken');
+    navigate('/login') ; 
+  
+}
+  const toggleNav = () => {
+    setNavActive(!navActive);
+  };
+  const handleDeleteAccount=()=>{
+    deleteUser()
+  }
+  
 
+  return (
+    <nav className="mobile-nav d-md-none border-round mb-5  px-2">
+      <div className="logo">
+      <div className="d-flex px-2">
+            <img
+              src={md_logo_small}
+              alt={CompanyName}
+              style={{ width: `${50}px`, height: `${50}px`, borderRadius: "0%",objectFit:"contain" }}
+              className="img_component"
+            />
+          </div>
+      </div>
+      
+      <div className={`nav-links content_bg d-flex main_bg  flex-column justify-content-between ms-3 ${navActive ? 'nav-active pt-3' : ''}`}>
+        <div>
+          <ul className="d-flex flex-column ">  
+          <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "PersonalData" ? "active" : ""}`}
+          onClick={() => handleNavigationClick("PersonalData")}>
+        <FontAwesomeIcon icon={faUser}/>
+        <span className="mx-2 ">Personal data</span>
+    </li>
+    
+    <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Address" ? "active" : ""}`}
+          onClick={() => handleNavigationClick("Address")}>
+        <FontAwesomeIcon icon={faLocation}/>
+        <span className="mx-2 ">Address</span>
+    </li>
+    <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Documents" ? "active" : ""}`}
+          onClick={() => handleNavigationClick("Documents")}>
+        <FontAwesomeIcon icon={faFile}/>
+        <span className="mx-2 ">Documents</span>
+    </li>
+    <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Guardian" ? "active" : ""}`}
+          onClick={() => handleNavigationClick("Guardian")}>
+        <FontAwesomeIcon icon={faPeopleGroup}/>
+        <span className="mx-2 ">Guardian/Parents</span>
+    </li>
+    {source==="student" &&(
+      <>
+        <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Status" ? "active" : ""}`}
+          onClick={() => handleNavigationClick("Status")}>
+        <FontAwesomeIcon icon={faCircleNotch}/>
+        <span className="mx-2 ">Status</span>
+    </li>
+    <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Interview" ? "active" : ""}`}
+          onClick={() => handleNavigationClick("Interview")}>
+        <FontAwesomeIcon icon={faPenToSquare}/>
+        <span className="mx-2 ">Interview/Exam</span>
+    </li>
+    <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "ProgramInformation" ? "active" : ""}`}
+          onClick={() => handleNavigationClick("ProgramInformation")}>
+        <FontAwesomeIcon icon={faCircleInfo}/>
+        <span className="mx-2 ">Program information</span>
+    </li>
+    <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Settings" ? "active" : ""}`}
+          onClick={() => handleNavigationClick("Settings")}>
+        <FontAwesomeIcon icon={faGear}/>
+        <span className="mx-2 ">Settings</span>
+    </li>
+      </>
+    )}
+            </ul>
+            </div>
+            <div className="user-logout w-100 content_bg pb-2">
+            <Dropdown>
+<Dropdown.Toggle className="navbar-item w-100 d-flex justify-content-between align-items-center">
+      <div className="pt-2">
+            <Image src={user.avatar ||`https://img.freepik.com/free-icon/user_318-159711.jpg?size=626&ext=jpg&uid=R36208328&ga=GA1.1.377730112.1687240299&semt=ais`} height={30} width={30} alt="avatar"/>
+                <span className="px-2 py-0">{user.first_name} {user.last_name}</span>
+            </div>
+             <FontAwesomeIcon style={{fontSize:"0.8rem"}} icon={faChevronUp}/>         
+</Dropdown.Toggle>
+
+<Dropdown.Menu className="py-0 w-75"  style={{width:"20rem"}}>
+  <Dropdown.Item className="py-2">
+    <Link to={`/users/account/${user.id}`} className="textColor px-2">
+    {/* <FontAwesomeIcon icon={faGear}/> */}
+    <Image src={user.avatar ||`https://img.freepik.com/free-icon/user_318-159711.jpg?size=626&ext=jpg&uid=R36208328&ga=GA1.1.377730112.1687240299&semt=ais`} height={30} width={30} alt="avatar"/>
+      <span className="px-2">{user.email}</span>
+    </Link>
+  </Dropdown.Item>
+  <hr className="my-0 py-0" />
+  <Dropdown.Item className="py-2">
+    <Link to={`/${user.id}/datasets`} className="textColor px-2">
+    <FontAwesomeIcon icon={faGear}/>
+      <span className="px-2">Change photo</span>
+    </Link>
+  </Dropdown.Item>
+  <hr className="my-0 py-0" />
+  <Dropdown.Item className="py-2">
+    <div
+      onClick={handleLogout}
+      className="textColor px-2"
+    >
+    <FontAwesomeIcon icon={faPowerOff}/>
+<span className="px-2">
+      Log out
+</span>
+    </div>
+  </Dropdown.Item>
+                <div
+                  onClick={handleDeleteAccount}
+                  className="textColor"
+                >
+                  <Button className="bg-danger w-100">Delete account</Button>
+                </div>
+ 
+</Dropdown.Menu>
+</Dropdown>
+            </div>
+      </div>
+      <div className={`burger ${navActive ? 'toggle' : ''}`} onClick={toggleNav}>
+        <div className="line1"></div>
+        <div className="line2"></div>
+        <div className="line3"></div>
+      </div>
+    </nav>
+  );
+}
 const StudentAccountPage=():JSX.Element=>{
   const [avatar, setAvatar] = useState<File|null >(null);
   const [isFileBig,setIsFileBig]=useState(false)
@@ -178,14 +320,17 @@ dispatch(getUserData(accessToken.accessToken))
                 )}
             </Row>
             <Row className="student_account_all_border py-3 mt-4 ">
-                <Col sm={3} className="student_account_border py-3 ">
+                <Col sm={3} className="student_account_border d-none d-md-block py-3 ">
                     <StudentSideBar
                     source="student"
                     activeComponent={activeComponent}
                     handleNavigationClick={handleNavigationClick}
                     />
                 </Col>
-                <Col sm={9} >
+                <MobileNav source="student"
+                    activeComponent={activeComponent}
+                    handleNavigationClick={handleNavigationClick} user={personalInfo} />
+                <Col ml={9} >
                     <div className="student_account_border content_bg py-3 px-3 ">
                     {activeComponent === "PersonalData" && <PersonalData />}
                     {activeComponent === "Address" && <Address />}

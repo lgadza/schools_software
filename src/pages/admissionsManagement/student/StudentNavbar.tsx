@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 import { UserRegistration } from "../../../Types"
 import { CompanyName } from "../../../assets/data/company"
 import { useDispatch } from "react-redux"
-import { logoutUser } from "../../../redux/actions"
+import { deleteUser, logoutUser } from "../../../redux/actions"
 import { useNavigate } from "react-router-dom"
 
 
@@ -24,6 +24,9 @@ const StudentNavbar:React.FC<StudentNavbarProps> =({personalInfo})=>{
     localStorage.removeItem('accessToken');
     navigate('/login') ; 
   
+}
+const handleDeleteAccount=()=>{
+  deleteUser()
 }
 
     return(
@@ -83,7 +86,7 @@ const StudentNavbar:React.FC<StudentNavbarProps> =({personalInfo})=>{
               <hr className="my-0 py-0" />
 
                 <div
-                //   onClick={handleLogout}
+                  onClick={handleDeleteAccount}
                   className="textColor w-100"
                 >
                   <Button className="bg-danger w-100">Delete account</Button>

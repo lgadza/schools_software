@@ -42,7 +42,7 @@ const AccountTopNavigationBar=({user}:{user:UserRegistration}):JSX.Element=>{
   <div className="d-flex px-4  content_bg-2 text-white py-3">
      <strong className="d-flex color-header">{user.first_name} {user.last_name}</strong>
   </div>
-  <Dropdown.Item className="py-2" onClick={()=>navigate(`/account/${user.id}`)}>
+  <Dropdown.Item className="py-2" onClick={()=>navigate(`/users/account/${user.id}`)}>
     <Link to='' className="textColor px-2">
     <FontAwesomeIcon icon={faUser}/>
       <span className="px-2">My profile</span>

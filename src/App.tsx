@@ -46,7 +46,7 @@ function App() {
         <Route path="features/makronexa" element={<CALAFeature/>}/>
         <Route path=":user_role/account/:user_id" element={<Pages/>}/>
        <Route path="school_account/login" element={<SchoolAccountLogin/>}/>
-       <Route path="account/:id" element={<StudentAccountPage/>}/>
+       <Route path="users/account/:id" element={<StudentAccountPage/>}/>
        <Route path="/ask.makronexus.com/:user_id" element={<Makronexa/>}/>
        <Route path="ask/:user_id" element={<Makronexa/>}/>
        <Route path="/:user_id/datasets" element={<DataSetsPage/>}/>

@@ -1,13 +1,12 @@
 import React from 'react';
 import "./ImageCard.css"
 interface ImageCardProps {
-  headline: string;
   context: string;
   imageUrl: string;
   altText: string;
 }
 
-const ImageCard: React.FC<ImageCardProps> = ({ headline, context, imageUrl, altText }) => {
+const ImageCard: React.FC<ImageCardProps> = ({  context, imageUrl, altText }) => {
   return (
     
       <div className="image--card">
@@ -16,9 +15,9 @@ const ImageCard: React.FC<ImageCardProps> = ({ headline, context, imageUrl, altT
            style={{width: `${100}%`, height: `${100}%`, objectFit:"cover" }}/>
         </div>
         <div className="image--card--bottom">
-          <div className="pe-3 d-flex align-items-center justify-content-between">
-            <span className="image--card--headline">{headline}</span>
-            <small><a href={context} className='header' >learn more!</a></small>
+          <div className="px-3 d-flex align-items-center justify-content-between">
+            <small><a href={context} className='header' >Source</a></small>
+            <span className="image--card--headline">{context}</span>
           </div>
         </div>
       </div>

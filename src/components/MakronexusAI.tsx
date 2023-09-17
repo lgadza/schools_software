@@ -539,13 +539,21 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
             <Dropdown>
 <Dropdown.Toggle className="navbar-item w-100 d-flex justify-content-between align-items-center">
       <div className="pt-2">
-            <Image src="https://img.freepik.com/free-icon/user_318-159711.jpg?size=626&ext=jpg&uid=R36208328&ga=GA1.1.377730112.1687240299&semt=ais" height={30} width={30} alt="avatar"/>
+            <Image src={user.avatar ||`https://img.freepik.com/free-icon/user_318-159711.jpg?size=626&ext=jpg&uid=R36208328&ga=GA1.1.377730112.1687240299&semt=ais`} height={30} width={30} alt="avatar"/>
                 <span className="px-2 py-0">{user.first_name} {user.last_name}</span>
             </div>
              <FontAwesomeIcon style={{fontSize:"0.8rem"}} icon={faChevronUp}/>         
 </Dropdown.Toggle>
 
-<Dropdown.Menu className="py-0 w-75"  style={{width:"20rem"}}>
+<Dropdown.Menu className="py-0 "  style={{width:"20rem"}}>
+  <Dropdown.Item className="py-2">
+    <Link to={`/users/account/${user.id}`} className="textColor px-2">
+    {/* <FontAwesomeIcon icon={faGear}/> */}
+    <Image src={user.avatar ||`https://img.freepik.com/free-icon/user_318-159711.jpg?size=626&ext=jpg&uid=R36208328&ga=GA1.1.377730112.1687240299&semt=ais`} height={30} width={30} alt="avatar"/>
+      <span className="px-2">Account</span>
+    </Link>
+  </Dropdown.Item>
+  <hr className="my-0 py-0" />
   <Dropdown.Item className="py-2">
     <Link to={`/${user.id}/datasets`} className="textColor px-2">
     <FontAwesomeIcon icon={faGear}/>
@@ -641,7 +649,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                         console.log("IMAGES:",imgUrl)
                           return(
                             <div key={index} className="col-12 mb-3">
-                              <ImageCard headline={imgUrl.title} context={imgUrl.context} imageUrl={imgUrl.link} altText="img"/>
+                              <ImageCard  context={imgUrl.context} imageUrl={imgUrl.link} altText="img"/>
                             </div>
                           )
                         })}
