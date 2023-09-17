@@ -95,6 +95,8 @@ const handleChange = (e: any) => {
     setSignUpClicked(true);
     setAlertVisible(true)
      await dispatch<any>(UserRegister(formData));
+     setFormData(initialFormData)
+     setConfirmPassword("")
     // if (response) {
     //   navigate("/login");
     // } else {

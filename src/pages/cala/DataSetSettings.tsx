@@ -239,7 +239,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
          </div>
        )}
        </div>
-        <div className='col-xl-6'>
+        <div className='col-xl-6 mb-5'>
           <div className='d-flex justify-content-end'>
             <div className='me-2'>
               <Button className='content_bg' onClick={() => { handleComponentChange("uploadedDocs") }}><FontAwesomeIcon icon={faFolder} style={{ color: "rgb(234, 191, 70)" }} /><span className='ms-2' >Docs</span>

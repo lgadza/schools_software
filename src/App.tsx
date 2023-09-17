@@ -24,6 +24,7 @@ import DataSetsPage from "./pages/cala/DataSetsPage.js"
 import DataSetSettingsPage from "./pages/cala/DataSetSettingsPage.js"
 import EmailVerification from "./components/EmailVerification.js"
 import Loader from "./components/Loader.js"
+import AccountDeletionConfirmation from "./components/AccountDeletionConfirmation.js"
 
 // mss makro_school_solution
 function App() {
@@ -51,6 +52,7 @@ function App() {
        <Route path="ask/:user_id" element={<Makronexa/>}/>
        <Route path="/:user_id/datasets" element={<DataSetsPage/>}/>
        <Route path="/:user_id/datasets/:dataset_id" element={<DataSetSettingsPage/>}/>
+       <Route path="user/account/delete/confirmation" element={<AccountDeletionConfirmation/>}/>
        <Route
               element={<EmailVerification />}
               path={`user/verifyEmail/:user_id/:user_name`}

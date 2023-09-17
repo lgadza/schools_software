@@ -9,15 +9,17 @@ import { CompanyName } from "../../../assets/data/company"
 import { useDispatch } from "react-redux"
 import { deleteUser, logoutUser } from "../../../redux/actions"
 import { useNavigate } from "react-router-dom"
+import { Dispatch } from "redux"
 
 
 
 interface StudentNavbarProps{
-  personalInfo:UserRegistration 
+  personalInfo:UserRegistration,
+  token:string 
 }
-const StudentNavbar:React.FC<StudentNavbarProps> =({personalInfo})=>{
+const StudentNavbar:React.FC<StudentNavbarProps> =({personalInfo,token})=>{
   const navigate=useNavigate()
-  const dispatch = useDispatch();
+  const dispatch:Dispatch<any> = useDispatch();
   const handleLogout = () => {
     console.log("Logging out...");
     dispatch(logoutUser());
@@ -26,7 +28,7 @@ const StudentNavbar:React.FC<StudentNavbarProps> =({personalInfo})=>{
   
 }
 const handleDeleteAccount=()=>{
-  deleteUser()
+  dispatch(deleteUser(token))
 }
 
     return(

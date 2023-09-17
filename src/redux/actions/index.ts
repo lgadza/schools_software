@@ -490,10 +490,15 @@ export const setChatMessages = (messages: Message[]) => ({
         return state;
     }
   };
-  export const deleteUser = () => {
-    return async () => {
+  export const deleteUser = async(token:string) => {
+    
       const options = {
         method: "DELETE",
+        headers:{
+          Accept:"application.json",
+          "Content-Type":"application/json",
+          "Authorization": `Bearer ${token}`,
+      },
       };
       
       try {
@@ -501,13 +506,13 @@ export const setChatMessages = (messages: Message[]) => ({
        
         if (response.ok) {
           console.log("user Deleted")
-          return response.json()
+        return response
         }
       } catch (error) {
         console.log(error);
       }
     };
-  };
+ 
 export const UserLogin=(cred:LoginCredentialsInterface)=>{
     return async(dispatch:Dispatch)=>{
         const options={

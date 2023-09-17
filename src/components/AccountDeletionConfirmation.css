@@ -1,0 +1,49 @@
+/* AccountDeletionConfirmation.css */
+
+/* Style the container */
+.confirmation-container {
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    padding: 20px;
+    box-sizing: border-box;
+    text-align: center;
+    
+  }
+  .confirmation-content{
+    max-width: 400px;
+    border: 1px solid rgb(23, 24, 28);
+    padding: 20px;
+    border-radius: 5px;
+  }
+  /* Style the header */
+ .confirmation-container h2 {
+    font-size: 24px;
+    color: #379c45;
+  }
+  
+  /* Style the paragraphs */
+  .confirmation-container p {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  /* Style the button */
+  .confirmation-container button {
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .confirmation-container button:hover {
+    background-color: #0056b3;
+  }
+  

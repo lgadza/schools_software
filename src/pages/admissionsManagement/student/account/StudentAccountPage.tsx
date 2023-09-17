@@ -20,7 +20,7 @@ import * as Icon from "react-bootstrap-icons"
 import AlertBox from "../../../../components/Alerts"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faChevronUp, faCircleInfo, faCircleNotch, faFile, faGear, faLocation, faPenToSquare, faPeopleGroup, faPowerOff, faUser } from "@fortawesome/free-solid-svg-icons"
+import { faChevronUp, faCircleInfo, faCircleNotch, faFile, faGear, faImage, faLocation, faPenToSquare, faPeopleGroup, faPowerOff, faUser } from "@fortawesome/free-solid-svg-icons"
 import md_logo_small from "../../../../assets/md_logo_small.png"
 import { CompanyName } from "../../../../assets/data/company"
 import { UserRegistration } from "../../../../Types"
@@ -28,10 +28,10 @@ import { Link } from "react-router-dom"
 const URL = import.meta.env.VITE_BE_PROD_URL;
 // import { Button } from "react-bootstrap"
 
-const MobileNav= ({source,activeComponent,handleNavigationClick,user}:{activeComponent:string;source:string;handleNavigationClick:(component:string)=>void,user:UserRegistration}):JSX.Element => {
+const MobileNav= ({source,activeComponent,handleNavigationClick,user,token}:{activeComponent:string;source:string;handleNavigationClick:(component:string)=>void,user:UserRegistration,token:string}):JSX.Element => {
   const [navActive, setNavActive] = useState(false);
   const navigate=useNavigate()
-  const dispatch = useDispatch();
+  const dispatch:Dispatch<any> = useDispatch();
   const handleLogout = () => {
     dispatch(logoutUser());
     localStorage.removeItem('accessToken');
@@ -41,8 +41,12 @@ const MobileNav= ({source,activeComponent,handleNavigationClick,user}:{activeCom
   const toggleNav = () => {
     setNavActive(!navActive);
   };
-  const handleDeleteAccount=()=>{
-    deleteUser()
+  const handleDeleteAccount=async()=>{
+    const response= await deleteUser(token)
+    if(response && response.ok){
+      navigate("user/account/delete/confirmation")
+    }
+    console.log(response)
   }
   
 
@@ -130,8 +134,8 @@ const MobileNav= ({source,activeComponent,handleNavigationClick,user}:{activeCom
   <hr className="my-0 py-0" />
   <Dropdown.Item className="py-2">
     <Link to={`/${user.id}/datasets`} className="textColor px-2">
-    <FontAwesomeIcon icon={faGear}/>
-      <span className="px-2">Change photo</span>
+    <FontAwesomeIcon style={{fontSize:"14px"}} icon={faImage}/>
+      <small className="px-2">Change photo</small>
     </Link>
   </Dropdown.Item>
   <hr className="my-0 py-0" />
@@ -140,10 +144,10 @@ const MobileNav= ({source,activeComponent,handleNavigationClick,user}:{activeCom
       onClick={handleLogout}
       className="textColor px-2"
     >
-    <FontAwesomeIcon icon={faPowerOff}/>
-<span className="px-2">
+    <FontAwesomeIcon style={{fontSize:"14px"}} icon={faPowerOff}/>
+<small className="px-2">
       Log out
-</span>
+</small>
     </div>
   </Dropdown.Item>
                 <div
@@ -272,7 +276,7 @@ dispatch(getUserData(accessToken.accessToken))
         <AlertBox type="warning" message='The image size exceeds the limit'/>
       </div>
       )}
-                <StudentNavbar personalInfo={personalInfo} />
+                <StudentNavbar personalInfo={personalInfo} token={accessToken.accessToken} />
             <Row className="py-3 ">
                 {personalInfo && (
 
@@ -329,7 +333,7 @@ dispatch(getUserData(accessToken.accessToken))
                 </Col>
                 <MobileNav source="student"
                     activeComponent={activeComponent}
-                    handleNavigationClick={handleNavigationClick} user={personalInfo} />
+                    handleNavigationClick={handleNavigationClick} user={personalInfo} token={accessToken.accessToken} />
                 <Col ml={9} >
                     <div className="student_account_border content_bg py-3 px-3 ">
                     {activeComponent === "PersonalData" && <PersonalData />}

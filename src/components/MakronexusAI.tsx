@@ -123,7 +123,7 @@ console.log(errorChatMessages)
     const navigate=useNavigate()
     // const dispatch: Dispatch<any> = useDispatch();
     const dispatch = useDispatch();
-  
+ 
     const [showAlert, setShowAlert] = useState(false);
     const startTypewriterAnimation = (text: string) => {
       setAnimatedText(text.charAt(0))
@@ -485,7 +485,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
         <div>
           <ul className="d-flex flex-column ">  
        <div className={`${chats.length>0?"d-flex w-100 mb-2  ps-5 justify-content-between px-2":"d-flex  justify-content-between px-2"}`}>
-            <Button className="btn-primary  w-75 content_bg-2 " onClick={async()=>{
+            <Button className="btn-primary text-nowrap  content_bg-2 " onClick={async()=>{
               await handleNewChat()
               }}>
               <FontAwesomeIcon className="me-1 " icon={faPlus} /> <small className="text-nowrap">New chat</small>
@@ -553,13 +553,17 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
       <span className="px-2">Account</span>
     </Link>
   </Dropdown.Item>
-  <hr className="my-0 py-0" />
+{
+  (user.role.trim()==="admin" || user.role.trim()==="teacher") && <div>
+      <hr className="my-0 py-0" />
   <Dropdown.Item className="py-2">
     <Link to={`/${user.id}/datasets`} className="textColor px-2">
     <FontAwesomeIcon icon={faGear}/>
       <span className="px-2">Settings</span>
     </Link>
   </Dropdown.Item>
+  </div>
+}
   <hr className="my-0 py-0" />
   <Dropdown.Item className="py-2">
     <div

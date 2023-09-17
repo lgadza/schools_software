@@ -9,9 +9,13 @@ import Settings from "../admissionsManagement/student/account/Settings"
 import Interview from "../admissionsManagement/student/account/Interview"
 import ApplicationStatus from "../admissionsManagement/student/account/Status"
 import ProgramInformation from "../admissionsManagement/student/ProgramInformation"
+import { useSelector } from "react-redux"
+import { RootState } from "../../redux/store"
+import { UserRegistration } from "../../Types"
 
 
 const AllNewCandidate=():JSX.Element=>{
+  const user:UserRegistration=useSelector((state:RootState)=>state.userData.data)
     // const [showMenu, setShowMenu] = useState(true);
 
     // const toggleMenu = () => {
@@ -43,7 +47,7 @@ const AllNewCandidate=():JSX.Element=>{
                             {activeComponent === "PersonalData" && <PersonalData />}
                               {activeComponent === "Address" && <Address />}
                               {activeComponent === "Guardian" && <Guardian />}
-                              {activeComponent === "Documents" && <Documents />}
+                              {activeComponent === "Documents" && <Documents user_id={user.id!}/>}
                               {activeComponent === "Settings" && <Settings />}
                               {activeComponent === "Interview" && <Interview />}
                               {activeComponent === "Status" && <ApplicationStatus />}
