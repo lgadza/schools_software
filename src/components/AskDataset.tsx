@@ -1,20 +1,20 @@
-import { IconDefinition, faArrowCircleDown,faBoltLightning, faChevronUp, faComments,  faGear,  faPaperPlane,  faPlus,  faPowerOff,  faSun,  faTrashCan, faWarning } from "@fortawesome/free-solid-svg-icons"
+import { faArrowCircleDown, faChevronUp, faComments,  faGear,  faPaperPlane,  faPlus,  faPowerOff,    faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // import SearchBar from "./SearchBar"
 import md_logo_small from "../assets/md_logo_small.png"
 import { CompanyName } from "../assets/data/company"
 import {  useEffect, useRef, useState } from "react"
-import { Button, Col, Dropdown, Row, Spinner } from "react-bootstrap"
+import { Button,  Dropdown,  Spinner } from "react-bootstrap"
 import { useSelector } from "react-redux"
 import { RootState } from "../redux/store"
 // import { useDispatch } from "react-redux"
-import { chatWithAi, dalleImageQuery, deleteChat, getAllAiChats, getChatMessages, imageQuery, logoutUser, newChat } from "../redux/actions"
+import { chatWithAiDataset, deleteDatasetChat, getAllDatasetAiChats, getDatasetChatMessages,  logoutUser, newChat } from "../redux/actions"
 // import { Dispatch } from "redux"
 import "./MakronexusAi.css"
 import { SearchImage, UserRegistration } from "../Types"
 import AlertBox from "./Alerts"
 import * as Icon from "react-bootstrap-icons"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import Image from "./Image"
 import { Link } from "react-router-dom"
@@ -24,11 +24,8 @@ import ImageCard from "./ImageCard"
 interface MathEquationProps {
   latex: string;
 }
-
-
 const MathEquation: React.FC<MathEquationProps> = ({ latex }) => {
   const container = useRef<HTMLSpanElement | null>(null);
-
   useEffect(() => {
     if (container.current) {
       try {
@@ -83,6 +80,7 @@ export interface Message {
     imageSrc?: string;
     from:string;
     type:string;
+    dataset_id?:string;
   }
   
   interface MobileNavProps{
@@ -90,40 +88,38 @@ export interface Message {
   }
   interface chatProps{
     id:string;
-    makronexaQAs:Message[];
+    dataset_chats:Message[];
     createdAt:string;
     updatedAt:string;
   }
-  const MakronexusAI: React.FC = () => {
+
+  const AskDataset: React.FC = () => {
     const user:UserRegistration=useSelector((state:RootState)=>state.userData.data)
     const token=useSelector((state:RootState)=>state.accessToken.accessToken)
     const isTokenExpired=useSelector((state:RootState)=>state.userData.isTokenExpired)
-    // const allChats=useSelector((state:RootState)=>state.getAllAiChats.chats)
-    // const allChatsLoading=useSelector((state:RootState)=>state.getAllAiChats.isLoading)
-    // const allError=useSelector((state:RootState)=>state.getAllAiChats.isError)
     const [loading, setLoading] = useState(false); 
     const [currentChat, setCurrentChat] = useState(""); 
-    // const [deleteNowChat, setDeleteNowChat] = useState<boolean>(false); 
     const [chats, setChats] = useState<chatProps[]>([]); 
     const [isChatLoading, setIsChatLoading] = useState<boolean>(false);
   const [isChatError, setIsChatError] = useState<string | null>(null);
+  const params=useParams()
     const [currentModel]=useState("gpt-3.5-turbo")
     const [messages, setMessages] = useState<Message[]>([]);
     const [question, setQuestion] = useState<string>("");
-    // const [copied, setCopied] = useState<boolean>(false);
     const [aiError, setAiError] = useState<boolean>(false);
     const [currentAnswer,setCurrentAnswer]=useState<string>("")
     const [animatedText, setAnimatedText] = useState<string>("");
+    const [isNewChat,setIsNewChat] =useState(true)
     const [blinkerVisible, setBlinkerVisible] = useState(true);
     const [alertVisible, setAlertVisible] = useState(true);
     const [autoFilled, setAutoFilled] = useState<boolean>(false);
     const [isChatMessagesLoading, setIsChatMessagesLoading] = useState(false);
 const [errorChatMessages, setErrorChatMessages] = useState("");
 console.log(errorChatMessages)
+
     const navigate=useNavigate()
-    // const dispatch: Dispatch<any> = useDispatch();
     const dispatch = useDispatch();
- 
+
     const [showAlert, setShowAlert] = useState(false);
     const startTypewriterAnimation = (text: string) => {
       setAnimatedText(text.charAt(0))
@@ -147,8 +143,7 @@ console.log(errorChatMessages)
         const handleLogout = () => {
           dispatch(logoutUser());
           localStorage.removeItem('accessToken');
-          navigate('/login') ; 
-        
+          navigate('/login') ;       
       }
         handleLogout()
       }
@@ -177,74 +172,21 @@ console.log(errorChatMessages)
         setQuestion(newQuestion);
       }
     };
-    const lastMessageRef = useRef<HTMLDivElement | null>(null);
-    
+    useEffect(()=>{
+      handleNewChat()
+    },[])
+    const lastMessageRef = useRef<HTMLDivElement | null>(null); 
   const handleAsk = async () => {   
-    if (question !== "") {
-      if (question.startsWith('/img:')) {
-        const query = question.slice(5); 
-      const newMessage = { message: query, type:"text", from: "user" };
-      setMessages((prev) => [...prev, newMessage]);
-      setQuestion("");
-      setAutoFilled(false);
-
-        try {
-          setLoading(true); 
-          const answer = await imageQuery(token.accessToken,currentModel,query,currentChat, user.id);
-          if (answer) {
-            setMessages((prev) => [...prev, {type: "imageUrl",message:answer.message,from:"makronexa"}]);
-          }else{
-            setAiError(true)
-            const timer = setTimeout(() => {
-              setAlertVisible(false);
-            }, 3000); 
-            return () => {
-              clearTimeout(timer);
-            };
-          }
-        } catch (error) {
-          console.log(error);
-        }finally {
-          setLoading(false);
-        }
-      }else if(question.startsWith('@generate:')){
-        const query = question.slice(10); 
-        const newMessage = { message: query, type:"text", from: "user" };
-        setMessages((prev) => [...prev, newMessage]);
-        setQuestion("");
-        setAutoFilled(false);
-  
-          try {
-            setLoading(true); 
-            const answer = await dalleImageQuery(token.accessToken,currentModel,query,currentChat, user.id);
-            if (answer) {
-              setMessages((prev) => [...prev, {type: "imageUrl",message:answer.message,from:"makronexa"}]);
-            }else{
-              setAiError(true)
-              const timer = setTimeout(() => {
-                setAlertVisible(false);
-              }, 3000); 
-              return () => {
-                clearTimeout(timer);
-              };
-            }
-          } catch (error) {
-            console.log(error);
-  
-          }finally {
-            setLoading(false);
-          }
-
-      }else{
+    if (question !== "") { 
       const newMessage = { message: question, type:"text", from: "user" };
       setMessages((prev) => [...prev, newMessage]);
       setQuestion("");
       setAutoFilled(false);
-
       try {
         setLoading(true); 
-        const answer = await chatWithAi(token.accessToken,[...messages, newMessage],currentModel,question,currentChat, user.id);
+        const answer = await chatWithAiDataset(token.accessToken,[...messages, newMessage],currentModel,question,currentChat,params.dataset_id!, params.dataset_name!,Number(params.temp),user.id!);
         if (answer) {
+          setIsNewChat(false)
           setCurrentAnswer(answer.message)
           setAnimatedText("");
           setMessages((prev) => [...prev, answer]);
@@ -264,16 +206,17 @@ console.log(errorChatMessages)
         setLoading(false);
       }
     }
-    }
   };
-
-  const getAllChats=async()=>{
-    
+  console.log("ALL CHATS:",chats)
+  console.log("ALL CHATS:",chats)
+  const getAllChats=async()=>{ 
     if (user.id) {
       setIsChatLoading(true);
       try {
-        const allChats = await getAllAiChats(token.accessToken, user.id);
+        const allChats = await getAllDatasetAiChats(token.accessToken,params.dataset_id!, user.id);
         if(allChats.length>=0){
+            // const currentDatasetChats=allChats.filter((chat)=>chat.)
+            
           setChats(allChats)
           setIsChatLoading(false);  
           setIsChatError(null); 
@@ -287,14 +230,12 @@ console.log(errorChatMessages)
       }
     }
   }
-
   const handleNewChat=async()=>{
     setMessages([])
     try{
-     
       const lastChat=chats[chats.length-1]
-      if (lastChat && lastChat.makronexaQAs.length===0 && !question) {
-        await deleteChat(token.accessToken,lastChat.id,user.id);  }
+      if (lastChat && lastChat.dataset_chats.length===0 && !question) {
+        await deleteDatasetChat(token.accessToken,lastChat.id,params.dataset_id!,user.id);  }
       else if(user.id){
       const newAiChat = await newChat(token.accessToken,user.id)
       if(newAiChat){
@@ -307,25 +248,15 @@ console.log(errorChatMessages)
       console.log(error,"ERROR")
     }
   }
-//  const handleGetChatMessages=async()=>{
-//   if(currentChat){
-//     const chatMessages:chatProps[]=await getChatMessages(token.accessToken,currentChat,user.id)
-//     if(chatMessages[0].makronexaQAs.length>0){
-//       setMessages(chatMessages[0].makronexaQAs)
-//     } 
-//   }
-//  }
-const handleGetChatMessages = async () => {
+const handleGetDatasetChatMessages = async () => {
   setIsChatMessagesLoading(true);
   if (currentChat) {
     try {
-      const chatMessages = await getChatMessages(token.accessToken, currentChat, user.id);
-
-      if (chatMessages[0].makronexaQAs.length > 0) {
-        setMessages(chatMessages[0].makronexaQAs);
+      const chatMessages = await getDatasetChatMessages(token.accessToken, currentChat, user.id!);
+      if (chatMessages[0].dataset_chats.length > 0) {
+        setMessages(chatMessages[0].dataset_chats);
         setIsChatMessagesLoading(false);
       }
-
       setErrorChatMessages(""); 
     } catch (err) {
       setErrorChatMessages("An error occurred while fetching data"); 
@@ -338,11 +269,9 @@ const handleChatItemClick = (chat_id: string) => {
   setMessages([]);
   setCurrentChat(chat_id);
 };
-
 useEffect(() => {
   if (currentChat) {
-
-    handleGetChatMessages();
+    handleGetDatasetChatMessages();
   }
 }, [currentChat]);
 
@@ -358,7 +287,6 @@ const scrollToLastMessage=()=>{
 
 
 const Loader: React.FC = () => {
-
   return (
     <div className="chat-loader-container  py-3 d-flex justify-content-center align-items-center">
       <div className="chat-loader cf ">
@@ -414,73 +342,6 @@ const FilesIcons:React.FC=()=>{
   )
 }
 
-const MakronexaOverview: React.FC = () => {
-  const examplePrompts = [
-    "Explain Newton's law in simple terms",
-    "Could you suggest creative and interactive online activities",
-    "Got any tips on how to create an effective study schedule?",
-  ];
-
-  const capabilities = [
-    "Remembers what users said earlier in the conversation",
-    "Helps students find relevant and credible sources for research projects",
-    "Streamlines the grading process by automatically grading assignments, quizzes, and exams",
-  ];
-
-  const limitations = ["May occasionally generate incorrect answers"];
-  return (
-    <div className="container mt-5">
-      <Row>
-         <Col className="col-12 col-lg-4">
-          <OverviewSection
-            icon={faSun}
-            title="Examples"
-            items={examplePrompts}
-            onItemClick={(item)=>{
-             setQuestion(item)
-              handleAsk()
-            }}
-            className="nav-item"
-          />
-        </Col>
-        <Col className="col-12 col-lg-4">
-          <OverviewSection icon={faBoltLightning} title="Capabilities" items={capabilities} />
-        </Col>
-        <Col className="col-12 col-lg-4">
-          <OverviewSection icon={faWarning} title="Limitations" items={limitations} color="yellow" />
-        </Col>
-      </Row>
-    </div>
-  );
-};
-
-const OverviewSection: React.FC<{ icon: IconDefinition; title: string; items: string[]; color?: string;className?:string;onItemClick?: (item: string) => void; }> = ({
-  icon,
-  title,
-  items,
-  color,
-  onItemClick,
-  className
-}) => {
-  return (
-    <div className="d-flex flex-column">
-      <FontAwesomeIcon icon={icon} style={{ color: color || "inherit" }} />
-      <span className="mt-1">{title}</span>
-      <ul>
-        {items.map((item, index) => (
-          <li key={index} className={`text-start content_bg my-3 p-2 ${className}`}
-          onClick={() => {onItemClick && onItemClick(item)}
-
-          }
-          >
-            <small>{item}</small>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
 const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
   const [navActive, setNavActive] = useState(false);
   const navigate=useNavigate()
@@ -527,7 +388,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
             </div>):(
         <div>
              { chats
-              .filter((chat) => chat.makronexaQAs.length !==0)
+              .filter((chat) => chat.dataset_chats.length !==0)
               .map((chat,index)=>{
                 return(
             <li className={`nav-item p-2 w-100 my-1  d-flex justify-content-center align-items-center ${currentChat===chat.id?"content_bg":"header"}`} key={index}>
@@ -537,14 +398,14 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
               <FontAwesomeIcon 
               className={`${currentChat===chat.id?"":"header"}`}
                 icon={faComments} style={{color:"gray"}} />
-                {chat.makronexaQAs.length > 0 &&(
+                {chat.dataset_chats.length > 0 &&(
                 <span className=" ms-2 text-start chat_header_name">
-                  {chat.makronexaQAs[chat.makronexaQAs.length-1].message}
+                  {chat.dataset_chats[chat.dataset_chats.length-1].message}
                 </span>
                 )}
               </small>
               <FontAwesomeIcon onClick={async()=>{
-                await deleteChat(token.accessToken,chat.id,user.id)
+                await deleteDatasetChat(token.accessToken,chat.id,params.dataset_id!,user.id)
                 getAllChats()
                 setMessages([])
                 }} 
@@ -575,7 +436,6 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
 <Dropdown.Menu className="py-0 "  style={{width:"20rem"}}>
   <Dropdown.Item className="py-2">
     <Link to={`/users/account/${user.id}`} className="textColor px-2">
-    {/* <FontAwesomeIcon icon={faGear}/> */}
     <Image src={user.avatar ||`https://img.freepik.com/free-icon/user_318-159711.jpg?size=626&ext=jpg&uid=R36208328&ga=GA1.1.377730112.1687240299&semt=ais`} height={30} width={30} alt="avatar"/>
       <span className="px-2">Account</span>
     </Link>
@@ -626,7 +486,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
         <div>
           <MobileNav chats={chats}/>
         </div>
-        <div className="col col-md-8 mb-4 helper">
+        <div className="col col-md-8 mt-5 helper">
           <div className={`d-none d-lg-block makronexa-alert ${showAlert ? 'visible' : 'hidden'}`}>
             {loading?(
               <AlertBox type="info" message="Makronexa is thinking..." loading={loading} />
@@ -634,7 +494,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
         <AlertBox type="success" message="Makronexa has responded!" loading={loading} />
             )}
           </div>
-          {messages.length > 0 || currentChat ?
+          {(messages.length > 0 || currentChat) &&
             (<div className="mt-5"> {messages.length>0 && !isChatMessagesLoading?( messages.map((section, index) => (
               <div key={index}>
                 <div className="d-flex chats-messages justify-content-center text-start mt-2">
@@ -707,49 +567,17 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                     </p>
                   )}
                 </div>
-                {/* {section.from !== "user" && (
-                  <div className="d-flex justify-content-center mb-3">
-                    <div className="d-flex w-75 justify-content-end">
-                      <FontAwesomeIcon
-                        className="cursor-pointer"
-                        icon={faThumbsUp}
-                        style={{
-                          color: `${section.liked ? "rgb(3, 233, 244)" : "white"}`,
-                        }}
-                      />
-                      <FontAwesomeIcon
-                        className="cursor-pointer px-3"
-                        icon={faThumbsDown}
-                        style={{
-                          color: `${section.liked ? "white" : "red"}`,
-                        }}
-                      />   
-                      <div
-                        className="cursor-pointer pb-2"
-                        onClick={() => setCopied(true)}>
-                        {copied &&  section.message.trimStart() === currentAnswer.trimStart() ? (
-                          <span className="py-2 text-muted">Copied</span>
-                        ) : (
-                          <FontAwesomeIcon
-                            style={{ color: `${true}:"rgb(108, 117, 105)"` }}
-                            icon={faCopy}
-                          />
-                        )}
-                      </div>
-                      </div>
-                    </div>)} */}
                   </div> ))):(
-                  <div className="chat-skeleton mt-5"></div>
+                  <div>
+                    {
+                      !isNewChat && <div className="chat-skeleton mt-5"></div>
+                    }
+                  </div>
                   )}
              
                   </div>
-                  ):(
-                    <div>
-                      {!currentChat && <MakronexaOverview/>}
-                    </div>
                   )}
-  
-         {currentChat &&(
+         
           <div className="pb-3 ask-input-nav main_bg py-3">
             <div className="d-flex input-container justify-content-center ms-3">
           
@@ -774,9 +602,11 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                     onChange={handleInput}
                   />
                 </div>
-                {!loading && (
+                {!loading &&  (
                 <div className="btn btn-primary" onClick={handleAsk}>
+                  {currentChat && 
                   <FontAwesomeIcon icon={faPaperPlane} />
+                  }
                 </div>
                   )}
               </div>
@@ -787,7 +617,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
               onClick={scrollToLastMessage}
             />
           </div>
-          )}
+          
         </div>
         <div className="col chat-nav d-none d-md-block col-md-4 border-round pt-3 border-radius-round">
           <div>    
@@ -803,9 +633,9 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
               <span className="text-muted">{isChatError}</span>
             </div>):(
               <ul>
-              {chats.length>0 &&(
+              {chats && chats.length>0 &&(
                 chats
-                .filter((chat) => chat.makronexaQAs.length !==0)
+                .filter((chat) => chat.dataset_chats.length !==0)
                 .map((chat,index)=>{
                   return(
               <li className={`nav-item p-2 border-radius-round my-1  d-flex justify-content-between align-items-center ${currentChat===chat.id?"content_bg":"header"}`} key={index}>
@@ -815,14 +645,14 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                 <FontAwesomeIcon 
                 className={`${currentChat===chat.id?"":"header"}`}
                   icon={faComments} style={{color:"gray"}} />
-                  {chat.makronexaQAs.length > 0 &&(
+                  {chat.dataset_chats.length > 0 &&(
                   <span className=" ms-2 text-start chat_header_name">
-                    {chat.makronexaQAs[0].message}
+                    {chat.dataset_chats[0].message}
                   </span>
                   )}
                 </small>
                 <FontAwesomeIcon onClick={async()=>{
-                  await deleteChat(token.accessToken,chat.id,user.id)
+                  await deleteDatasetChat(token.accessToken,chat.id,params.dataset_id!,user.id)
                   getAllChats()
                   setMessages([])
                   }} 
@@ -842,4 +672,4 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
     );
   };
   
-  export default MakronexusAI
+  export default AskDataset

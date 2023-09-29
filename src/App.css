@@ -10,8 +10,10 @@
 :root {
   --main-bg: rgb(0, 0, 0);
   --content-bg: rgb(32, 32, 32);
+  /* --main-bg: rgb(17, 27, 33);
+  --content-bg: rgb(42, 57, 66); */
   --content-bg-2: rgba(2, 230, 242, 0.702);
-  --bg-1: rgb(32, 32, 32);
+  --bg-1: rgb(37, 46, 65);
   --bg-1: rgb(23, 24, 28);
   --bg-2: rgb(42, 57, 66);
 
@@ -38,6 +40,9 @@ color: white !important;
   left: 0;
   top: 0;
   bottom: 0;
+}
+.chart-container {
+  height: 400px; 
 }
 
 .App {
@@ -152,24 +157,24 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 input[type="radio"] {
-  background-color: var(--bg-1) !important;
+  background-color: var(--content-bg) !important;
 }
 input[type="email"].form-control {
-  background-color: var(--bg-1) !important;
+  background-color: var(--content-bg) !important;
 }
 
 input[type="checkbox"]:not(:checked) {
-  background-color: var(--bg-1) !important;
+  background-color: var(--content-bg) !important;
 }
 .nav-item:hover{
-  background-color: var(--bg-1) ;
+  background-color: var(--content-bg) ;
   cursor: pointer;
 }
 .link-item:hover{
   color: var(--textColor2);
 }
 .nav-item:focus{
-  background-color: var(--bg-1) ;
+  background-color: var(--content-bg) ;
   cursor: pointer;
 }
 .nav-item a.nowrap:hover{

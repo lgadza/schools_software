@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import logo from "../assets/md_logo_small.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faTwitter, faLinkedin, faFacebookF } from '@fortawesome/free-brands-svg-icons';
@@ -7,8 +7,10 @@ import { faEnvelopeOpen,  faMapMarkerAlt, faPaperPlane, faPhone } from '@fortawe
 import "./Footer.css"
 import { CompanyName } from '../assets/data/company';
 import { Container } from 'react-bootstrap';
+import ContactUs from './ContactUs';
 const Footer: React.FC = () => {
   const year=new Date().getFullYear()
+  const [modalShow, setModalShow] = useState(false);
   return (
     <Container fluid className='px-0 new_footer_area '>
     <footer className="footer-section main_bg content_bg">
@@ -43,7 +45,7 @@ const Footer: React.FC = () => {
               <a href='mailto:siuolgadza@gmail.com'>
                 <FontAwesomeIcon className='contact-icons' icon={faEnvelopeOpen} />
                 <div className="cta-text">
-                  <h4>Mail us</h4>
+                  <h4>E-mail us</h4>
                   <span>info@makronexus.com</span>
                 </div>
                 </a>
@@ -89,35 +91,20 @@ const Footer: React.FC = () => {
                 </div>
                 <ul>
                   <li>
-                    <a href="#">Home</a>
+                    <a className="header" href="/">Home</a>
                   </li>
                   <li>
-                    <a href="#">about</a>
+                    <a className="header" href="/about">About us</a>
                   </li>
                   <li>
-                    <a href="#">services</a>
+                    <a className="header" href="#">Our Services</a>
                   </li>
-                  <li>
-                    <a href="#">portfolio</a>
+                  <li className='cursor-pointer' onClick={() => setModalShow(true)}>
+                  <a className="header"> Contact us </a>
                   </li>
-                  <li>
-                    <a href="#">Contact</a>
-                  </li>
-                  <li>
-                    <a href="#">About us</a>
-                  </li>
-                  <li>
-                    <a href="#">Our Services</a>
-                  </li>
-                  <li>
-                    <a href="#">Expert Team</a>
-                  </li>
-                  <li>
-                    <a href="#">Contact us</a>
-                  </li>
-                  <li>
-                    <a href="#">Latest News</a>
-                  </li>
+                  {/* <li>
+                    <a className="header" href="#">Latest News</a>
+                  </li> */}
                 </ul>
               </div>
             </div>
@@ -161,11 +148,11 @@ const Footer: React.FC = () => {
                     <div className="col-xl-6 col-lg-6 d-none d-lg-block text-right">
                         <div className="footer-menu">
                             <ul>
-                                <li><a href="#">Home</a></li>
+                                <li><a href="/">Home</a></li>
                                 <li><a href="#">Terms</a></li>
                                 <li><a href="#">Privacy</a></li>
                                 <li><a href="#">Policy</a></li>
-                                <li><a href="#">Contact</a></li>
+                                <li onClick={() => setModalShow(true)}><a>Contact</a></li>
                             </ul>
                         </div>
                     </div>
@@ -173,6 +160,8 @@ const Footer: React.FC = () => {
             </div>
         </div>
     </footer>
+    <ContactUs  show={modalShow}
+        onHide={() => setModalShow(false)}/>
     </Container>
   );
 };

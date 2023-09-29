@@ -4,7 +4,7 @@ import makro_logo from "../../assets/md_logo_small.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen, faCalendarCheck, faChevronDown, faChevronUp, faLightbulb, faListCheck, faLocationCrosshairs, faMagnifyingGlassMinus, faPeopleGroup, faPerson, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const HomeNavbar: React.FC = () => {
   const [isSearchActive, setIsSearchActive] = useState(false);
@@ -14,7 +14,7 @@ const HomeNavbar: React.FC = () => {
   const handleSearchIconClick = () => {
     setIsSearchActive((prevState) => !prevState);
   };
-
+const navigate=useNavigate()
   const handleMenuToggleClick = () => {
     setIsMobileNavActive((prevState) => !prevState);
   };
@@ -144,13 +144,13 @@ const HomeNavbar: React.FC = () => {
               Features
               <FontAwesomeIcon className='ms-1' icon={faChevronDown} style={{ fontSize: "14px" }} />
             </li> */}
-            <li className=" px-3 py-2 nav-list-item">
-              <a href='/plans'>Plans </a>
+            <li className=" px-3 py-2 nav-list-item" onClick={()=>navigate("/plans")}>
+               Plans 
             </li>
             <li className="  p-2 nav-list-item">
               Partnerships
             </li>
-            <li className=" py-2 me-2 px-3 nav-list-item">
+            <li onClick={()=>navigate("/about")} className=" py-2 me-2 px-3 nav-list-item">
               About us
             </li>
             <div className="d-flex search-container mt-1">

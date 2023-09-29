@@ -17,7 +17,6 @@ const AlertBox: React.FC<AlertBoxProps> = ({ type ,message,loading}) => {
     info: faInfoCircle,
     alert: faExclamationCircle,
   };
-
   return (
     <div className={`container alerts text-center ${type}`}>
       <div className="row">
@@ -30,9 +29,7 @@ const AlertBox: React.FC<AlertBoxProps> = ({ type ,message,loading}) => {
                      <FontAwesomeIcon icon={iconMap[type]} /> 
                 ):(
                     <Spinner animation="border" size="sm" />
-                )
-
-                }
+                )}
             </i>
             </div>
             <div className={`tip-box-${type}`}>

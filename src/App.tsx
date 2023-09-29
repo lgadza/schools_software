@@ -25,6 +25,8 @@ import DataSetSettingsPage from "./pages/cala/DataSetSettingsPage.js"
 import EmailVerification from "./components/EmailVerification.js"
 import Loader from "./components/Loader.js"
 import AccountDeletionConfirmation from "./components/AccountDeletionConfirmation.js"
+import MakronexaDataset from "./pages/cala/MakronexaDataset.js"
+import AboutUs from "./pages/Home/AboutUs.js"
 
 // mss makro_school_solution
 function App() {
@@ -33,6 +35,7 @@ function App() {
     <div className='App'>
     <BrowserRouter>
       <Routes>
+       <Route path="about" element={<AboutUs/>}/>
        {/* <Route path="cala" element={<CalaPage/>}/> */}
        {/* <Route path="news" element={<News/>}/> */}
        {/* <Route path="students" element={<Students/>}/> */}
@@ -46,11 +49,13 @@ function App() {
         <Route path="features/admission_management" element={<AdmissionManagement/>}/>
         <Route path="features/makronexa" element={<CALAFeature/>}/>
         <Route path=":user_role/account/:user_id" element={<Pages/>}/>
+        {/* <Route path=":user_role/account/:user_id" element={<Pages/>}/> */}
        <Route path="school_account/login" element={<SchoolAccountLogin/>}/>
        <Route path="users/account/:id" element={<StudentAccountPage/>}/>
-       <Route path="/ask.makronexus.com/:user_id" element={<Makronexa/>}/>
+       {/* <Route path="/ask.makronexus.com/:user_id" element={<Makronexa/>}/> */}
        <Route path="ask/:user_id" element={<Makronexa/>}/>
        <Route path="/:user_id/datasets" element={<DataSetsPage/>}/>
+       <Route path="/:user_id/datasets/:dataset_name/:dataset_id/ask/:temp" element={<MakronexaDataset/>}/>
        <Route path="/:user_id/datasets/:dataset_id" element={<DataSetSettingsPage/>}/>
        <Route path="user/account/delete/confirmation" element={<AccountDeletionConfirmation/>}/>
        <Route

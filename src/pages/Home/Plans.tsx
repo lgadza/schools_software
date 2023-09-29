@@ -19,7 +19,7 @@ const Plans: React.FC = () => {
         <PageProgress steps={sections} />
       </div>
       <div className="content-container cala-main-feature">
-        <Container fluid className="px-0 mb-5">
+        <Container fluid className="px-0">
           <HomeNavbar />
           <Container className="px-5 calaAI">
             <Row className="my-5">

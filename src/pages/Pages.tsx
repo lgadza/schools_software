@@ -12,6 +12,7 @@ import { RootState } from "../redux/store"
 import { useDispatch } from "react-redux"
 import { Dispatch } from "redux"
 import { getUserData } from "../redux/actions"
+import AdminDashboard from "./admin/AdminDashboard"
 // import Settings from "./cala/DataSetSettings"
 interface Resource {
     id: number;
@@ -90,7 +91,7 @@ const [addResources, setAddResources] = useState<Resource[]>([]);
                 
                   { activeComponent ==="ResourceUploadForm" && <ResourceUploadForm onResourceUpload={handleResourceUpload}/> }
                   {/* { activeComponent ==="MakronexusAI" && <MakronexusAI/> } */}
-                  {/* { activeComponent ==="Settings" && <Settings/>} */}
+                  { activeComponent ==="adminDashboard" && <AdminDashboard/>}
                 </div>
                 </div>
                 </Col>

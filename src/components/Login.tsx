@@ -59,7 +59,7 @@ console.log(accessToken,"CRED")
   useEffect(() => {
     if (userData && accessToken) {
       // navigate(`/account/${userData.id}`);
-      navigate(`/ask.makronexus.com/${userData.id}`);
+      navigate(`/ask/${userData.id}`);
     }
   }, [userData, navigate]);
 
@@ -93,7 +93,6 @@ console.log(accessToken,"CRED")
             <Form.Group>
               <Form.Control type="email" name='email' value={loginCredentials.email} onChange={handleChange} placeholder="Enter email" className="mb-3" />
             </Form.Group>
-
             <Form.Group>
               <Form.Control type="password" name='password' value={loginCredentials.password} onChange={handleChange} placeholder="Password" className="mb-3" />
             </Form.Group>

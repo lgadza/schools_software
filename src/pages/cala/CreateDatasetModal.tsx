@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { getAllUserAISettings, postUserAISettings } from '../../redux/actions';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-import AlertBox from '../../components/Alerts';
+// import AlertBox from '../../components/Alerts';
 interface MyVerticallyCenteredModalProps {
   show: boolean;
   onHide: () => void;
@@ -25,10 +25,11 @@ const CreateDatasetModal: React.FC<MyVerticallyCenteredModalProps> = (props) => 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDatasetName(event.target.value);
   };
+  console.log(isError)
   const settings={
     shared: false,
     dataset_name:datasetName,
-    temperature: null,
+    temperature: 0,
     model:  null,
     name:  null,
     personality:  null,
@@ -52,9 +53,9 @@ const CreateDatasetModal: React.FC<MyVerticallyCenteredModalProps> = (props) => 
       aria-labelledby="contained-modal-title-vcenter"
       centered
     >
-      {isError &&
+      {/* {isError &&
       <AlertBox type="danger" message='Error during dataset creation'/>
-      }
+      } */}
       <Modal.Header closeButton className='main_bg'>
         <Modal.Title id="contained-modal-title-vcenter">
           <h5>Create Dataset</h5>
@@ -88,7 +89,7 @@ const CreateDatasetModal: React.FC<MyVerticallyCenteredModalProps> = (props) => 
           </Button>
         </div>
         <div className='mt-3'>
-        <small className='text-danger'>You have reached the limit of datasets for your subscription</small>
+        {/* <small className='text-danger'>You have reached the limit of datasets for your subscription</small> */}
         </div>
       </Modal.Body>
     </Modal>

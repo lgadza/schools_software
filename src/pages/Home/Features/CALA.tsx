@@ -34,7 +34,7 @@ const CALAFeature: React.FC = () => {
         <PageProgress steps={sections} />
       </div>
       <div className="content-container cala-main-feature">
-        <Container fluid className="px-0 mb-5">
+        <Container fluid className="px-0">
           <HomeNavbar />
           <div className="cala-hero-container row my-5 ">
             {/* <CALAHeroBg /> */}

@@ -637,6 +637,28 @@ export const getAllAiChats = async(token:string,user_id?:string) => {
             console.log(error)
         }
     };
+export const getAllDatasetAiChats = async(token:string,dataset_id:string,user_id:string) => {
+        const options:RequestInit={
+            method:"GET",
+            headers:{
+                Accept:"application.json",
+                "Content-Type":"application/json",
+                Authorization: `Bearer ${token}`,
+            },    
+        }
+        try{
+            const response=await fetch(`${BE_PROD_URL}/ai/dataset/${user_id}/${dataset_id}/chats`,options)
+            if(response.ok){
+                const chats=await response.json();
+                return chats
+            }else{
+                const error=response.json()
+                return error
+            }
+        }catch(error){
+            console.log(error)
+        }
+    };
 export const getChatMessages = async(token:string,chat_id:string,user_id?:string) => {
         const options:RequestInit={
             method:"GET",
@@ -648,6 +670,27 @@ export const getChatMessages = async(token:string,chat_id:string,user_id?:string
         }
         try{
             const response=await fetch(`${BE_PROD_URL}/ai/${user_id}/chats/${chat_id}`,options)
+            if(response.ok){
+                const chat=await response.json();
+                return chat
+            }else{
+                console.log("error")
+            }
+        }catch(error){
+            console.log(error)
+        }
+    };
+export const getDatasetChatMessages = async(token:string,chat_id:string,user_id:string) => {
+        const options:RequestInit={
+            method:"GET",
+            headers:{
+                Accept:"application.json",
+                "Content-Type":"application/json",
+                Authorization: `Bearer ${token}`,
+            },    
+        }
+        try{
+            const response=await fetch(`${BE_PROD_URL}/ai/dataset/${user_id}/chats/${chat_id}`,options)
             if(response.ok){
                 const chat=await response.json();
                 return chat
@@ -680,6 +723,28 @@ export const chatWithAi = async (token:string,messages: UserChatting[],model:str
       console.log(error)
     }
   };
+export const chatWithAiDataset = async (token:string,messages: UserChatting[],model:string,question:string,currentChat:string,dataset_id:string,collectionName:string,temperature:number,user_id:string) => {
+    const options:RequestInit={
+                    method:"POST",
+                    headers:{
+                        Accept:"application.json",
+                        "Content-Type":"application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body:JSON.stringify({message:messages.map((message)=>message.message).join("\n"),model,user_id,question,collectionName,temperature})
+                }
+    try {
+      const response=await fetch(`${BE_PROD_URL}/langchain/qdrant/${user_id}/${dataset_id}/chats/${currentChat}/query`,options)
+      if (response.ok) {
+        const answer = await response.json();
+        return answer; 
+      } else {
+        console.log("ERROR")
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  };
 export const imageQuery = async (token:string,model:string,query:string,currentChat:string,user_id?:string) => {
     const options:RequestInit={
                     method:"POST",
@@ -692,6 +757,28 @@ export const imageQuery = async (token:string,model:string,query:string,currentC
                 }
     try {
       const response=await fetch(`${BE_PROD_URL}/ai/chats/${currentChat}/image-search`,options)
+      if (response.ok) {
+        const answer = await response.json();
+        return answer; 
+      } else {
+        console.log("ERROR")
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  };
+export const dalleImageQuery = async (token:string,model:string,query:string,currentChat:string,user_id?:string) => {
+    const options:RequestInit={
+                    method:"POST",
+                    headers:{
+                        Accept:"application.json",
+                        "Content-Type":"application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                    body:JSON.stringify({model,user_id,query})
+                }
+    try {
+      const response=await fetch(`${BE_PROD_URL}/ai/chats/${currentChat}/image-generate`,options)
       if (response.ok) {
         const answer = await response.json();
         return answer; 
@@ -736,6 +823,26 @@ export const deleteChat = async (token:string,chat_id:string,user_id?:string,) =
                 }
     try {
       const response=await fetch(`${BE_PROD_URL}/ai/${user_id}/chats/${ chat_id}`,options)
+      if (response.ok) {
+        const res = await response.json();
+        console.log(res," CHAT DELETED")
+      }
+    } catch (error) {
+      console.log(error,"ERROR DELETING  CHAT")
+    }
+  };
+export const deleteDatasetChat = async (token:string,chat_id:string,dataset_id:string,user_id?:string,) => {
+    const options:RequestInit={
+                    method:"DELETE",
+                    headers:{
+                        Accept:"application.json",
+                        "Content-Type":"application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                   
+                }
+    try {
+      const response=await fetch(`${BE_PROD_URL}/ai/dataset/${user_id}/${dataset_id}/chats/${ chat_id}`,options)
       if (response.ok) {
         const res = await response.json();
         console.log(res," CHAT DELETED")

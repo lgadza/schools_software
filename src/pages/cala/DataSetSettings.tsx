@@ -47,7 +47,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
   const [dataSet, setDataSet] = useState<UserAISettingsPayload>({
     shared: false,
     dataset_name: '',
-    temperature: null,
+    temperature: 0,
     model: null,
     name: null,
     personality: null,
@@ -140,7 +140,15 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
           className="img_component"
         />
       </div>
-      <div className='d-flex'><small className='link-item header cursor-pointer' onClick={() => navigate(`/ask/${user_id}`)}>Makronexa</small> <span>/</span><small className='link-item header cursor-pointer' onClick={() => navigate(`/${user_id}/datasets`)}>Datasets</small> <span>/</span><small >{dataSet.dataset_name}</small></div>
+      <div className='d-flex align-items-center justify-content-between'>
+      <div>
+      <small className='link-item header cursor-pointer' onClick={() => navigate(`/ask/${user_id}`)}>Makronexa</small> <span>/</span><small className='link-item header cursor-pointer' onClick={() => navigate(`/${user_id}/datasets`)}>Datasets</small> <span>/</span><small >{dataSet.dataset_name}</small>
+      </div>
+      <div className='me-2 d-md-none'>
+              <Button className='content_bg' onClick={()=>navigate(`/${user_id}/datasets/${dataSet.dataset_name}/${dataSet.id}/ask/${dataSet.temperature || 0.3}`)}><FontAwesomeIcon icon={faComment} style={{ color: "rgb(30, 215, 96)" }} /><span className='ms-2'>Ask</span>
+              </Button>
+            </div>
+      </div>
       <h6 className='d-flex pb-2 my-3'>{dataSet.dataset_name}</h6></div>}
       <Row>
         <div className='  col-sm-12 mb-4 col-xl-6'>
@@ -162,7 +170,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
                <FontAwesomeIcon className='cursor-pointer' onClick={handleTempAlert} icon={faX} />
              </div>
              <div className='d-flex flex-column text-dark'>
-               <small>Temperature adjusts how creative Makronexa's writing is. When you turn the temperature up, let's say to 7, Makronexa gets more imaginative and can come up with different ideas. But if you turn it down, like to 2, Makronexa sticks to safer, more predictable choices.</small>
+               <small style={{fontSize:"14px"}}>Temperature adjusts how creative Makronexa's writing is. When you turn the temperature up, Makronexa gets more imaginative and can come up with different ideas. But if you turn it down,Makronexa sticks to safer, more predictable choices.</small>
              </div>
            </Alert>
          )}
@@ -182,10 +190,10 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
                <FontAwesomeIcon className='cursor-pointer' onClick={handleAlert} icon={faX} />
              </div>
              <div className='d-flex flex-column text-dark'>
-               <small>You can give your chatbot a personality, or for instance, request specific language for the answer.</small>
-               <small>For instance, try to add</small>
-               <small> --- Answer in the German language.</small>
-               <small>to request answers to be in the German language.</small>
+               <small style={{fontSize:"14px"}}>You can give Makronexa a personality,for instance, request specific language for the answer.</small>
+               <small style={{fontSize:"14px"}}>For instance, try to add</small>
+               <small style={{fontSize:"14px"}}> --- Answer in the German language.</small>
+               <small style={{fontSize:"14px"}}>to request answers to be in the German language.</small>
              </div>
            </Alert>
          )}
@@ -249,8 +257,8 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
               <Button className='content_bg' onClick={() => { handleComponentChange("uploadDocs") }}><FontAwesomeIcon icon={faFolderPlus} style={{ color: "rgb(234, 191, 70)" }} /><span className='ms-2'>Upload</span>
               </Button>
             </div>
-            <div className='me-2'>
-              <Button className='content_bg'><FontAwesomeIcon icon={faComment} style={{ color: "rgb(30, 215, 96)" }} /><span className='ms-2'>Ask</span>
+            <div className='d-none d-md-block me-2'>
+              <Button className='content_bg' onClick={()=>navigate(`/${user_id}/datasets/${dataSet.dataset_name}/${dataSet.id}/ask/${dataSet.temperature||0.3}`)}><FontAwesomeIcon icon={faComment} style={{ color: "rgb(30, 215, 96)" }} /><span className='ms-2'>Ask</span>
               </Button>
             </div>
           </div>

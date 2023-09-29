@@ -93,15 +93,15 @@ const MainSidebar = ({showMenu,toggleMenu,activeComponent,handleNavigationClick}
                  <small className={`${showDashboard?"active":""}`}>Dashboard</small>
                   )}
                  </div>
-                 {/* {showMenu && (
+                 {showMenu && (
                  <FontAwesomeIcon  icon={showDashboard ? faChevronDown : faChevronRight} style={{fontSize:".85rem"}}  className="me-2" />
 
-                 )} */}
+                 )}
                </Link>
-               {/* {showDashboard && (
+               {showDashboard && (
                  <div className=" d-flex flex-column content_bg overlap">
                      
-                 <Link to="" className='d-flex nowrap align-items-center px-2 py-2'>
+                 <Link to="" className='d-flex nowrap align-items-center px-2 py-2' onClick={() => handleNavigationClick("adminDashboard")}>
                  <FontAwesomeIcon icon={faChevronRight} style={{fontSize:".7rem"}} className="me-2" />
                      Admin</Link>
               
@@ -117,7 +117,7 @@ const MainSidebar = ({showMenu,toggleMenu,activeComponent,handleNavigationClick}
                  </Link>
                
              </div>
-               )} */}
+               )}
                </Nav.Item>
             <Nav.Item className={`${studentOpen?"active":""}`}>
                <Link to="" className="nav-link d-flex pe-0 justify-content-between align-items-center ps-2" 

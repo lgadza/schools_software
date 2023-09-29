@@ -92,7 +92,7 @@ const DataSets= ({token,user_id}:{token:string,user_id:string}):JSX.Element => {
         </Col>
 
           <Col xs={1} className="chat-icon-column">
-            <FontAwesomeIcon icon={faComment} className='header cursor-pointer' />
+            <FontAwesomeIcon icon={faComment} onClick={()=>navigate(`/${user_id}/datasets/${item.dataset_name}/${item.id}/ask/${item.temperature||0.3}`)} className='header cursor-pointer' />
           </Col>
           <Col xs={1} className="delete-icon-column">
             <FontAwesomeIcon icon={faTrashCan} onClick={()=>handleDeleteDataset(item.id!)} className='text-danger cursor-pointer' />

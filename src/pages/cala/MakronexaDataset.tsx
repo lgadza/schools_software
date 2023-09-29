@@ -1,15 +1,15 @@
 import { Row ,Container, Col} from "react-bootstrap"
 import AccountTopNavigationBar from "../../components/AccountTopNavigationBar"
 import { useEffect } from "react"
-import MakronexusAI from "../../components/MakronexusAI"
 import { useSelector,useDispatch } from "react-redux"
 import { RootState } from "../../redux/store"
 import { Dispatch } from "redux"
 import { getUserData } from "../../redux/actions"
 import "./MobileNav.css"
 import CalaSideNavbar from "./CalaSideNavbar"
+import AskDataset from "../../components/AskDataset"
   
-const Makronexa=():JSX.Element=>{
+const MakronexaDataset=():JSX.Element=>{
   const dispatch:Dispatch<any> =useDispatch()
   const user=useSelector((state:RootState)=>state.userData.data)
   const accessToken=useSelector((state:RootState)=>state.accessToken.accessToken)
@@ -26,7 +26,7 @@ const Makronexa=():JSX.Element=>{
                 <Col className="px-0 makronexa-container" md={10}>
         <div className="py-0" style={{ height: "100vh", overflowY: "scroll" }}>
                    <AccountTopNavigationBar user={user}/>
-                   <MakronexusAI/> 
+                   <AskDataset/>
                 </div>
                 </Col>
             </Row>   
@@ -34,4 +34,4 @@ const Makronexa=():JSX.Element=>{
     )
 }
 
-export default Makronexa
+export default MakronexaDataset

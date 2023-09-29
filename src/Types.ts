@@ -10,7 +10,7 @@ export interface UserAISettingsPayload {
   shared: boolean;
   dataset_name:string;
   createdAt?:string;
-  temperature: number | null;
+  temperature: number | 0;
   model: string | null;
   name: string | null;
   personality: string | null;

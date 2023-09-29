@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import './Pricing.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
 interface OverlayStyles {
   opacity: number;
@@ -88,7 +89,7 @@ const Pricing: React.FC = () => {
   const createOverlayCta = (ctaText: string) => {
     return <div className="cta" aria-hidden="true">{ctaText}</div>;
   };
-
+const navigate=useNavigate()
   useEffect(() => {
     const observer = new ResizeObserver((entries) => {
       const newOverlayCards = entries.map((entry, index) => {
@@ -134,12 +135,31 @@ const Pricing: React.FC = () => {
               <ul role="list" className="card__bullets flow">
                 {card.bullets.map((bullet, bulletIndex) => (
                   <li key={bulletIndex} className='d-flex'>
-                    <FontAwesomeIcon className='me-1' icon={faCheckCircle}/>
-                    <span className='text-start'>{bullet}</span>
+                    <FontAwesomeIcon className='me-1' icon={faCheckCircle} style={{color:"rgb(40, 167, 69,0.8)"}}/>
+                    <small className='text-start'>{bullet}</small>
                   </li>
                 ))}
               </ul>
-              <a href={card.ctaLink} className="card__cta cta">{card.ctaText}</a>
+              <a href={card.ctaLink} onClick={()=>{
+                fetch(`${import.meta.env.VITE_BE_PROD_URL}/create_checkout_section`,{
+                  method:"POST",
+                  headers:{
+                    "Content-Type":"application/json"
+                  },
+                  body:JSON.stringify({
+                    items:[
+                      { id:1,quantity:1}
+                    ]
+                  })
+                }).then(res=>{
+                  if(res.ok) return res.json()
+                  return res.json().then(json=>Promise.reject(json))
+                }).then(({url})=>{
+                  navigate(url)
+                }).catch(error=>{
+                  console.error(error.error)
+                })
+              }} className="card__cta cta">{card.ctaText}</a>
             </div>
           ))}
         </div>

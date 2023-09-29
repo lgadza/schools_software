@@ -6,7 +6,7 @@ interface ImageCardProps {
   altText: string;
 }
 
-const ImageCard: React.FC<ImageCardProps> = ({  context, imageUrl, altText }) => {
+const ImageCard: React.FC<ImageCardProps> = ({  imageUrl, altText }) => {
   return (
     
       <div className="image--card">
@@ -16,8 +16,6 @@ const ImageCard: React.FC<ImageCardProps> = ({  context, imageUrl, altText }) =>
         </div>
         <div className="image--card--bottom">
           <div className="px-3 d-flex align-items-center justify-content-between">
-            <small><a href={context} className='header' >Source</a></small>
-            <span className="image--card--headline">{context}</span>
           </div>
         </div>
       </div>
