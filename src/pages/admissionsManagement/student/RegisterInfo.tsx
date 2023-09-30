@@ -11,6 +11,8 @@ import AlertBox from "../../../components/Alerts.js";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { allUsers } from "../../../assets/data/usersForRegistration.js";
+import { Dispatch } from "redux";
 const initialFormData: UserRegistration = {
   first_name: "",
   email: "",
@@ -32,7 +34,7 @@ const RegisterInfo = (): JSX.Element => {
   const isLoading = useSelector((state: RootState) => state.userRegistration.isLoading);
   const [showPassword, setShowPassword] = useState(false);
   const [confirmPassword, setConfirmPassword] = useState("");
-  const dispatch = useDispatch();
+  const dispatch:Dispatch<any> = useDispatch();
   // const navigate = useNavigate();
   const [alertVisible, setAlertVisible] = useState(false);
   const [signUpClicked, setSignUpClicked] = useState(false);
@@ -138,6 +140,18 @@ const handleChange = (e: any) => {
   const isValidPassword = (password: string): boolean => {
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
     return passwordRegex.test(password);
+  };
+  const registerAllUsers = async () => {
+    
+   
+
+    for (const user of allUsers) {
+      
+      await dispatch(UserRegister(user));
+    }
+
+    setFormData(initialFormData);
+    setConfirmPassword("");
   };
 
   return (
@@ -296,6 +310,19 @@ const handleChange = (e: any) => {
             >
               {isLoading && signUpClicked && <Spinner className="spinner-border-sm me-2" />}
               <span>Register</span>
+            </Button>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Button
+              variant="primary"
+              onClick={registerAllUsers}
+              className={`main_bg w-100 mt-3 d-flex justify-content-center align-items-center content_bg-2`}
+              type="submit"
+            >
+              {isLoading && signUpClicked && <Spinner className="spinner-border-sm me-2" />}
+              <span>Register All</span>
             </Button>
           </Col>
         </Row>

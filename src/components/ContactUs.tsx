@@ -41,7 +41,6 @@ const ContactUs: React.FC<ContactUsModalProps> = (props) => {
     console.log(formData);
   };
 
-  
   return (
     <Modal
       {...props}
