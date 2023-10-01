@@ -28,7 +28,7 @@ const persistConfig = {
   storage:AsyncStorage,
   transforms: [
     encryptTransform({
-      secretKey: "1234456",
+      secretKey: import.meta.env.VITE_REDUX_STORE_KEY,
     }),
   ],
 };

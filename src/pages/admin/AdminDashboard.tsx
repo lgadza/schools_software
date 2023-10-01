@@ -5,6 +5,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import TwoBarCharts from "./TwoBarCharts";
+import LineChartComponent from './LineChartComponent';
 
 
 const AdminDashboard: React.FC = () => {
@@ -70,7 +71,12 @@ const AdminDashboard: React.FC = () => {
             <TwoBarCharts />
           </div>
             </Col>
-            <Col sm={12} md={6}></Col>
+            <Col sm={12} md={6} className="content_bg">
+            <h5 className="my-3">Total Enrolled by Month</h5>
+            <div className="chart-container">
+                <LineChartComponent/>
+                </div>
+            </Col>
         </Row>
     </Container>
   );
