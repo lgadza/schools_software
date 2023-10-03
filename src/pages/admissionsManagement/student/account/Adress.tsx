@@ -222,8 +222,8 @@ e.preventDefault()
                     {user.address.type_of_settlement}
                   </option>
                 )}
-            <option value="City">City</option>
-            <option value="Village">Village</option>
+            <option value="city">City</option>
+            <option value="village">Village</option>
           </Form.Control>
         </Col>
         <Col>
