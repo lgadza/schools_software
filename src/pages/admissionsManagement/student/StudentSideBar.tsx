@@ -1,4 +1,4 @@
-import { faCircleInfo, faCircleNotch, faFile, faGear, faLocation, faPenToSquare, faPeopleGroup, faUser } from "@fortawesome/free-solid-svg-icons"
+import { faCircleInfo, faCircleNotch, faFile, faGear, faLocation, faPaperPlane, faPenToSquare, faPeopleGroup, faUser } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const StudentSideBar=({source,activeComponent,handleNavigationClick}:{activeComponent:string;source:string;handleNavigationClick:(component:string)=>void}):JSX.Element=>{
@@ -30,10 +30,10 @@ const StudentSideBar=({source,activeComponent,handleNavigationClick}:{activeComp
     </li>
     {source==="student" &&(
       <>
-        <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Status" ? "active" : ""}`}
-          onClick={() => handleNavigationClick("Status")}>
-        <FontAwesomeIcon icon={faCircleNotch}/>
-        <span className="mx-2 ">Status</span>
+        <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Application" ? "active" : ""}`}
+          onClick={() => handleNavigationClick("Application")}>
+        <FontAwesomeIcon icon={faPaperPlane}/>
+        <span className="mx-2 ">Application</span>
     </li>
     <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Interview" ? "active" : ""}`}
           onClick={() => handleNavigationClick("Interview")}>

@@ -34,6 +34,28 @@ display: block !important;
 color: white !important;
 
 }
+.css-13cymwt-control{
+  background-color: transparent !important;
+  border-radius: 1px solid grey;
+
+}
+.css-t3ipsp-control{
+  background-color: transparent !important;
+}
+.css-t3ipsp-control:hover{
+  background-color: transparent !important;
+}
+.css-1nmdiq5-menu{
+  background: rgb(0, 0, 0) !important;
+  border-radius: 1px solid grey;
+}
+option{
+  padding-top: 5px !important;
+  margin: 5px;
+}
+.student_account_content{
+  min-height: 60vh;
+}
 .ai-container{
   position: fixed;
   right: 0;

@@ -7,7 +7,7 @@ import Guardian from "./Guardian"
 import Documents from "./Documents"
 import Settings from "./Settings"
 import Interview from "./Interview"
-import ApplicationStatus from "./Status"
+import Application from "./Application"
 import ProgramInformation from "../ProgramInformation"
 import { useEffect, useState } from "react"
 import StudentNavbar from "../StudentNavbar"
@@ -335,14 +335,14 @@ dispatch(getUserData(accessToken.accessToken))
                     activeComponent={activeComponent}
                     handleNavigationClick={handleNavigationClick} user={personalInfo} token={accessToken.accessToken} />
                 <Col ml={9} >
-                    <div className="student_account_border content_bg py-3 px-3 ">
+                    <div className="student_account_border content_bg py-3 px-3 student_account_content ">
                     {activeComponent === "PersonalData" && <PersonalData />}
                     {activeComponent === "Address" && <Address />}
                     {activeComponent === "Guardian" && <Guardian />}
                     {activeComponent === "Documents" && <Documents user_id={personalInfo.id} />}
                     {activeComponent === "Settings" && <Settings />}
                     {activeComponent === "Interview" && <Interview />}
-                    {activeComponent === "Status" && <ApplicationStatus />}
+                    {activeComponent === "Application" && <Application/>}
                     {activeComponent === "ProgramInformation" && <ProgramInformation />}
                     </div>
                 </Col>

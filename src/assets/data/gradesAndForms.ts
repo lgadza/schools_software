@@ -1,0 +1,16 @@
+export const gradesAndForms = [
+    { value: "Grade 0", label: "Grade Zero" },
+    { value: "Grade 1", label: "Grade One" },
+    { value: "Grade 2", label: "Grade Two" },
+    { value: "Grade 3", label: "Grade Three" },
+    { value: "Grade 4", label: "Grade Four" },
+    { value: "Grade 5", label: "Grade Five" },
+    { value: "Grade 6", label: "Grade Six" },
+    { value: "Grade 7", label: "Grade Seven" },
+    { value: "Form 1", label: "Form One" },
+    { value: "Form 2", label: "Form Two" },
+    { value: "Form 3", label: "Form Three" },
+    { value: "Form 4", label: "Form Four" },
+    { value: "Form 5", label: "Form Five" },
+    { value: "Form 6", label: "Form Six" },
+  ];
