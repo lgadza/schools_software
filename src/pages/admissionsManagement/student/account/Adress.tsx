@@ -11,10 +11,18 @@ import {
 } from "../../../../redux/actions";
 import { AddressInterface } from "../../../../Types";
 import { Dispatch } from "redux";
+import { provinceCities, provinceOptions } from "../../../../assets/data/citiesAndProvince";
 
 interface SuccessMessageProps {
   variant: "success" | "danger";
   message: string;
+}
+interface CityProps{
+   label: string; value: string 
+}
+interface CityProvinceData {
+  province: string;
+  cities:CityProps [];
 }
 
 const SuccessMessage: React.FC<SuccessMessageProps> = ({
@@ -76,6 +84,7 @@ const Address = (): JSX.Element => {
 
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [save, setSave] = useState(false);
+  const [citiesInProvince, setCitiesInProvince]=useState<CityProps[]>([]);
   const [editMode, setEditMode] = useState<boolean>(false);
   const [address, setAddress] = useState<AddressInterface>(initialAddress);
 const handleSubmit=(e:React.FormEvent)=>{
@@ -121,7 +130,29 @@ e.preventDefault()
   const handleEditClick = () => {
     setEditMode((prev) => !prev);
   };
-
+  const handleProvinceChange = (value: string) => {
+    // setSelectedProvince(value);
+    setAddress((data) => ({
+      ...data,
+      province:value,
+    }));
+    // Reset selectedCity when province changes
+    setAddress((data) => ({
+      ...data,
+      city: "",
+    }));
+  };
+  useEffect(() => {
+    const cities = provinceCities
+      .filter((city: CityProvinceData) => city.province === address.province)
+      .flatMap((city: CityProvinceData) =>
+        city.cities.map((cityInfo) => ({
+          label: cityInfo.label,
+          value: cityInfo.value,
+        }))
+      );
+    setCitiesInProvince(cities);
+  }, [address.province]);  
   return (
     <div>
       {editIsError && (
@@ -240,18 +271,12 @@ e.preventDefault()
             {user.address.province}
           </option>
         )}
-      <option value="Bulawayo">Bulawayo</option>
-      <option value="Harare">Harare</option>
-      <option value="Mashonaland Central">Mashonaland Central</option>
-      <option value="Mashonaland East">Mashonaland East</option>
-      <option value="Mashonaland West">Mashonaland West</option>
-      <option value="Manicaland">Manicaland</option>
-      <option value="Midlands">Midlands</option>
-      <option value="Masvingo">Masvingo</option>
-      <option value="Matabeleland North">Matabeleland North</option>
-      <option value="Matabeleland South">Matabeleland South</option>
+        {provinceOptions.map((province:{value:string,label:string},index)=>{
+          return(
+            <option key={index} value={province.value}>{province.label}</option>
+          )
+        })}
     </Form.Control>
-  
         </Col>
       </Row>
     </Form>
@@ -260,12 +285,24 @@ e.preventDefault()
       <Col>
         <Form.Label className="d-flex">City<span className="text-danger">*</span></Form.Label>
           <Form.Control
-           placeholder="City"
+          as="select"
             required
             name="city"
           value={user.address&&!editMode?user.address.city:address.city}
           onChange={handleChange}
-            />
+            >
+               {!user.address && <option>Select</option>}
+        {user.address && (
+          <option value={user.address.city} disabled>
+            {user.address.city}
+          </option>
+        )}
+        {citiesInProvince.map((city:{value:string,label:string},index)=>{
+          return(
+            <option key={index} value={city.value}>{city.label}</option>
+          )
+        })}
+              </Form.Control>
         </Col>
         <Col>
         <Form.Label className="d-flex">Country<span className="text-danger">*</span></Form.Label>

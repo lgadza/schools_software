@@ -11,6 +11,21 @@ import { Dispatch } from "redux"
 const Guardian=():JSX.Element=>{
     const dispatch:Dispatch<any> = useDispatch()
     const guardian_types=useSelector((state:RootState)=>state.getGuardianTypes.guardian_types)
+    const [selectedRelationship, setSelectedRelationship]=useState('');
+    const relationshipOptions = [
+      { label: 'Mother', value: "mother" },
+      { label: 'Father', value: "father" },
+      { label: 'Grandfather', value: "grand-father" },
+      { label: 'Grandmother', value: "grand-mother" },
+      { label: 'Sister', value: "sister" },
+      { label: 'Brother', value: "brother" },
+      { label: 'Uncle', value: "uncle" },
+      { label: 'Aunt', value: "aunt" },
+      { label: 'Cousin', value: "cousin" },
+      { label: 'Spouse', value: "spouse" },
+      { label: 'Guardian', value: "guardian" },
+  ];
+  
     // const accessToken=useSelector((state:RootState)=>state.accessToken.accessToken)
 const initialGuardian:GuardianInterface={
     first_name:"",
@@ -106,15 +121,21 @@ setGuardian((data)=>({
           value={guardian.relationship}
           onChange={handleChange}
           >
-          <option>select</option>
+          <option>Select</option>
           {guardian_types && (
-            guardian_types.guardian_types.map((type:any,index:number)=>{
+            relationshipOptions.map((type:{value:string,label:string},index:number)=>{
               return(
-
-                <option className="py-2" key={index} value={type.relationship}>{type.relationship}</option>
+                <option className="py-2" key={index} value={type.value}>{type.label}</option>
               )
             })
           )}
+          {/* {guardian_types && (
+            guardian_types.guardian_types.map((type:any,index:number)=>{
+              return(
+                <option className="py-2" key={index} value={type.relationship}>{type.relationship}</option>
+              )
+            })
+          )} */}
           </Form.Control>
         </Col>
         <Col>

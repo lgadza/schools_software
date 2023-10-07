@@ -46,8 +46,12 @@ color: white !important;
   background-color: transparent !important;
 }
 .css-1nmdiq5-menu{
-  background: rgb(0, 0, 0) !important;
+  background: rgb(23, 24, 28) !important;
   border-radius: 1px solid grey;
+    box-shadow: 0 0 5px rgb(3, 233, 244,.4),
+              0 0 5px rgb(3, 233, 244,.4),
+              0 0 8px rgb(3, 233, 244,.4),
+              0 0 5px rgb(3, 233, 244,.4) !important;
 }
 option{
   padding-top: 5px !important;
