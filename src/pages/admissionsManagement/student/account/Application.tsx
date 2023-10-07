@@ -1,6 +1,7 @@
-import { Card, Col, Form, Row } from "react-bootstrap"
+import { Card, Col, Form, Row,Button} from "react-bootstrap"
 import { gradesAndForms } from "../../../../assets/data/gradesAndForms"
 import Select from "react-select";
+import * as Icon from "react-bootstrap-icons"
 
 const Application=():JSX.Element=>{
  
@@ -60,7 +61,9 @@ const Application=():JSX.Element=>{
         </Col>
       </Row>
     </Form>
-
+    <div className="d-flex justify-content-end">
+        <Button variant="primary" className="px-3 main_bg content_bg-2"><Icon.Send/> <span>Apply</span></Button>
+    </div>
     </div>
     )
 }

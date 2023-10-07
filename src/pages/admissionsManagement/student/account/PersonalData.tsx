@@ -210,7 +210,7 @@ const handleSave=async()=>{
       </Row>
     </Form>
     <div className="d-flex justify-content-end">
-         <Button variant="primary" className="px-3 main_bg" onClick={handleEditClick}>
+         <Button variant="primary" className="px-3 content_bg-2 main_bg" onClick={handleEditClick}>
           {editMode ? "Cancel" : "Edit"}
         </Button>
         {editMode && (

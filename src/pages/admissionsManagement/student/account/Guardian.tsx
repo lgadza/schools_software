@@ -123,7 +123,7 @@ setGuardian((data)=>({
       </Row>
     </Form>
     <div className="d-flex justify-content-end">
-        <Button variant="primary" className="px-3 main_bg">Update</Button>
+        <Button variant="primary" className="px-3 main_bg content_bg-2">Update</Button>
     </div>
     </>
   )}

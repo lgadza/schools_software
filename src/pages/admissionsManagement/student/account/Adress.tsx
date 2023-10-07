@@ -290,12 +290,12 @@ e.preventDefault()
     </Form>
           <div className="d-flex justify-content-end">
             {!user.address ? (
-              <Button variant="primary" className="px-3 main_bg" disabled={!isAddressValid()} onClick={handleUpdate}>
+              <Button variant="primary" className="px-3 content_bg-2 main_bg" disabled={!isAddressValid()} onClick={handleUpdate}>
                 Update
               </Button>
             ) : (
               <div>
-                <Button variant="primary" className="px-3 main_bg" onClick={handleEditClick}>
+                <Button variant="primary" className="px-3 main_bg content_bg-2" onClick={handleEditClick}>
                   {editMode ? "Cancel" : "Edit"}
                 </Button>
                 {editMode && (
