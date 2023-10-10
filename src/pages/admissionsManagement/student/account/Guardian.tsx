@@ -140,7 +140,6 @@ setGuardian((data)=>({
         </Col>
         <Col>
         </Col>
-       
       </Row>
     </Form>
     <div className="d-flex justify-content-end">
