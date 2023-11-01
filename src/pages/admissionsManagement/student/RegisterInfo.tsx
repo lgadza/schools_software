@@ -313,19 +313,6 @@ const handleChange = (e: any) => {
             </Button>
           </Col>
         </Row>
-        <Row>
-          <Col>
-            <Button
-              variant="primary"
-              onClick={registerAllUsers}
-              className={`main_bg w-100 mt-3 d-flex justify-content-center align-items-center content_bg-2`}
-              type="submit"
-            >
-              {isLoading && signUpClicked && <Spinner className="spinner-border-sm me-2" />}
-              <span>Register All</span>
-            </Button>
-          </Col>
-        </Row>
         <div className="d-flex justify-content-end align-items-center my-3">
         Already have an account yet? 
         <Link to="/login" >
