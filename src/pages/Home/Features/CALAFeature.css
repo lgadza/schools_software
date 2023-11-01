@@ -1,5 +1,9 @@
 
+.cala-hero-container.row {
+  background-color: black !important;
+  height: 60vh;
 
+}
   
   .text.typing {
     
@@ -142,6 +146,7 @@ animation: bg 1s ease-in-out infinite;
 
    
   }
+
   .cala-hero-container h1{
     font-weight: 600 ;
     font-size: 2rem;

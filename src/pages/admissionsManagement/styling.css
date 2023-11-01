@@ -1,7 +1,8 @@
 :root {
     --brand-color: rgb(11, 94, 215);
     --body-color: #999;
-    --textColor:rgb(27, 27, 29)
+    --textColor:rgb(27, 27, 29);
+    --content_bg:rgb(50, 50, 50);
   }
 .password-input-container {
   position: relative;
@@ -208,11 +209,10 @@ height: 50px;
   color: var(--textColor);
 }
 .dropdown-menu.show {
-  background-color: var(--bg-2);
+  background-color: var(--content_bg);
   min-width: 15rem;
   z-index: 4 !important;
   border-radius: 5px;
-  box-shadow: rgba(65, 117, 126, 0.4) 0px 2px 4px, rgba(87, 134, 153, 0.3) 0px 7px 13px -3px inset, rgba(3, 238, 255, 0.2) 0px -3px 0px inset;
   
 }
 .dropdown-toggle.btn {

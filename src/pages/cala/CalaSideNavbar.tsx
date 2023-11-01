@@ -13,7 +13,7 @@ const CalaSideNavbar=({user}:{user:UserRegistration}):JSX.Element=>{
         setActiveComponent(component)
     }
     return( 
-         <div className="px-4  w-100" style={{ height: "100vh", overflowY: "scroll" }}>
+         <div className="px-4 w-100" style={{ height: "100vh", overflowY: "scroll"}}>
             <div className="d-flex px-2">
               <img
                 src={md_logo_small}

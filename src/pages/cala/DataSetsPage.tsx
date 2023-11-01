@@ -28,7 +28,7 @@ const DataSetsPage=():JSX.Element=>{
           {user && user.id ?(
             <Row className="ai-container">
 
-          <Col md={2} className={"pe-0 d-none d-md-block hide-menu border-round"}>
+          <Col md={2} className={"pe-0 d-none d-md-block hide-menu"}>
         <CalaSideNavbar user={user}/>
           </Col>
           

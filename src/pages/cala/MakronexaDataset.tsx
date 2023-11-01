@@ -20,7 +20,7 @@ const MakronexaDataset=():JSX.Element=>{
     return(
         <Container fluid className="ps-0 ms-0 pages scrollbar">
             <Row className="ai-container">
-          <Col md={2} className={"pe-0 d-none d-md-block hide-menu border-round"}>
+          <Col md={2} className={"pe-0 d-none d-md-block hide-menu"}>
         <CalaSideNavbar user={user}/>
           </Col>
                 <Col className="px-0 makronexa-container" md={10}>

@@ -3,7 +3,7 @@
 
 .upload-card {
     border-radius: 5px;
-    box-shadow: 0px 5px 20px rgba(49, 104, 146, .25);
+    /* box-shadow: 0px 5px 20px rgba(49, 104, 146, .25); */
 }
 
 .upload-card-body {

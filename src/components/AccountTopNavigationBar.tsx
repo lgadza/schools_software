@@ -37,7 +37,6 @@ const AccountTopNavigationBar=({user}:{user:UserRegistration}):JSX.Element=>{
             <Image src={user.avatar} height={40} width={40} alt="avatar"/>
             )}
 </Dropdown.Toggle>
-
 <Dropdown.Menu className="py-0"  style={{width:"20rem"}}>
   <div className="d-flex px-4  content_bg-2 text-white py-3">
      <strong className="d-flex color-header">{user.first_name} {user.last_name}</strong>

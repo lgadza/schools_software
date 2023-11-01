@@ -36,12 +36,13 @@ const CALAFeature: React.FC = () => {
       <div className="content-container cala-main-feature">
         <Container fluid className="px-0">
           <HomeNavbar />
-          <div className="cala-hero-container row my-5 ">
+          <div className="cala-hero-container d-flex align-items-center row my-5 ">
             {/* <CALAHeroBg /> */}
             <div className="col-md-4 d-flex cala-background-ai align-items-center justify-content-around"> 
     <AICanvasAnimation/>
   </div>
-            <div className="col-md-8 d-none d-md-block d-flex align-items-start justify-content-center flex-column ">
+ <div className='col-md-8 d-none d-md-block d-flex align-items-start justify-content-center flex-column'>
+ <div className=" ">
               <h1 className="text-start text-nowrap">
                 Use Makronexa to
               </h1>
@@ -57,6 +58,7 @@ const CALAFeature: React.FC = () => {
                 <TypingEffect words={words} typingSpeed={80} eraseSpeed={80} />
               </div>
             </div>
+ </div>
           </div>
           <Container className="px-5 calaAI">
             <Row className="my-5">
