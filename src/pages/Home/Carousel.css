@@ -1,5 +1,7 @@
 .carousel-container {
 	will-change: transform;
+	/* background-color: rgb(14, 178, 190) !important; */
+	background-color: black !important;
   }
 .carousel h1, h2, h3, h4, h5, h6, ul, li {
 	margin: 0;

@@ -19,7 +19,7 @@ const Carousel: React.FC = () => {
   };
 
   return (
-    <section id="section-1" className='main_bg carousel'>
+    <section id="section-1" className='carousel'>
       <div className="content-slider">
         <input type="radio" id="banner1" className="sec-1-input" name="banner" checked={currentBanner === 1} />
         <input type="radio" id="banner2" className="sec-1-input" name="banner" checked={currentBanner === 2} />

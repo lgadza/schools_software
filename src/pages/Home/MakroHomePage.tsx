@@ -43,10 +43,10 @@ import HomeAIInfo from "./HomeAIInfo";
         <div className="content-container">
           <Container fluid className="px-0 mb-5">
               <HomeNavbar />
-            <Container className="px-5">
             <div className="carousel-container"> 
               <Carousel />
             </div>
+            <Container className="px-5">
                 <h4 className="p-4 d-flex text-start color-header"> Empower and elevate success for all.</h4>
               <div className="better-for-card">
               <Row className="mb-5">
