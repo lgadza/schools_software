@@ -5,6 +5,7 @@
   initial-value: 0deg;
   inherits: false;
 }
+
 :root {
   --main-bg: rgb(40, 42, 54);
   --bg-1: rgb(32, 44, 51);
