@@ -11,7 +11,7 @@ import AlertBox from "../../../components/Alerts.js";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { allUsers } from "../../../assets/data/usersForRegistration.js";
+// import { allUsers } from "../../../assets/data/usersForRegistration.js";
 import { Dispatch } from "redux";
 const initialFormData: UserRegistration = {
   first_name: "",
