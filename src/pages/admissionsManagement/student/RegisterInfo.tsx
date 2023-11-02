@@ -141,19 +141,7 @@ const handleChange = (e: any) => {
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
     return passwordRegex.test(password);
   };
-  const registerAllUsers = async () => {
-    
-   
-
-    for (const user of allUsers) {
-      
-      await dispatch(UserRegister(user));
-    }
-
-    setFormData(initialFormData);
-    setConfirmPassword("");
-  };
-
+ 
   return (
     <div className="content_bg  p-3">
       {isError && alertVisible && (

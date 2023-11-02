@@ -11,7 +11,7 @@ import { Dispatch } from "redux"
 const Guardian=():JSX.Element=>{
     const dispatch:Dispatch<any> = useDispatch()
     const guardian_types=useSelector((state:RootState)=>state.getGuardianTypes.guardian_types)
-    const [selectedRelationship, setSelectedRelationship]=useState('');
+    // const [selectedRelationship, setSelectedRelationship]=useState('');
     const relationshipOptions = [
       { label: 'Mother', value: "mother" },
       { label: 'Father', value: "father" },

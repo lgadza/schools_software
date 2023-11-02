@@ -130,18 +130,18 @@ e.preventDefault()
   const handleEditClick = () => {
     setEditMode((prev) => !prev);
   };
-  const handleProvinceChange = (value: string) => {
-    // setSelectedProvince(value);
-    setAddress((data) => ({
-      ...data,
-      province:value,
-    }));
-    // Reset selectedCity when province changes
-    setAddress((data) => ({
-      ...data,
-      city: "",
-    }));
-  };
+  // const handleProvinceChange = (value: string) => {
+  //   // setSelectedProvince(value);
+  //   setAddress((data) => ({
+  //     ...data,
+  //     province:value,
+  //   }));
+  //   // Reset selectedCity when province changes
+  //   setAddress((data) => ({
+  //     ...data,
+  //     city: "",
+  //   }));
+  // };
   useEffect(() => {
     const cities = provinceCities
       .filter((city: CityProvinceData) => city.province === address.province)
