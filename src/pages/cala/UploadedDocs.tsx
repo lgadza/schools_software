@@ -41,11 +41,14 @@ const UploadedDocs = ({token,user_id,dataset_id}:{token:string,user_id:string,da
                               <li key={file.id} className='d-flex content_bg  mb-3 p-3 justify-content-between'>
                               <div>
                                   <div>
-                                  <FontAwesomeIcon className='me-2' icon={faFile}/> {file.name}
+                                  <FontAwesomeIcon className='me-2 text-dark' icon={faFile}/> 
+                                  <span className='text-dark'>
+                                     {file.name}
+                                    </span>
                                   </div>
                                   <div>
-                                  <span>{file.type}</span>
-                                  <strong className='ms-3'>{new Date(file.createdAt).toLocaleDateString('en-GB')}</strong>
+                                  <span className='text-dark'>{file.type}</span>
+                                  <strong className='ms-3 text-dark'>{new Date(file.createdAt).toLocaleDateString('en-GB')}</strong>
                                   </div>
                               </div>
                               <div>

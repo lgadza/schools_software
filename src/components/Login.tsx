@@ -72,7 +72,6 @@ console.log(accessToken,"CRED")
 
   return (
     <Container>
-
       {isError && sign_in && (
       <div className='register-alert'>
         <AlertBox type="danger" message='The email/password entered is incorrect'/>
@@ -100,7 +99,7 @@ console.log(accessToken,"CRED")
             <div className='d-flex justify-content-between align-items-center'>
               <Form.Check label="Remember me" />
               <Link to="">
-                Set a new password
+                <span className='header'>Set a new password</span>
               </Link>
             </div>
 

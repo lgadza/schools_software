@@ -28,23 +28,23 @@ const AccountTopNavigationBar=({user}:{user:UserRegistration}):JSX.Element=>{
             <Dropdown>
 <Dropdown.Toggle className="navbar-item d-flex align-items-center">
 <div className="pt-2">
-                <span className="px-2 py-0">{user.first_name} {user.last_name}</span>
-                <FontAwesomeIcon style={{fontSize:"0.8rem"}} icon={faChevronDown}/>
+                <span className="px-2 py-0 text-dark">{user.first_name} {user.last_name}</span>
+                <FontAwesomeIcon style={{fontSize:"0.8rem"}} className="text-dark" icon={faChevronDown}/>
                
-            <span className="d-flex px-4">{user.role} </span>
+            <span className="d-flex px-4 text-dark">{user.role} </span>
             </div>
             {user.avatar && user.avatar!==""&&(
             <Image src={user.avatar} height={40} width={40} alt="avatar"/>
             )}
 </Dropdown.Toggle>
-<Dropdown.Menu className="py-0"  style={{width:"20rem"}}>
+<Dropdown.Menu className="py-0 card"  style={{width:"20rem"}}>
   <div className="d-flex px-4  content_bg-2 text-white py-3">
      <strong className="d-flex color-header">{user.first_name} {user.last_name}</strong>
   </div>
   <Dropdown.Item className="py-2" onClick={()=>navigate(`/users/account/${user.id}`)}>
     <Link to='' className="textColor px-2">
-    <FontAwesomeIcon icon={faUser}/>
-      <span className="px-2">My profile</span>
+    <FontAwesomeIcon icon={faUser} className="text-dark"/>
+      <span className="px-2 text-dark">My profile</span>
     </Link>
   </Dropdown.Item>
   {/* <Dropdown.Item className="py-2">
@@ -71,8 +71,8 @@ const AccountTopNavigationBar=({user}:{user:UserRegistration}):JSX.Element=>{
       onClick={handleLogout}
       className="textColor px-2"
     >
-    <FontAwesomeIcon icon={faPowerOff}/>
-<span className="px-2">
+    <FontAwesomeIcon className="text-dark" icon={faPowerOff}/>
+<span className="px-2 text-dark">
       Log out
 </span>
     </div>

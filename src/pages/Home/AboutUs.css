@@ -1,18 +1,18 @@
 .about-us .banner{
     height: 60vh;
+    background-color:rgb(14, 178, 190)  ;
 }
 .about-us .banner h1{
     font-weight: 700;
     text-transform: uppercase;
+    color: white;
 
 }
 
 .icon.about-us-icon{
     font-size: 40px;
+    color: rgb(14, 178, 190);
 }
-
-
-
 .about-us .tree {
   width: 100%;
   min-height: 70vh;
@@ -54,7 +54,9 @@
   transition: all 0.5s;
   
 }
-
+.about-us p{
+  color: black;
+}
 .about-us .tree li::before,
 .about-us .tree li::after {
   content: '';

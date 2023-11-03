@@ -14,19 +14,23 @@
   border: none;
   background: none;
   outline: none;
+  color: rgb(7, 172, 190);
+  
 }
 
 .FAQ button:hover,
 .FAQ button:focus {
   cursor: pointer;
-  color: rgb(7, 172, 190);
+  color: black;
+  
 }
 
 .FAQ button:hover::after,
 .FAQ button:focus::after {
   cursor: pointer;
-  color: rgb(7, 172, 190);
   border: 1px solid rgb(7, 172, 190);
+  color: black;
+
 }
 
 .FAQ .FAQ-title {
@@ -68,7 +72,8 @@
 }
 
 .FAQ button[aria-expanded='true'] {
-  color: rgb(7, 172, 190);
+  color: black;
+
 }
 
 .FAQ button[aria-expanded='true'] .icon::after {
@@ -92,9 +97,11 @@
 
 .FAQ .FAQ-content p {
   font-size: 1rem;
-  font-weight: 300;
+  /* font-weight: 300; */
   margin: 2em 0;
   text-align: left;
+  color: black;
+
 }
 @media only screen and (max-width: 860px) {
   .FAQ .FAQ-content p {

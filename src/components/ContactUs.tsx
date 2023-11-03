@@ -46,7 +46,6 @@ const ContactUs: React.FC<ContactUsModalProps> = (props) => {
       {...props}
       aria-labelledby="contained-modal-title-vcenter"
       size="xl"
-    
       centered
     >
       <Modal.Header closeButton className='main_bg'>
@@ -58,9 +57,9 @@ const ContactUs: React.FC<ContactUsModalProps> = (props) => {
       <section className="contact-page-section">
       <div className="container">
           <div className="sec-title">         
-                <h4 className='header'>Let's Get in Touch.</h4>
+                <h4>Let's Get in Touch.</h4>
             </div>
-            <div className="inner-container content_bg">
+            <div className="inner-container">
               <div className="row clearfix">
                     <div className="form-column col-lg-8 col-sm-12 col-xs-12">
                       <div className="inner-column main_bg">
@@ -135,7 +134,7 @@ const ContactUs: React.FC<ContactUsModalProps> = (props) => {
                     </div>
                     
                     <div className="info-column col-md-4 col-sm-12 col-xs-12">
-                      <div className="inner-column">
+                      <div className="inner-column card">
                           <h5 className='text-center'>Contact Info</h5>
                             <ul className="list-info pt-4">
                             <li>

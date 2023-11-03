@@ -440,14 +440,14 @@ const MakronexaOverview: React.FC = () => {
              setQuestion(item)
               handleAsk()
             }}
-            className="nav-item"
+            className="nav-item text-dark"
           />
         </Col>
         <Col className="col-12 col-lg-4">
-          <OverviewSection icon={faBoltLightning} title="Capabilities" items={capabilities} />
+          <OverviewSection icon={faBoltLightning} title="Capabilities" items={capabilities} className="nav-item text-dark" />
         </Col>
-        <Col className="col-12 col-lg-4">
-          <OverviewSection icon={faWarning} title="Limitations" items={limitations} color="yellow" />
+        <Col className="col-12  col-lg-4">
+          <OverviewSection icon={faWarning} title="Limitations" items={limitations} color="yellow" className="nav-item text-dark"/>
         </Col>
       </Row>
     </div>
@@ -463,12 +463,12 @@ const OverviewSection: React.FC<{ icon: IconDefinition; title: string; items: st
   className
 }) => {
   return (
-    <div className="d-flex flex-column">
+    <div className="d-flex flex-column ">
       <FontAwesomeIcon icon={icon} style={{ color: color || "inherit" }} />
       <span className="mt-1">{title}</span>
       <ul>
         {items.map((item, index) => (
-          <li key={index} className={`text-start content_bg my-3 p-2 ${className}`}
+          <li key={index} className={`text-start content_bg card my-3 p-2 ${className}`}
           onClick={() => {onItemClick && onItemClick(item)}
 
           }
@@ -640,16 +640,18 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                 <div className="d-flex chats-messages justify-content-center text-start mt-2">
                 <div className="pe-2">
                 {section.type!=="imageUrl"&&(
-                  <img
+                <div className="user_avatar">
+                    <img
                     src={section.from === "user" ? user.avatar : md_logo_small}
                     alt={section.from}
                     style={{
                       width: "30px",
                       height: "30px",
-                      borderRadius: "0%",
+                      borderRadius: "50%",
                     }}
                     className="img_component"
                   />
+                </div>
                 )}
                 </div>
 
@@ -662,7 +664,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                         } text-start p-2`}
                       >
                         <div className="d-flex align-items-center">
-                        <small>
+                        <small style={{color:"black"}}>
                         {section.message}
                         </small>
                         {section.message===messages[messages.length-1].message && loading && <Loader/>}
@@ -692,7 +694,8 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                               wordWrap: "break-word",
                               overflowWrap: "break-word",
                               fontFamily:"sans-serif",
-                              lineHeight: "1.8"
+                              lineHeight: "1.8",
+                              color:"black",
                             }}>
                               {section.from !== "user" && section.message.trimStart() === currentAnswer.trimStart()
                                 ? <ExtractLaTeXExpressions text={animatedText} />
@@ -789,7 +792,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
           </div>
           )}
         </div>
-        <div className="col chat-nav d-none d-md-block col-md-4 content_bg pt-3 border-radius-round">
+        <div className="col card chat-nav d-none d-md-block col-md-4 content_bg pt-3 border-radius-round">
           <div>    
             <Button className="btn-primary py-2 d-flex justify-content-center me-2 w-100 content_bg-2" onClick={async()=>{
               await handleNewChat()

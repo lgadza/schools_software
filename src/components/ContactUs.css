@@ -1,7 +1,7 @@
 
 .sec-title {
     position: relative;
-    padding-bottom: 40px;
+    padding-bottom: 20px;
 }
 
 .sec-title .title {
@@ -48,7 +48,7 @@
     position: relative;
     z-index: 1;
     /* background-color: #00b8ca; */
-    box-shadow: 0 0 15px 5px rgba(0, 0, 0, .1);
+    /* box-shadow: 0 0 15px 5px rgba(0, 0, 0, .1); */
 }
 
 .contact-page-section .form-column {
@@ -89,9 +89,12 @@
     position: relative;
     margin-bottom: 25px;
     font-size: 18px;
-    color: #fff;
+    color: black;
     line-height: 1.8em;
     padding-left: 45px;
+}
+.contact-page-section .info-column .list-info li a {
+    color: #00b8ca !important;
 }
 
 .contact-page-section .info-column .list-info li:last-child {

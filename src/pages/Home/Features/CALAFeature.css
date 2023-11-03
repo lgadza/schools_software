@@ -1,6 +1,6 @@
 
 .cala-hero-container.row {
-  background-color: black !important;
+  background-color: rgb(14, 178, 190) !important;
   height: 60vh;
 
 }
@@ -14,15 +14,15 @@
     color: white;
     font-size: 3em;
     padding: 0 5rem;
-/* background-image: linear-gradient(160deg, rgba(0, 147, 233,.3) 0%, rgba(128, 208, 199,.8) 100%); */
-/* background: linear-gradient( 90deg, rgba(30, 87, 153,.5) 0%, rgba(44, 224, 191,.5) 19%, rgba(118, 221, 44,.5) 40%, rgba(219, 166, 43,.5) 60%, rgba(224, 46, 191,.5) 83%, rgba(30, 87, 153,.5) 100%); */
-animation: bg 1s ease-in-out infinite;
-
-    box-shadow: rgba(10, 43, 80, 0.5) -5px 5px, rgba(18, 53, 58, 0.4)  -10px 10px, rgba(11, 12, 11, 0.3) -15px 15px, rgba(32, 11, 11, 0.2) -20px 20px, rgba(30, 87, 153,.1) -25px 25px;
+  animation: bg 1s ease-in-out infinite;
+    /* box-shadow: rgba(10, 43, 80, 0.5) -5px 5px, rgba(18, 53, 58, 0.4)  -10px 10px, rgba(11, 12, 11, 0.3) -15px 15px, rgba(32, 11, 11, 0.2) -20px 20px, rgba(30, 87, 153,.1) -25px 25px; */
     width: 100%;
     width: 100px;
     height: 5rem;
     border-radius: 5px;
+  }
+  .cala-main-feature h1{
+    color: white !important;
   }
   .more-features::-webkit-scrollbar-thumb {
     background: #888;

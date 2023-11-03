@@ -2,7 +2,7 @@
     --brand-color: rgb(11, 94, 215);
     --body-color: #999;
     --textColor:rgb(27, 27, 29);
-    --content_bg:rgb(50, 50, 50);
+    --content_bg:white;
   }
 .password-input-container {
   position: relative;

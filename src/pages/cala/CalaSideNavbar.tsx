@@ -25,21 +25,21 @@ const CalaSideNavbar=({user}:{user:UserRegistration}):JSX.Element=>{
             <Nav className="flex-column mt-4 w-100">
                 <Nav.Item>
                 <Link to={`/ask/${user.id}`} 
-                          className={`d-flex nowrap align-items-center px-2 py-2 ${activeComponent === "MakronexusAI" ? "active" : ""}`}>
+                          className={`d-flex nowrap text-dark align-items-center px-2 py-2 ${activeComponent === "MakronexusAI" ? "active" : ""}`}>
                         <small>Makronexa</small>
                 </Link>
                 </Nav.Item>
                 <Nav.Item>
-                <Link to="" className='d-flex align-items-center nowrap px-2 py-2'><small className="text-nowrap">My Projects</small></Link>
+                <Link to="" className='d-flex align-items-center nowrap px-2 py-2'><small className="text-nowrap text-dark">My Projects</small></Link>
                 </Nav.Item>
                 <Nav.Item>
                    <Link to={`/${user.id}/datasets`} onClick={()=>handleNavigationClick("DataSets")} className={`d-flex w-100 nowrap align-items-center px-2 py-2 ${activeComponent === "DataSets" ? "active" : ""}`}> 
-                   <small className="text-nowrap">DataSets</small>
+                   <small className="text-nowrap text-dark">DataSets</small>
                    </Link> 
                    </Nav.Item> 
                    <Nav.Item>
                    <Link to="" className={`d-flex nowrap align-items-center px-2 py-2 ${activeComponent === "Settings" ? "active" : ""}`} onClick={() => handleNavigationClick("DataSetSettings")} >
-                    <small className="text-nowrap">Settings</small>
+                    <small className="text-nowrap text-dark">Settings</small>
                        </Link>
                 </Nav.Item>
             </Nav>

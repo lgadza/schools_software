@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
   const [modalShow, setModalShow] = useState(false);
   return (
     <Container fluid className='px-0 new_footer_area '>
-    <footer className="footer-section main_bg content_bg">
+    <footer className="footer-section">
       <div className="new_footer_top ">
         <div className="container">
         <div className="footer-cta pt-5 pb-5">
@@ -91,16 +91,16 @@ const Footer: React.FC = () => {
                 </div>
                 <ul>
                   <li>
-                    <a className="header" href="/">Home</a>
+                    <a  href="/">Home</a>
                   </li>
                   <li>
-                    <a className="header" href="/about">About us</a>
+                    <a  href="/about">About us</a>
                   </li>
                   <li>
-                    <a className="header" href="#">Our Services</a>
+                    <a  href="#">Our Services</a>
                   </li>
                   <li className='cursor-pointer' onClick={() => setModalShow(true)}>
-                  <a className="header"> Contact us </a>
+                  <a > Contact us </a>
                   </li>
                   {/* <li>
                     <a className="header" href="#">Latest News</a>

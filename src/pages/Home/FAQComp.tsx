@@ -28,7 +28,7 @@ const FAQComp: React.FC<FAQCompoProps> = ({FAQItems}) => {
             </button>
             {expandedId === item.id && (
               <div className="FAQ-content">
-                <p className='header'>{item.answer}</p>
+                <p>{item.answer}</p>
               </div>
             )}
           </div>

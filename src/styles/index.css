@@ -7,8 +7,8 @@
 }
 
 :root {
-  --main-bg: rgb(40, 42, 54);
-  --bg-1: rgb(32, 44, 51);
+  --main-bg: #fff;
+  --bg-1: white;
   --bg-2: rgb(42, 57, 66);
   --textColor: rgb(233, 237, 227);
   --blackAndWhite: black;
@@ -171,11 +171,25 @@ div.nav-bar {
   /* LOG IN */
   .login_container{
   border-radius: 10px;
-  color: white;
+  color: black;
   position: absolute;
   top: 20%;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
    
 }
+.register-form{
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+  color: black !important;
+}
+
+
+.login_container a{
+  color: black !important;
+}
+.form-check-input:checked[type=checkbox] {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3e%3cpath fill='none' stroke='rgb(14, 178, 190)' stroke-linecap='round' stroke-linejoin='round' stroke-width='3' d='M6 10l3 3l6-6'/%3e%3c/svg%3e") !important;
+}
+
 
 /* AdminAdmissionForm */
 input.search{
@@ -200,7 +214,7 @@ border: none;
   border: 2px solid white;
  }
  .search-bar{
-  box-shadow: 0px 2px 2px rgb(32, 32, 32);
+  /* box-shadow: 0px 2px 2px rgb(32, 32, 32); */
   position: absolute !important;
   top: 0;
   right: 0;

@@ -63,15 +63,15 @@ const DataSets= ({token,user_id}:{token:string,user_id:string}):JSX.Element => {
             
           </Col>
           <Col xs={5} className="name-column text-start">
-            <strong>Name</strong>
+            <strong className='text-dark'>Name</strong>
           </Col>
           <Col xs={4} className="created-column text-start">
-            <strong>Created</strong>
+            <strong className='text-dark'>Created</strong>
           </Col>
-          <Col xs={1} className="chat-icon-column ">
+          <Col xs={1} className="chat-icon-column text-dark ">
             <strong className='d-none d-md-block'>Ask</strong>
           </Col>
-          <Col xs={1} className="delete-icon-column">
+          <Col xs={1} className="delete-icon-column text-danger">
            <strong className='d-none d-md-block'>Delete</strong>
           </Col>
         </Row>

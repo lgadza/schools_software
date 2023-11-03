@@ -1,7 +1,10 @@
 #horizontal-process {
     margin-bottom: 40px;
-    /* overflow-x: hidden; */
     text-align: center;
+    background-color: rgb(14, 178, 190);
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+    padding-bottom: 20px;
+    border-radius: 5px;
   }
   
   #horizontal-process .section-heading {
@@ -12,9 +15,7 @@
     height: 100%;
     width: 100%;
   }
-  .timeline-content{
-    background-color: black;
-  }
+
   #horizontal-process .pane-warp {
     height: 140px;
     width: 25px;
@@ -76,6 +77,7 @@
     background: #9b3636;
     margin-left: 10px;
     background: #0F2027;  
+    color: white;
     background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027); 
     background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
     box-shadow: 0 20px 25px -5px rgba(69, 146, 209, 0.3);

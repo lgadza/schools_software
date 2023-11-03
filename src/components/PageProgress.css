@@ -12,12 +12,12 @@
   width: 5px;
   height: 100vh;
   display: flex;
-  z-index: 110;
+  z-index: 1110;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   transform: translateY(-50%);
-  background-color: #333;
+  background-color: rgb(14, 178, 190,0.3);
   padding-bottom: 2rem;
   overflow: visible;
 }
@@ -35,7 +35,7 @@
 }
 
 .step-label {
-  color: #333;
+  color: rgb(14, 178, 190,0.3);
   font-size: 16px;
   font-weight: bold;
   text-align: left;
@@ -43,6 +43,7 @@
   transform: rotate(-90deg);
   transform-origin: left center;
   transition: color 0.2s ease;
+  background-color: transparent !important;
 }
 
 .step-label.active {
@@ -50,9 +51,9 @@
 }
 
 .step {
-  width: 15px;
+  width: 10px;
   border-radius: 50% !important;
-  height: 15px;
+  height: 10px;
   margin: 5px 0;
   display: flex;
   align-items: center;
@@ -61,11 +62,11 @@
   font-weight: bold;
   border-radius: 5px;
   transition: background-color 0.3s;
-  background-color: #333 !important;
+  background-color: transparent !important;
 }
 
 .step.active {
-  background-color: #007bff !important;
+  /* background-color: #007bff !important; */
 }
 
 .progress.active {
@@ -75,7 +76,7 @@
   width: 100%;
   height: 0;
   /* background-color: #007bff; */
-  background-color: transparent;
+  background-color: transparent !important;
   z-index: 1;
   transition: height 0.3s;
 }

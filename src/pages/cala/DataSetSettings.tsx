@@ -157,7 +157,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
         </div>):(
         <div>
          <div className='d-flex align-items-center justify-content-between content_bg px-3'>
-           <span className='me-5'>Shared</span>
+           <span className='me-5 text-dark'>Shared</span>
            <ToggleSwitch checked={shared} onChange={() => setShared(!shared)} />
          </div>
          {isTempAlert && (
@@ -175,7 +175,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
            </Alert>
          )}
          <div className='d-flex align-items-center content_bg my-4 px-3'>
-           <span className='me-3'>
+           <span className='me-3 text-dark'>
              Temperature
            </span>
            <RangeSlider onTemperatureChange={handleTemperatureChange} currentTemperature={dataSet.temperature !== null ? dataSet.temperature * 10 : 0} />
@@ -250,15 +250,15 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
         <div className='col-xl-6 mb-5'>
           <div className='d-flex justify-content-end'>
             <div className='me-2'>
-              <Button className='content_bg' onClick={() => { handleComponentChange("uploadedDocs") }}><FontAwesomeIcon icon={faFolder} style={{ color: "rgb(234, 191, 70)" }} /><span className='ms-2' >Docs</span>
+              <Button className='content_bg' onClick={() => { handleComponentChange("uploadedDocs") }}><FontAwesomeIcon icon={faFolder} style={{ color: "rgb(234, 191, 70)" }} /><span className='ms-2 text-dark' >Docs</span>
               </Button>
             </div>
             <div className='me-2'>
-              <Button className='content_bg' onClick={() => { handleComponentChange("uploadDocs") }}><FontAwesomeIcon icon={faFolderPlus} style={{ color: "rgb(234, 191, 70)" }} /><span className='ms-2'>Upload</span>
+              <Button className='content_bg' onClick={() => { handleComponentChange("uploadDocs") }}><FontAwesomeIcon icon={faFolderPlus} style={{ color: "rgb(234, 191, 70)" }} /><span className='ms-2 text-dark'>Upload</span>
               </Button>
             </div>
             <div className='d-none d-md-block me-2'>
-              <Button className='content_bg' onClick={()=>navigate(`/${user_id}/datasets/${dataSet.dataset_name}/${dataSet.id}/ask/${dataSet.temperature||0.3}`)}><FontAwesomeIcon icon={faComment} style={{ color: "rgb(30, 215, 96)" }} /><span className='ms-2'>Ask</span>
+              <Button className='content_bg' onClick={()=>navigate(`/${user_id}/datasets/${dataSet.dataset_name}/${dataSet.id}/ask/${dataSet.temperature||0.3}`)}><FontAwesomeIcon icon={faComment} style={{ color: "rgb(30, 215, 96)" }} /><span className='ms-2 text-dark'>Ask</span>
               </Button>
             </div>
           </div>

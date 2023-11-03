@@ -143,7 +143,7 @@ const handleChange = (e: any) => {
   };
  
   return (
-    <div className="content_bg  p-3">
+    <div className="content_bg register-form p-3">
       {isError && alertVisible && (
         <div className="register-alert">
           <AlertBox type="danger" message={`${isError && "Error during registration, try again later!"}`} />
@@ -274,6 +274,7 @@ const handleChange = (e: any) => {
                 id="checkbox2"
                 name="data_process_acceptance"
                 onChange={handleCheckboxChange}
+                
               />
               <Form.Label className="mx-2 text-start">
                 <small>

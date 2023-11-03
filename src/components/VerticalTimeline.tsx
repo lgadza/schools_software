@@ -29,7 +29,6 @@ const VerticalTimeline = ({timelineItems}:{timelineItems:timelineItemsProps[]}):
             <div className={`timeline-content ${index % 2 === 0 ? 'js--fadeInLeft' : 'js--fadeInRight'}`}>
               <div className='timeline-img-container cala-content'>
               {item.imgUrl && (
-
                 <img className='time-img' src={item.imgUrl} alt='img'/>
               )}
               </div>
@@ -40,7 +39,7 @@ const VerticalTimeline = ({timelineItems}:{timelineItems:timelineItemsProps[]}):
               <div className='text-start px-2'>
                 <small>{item.description}</small>
               </div>
-              <a href="#" className='header d-flex px-2 mt-4'>Learn more!</a>
+              <a href="#" className='header d-flex px-2 my-4'>Learn more!</a>
             </div>
           </div>
         ))}

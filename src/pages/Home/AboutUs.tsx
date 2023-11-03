@@ -24,18 +24,20 @@ const AboutUs=():JSX.Element=>{
             <div className="content-container cala-main-feature">
         <Container fluid className="px-0">
           <HomeNavbar />
-          <Container className="px-5 pt-5  calaAI">
           <div className="d-flex banner flex-column justify-content-center align-items-center">
                 {/* We're on a mission to provide schools with an all-in-one, affordable, and future-ready platform that makes education seamless, exciting, and accessible to everyone, ensuring quality learning for all. */}
+                <Container>
                 <h1>
                 We’re on a mission to expand the potential of education.
                 </h1>
+                </Container>
              
             </div>
+          <Container className="px-5 pt-5  calaAI">
             <Row>
           
           <Col md={4} className="mb-3">
-          <div className="card content_bg">
+          <div className="card">
             <h4 className="mb-3">
             Who We Are
             </h4>
@@ -50,7 +52,7 @@ const AboutUs=():JSX.Element=>{
           </div>
           </Col>
           <Col md={4} className="mb-3">
-          <div className="card content_bg">
+          <div className="card">
             <h4 className="mb-3">
             Our Mission
             </h4>
@@ -64,7 +66,7 @@ const AboutUs=():JSX.Element=>{
           </div>
           </Col>
           <Col md={4} className="mb-3">
-          <div className="card content_bg">
+          <div className="card">
             <h4 className="mb-3">
             What We Do
             </h4>
@@ -79,7 +81,7 @@ const AboutUs=():JSX.Element=>{
           </div>
           </Col>
             </Row>
-            <div className="mt-5 content_bg text-center">     
+            <div className="mt-5 card text-center">     
       <ul className="tree d-flex justify-content-center">
         <li>
           <h4>Our Core Values</h4>
@@ -90,7 +92,7 @@ const AboutUs=():JSX.Element=>{
            <FontAwesomeIcon icon={faLightbulb} className="icon about-us-icon"/>
            </div>
                  <p>Innovation</p>
-                 <div className="text-center">
+                 <div className="text-start">
                     <small>
                     We thrive on innovation, constantly seeking new ways to improve education through technology.
                     </small>
@@ -103,7 +105,7 @@ const AboutUs=():JSX.Element=>{
                 <Icon.PatchCheckFill className="icon about-us-icon"/>
                 </div>
                  <p>Quality</p>
-                 <div className="text-center">
+                 <div className="text-start">
                     <small>
                     We are committed to delivering high-quality, reliable solutions that make a meaningful impact.
                     </small>
@@ -116,7 +118,7 @@ const AboutUs=():JSX.Element=>{
                  <Icon.UniversalAccess className="icon about-us-icon"/>
             </div>
                  <p>Accessibility</p>
-                 <div className="text-center">
+                 <div className="text-start">
                     <small>
                     We believe that education should be accessible to everyone, and we design our software with inclusivity in mind.
                     </small>
@@ -129,7 +131,7 @@ const AboutUs=():JSX.Element=>{
                 <FontAwesomeIcon icon={faHandshake} className="icon about-us-icon"/>
             </div>
                  <p>Collaboration</p>
-                 <div className="text-center">
+                 <div className="text-start">
                     <small>
                     Collaboration is at the heart of what we do. We work closely with educators, students, and administrators to create solutions that truly meet their needs.
                     </small>
@@ -140,7 +142,7 @@ const AboutUs=():JSX.Element=>{
         </li>
       </ul>
             </div>
-            <div>
+            <div className="mt-5">
             <PushButton url='/register' message='Join us'/>
             </div>
             <div className="mt-5">

@@ -203,11 +203,13 @@ setSelectedFiles(remainingFiles)
         <li key={index} className='d-flex content_bg  mb-3 p-3 justify-content-between'>
           <div>
             <div>
-              <FontAwesomeIcon className='me-2' icon={faFile}/> {file.name}
+              <FontAwesomeIcon className='me-2 text-dark' icon={faFile}/> <span className='text-dark'>
+              {file.name}
+                </span>
             </div>
             <div>
-              <span>{file.type}</span>
-              <strong className='ms-3'>{formatBytes(file.size)}</strong>
+              <span className='text-dark'>{file.type}</span>
+              <strong className='ms-3 text-dark'>{formatBytes(file.size)}</strong>
             </div>
           </div>
           <div>

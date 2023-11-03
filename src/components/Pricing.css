@@ -30,7 +30,7 @@
   align-items: start;
   gap: 1.25em;
   color: #eceff1;
-  background-color: #2b2b2b;
+  background-color: rgb(113, 8, 43,0.8);
   border: 1px solid #eceff133;
   border-radius: 10px;
 }
@@ -46,6 +46,7 @@
   --saturation: 95.9%;
   --lightness: 61.76%;
     background-color: rgba(10, 104, 109, 0.25);
+    background-color: rgb(14, 178, 190,0.8) ;
 
  
 }
@@ -54,7 +55,7 @@
   --hue: 338.69;
   --saturation: 100%;
   --lightness: 48.04%;
-  background: linear-gradient(-45deg, rgba(82, 238, 147, 0.1),  rgba(35, 166, 213,.1), #23d5ab);
+  background: linear-gradient(-45deg, rgba(82, 238, 147, 0.4),  rgba(35, 166, 213,.6), #23d5ab);
 	background-size: 400% 400%;
 	animation: gradient 15s ease infinite;
 }
@@ -144,5 +145,5 @@
 
 :not(.overlay) > .pricing .card:hover {
   --lightness: 95%;
-  background: hsla(var(--hsl), 0.1);
+  /* background: hsla(var(--hsl), 0.1); */
 }

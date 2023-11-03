@@ -16,7 +16,11 @@
 .three.col:first-of-type {
   margin-left: 0;
 }
-
+.user_avatar{
+  background-color: rgb(14, 178, 190);
+  padding: 3px;
+  border-radius: 50%;
+}
 
 
 
@@ -274,6 +278,9 @@ to {
       position: sticky;
       top: 23px;
       right:0;    
+    }
+    .chat-content div small{
+      color: black !important;
     }
     /*Skeleton Screen with CSS */
 
