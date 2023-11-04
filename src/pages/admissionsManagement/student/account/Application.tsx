@@ -11,13 +11,13 @@ interface ApplicationProps{
 }
 // Reusable Card component
 const ApplicationCard:React.FC<ApplicationProps> = ({ title, location, applied, status }) => (
-  <Card className="main_bg my-3 p-3">
-    <Card.Title className="text-start">{title}</Card.Title>
+  <Card className=" my-3 p-3">
+    <Card.Title className="text-start text-dark">{title}</Card.Title>
     <Card.Body>
-      <Card.Text className="text-start">Location: {location}</Card.Text>
+      <Card.Text className="text-start text-dark">Location: {location}</Card.Text>
       <Card.Subtitle className="text-start text-muted">Applied: {applied}</Card.Subtitle>
     </Card.Body>
-    <Card.Footer className="text-end">
+    <Card.Footer className="text-end text-success">
       Status: <span className={` p-2 ms-2 ${status==="accepted"?"header":status==="rejected"?"text-danger":"text-muted"}`}>{status}</span>
     </Card.Footer>
   </Card>
@@ -42,11 +42,11 @@ const Application = (): JSX.Element => {
     
   return (
     <div>
-      <h5 className="d-flex my-3">Application</h5>
+      <h5 className="d-flex my-3 text-dark">Application</h5>
       <Form>
         <Row>
           <Col>
-            <Form.Label className="d-flex">
+            <Form.Label className="d-flex text-dark">
               Level <span className="text-danger">*</span>
             </Form.Label>
             <Form.Select required value={selectedLevel} onChange={handleLevelChange}>
@@ -59,7 +59,7 @@ const Application = (): JSX.Element => {
             </Form.Select>
           </Col>
           <Col>
-            <Form.Label className="d-flex">
+            <Form.Label className="d-flex text-dark">
               Select School <span className="text-danger">*</span>
             </Form.Label>
             <Select
@@ -83,7 +83,7 @@ const Application = (): JSX.Element => {
         </Button>
       </div>
         <div className="steps-bar mt-4">
-              <h6 className="text-start">My Applications</h6>
+              <h6 className="text-start text-dark">My Applications</h6>
             </div>
             <Row>
               {[1, 2, 3].map((index) => (

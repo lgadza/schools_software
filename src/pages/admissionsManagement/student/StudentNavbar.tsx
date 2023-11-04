@@ -57,14 +57,14 @@ const handleDeleteAccount=()=>{
   <Image src={personalInfo.avatar} height={30} width={30} alt={personalInfo.first_name} />
 ) }
 
-          <span className="px-2">{personalInfo?.first_name} {personalInfo?.last_name} </span>
-          <FontAwesomeIcon icon={faChevronDown}/>
+          <span className="px-2 text-dark">{personalInfo?.first_name} {personalInfo?.last_name} </span>
+          <FontAwesomeIcon className="text-dark" icon={faChevronDown}/>
             </Dropdown.Toggle>
 
             <Dropdown.Menu className="px-2">
               
                 <div className="d-flex px-3 my-2  textColor justify-content-between">
-          <span style={{color:"white"}}>{personalInfo?.first_name} {personalInfo?.last_name} </span>
+          <span className="text-dark">{personalInfo?.first_name} {personalInfo?.last_name} </span>
           {personalInfo.avatar && personalInfo.avatar !== '' && (
           <Image src={personalInfo.avatar} height={30} width={30} alt={personalInfo.first_name} />
         ) }

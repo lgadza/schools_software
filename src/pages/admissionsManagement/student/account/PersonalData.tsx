@@ -109,7 +109,7 @@ const handleSave=async()=>{
     <Form onSubmit={handleSubmit}>
       <Row>
         <Col>
-        <Form.Label className="d-flex">First name <span className="text-danger">*</span></Form.Label>
+        <Form.Label className="d-flex text-dark">First name <span className="text-danger">*</span></Form.Label>
           <Form.Control
            placeholder="First name"
            name="first_name"
@@ -119,7 +119,7 @@ const handleSave=async()=>{
             />
         </Col>
         <Col>
-        <Form.Label className="d-flex">Last name <span className="text-danger">*</span></Form.Label>
+        <Form.Label className="d-flex text-dark">Last name <span className="text-danger">*</span></Form.Label>
           <Form.Control 
           placeholder="Last name" 
           required
@@ -133,7 +133,7 @@ const handleSave=async()=>{
     <Form className="my-3" onSubmit={handleSubmit}>
       <Row>
         <Col>
-        <Form.Label className="d-flex">Second name </Form.Label>
+        <Form.Label className="d-flex text-dark">Second name </Form.Label>
           <Form.Control 
           placeholder="Second name" 
           name="second_name"
@@ -142,7 +142,7 @@ const handleSave=async()=>{
           />
         </Col>
         <Col>
-        <Form.Label className="d-flex">Date of birth<span className="text-danger">*</span></Form.Label>
+        <Form.Label className="d-flex text-dark">Date of birth<span className="text-danger">*</span></Form.Label>
           <Form.Control 
           placeholder="Date of birth" 
            required
@@ -157,7 +157,7 @@ const handleSave=async()=>{
     <Form className="my-3" onSubmit={handleSubmit}>
       <Row>
         <Col>
-        <Form.Label className="d-flex">Code<span className="text-danger">*</span></Form.Label>
+        <Form.Label className="d-flex text-dark">Code<span className="text-danger">*</span></Form.Label>
           <Form.Control  as="select" required
           name="country_code"
           value={!editMode?user.country_code:personalData.country_code}
@@ -168,7 +168,7 @@ const handleSave=async()=>{
           </Form.Control>
         </Col>
         <Col>
-        <Form.Label className="d-flex">Mobile number<span className="text-danger">*</span></Form.Label>
+        <Form.Label className="d-flex text-dark">Mobile number<span className="text-danger">*</span></Form.Label>
           <Form.Control type="number" 
           placeholder="Phone number" 
           required
@@ -186,7 +186,7 @@ const handleSave=async()=>{
        
         <Col>
        
-        <Form.Label className="d-flex">Gender<span className="text-danger">*</span></Form.Label>
+        <Form.Label className="d-flex text-dark">Gender<span className="text-danger">*</span></Form.Label>
     <Form.Control as="select" required
     name="gender"
     value={!editMode?user.gender:personalData.gender}
@@ -198,7 +198,7 @@ const handleSave=async()=>{
   
         </Col>
         <Col>
-        <Form.Label className="d-flex">Citizenship<span className="text-danger">*</span></Form.Label>
+        <Form.Label className="d-flex text-dark">Citizenship<span className="text-danger">*</span></Form.Label>
           <Form.Control type="tel" 
           placeholder="citizenship" 
           required

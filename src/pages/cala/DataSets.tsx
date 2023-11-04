@@ -87,7 +87,7 @@ const DataSets= ({token,user_id}:{token:string,user_id:string}):JSX.Element => {
           <Col xs={5} className="name-column text-start header cursor-pointer" onClick={() => navigate(`/${params.user_id}/datasets/${item.dataset_name}`)}>
             {item.dataset_name}
           </Col>
-          <Col xs={4} className="created-column text-start">
+          <Col xs={4} className="created-column header text-start">
         {new Date(item.createdAt!).toLocaleDateString('en-GB')}
         </Col>
 

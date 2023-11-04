@@ -127,7 +127,7 @@ const handleResourceUpload = async () => {
       </div>
       <div className="upload-card content_bg" onDragOver={handleDragOver} onDrop={handleDrop}>
         <div className="upload-card-body">
-          <div className="upload-card-title">Upload your files</div>
+          <div className="upload-card-title text-dark">Upload your files</div>
           <div className="upload-card-subtitle">Maximum file size is {MAX_FILE_SIZE_MB}MB</div>
           <div className="upload-card-subtitle">Supported types: <strong>PDF, and all text files such as TXT, CSV</strong></div>
           <div className="file-upload">
@@ -196,19 +196,20 @@ const handleResourceUpload = async () => {
                {isLoading?(<Loader/>):(
                 <div>
                    <div className='mb-4'>
-              <h5>Documents to upload</h5>
-              <span className='text-muted'>bytes upload credit:<strong className='ms-1'>UNKNOWN</strong></span>
+              <h5 className='text-dark'>Documents to upload</h5>
+            
                 </div>
               <ul>
               {selectedFiles.map((file, index) => (
         <li key={index} className='d-flex content_bg  mb-3 p-3 justify-content-between'>
           <div>
             <div>
-              <FontAwesomeIcon className='me-2' icon={faFile}/> {file.name}
+              <FontAwesomeIcon className='me-2 text-dark' icon={faFile}/> 
+              <span className='text-dark'>{file.name}</span>
             </div>
             <div>
-              <span>{file.type}</span>
-              <strong className='ms-3'>{formatBytes(file.size)}</strong>
+              <span className='text-dark'>{file.type}</span>
+              <strong className='ms-3 text-dark'>{formatBytes(file.size)}</strong>
             </div>
           </div>
           <div>

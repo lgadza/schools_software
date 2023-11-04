@@ -228,6 +228,10 @@ input[type="checkbox"]:not(:checked) {
 .btn:focus{
   box-shadow: none !important;
 }
+.dropdown-menu.show{
+  border: none !important;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+}
 .show>.btn-primary.dropdown-toggle:focus {
   box-shadow: none !important;
 }
@@ -615,4 +619,13 @@ p.chat-content{
 }
 .all-pages{
   position: relative;
+}
+.chatbot-nav{
+  position: fixed;
+  right: 0;
+  bottom: 20px;
+  z-index: 1100;
+  background-color: rgb(3, 233, 244);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+  border-radius: 5px;
 }

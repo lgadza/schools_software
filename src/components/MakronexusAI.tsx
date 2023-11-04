@@ -530,15 +530,15 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
               .filter((chat) => chat.makronexaQAs.length !==0)
               .map((chat,index)=>{
                 return(
-            <li className={`nav-item p-2 w-100 my-1  d-flex justify-content-center align-items-center ${currentChat===chat.id?"content_bg":"header"}`} key={index}>
+            <li className={`nav-item p-2 w-100 my-1  d-flex justify-content-center align-items-center ${currentChat===chat.id?"main_bg":"text-white"}`} key={index}>
               <small className="d-flex w-75" 
               onClick={() => handleChatItemClick(chat.id)}
               >
               <FontAwesomeIcon 
-              className={`${currentChat===chat.id?"":"header"}`}
-                icon={faComments} style={{color:"gray"}} />
+              className={`${currentChat===chat.id?"text-dark":"text-white"}`}
+                icon={faComments} />
                 {chat.makronexaQAs.length > 0 &&(
-                <span className=" ms-2 text-start chat_header_name">
+                <span className={`ms-2 text-start chat_header_name ${currentChat===chat.id?"text-dark":"text-white"}`}>
                   {chat.makronexaQAs[chat.makronexaQAs.length-1].message}
                 </span>
                 )}
@@ -573,7 +573,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
 </Dropdown.Toggle>
 
 <Dropdown.Menu className="py-0"  style={{width:"20rem"}}>
-  <Dropdown.Item className="py-2">
+  <Dropdown.Item className="py-2 main_bg">
     <Link to={`/users/account/${user.id}`} className="textColor px-2">
     {/* <FontAwesomeIcon icon={faGear}/> */}
     <Image src={user.avatar ||`https://img.freepik.com/free-icon/user_318-159711.jpg?size=626&ext=jpg&uid=R36208328&ga=GA1.1.377730112.1687240299&semt=ais`} height={30} width={30} alt="avatar"/>
@@ -583,7 +583,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
 {
   (user.role.trim()==="admin" || user.role.trim()==="teacher") && <div>
       <hr className="my-0 py-0" />
-  <Dropdown.Item className="py-2">
+  <Dropdown.Item className="py-2 main_bg">
     <Link to={`/${user.id}/datasets`} className="textColor px-2">
     <FontAwesomeIcon className="text-dark" icon={faGear}/>
       <span className="px-2 text-dark">Settings</span>
@@ -592,7 +592,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
   </div>
 }
   <hr className="my-0 py-0" />
-  <Dropdown.Item className="py-2">
+  <Dropdown.Item className="py-2 main_bg">
     <div
       onClick={handleLogout}
       className="textColor px-2"
@@ -664,7 +664,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                         } text-start p-2`}
                       >
                         <div className="d-flex align-items-center">
-                        <small style={{color:"black"}}>
+                        <small className="text-dark">
                         {section.message}
                         </small>
                         {section.message===messages[messages.length-1].message && loading && <Loader/>}
@@ -791,7 +791,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
           </div>
           )}
         </div>
-        <div className="col card chat-nav d-none d-md-block col-md-4 content_bg pt-3 border-radius-round">
+        <div className="col card chat-nav d-none d-md-block col-md-4 content_bg pt-3 ">
           <div>    
             <Button className="btn-primary py-2 d-flex justify-content-center me-2 w-100 content_bg-2" onClick={async()=>{
               await handleNewChat()

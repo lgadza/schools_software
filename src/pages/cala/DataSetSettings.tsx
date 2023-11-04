@@ -21,6 +21,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
 import { useDispatch } from 'react-redux';
 import Loader from '../../components/Loader';
+import * as Icon from "react-bootstrap-icons" 
 
 // interface Engine {
 //   created: string | null;
@@ -144,8 +145,11 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
       <div>
       <small className='link-item header cursor-pointer' onClick={() => navigate(`/ask/${user_id}`)}>Makronexa</small> <span>/</span><small className='link-item header cursor-pointer' onClick={() => navigate(`/${user_id}/datasets`)}>Datasets</small> <span>/</span><small >{dataSet.dataset_name}</small>
       </div>
-      <div className='me-2 d-md-none'>
-              <Button className='content_bg' onClick={()=>navigate(`/${user_id}/datasets/${dataSet.dataset_name}/${dataSet.id}/ask/${dataSet.temperature || 0.3}`)}><FontAwesomeIcon icon={faComment} style={{ color: "rgb(30, 215, 96)" }} /><span className='ms-2'>Ask</span>
+      <div className='me-2  chatbot-nav'>
+              <Button className='' onClick={()=>navigate(`/${user_id}/datasets/${dataSet.dataset_name}/${dataSet.id}/ask/${dataSet.temperature || 0.3}`)}>
+                <Icon.ChatLeftTextFill size={25}/>
+                {/* <FontAwesomeIcon icon={faComment} style={{ color: "rgb(30, 215, 96)" }} /> */}
+                {/* <span className='ms-2 text-dark'>Ask</span> */}
               </Button>
             </div>
       </div>
@@ -257,10 +261,10 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
               <Button className='content_bg' onClick={() => { handleComponentChange("uploadDocs") }}><FontAwesomeIcon icon={faFolderPlus} style={{ color: "rgb(234, 191, 70)" }} /><span className='ms-2 text-dark'>Upload</span>
               </Button>
             </div>
-            <div className='d-none d-md-block me-2'>
+            {/* <div className='d-none d-md-block me-2'>
               <Button className='content_bg' onClick={()=>navigate(`/${user_id}/datasets/${dataSet.dataset_name}/${dataSet.id}/ask/${dataSet.temperature||0.3}`)}><FontAwesomeIcon icon={faComment} style={{ color: "rgb(30, 215, 96)" }} /><span className='ms-2 text-dark'>Ask</span>
               </Button>
-            </div>
+            </div> */}
           </div>
           <div className='my-4'>
             {activeComponent === "uploadDocs" && <DragAndDropFile user_id={user_id} dataset_id={dataSet.id!} />}

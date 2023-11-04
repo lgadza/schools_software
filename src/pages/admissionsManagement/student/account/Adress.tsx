@@ -169,14 +169,14 @@ e.preventDefault()
       )}
       {user ? (
         <>
-          <h5 className="d-flex mb-4">Address</h5>
+          <h5 className="d-flex mb-4 text-dark">Address</h5>
           <span className="d-flex text-muted mb-2">
             Fill all fields with <span className="text-danger mx-2">*</span>  to update
           </span>
           <Form onSubmit={handleSubmit}>
       <Row>
         <Col md={6}>
-        <Form.Label className="d-flex">Street <span className="text-danger">*</span></Form.Label>
+        <Form.Label className="d-flex text-dark">Street <span className="text-danger">*</span></Form.Label>
           <Form.Control
            placeholder="Street"
            name="street"
@@ -186,7 +186,7 @@ e.preventDefault()
             />
         </Col>
         <Col md={6} className="mt-3">
-        <Form.Label className="d-flex">Building number <span className="text-danger">*</span></Form.Label>
+        <Form.Label className="d-flex text-dark">Building number <span className="text-danger">*</span></Form.Label>
           <Form.Control 
           placeholder="Building number" 
           required
@@ -200,7 +200,7 @@ e.preventDefault()
     <Form className="my-3" onSubmit={handleSubmit}>
       <Row>
         <Col md={6}>
-        <Form.Label className="d-flex">Apartment number </Form.Label>
+        <Form.Label className="d-flex text-dark">Apartment number </Form.Label>
           <Form.Control 
           placeholder="Apartment number" 
           name="apartment_number"
@@ -209,7 +209,7 @@ e.preventDefault()
           />
         </Col>
         <Col md={6} className="mt-3">
-        <Form.Label className="d-flex">Postal code
+        <Form.Label className="d-flex text-dark">Postal code
         </Form.Label>
           <Form.Control 
           placeholder="Post code" 
@@ -223,7 +223,7 @@ e.preventDefault()
     <Form className="my-3" onSubmit={handleSubmit}>
       <Row>
       <Col md={6}>
-        <Form.Label className="d-flex">Location<span className="text-danger">*</span></Form.Label>
+        <Form.Label className="d-flex text-dark">Location<span className="text-danger">*</span></Form.Label>
           <Form.Control
            placeholder="eg. Pumula South"
             required
@@ -238,7 +238,7 @@ e.preventDefault()
     <Form className="my-3" onSubmit={handleSubmit}>
       <Row>
       <Col md={6}>
-        <Form.Label className="d-flex">Type of settlement<span className="text-danger">*</span></Form.Label>
+        <Form.Label className="d-flex text-dark">Type of settlement<span className="text-danger">*</span></Form.Label>
           <Form.Control
            as="select"
           
@@ -259,7 +259,7 @@ e.preventDefault()
         </Col>
         <Col md={6} className="mt-3">
        
-        <Form.Label className="d-flex">Province<span className="text-danger">*</span></Form.Label>
+        <Form.Label className="d-flex text-dark">Province<span className="text-danger">*</span></Form.Label>
     <Form.Control as="select" required
     name="province"
     value={user.address&&!editMode?user.address.province:address.province}
@@ -283,7 +283,7 @@ e.preventDefault()
     <Form className="my-3" onSubmit={handleSubmit}>
       <Row>
       <Col md={6}>
-        <Form.Label className="d-flex">City<span className="text-danger">*</span></Form.Label>
+        <Form.Label className="d-flex text-dark">City<span className="text-danger">*</span></Form.Label>
           <Form.Control
           as="select"
             required
@@ -305,7 +305,7 @@ e.preventDefault()
               </Form.Control>
         </Col>
         <Col md={6} className="mt-3">
-        <Form.Label className="d-flex">Country<span className="text-danger">*</span></Form.Label>
+        <Form.Label className="d-flex text-dark">Country<span className="text-danger">*</span></Form.Label>
     <Form.Control as="select" 
     required
     name="country"
