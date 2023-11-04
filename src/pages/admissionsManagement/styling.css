@@ -245,4 +245,6 @@ height: 50px;
 }
 .student-profile-bar.content_bg{
   transform: translate(0px,50px);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+
 }

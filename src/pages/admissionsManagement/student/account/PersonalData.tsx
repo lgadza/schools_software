@@ -105,7 +105,7 @@ const handleSave=async()=>{
      
 {user ? (
         <>
-<h5 className="d-flex mb-4">Personal data</h5>
+<h5 className="d-flex mb-4 text-dark">Personal data</h5>
     <Form onSubmit={handleSubmit}>
       <Row>
         <Col>

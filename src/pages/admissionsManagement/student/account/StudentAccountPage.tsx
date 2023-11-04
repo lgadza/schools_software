@@ -335,7 +335,7 @@ dispatch(getUserData(accessToken.accessToken))
                     activeComponent={activeComponent}
                     handleNavigationClick={handleNavigationClick} user={personalInfo} token={accessToken.accessToken} />
                 <Col ml={9} >
-                    <div className="student_account_border content_bg py-3 px-3 student_account_content ">
+                    <div className="student_account_border card content_bg py-3 px-3 student_account_content ">
                     {activeComponent === "PersonalData" && <PersonalData />}
                     {activeComponent === "Address" && <Address />}
                     {activeComponent === "Guardian" && <Guardian />}
