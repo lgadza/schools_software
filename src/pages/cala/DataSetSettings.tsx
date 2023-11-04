@@ -2,7 +2,6 @@ import React, { Dispatch, useEffect, useState } from 'react';
 import { Alert, Row, Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faComment,
   faFolder,
   faFolderPlus,
   faInfoCircle,

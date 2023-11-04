@@ -13,8 +13,8 @@ const SunRaise:React.FC=()=>{
     return(
        <div className="landscape">
         <RotatingHeroImg/>
-            <h1 className="admissions-header">Admission Management </h1>
-            <h1 className="admissions-header2">Software</h1>
+            <h1 className="admissions-header color-header">Admission Management </h1>
+            <h1 className="admissions-header2 color-header">Software</h1>
   <div className="mountain"></div>
   <div className="mountain mountain-2"></div>
   <div className="mountain mountain-3"></div>
