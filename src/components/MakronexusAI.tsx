@@ -381,13 +381,13 @@ const FilesIcons:React.FC=()=>{
   };
   return(
     <div className="clip-files">
-            <Icon.Paperclip onClick={handleClipping} size={25} />
+            <Icon.Paperclip className="header" onClick={handleClipping} size={25} />
             {isClipping && (
               <div className="d-flex files flex-column">
                 <label htmlFor="image">
                   <span className=" clip-image ">
                     {" "}
-                    <Icon.ImageFill size={20} />
+                    <Icon.ImageFill color="white" size={20} />
                   </span>
                 </label>
                 <input
@@ -399,7 +399,7 @@ const FilesIcons:React.FC=()=>{
                 <label htmlFor="file">
                   <span className="clip-file ">
                     {" "}
-                    <Icon.FileEarmarkFill size={20} />
+                    <Icon.FileEarmarkFill color="white"  size={20} />
                   </span>
                 </label>
                 <input
@@ -562,7 +562,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
             }
             </ul>
             </div>
-            <div className="user-logout w-100 content_bg pb-2">
+            <div className="user-logout w-100 pb-2">
             <Dropdown>
 <Dropdown.Toggle className="navbar-item w-100 d-flex justify-content-between align-items-center">
       <div className="pt-2">
@@ -572,12 +572,12 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
              <FontAwesomeIcon style={{fontSize:"0.8rem"}} icon={faChevronUp}/>         
 </Dropdown.Toggle>
 
-<Dropdown.Menu className="py-0 "  style={{width:"20rem"}}>
+<Dropdown.Menu className="py-0"  style={{width:"20rem"}}>
   <Dropdown.Item className="py-2">
     <Link to={`/users/account/${user.id}`} className="textColor px-2">
     {/* <FontAwesomeIcon icon={faGear}/> */}
     <Image src={user.avatar ||`https://img.freepik.com/free-icon/user_318-159711.jpg?size=626&ext=jpg&uid=R36208328&ga=GA1.1.377730112.1687240299&semt=ais`} height={30} width={30} alt="avatar"/>
-      <span className="px-2">Account</span>
+      <span className="px-2 text-dark">Account</span>
     </Link>
   </Dropdown.Item>
 {
@@ -585,8 +585,8 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
       <hr className="my-0 py-0" />
   <Dropdown.Item className="py-2">
     <Link to={`/${user.id}/datasets`} className="textColor px-2">
-    <FontAwesomeIcon icon={faGear}/>
-      <span className="px-2">Settings</span>
+    <FontAwesomeIcon className="text-dark" icon={faGear}/>
+      <span className="px-2 text-dark">Settings</span>
     </Link>
   </Dropdown.Item>
   </div>
@@ -597,8 +597,8 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
       onClick={handleLogout}
       className="textColor px-2"
     >
-    <FontAwesomeIcon icon={faPowerOff}/>
-<span className="px-2">
+    <FontAwesomeIcon className="text-dark" icon={faPowerOff}/>
+<span className="px-2 text-dark">
       Log out
 </span>
     </div>
@@ -755,7 +755,6 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
          {currentChat &&(
           <div className="pb-3 ask-input-nav main_bg py-3">
             <div className="d-flex input-container justify-content-center ms-3">
-          
               <div className="d-flex justify-content-between w-75 align-items-center">
                  {aiError &&alertVisible&&(
                 <div className="regenerate-btn-container">
@@ -779,7 +778,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                 </div>
                 {!loading && (
                 <div className="btn btn-primary" onClick={handleAsk}>
-                  <FontAwesomeIcon icon={faPaperPlane} />
+                  <FontAwesomeIcon className="header" icon={faPaperPlane} />
                 </div>
                   )}
               </div>
@@ -811,15 +810,15 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                 .filter((chat) => chat.makronexaQAs.length !==0)
                 .map((chat,index)=>{
                   return(
-              <li className={`nav-item p-2 border-radius-round my-1  d-flex justify-content-between align-items-center ${currentChat===chat.id?"content_bg":"header"}`} key={index}>
+              <li className={`nav-item p-2 border-radius-round my-1  d-flex justify-content-between align-items-center ${currentChat===chat.id?"main_bg":"header"}`} key={index}>
                 <small className="d-flex w-100" 
                 onClick={() => handleChatItemClick(chat.id)}
                 >
                 <FontAwesomeIcon 
-                className={`${currentChat===chat.id?"":"header"}`}
-                  icon={faComments} style={{color:"gray"}} />
+                className={`${currentChat===chat.id?"text-dark":"header"}`}
+                  icon={faComments}  />
                   {chat.makronexaQAs.length > 0 &&(
-                  <span className=" ms-2 text-start chat_header_name">
+                  <span className={`ms-2 text-start chat_header_name ${currentChat===chat.id?" text-dark":"header"}`} >
                     {chat.makronexaQAs[0].message}
                   </span>
                   )}

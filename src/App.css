@@ -198,6 +198,10 @@ input[type="checkbox"]:not(:checked) {
   background-color: var(--content-bg) ;
   cursor: pointer;
 }
+.dark-box-shadow{
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 20px 30px;
+
+}
 .link-item:hover{
   color: var(--textColor2);
 }

@@ -53,7 +53,7 @@ import HomeAIInfo from "./HomeAIInfo";
               {betterCardList.map((card)=>{
                 return(
                   <Col md={6} className="role_card" key={card.id}>
-                  <div id={card.title} className="info_section mx-3">
+                  <div id={card.title} className="info_section  mx-3">
                     <div className="role_header">
                       <h5 className="px-2 pt-4 text-start">{card.title}</h5>
                     </div>

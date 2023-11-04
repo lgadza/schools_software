@@ -226,7 +226,7 @@
   
   .home-navbar .menu-toggle .menu-bar{
     width: 25px;
-    height: 1px;
+    height: 3px;
     background-color: white;
     margin: 5px auto;
     -webkit-transition: all 0.3s ease-in-out;

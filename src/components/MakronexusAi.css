@@ -42,9 +42,9 @@
   height: 600px; 
   
   background-image:
-    radial-gradient( circle 30px at 30px 30px, rgb(105, 102, 102) 20px 99%, transparent 0 ),
-    linear-gradient( 135deg, rgba(19, 18, 18, 0.1), rgba(34, 32, 32, 0.1) 10%, rgba(22, 21, 21, 0.05) 100% ),
-    linear-gradient( rgb(105, 102, 102) 50px 50px, transparent 0 );
+    radial-gradient( circle 30px at 30px 30px, rgb(255, 255, 255) 20px 99%, transparent 0 ),
+    linear-gradient( 135deg, rgba(121, 115, 115, 0.1), rgba(231, 231, 231, 0.1) 10%, rgba(255, 255, 255, 0.05) 100% ),
+    linear-gradient( rgb(255, 255, 255) 50px 50px, transparent 0 );
 
   background-repeat: repeat-y;
 
@@ -139,9 +139,9 @@
   height: 600px; 
   
   background-image:
-    radial-gradient( circle 20px at 20px 20px, rgb(105, 102, 102) 20px 99%, transparent 0 ),
-    linear-gradient( 135deg, rgba(19, 18, 18, 0.1), rgba(34, 32, 32, 0.1) 10%, rgba(22, 21, 21, 0.05) 100% ),
-    linear-gradient( rgb(105, 102, 102) 40px 40px, transparent 0 );
+    radial-gradient( circle 20px at 20px 20px, rgb(255, 255, 255) 20px 99%, transparent 0 ),
+    linear-gradient( 135deg, rgba(121, 115, 115, 0.1), rgba(231, 231, 231, 0.1) 10%, rgba(255, 255, 255, 0.05) 100% ),
+    linear-gradient( rgb(255, 255, 255) 40px 40px, transparent 0 );
 
   background-repeat: repeat-y;
 
@@ -237,9 +237,9 @@ to {
   height: 600px; 
   
   background-image:
-    radial-gradient( circle 15px at 15px 15px, rgb(105, 102, 102) 20px 99%, transparent 0 ),
-    linear-gradient( 135deg, rgba(19, 18, 18, 0.1), rgba(34, 32, 32, 0.1) 10%, rgba(22, 21, 21, 0.05) 100% ),
-    linear-gradient( rgb(105, 102, 102) 30px 30px, transparent 0 );
+    radial-gradient( circle 15px at 15px 15px, rgb(255, 255, 255) 20px 99%, transparent 0 ),
+    linear-gradient( 135deg, rgba(121, 115, 115, 0.1), rgba(231, 231, 231, 0.1) 10%, rgba(255, 255, 255, 0.05) 100% ),
+    linear-gradient( rgb(255, 255, 255) 30px 30px, transparent 0 );
 
 /*Skeleton Screen with CSS */
   }
@@ -290,9 +290,9 @@ to {
   height: 600px; 
   
   background-image:
-    radial-gradient( circle 15px at 15px 15px, rgb(105, 102, 102) 20px 99%, transparent 0 ),
-    linear-gradient( 135deg, rgba(19, 18, 18, 0.1), rgba(34, 32, 32, 0.1) 10%, rgba(22, 21, 21, 0.05) 100% ),
-    linear-gradient( rgb(105, 102, 102) 30px 30px, transparent 0 );
+    radial-gradient( circle 15px at 15px 15px, rgb(255, 255, 255) 20px 99%, transparent 0 ),
+    linear-gradient( 135deg, rgba(121, 115, 115, 0.1), rgba(231, 231, 231, 0.1) 10%, rgba(255, 255, 255, 0.05) 100% ),
+    linear-gradient( rgb(255, 255, 255) 30px 30px, transparent 0 );
 
 /*Skeleton Screen with CSS */
     
