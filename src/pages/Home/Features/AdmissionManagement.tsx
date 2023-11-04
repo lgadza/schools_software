@@ -29,11 +29,11 @@ const AdmissionManagement: React.FC = () => {
             <div className="d-flex admission-content flex-column align-items-start">
                 
                 <div className="definition d-flex flex-column align-items-start">
-                <h3 className="my-4">What is an Admission Management Software?</h3>
+                <h3 className="my-4 ">What is an Admission Management Software?</h3>
                 <small className="d-flex text-start">
                 Admission management software helps streamline the admissions process. The admission management software enables educational institutions to conduct student admission and enrollment procedures online. Students and parents do not need to stand in long queues for hours to take admission to the institution. Parents and students can use the admission management system to file an online inquiry of school admissions. {CompanyName} makes the process of admission easy for schools, institutions, and parents.
                 </small>
-                <h4 className="my-3">Admission Management Software for Schools</h4>
+                <h4 className="my-3 ">Admission Management Software for Schools</h4>
                 <div className="admission-img-container d-flex justify-content-center w-100 py-5">
                     <div className="over-sticker px-2 text-start"><small>
                     Fast Admission Processes</small></div>
