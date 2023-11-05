@@ -497,13 +497,13 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
 
   return (
     <nav className="mobile-nav d-md-none border-round mb-5  px-2">
-      <div className="logo">
+      <div className="log">
       <div className="d-flex px-2">
             <img
               src={md_logo_small}
               alt={CompanyName}
-              style={{ width: `${50}px`, height: `${50}px`, borderRadius: "0%",objectFit:"contain" }}
-              className="img_component"
+              style={{ width: `${50}px`, height: `${50}px`, borderRadius: "5%",objectFit:"contain" }}
+              className="img_component logo"
             />
           </div>
       </div>
@@ -649,7 +649,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                       height: "30px",
                       borderRadius: "50%",
                     }}
-                    className="img_component"
+                    className="img_component "
                   />
                 </div>
                 )}

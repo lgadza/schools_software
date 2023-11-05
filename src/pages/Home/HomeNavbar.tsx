@@ -32,7 +32,8 @@ const navigate=useNavigate()
             <img
               src={makro_logo}
               alt="Makro Logo"
-              style={{ width: "50px" }}
+              style={{ width: `${50}px`, height: `${50}px`, borderRadius: "5%",objectFit:"contain" }}
+              className='logo'
             />
           </a>
           <div className="menu-toggle" id="mobile-menu" onClick={handleMenuToggleClick}>

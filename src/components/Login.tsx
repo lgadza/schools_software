@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Row, Col, Form, Button, Spinner} from 'react-bootstrap';
-import m_logo from "../assets/md_logo_small.png"
+// import m_logo from "../assets/md_logo_small.png"
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { UserLogin, getUserData} from '../redux/actions';
 import { RootState } from '../redux/store';
 import { Dispatch } from 'redux';
-import { CompanyName } from '../assets/data/company';
+// import { CompanyName } from '../assets/data/company';
 import AlertBox from './Alerts';
 export interface LoginCredentialsInterface {
   email: string,
@@ -71,22 +71,22 @@ console.log(accessToken,"CRED")
   };
 
   return (
-    <Container>
+    <Container >
       {isError && sign_in && (
       <div className='register-alert'>
         <AlertBox type="danger" message='The email/password entered is incorrect'/>
       </div>
       )}
-      <Row className='d-flex justify-content-center align-item-center'>
-        <Col className='login_container content_bg col-sm-10 col-md-6 col-xl-4' >
-          <div className="imageContainer mb-3">
+      <Row className='d-flex justify-content-center  align-item-center'>
+        <Col className='login_container content_bg pt-5 col-sm-10 col-md-6 col-xl-4' >
+          {/* <div className="imageContainer mb-3">
             <img
               src={m_logo}
               alt={CompanyName}
               style={{ width: "100px", height: "120px" }}
-              className="img_component"
+              className="img_component logo"
             />
-          </div>
+          </div> */}
 
           <Form onSubmit={handleSubmit} className='px-2'>
             <Form.Group>

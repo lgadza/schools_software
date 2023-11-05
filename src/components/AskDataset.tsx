@@ -357,15 +357,14 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
 
   return (
     <nav className="mobile-nav d-md-none border-round mb-5  px-2">
-      <div className="logo">
+
       <div className="d-flex px-2">
             <img
               src={md_logo_small}
               alt={CompanyName}
-              style={{ width: `${50}px`, height: `${50}px`, borderRadius: "0%",objectFit:"contain" }}
-              className="img_component"
+              style={{ width: `${50}px`, height: `${50}px`, borderRadius: "5%",objectFit:"contain" }}
+              className="img_component logo"
             />
-          </div>
       </div>
       
       <div className={`nav-links content_bg d-flex main_bg  flex-column justify-content-between ms-3 ${navActive ? 'nav-active pt-3' : ''}`}>

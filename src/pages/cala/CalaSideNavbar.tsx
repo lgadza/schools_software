@@ -13,13 +13,13 @@ const CalaSideNavbar=({user}:{user:UserRegistration}):JSX.Element=>{
         setActiveComponent(component)
     }
     return( 
-         <div className="px-4 w-100" style={{ height: "100vh", overflowY: "scroll"}}>
+         <div className="px-4 w-100 mt-3" style={{ height: "100vh", overflowY: "scroll"}}>
             <div className="d-flex px-2">
               <img
                 src={md_logo_small}
                 alt={CompanyName}
-                style={{ width: `${50}px`, height: `${50}px`, borderRadius: "0%",objectFit:"contain" }}
-                className="img_component"
+                style={{ width: `${50}px`, height: `${50}px`, borderRadius: "5%",objectFit:"contain" }}
+                className="img_component logo"
               />
             </div>
             <Nav className="flex-column mt-4 w-100">

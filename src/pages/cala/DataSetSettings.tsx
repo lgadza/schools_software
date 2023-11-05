@@ -136,8 +136,8 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
         <img
           src={md_logo_small}
           alt="makronexa"
-          style={{ width: `${50}px`, height: `${50}px`, borderRadius: '0%', objectFit: 'contain' }}
-          className="img_component"
+          style={{ width: `${50}px`, height: `${50}px`, borderRadius: '5%', objectFit: 'contain' }}
+          className="img_component logo"
         />
       </div>
       <div className='d-flex align-items-center justify-content-between'>
