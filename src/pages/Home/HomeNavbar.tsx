@@ -42,7 +42,7 @@ const navigate=useNavigate()
             <span className="menu-bar"></span>
           </div>
           <ul className={`nav ms-5 ${isSearchActive ? 'search' : 'no-search'}`}>
-            <li className=" py-2 px-3 nav-list-item"  onClick={toggleSolutionsDropdown}>
+            <li className=" py-2 px-3 nav-list-item text-white fw-bolder"  onClick={toggleSolutionsDropdown}>
               Solutions
               {isSolutionsDropdownOpen?(
 
@@ -62,8 +62,8 @@ const navigate=useNavigate()
                         </div>
                         <div className='d-flex flex-column'>
                           <strong className='text-start'>Admission management</strong>
-                          <small className='text-start text-muted'>Seamless lead management and </small>
-                          <small className='text-start text-muted'>admission process digitization </small>
+                          <small className='text-start text-dark'>Seamless lead management and </small>
+                          <small className='text-start text-dark'>admission process digitization </small>
                         </div>
                       </a></li>
                       <li className='py-1'><a href="/features/makronexa" className='py-2 d-flex makronexa-link justify-content-start align-items-center mx-5 px-5 '>
@@ -72,8 +72,8 @@ const navigate=useNavigate()
                         </div>
                         <div className='d-flex flex-column'>
                           <strong className='text-start'>Mankronexa</strong>
-                          <small className='text-start text-muted'>Enhancing education with   </small>
-                          <small className='text-start text-muted'>personalized learning, data analysis. </small>
+                          <small className='text-start text-dark'>Enhancing education with   </small>
+                          <small className='text-start text-dark'>personalized learning, data analysis. </small>
                         </div>
                       </a></li>
                       <li className='py-1'><a href="/features/admission_management" className='py-2 d-flex report-card-link justify-content-start align-items-center mx-5 px-5 '>
@@ -82,8 +82,8 @@ const navigate=useNavigate()
                         </div>
                         <div className='d-flex flex-column'>
                           <strong className='text-start'>Report card</strong>
-                          <small className='text-start text-muted'>Customize, create, download and</small>
-                          <small className='text-start text-muted'> print your school’s digital report card</small>
+                          <small className='text-start text-dark'>Customize, create, download and</small>
+                          <small className='text-start text-dark'> print your school’s digital report card</small>
                         </div>
                       </a></li>
                     
@@ -145,13 +145,13 @@ const navigate=useNavigate()
               Features
               <FontAwesomeIcon className='ms-1' icon={faChevronDown} style={{ fontSize: "14px" }} />
             </li> */}
-            <li className=" px-3 py-2 nav-list-item" onClick={()=>navigate("/plans")}>
+            <li className=" px-3 py-2 nav-list-item text-white fw-bolder" onClick={()=>navigate("/plans")}>
                Plans 
             </li>
-            <li className="  p-2 nav-list-item">
+            <li className="  p-2 nav-list-item text-white fw-bolder">
               Partnerships
             </li>
-            <li onClick={()=>navigate("/about")} className=" py-2 me-2 px-3 nav-list-item">
+            <li onClick={()=>navigate("/about")} className=" py-2 me-2 px-3 nav-list-item text-white fw-bolder">
               About us
             </li>
             <div className="d-flex search-container mt-1">
@@ -179,11 +179,11 @@ const navigate=useNavigate()
           <div className='px-2 d-flex'>
             <Button
               className="btn btn-primary me-1 d-flex justify-content-end">
-              <Link to="/login"> Login</Link>
+              <Link to="/login"> <span className='text-white fw-bolder'>Login</span></Link>
             </Button>
             <Button
               className="btn btn-primary  d-flex justify-content-end">
-              <Link to="/register"> Register</Link>
+              <Link to="/register"> <span className='text-white fw-bolder'>Register</span></Link>
             </Button>
           </div>
         </nav>
