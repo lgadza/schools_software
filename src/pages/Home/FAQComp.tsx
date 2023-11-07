@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import "./FAQCom.css"
 import { FAQItem } from '../../assets/data/faqItemsData';
+import { Col, Row } from 'react-bootstrap';
 interface FAQCompoProps{
   FAQItems:FAQItem[]
 }
@@ -13,7 +14,9 @@ const FAQComp: React.FC<FAQCompoProps> = ({FAQItems}) => {
 
   return (
     <div className="container FAQ">
-      <h4 className='d-flex py-2 color-header text-start'>Frequently Asked Questions</h4>
+<Row>
+  <Col md={6}>
+  <h4 className='d-flex py-2 color-header text-start'>Frequently Asked Questions</h4>
       <div className="FAQ">
         {FAQItems.map((item:FAQItem) => (
           <div className="FAQ-item" key={item.id}>
@@ -34,6 +37,8 @@ const FAQComp: React.FC<FAQCompoProps> = ({FAQItems}) => {
           </div>
         ))}
       </div>
+  </Col>
+</Row>
     </div>
   );
 };

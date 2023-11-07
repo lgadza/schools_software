@@ -1,6 +1,5 @@
 import React, { Dispatch, useState } from 'react';
 import { Modal, Button, Form, Spinner } from 'react-bootstrap';
-import ToggleSwitch from '../../components/ToggleSwitch';
 import { useDispatch } from 'react-redux';
 import { getAllUserAISettings, postUserAISettings } from '../../redux/actions';
 import { useSelector } from 'react-redux';
@@ -16,7 +15,6 @@ interface MyVerticallyCenteredModalProps {
 
 const CreateDatasetModal: React.FC<MyVerticallyCenteredModalProps> = (props) => {
   // const [settings, setSettings] = useState<UserAISettingsPayload>(initialState); 
-  const [shared, setShared] = useState(false);
   const [datasetName, setDatasetName] = useState<string>(""); 
   const isLoading=useSelector((state:RootState)=>state.postUserAISettings.isLoading)
   const [createDataset, setCreateDataset] = useState(false);
@@ -56,12 +54,12 @@ const CreateDatasetModal: React.FC<MyVerticallyCenteredModalProps> = (props) => 
       {/* {isError &&
       <AlertBox type="danger" message='Error during dataset creation'/>
       } */}
-      <Modal.Header closeButton className='main_bg'>
+      <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
           <h5>Create Dataset</h5>
         </Modal.Title>
       </Modal.Header>
-      <Modal.Body className='main_bg'>
+      <Modal.Body>
         <h5 className='mb-3'> Name <span className='text-danger'>*</span></h5>
         <Form.Group>
           <Form.Control
@@ -71,10 +69,6 @@ const CreateDatasetModal: React.FC<MyVerticallyCenteredModalProps> = (props) => 
             onChange={handleInputChange}
           />
         </Form.Group>
-        <div className='d-flex mt-3 align-items-center justify-content-between content_bg px-3'>
-        <span>Shared</span>
-        <ToggleSwitch checked={shared} onChange={() => setShared(!shared)}/>
-        </div>
         <div className='mt-3'>
           <Button
             variant="primary"

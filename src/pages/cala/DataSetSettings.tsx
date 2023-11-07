@@ -7,7 +7,6 @@ import {
   faInfoCircle,
   faX,
 } from '@fortawesome/free-solid-svg-icons';
-import ToggleSwitch from '../../components/ToggleSwitch';
 import RangeSlider from '../../components/RangesSlider';
 import { getAllUserAISettings, putUserAISettings } from '../../redux/actions';
 import { Container } from 'react-bootstrap';
@@ -21,6 +20,8 @@ import { RootState } from '../../redux/store';
 import { useDispatch } from 'react-redux';
 import Loader from '../../components/Loader';
 import * as Icon from "react-bootstrap-icons" 
+import ModalSharing from './ModalSharing';
+import { Link } from 'react-router-dom';
 
 // interface Engine {
 //   created: string | null;
@@ -54,11 +55,12 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
     userId: '',
   });
   const [shared, setShared] = useState(false);
+  const [showSharing, setShowSharing] = useState(false);
   const dispatch:Dispatch<any> =useDispatch()
   const navigate = useNavigate();
   const params = useParams();
   const [isSubmitting, setIsSubmitting] = useState(false);
-
+  
   const handleTempAlert = () => {
     setIsTempAlert(!isTempAlert);
   };
@@ -159,9 +161,11 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
         <Loader/>
         </div>):(
         <div>
-         <div className='d-flex align-items-center justify-content-between content_bg px-3'>
-           <span className='me-5 text-dark'>Shared</span>
-           <ToggleSwitch checked={shared} onChange={() => setShared(!shared)} />
+         <div className='d-flex align-items-center justify-content-between content_bg px-3 py-2'>
+           <span className='me-5 text-dark'>Share</span>
+           {/* <ToggleSwitch checked={shared} onChange={() => setShared(!shared)} /> */}
+           <Link to={""} className='header text-small' onClick={()=>setShowSharing(true)}>Link</Link>
+          
          </div>
          {isTempAlert && (
            <Alert variant='success' className='d-flex flex-column my-4  text-start'>
@@ -271,6 +275,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
           </div>
         </div>
       </Row>
+      <ModalSharing show={showSharing} onClose={()=>setShowSharing(false)}/>
     </Container>
   );
 };
