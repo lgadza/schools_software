@@ -18,7 +18,7 @@ const Page404: React.FC = () => {
         <span className="door right"></span>
       </nav>
       <h1>Error 404</h1>
-      <p>The page you're looking for can't be found</p>
+      <p className='text-dark'>The page you're looking for can't be found</p>
       </div>
       <ContactUs  show={modalShow}
         onHide={() => setModalShow(false)}/>

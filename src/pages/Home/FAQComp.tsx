@@ -22,7 +22,7 @@ const FAQComp: React.FC<FAQCompoProps> = ({FAQItems}) => {
           <div className="FAQ-item" key={item.id}>
             <button
               id={`FAQ-button-${item.id}`}
-              className='d-flex align-items-center'
+              className='d-flex align-items-center py-2'
               aria-expanded={expandedId === item.id ? 'true' : 'false'}
               onClick={() => toggleFAQ(item.id)}
             >

@@ -34,13 +34,13 @@
 }
 
 .FAQ .FAQ-title {
-  padding: 0em 1.5em 1em 0;
+  padding: 0em 1em 0em 0;
 }
 
 .FAQ .icon {
   display: inline-block;
   position: absolute;
-  top: 18px;
+  /* top: 18px; */
   right: 0;
   margin-left: 4px;
   width: 22px;

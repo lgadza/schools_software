@@ -3,9 +3,9 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import md_logo_small from "../../assets/md_logo_small.png"
 import { CompanyName } from '../../assets/data/company';
-import { UserRegistration } from "../../Types";
+// import { UserRegistration } from "../../Types";
 
-const CalaSideNavbar=({user}:{user:UserRegistration}):JSX.Element=>{
+const CalaSideNavbar=({user_id}:{user_id:string}):JSX.Element=>{
   
     const [activeComponent,setActiveComponent]=useState<string>("MakronexusAI")
 
@@ -24,7 +24,7 @@ const CalaSideNavbar=({user}:{user:UserRegistration}):JSX.Element=>{
             </div>
             <Nav className="flex-column mt-4 w-100">
                 <Nav.Item>
-                <Link to={`/ask/${user.id}`} 
+                <Link to={`/ask/${user_id}`} 
                           className={`d-flex nowrap header align-items-center px-2 py-2 ${activeComponent === "MakronexusAI" ? "active" : ""}`}>
                         <small>Makronexa</small>
                 </Link>
@@ -33,7 +33,7 @@ const CalaSideNavbar=({user}:{user:UserRegistration}):JSX.Element=>{
                 <Link to="" className='d-flex align-items-center nowrap px-2 py-2'><small className="text-nowrap header">My Projects</small></Link>
                 </Nav.Item>
                 <Nav.Item>
-                   <Link to={`/${user.id}/datasets`} onClick={()=>handleNavigationClick("DataSets")} className={`d-flex w-100 nowrap align-items-center px-2 py-2 ${activeComponent === "DataSets" ? "active" : ""}`}> 
+                   <Link to={`/${user_id}/datasets`} onClick={()=>handleNavigationClick("DataSets")} className={`d-flex w-100 nowrap align-items-center px-2 py-2 ${activeComponent === "DataSets" ? "active" : ""}`}> 
                    <small className="text-nowrap header">DataSets</small>
                    </Link> 
                    </Nav.Item> 
