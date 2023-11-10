@@ -482,7 +482,9 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
     return (
       <div className="row ask-makronexa ms-4 me-2">
         <div>
+          { token &&
           <MobileNav chats={chats}/>
+          }
         </div>
         <div className="col col-md-8 mt-5 helper">
           <div className={`d-none d-lg-block makronexa-alert ${showAlert ? 'visible' : 'hidden'}`}>

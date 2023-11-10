@@ -41,6 +41,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
   const allDatasets: UserAISettingsPayload[] = useSelector((state: RootState) => state.getAllUserAISettings.data);
   const isLoading = useSelector((state: RootState) => state.getAllUserAISettings.isLoading);
   const [isAlert, setIsAlert] = useState(true);
+  const [sharingLink,setSharingLink]=useState("")
   const [isTempAlert, setIsTempAlert] = useState(true);
   // const [models, setModels] = useState<Engine[]>([]);
   const [activeComponent, setActiveComponent] = useState<string>('uploadDocs');
@@ -54,6 +55,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
     personality: null,
     userId: '',
   });
+  const FE_PRODUCTION_BASE_URL=import.meta.env.VITE_FE_BASE_PROD_URL
   const [shared, setShared] = useState(false);
   const [showSharing, setShowSharing] = useState(false);
   const dispatch:Dispatch<any> =useDispatch()
@@ -129,7 +131,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
   //   }
   // }, [dataSet.model, models]);
   
-
+  // /${dataSet.temperature || 0.3}
   return (
     <Container className=" component-margin-top mb-5">
      {!isLoading && 
@@ -147,7 +149,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
       <small className='link-item header cursor-pointer' onClick={() => navigate(`/ask/${user_id}`)}>Makronexa</small> <span>/</span><small className='link-item header cursor-pointer' onClick={() => navigate(`/${user_id}/datasets`)}>Datasets</small> <span>/</span><small >{dataSet.dataset_name}</small>
       </div>
       <div className='me-2  chatbot-nav'>
-              <Button className='' onClick={()=>navigate(`/${user_id}/datasets/${dataSet.dataset_name}/${dataSet.id}/ask/${dataSet.temperature || 0.3}`)}>
+              <Button className='' onClick={()=>navigate(`/${user_id}/datasets/${dataSet.dataset_name}/${dataSet.id}/ask`)}>
                 <Icon.ChatLeftTextFill size={25}/>
                 {/* <FontAwesomeIcon icon={faComment} style={{ color: "rgb(30, 215, 96)" }} /> */}
                 {/* <span className='ms-2 text-dark'>Ask</span> */}
@@ -164,7 +166,10 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
          <div className='d-flex align-items-center justify-content-between content_bg px-3 py-2'>
            <span className='me-5 text-dark'>Share</span>
            {/* <ToggleSwitch checked={shared} onChange={() => setShared(!shared)} /> */}
-           <Link to={""} className='header text-small' onClick={()=>setShowSharing(true)}>Link</Link>
+           <Link to={""} className='header text-small' onClick={()=>{
+            setSharingLink(`${FE_PRODUCTION_BASE_URL}/${user_id}/datasets/${dataSet.dataset_name}/${dataSet.id}/ask`)
+            setShowSharing(true)
+            }}>Link</Link>
           
          </div>
          {isTempAlert && (
@@ -275,7 +280,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
           </div>
         </div>
       </Row>
-      <ModalSharing show={showSharing} onClose={()=>setShowSharing(false)}/>
+      <ModalSharing show={showSharing} link={sharingLink} onClose={()=>setShowSharing(false)}/>
     </Container>
   );
 };

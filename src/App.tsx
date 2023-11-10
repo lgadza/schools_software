@@ -55,7 +55,7 @@ function App() {
        {/* <Route path="/ask.makronexus.com/:user_id" element={<Makronexa/>}/> */}
        <Route path="ask/:user_id" element={<Makronexa/>}/>
        <Route path="/:user_id/datasets" element={<DataSetsPage/>}/>
-       <Route path="/:user_id/datasets/:dataset_name/:dataset_id/ask/:temp" element={<MakronexaDataset/>}/>
+       <Route path="/:user_id/datasets/:dataset_name/:dataset_id/ask" element={<MakronexaDataset/>}/>
        <Route path="/:user_id/datasets/:dataset_id" element={<DataSetSettingsPage/>}/>
        <Route path="user/account/delete/confirmation" element={<AccountDeletionConfirmation/>}/>
        <Route

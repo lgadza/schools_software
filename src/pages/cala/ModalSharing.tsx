@@ -6,10 +6,11 @@ import { faCopy, faCheck } from '@fortawesome/free-solid-svg-icons';
 interface ModalSharingProps {
   onClose: () => void;
   show: boolean;
+  link:string;
 }
 
-const ModalSharing: React.FC<ModalSharingProps> = ({ onClose, show }) => {
-  const link = "65539d55-72f5-4907-80e3-4e9ba69d10d6/datasets/CALAwqwwqwqw"; 
+const ModalSharing: React.FC<ModalSharingProps> = ({ onClose, show,link }) => {
+  // const link = "65539d55-72f5-4907-80e3-4e9ba69d10d6/datasets/CALAwqwwqwqw"; 
 
   const [copySuccess, setCopySuccess] = useState(false);
 
