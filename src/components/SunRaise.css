@@ -20,7 +20,9 @@
   .landscape *:before {
     position: absolute;
   }
-  
+  .hero{
+    z-index: 2;
+  }
   .front {
     z-index: 1;
     bottom: 0;
@@ -29,6 +31,7 @@
   }
   
   .landscape {
+    position: relative;
     margin-top: 60px;
     height: 60vh;
     background-image: linear-gradient(var(--v1), var(--s1), var(--v1));
@@ -36,19 +39,32 @@
     z-index: 1;
     overflow: hidden;
   }
+  .landscape::after{
+    position:absolute;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    content: "";
+    background-color: rgb(0, 0, 0,0.4);
+  }
   .admissions-header{
     position: absolute;
     right: 10px;
     top: 15%;
-    font-size: 3.5em;
+    font-size: 3.0em;
     font-weight: 700;
+    color: white;
+    z-index: 2;
   }
   .admissions-header2{
     position: absolute;
     top: 30%;
     right: 10px;
-    font-size: 3.5em;
+    font-size: 3.0em;
     font-weight: 700;
+    color: white;
+  z-index: 2;
   }
   
   .mountain {

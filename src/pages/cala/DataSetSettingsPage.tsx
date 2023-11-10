@@ -18,7 +18,6 @@ const DataSetSettingsPage=():JSX.Element=>{
   const accessToken=useSelector((state:RootState)=>state.accessToken.accessToken)
   const navigate = useNavigate();
   const { user_id } = useParams();
-  console.log("user ID", user_id)
       useEffect(()=>{
         if(!accessToken){
           navigate("/login")

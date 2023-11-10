@@ -10,6 +10,7 @@ import "./MobileNav.css"
 import CalaSideNavbar from "./CalaSideNavbar"
 import DataSets from "./DataSets"
 import Loader from "../../components/Loader"
+import { useParams } from "react-router-dom"
 
   
 const DataSetsPage=():JSX.Element=>{
@@ -18,7 +19,7 @@ const DataSetsPage=():JSX.Element=>{
   const user=useSelector((state:RootState)=>state.userData.data)
   
   const token=accessToken.accessToken
-   
+      const {user_id}=useParams()
       useEffect(()=>{
         dispatch(getUserData(token))
       },[])
@@ -29,7 +30,7 @@ const DataSetsPage=():JSX.Element=>{
             <Row className="ai-container">
 
           <Col md={2} className={"pe-0 d-none d-md-block hide-menu"}>
-        <CalaSideNavbar user={user}/>
+        <CalaSideNavbar user_id={user?.id || user_id}/>
           </Col>
           
                 <Col className="px-0 makronexa-container" md={10}>

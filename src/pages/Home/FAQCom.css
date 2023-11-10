@@ -84,6 +84,7 @@
   opacity: 0;
   max-height: 0;
   overflow: hidden;
+  overflow-y: scroll;
   transition: opacity 200ms linear, max-height 200ms linear;
   will-change: opacity, max-height;
 }
