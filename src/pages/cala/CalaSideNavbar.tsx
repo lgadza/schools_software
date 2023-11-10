@@ -4,8 +4,10 @@ import { Link } from "react-router-dom"
 import md_logo_small from "../../assets/md_logo_small.png"
 import { CompanyName } from '../../assets/data/company';
 // import { UserRegistration } from "../../Types";
-
-const CalaSideNavbar=({user_id}:{user_id:string}):JSX.Element=>{
+interface CalaSideNavbarProps {
+  user_id: string;
+}
+const CalaSideNavbar: React.FC<CalaSideNavbarProps> = ({ user_id }) => {
   
     const [activeComponent,setActiveComponent]=useState<string>("MakronexusAI")
 
