@@ -40,8 +40,8 @@ const CalaSideNavbar: React.FC<CalaSideNavbarProps> = ({ user_id }) => {
                    </Link> 
                    </Nav.Item> 
                    <Nav.Item>
-                   <Link to="" className={`d-flex nowrap align-items-center px-2 py-2 ${activeComponent === "Settings" ? "active" : ""}`} onClick={() => handleNavigationClick("DataSetSettings")} >
-                    <small className="text-nowrap header">Settings</small>
+                   <Link to={`/ask/${user_id}/detect_text`} className={`d-flex nowrap align-items-center px-2 py-2 ${activeComponent === "Settings" ? "active" : ""}`} onClick={() => handleNavigationClick("DataSetSettings")} >
+                    <small className="text-nowrap header">AI detector</small>
                        </Link>
                 </Nav.Item>
             </Nav>

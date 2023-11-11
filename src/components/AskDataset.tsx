@@ -21,6 +21,7 @@ import { Link } from "react-router-dom"
 import katex from 'katex';
 import 'katex/dist/katex.min.css'
 import ImageCard from "./ImageCard"
+import SignInModal from "./Modal/SignIn"
 interface MathEquationProps {
   latex: string;
 }
@@ -104,6 +105,7 @@ export interface Message {
   const [isChatError, setIsChatError] = useState<string | null>(null);
   const params=useParams()
     const [currentModel]=useState("gpt-3.5-turbo")
+    const [showSignInModal,setShowSignInModal]=useState(false)
     const [messages, setMessages] = useState<Message[]>([]);
     const [question, setQuestion] = useState<string>("");
     const [aiError, setAiError] = useState<boolean>(false);
@@ -137,15 +139,21 @@ console.log(errorChatMessages)
     };
     useEffect(()=>{
       if(!token){
-        navigate("/login")
+        // navigate("/login")
+        setShowSignInModal(true)
+      }else{
+        setShowSignInModal(false)
       }
       if(isTokenExpired){
         const handleLogout = () => {
           dispatch(logoutUser());
           localStorage.removeItem('accessToken');
-          navigate('/login') ;       
+          // navigate('/login') ; 
+          setShowSignInModal(true)      
       }
         handleLogout()
+      }else{
+        setShowSignInModal(false)
       }
     },[isTokenExpired])
     useEffect(() => {
@@ -669,7 +677,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
           </div>
           )}
           </div>
-        
+          <SignInModal show={showSignInModal} onClose={()=>setShowSignInModal(false)}/>
         </div>
       </div>
     );

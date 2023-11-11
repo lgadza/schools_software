@@ -9,6 +9,7 @@ import "./MobileNav.css"
 import CalaSideNavbar from "./CalaSideNavbar"
 import DataSetSettings from "./DataSetSettings"
 import { useNavigate, useParams } from "react-router-dom";
+import Loader from "../../components/Loader"
 
 
   
@@ -36,6 +37,7 @@ const DataSetSettingsPage=():JSX.Element=>{
         <div className="py-0" style={{ height: "100vh", overflowY: "scroll" }}>
                    <AccountTopNavigationBar user={user}/>
                    <DataSetSettings user_id={user?.id || user_id} token={accessToken.accessToken}/> 
+                   <Loader/>
                 </div>
                 </Col>
             </Row>   

@@ -27,6 +27,7 @@ import Loader from "./components/Loader.js"
 import AccountDeletionConfirmation from "./components/AccountDeletionConfirmation.js"
 import MakronexaDataset from "./pages/cala/MakronexaDataset.js"
 import AboutUs from "./pages/Home/AboutUs.js"
+import AIDetector from "./pages/cala/AIDetector.js"
 
 // mss makro_school_solution
 function App() {
@@ -54,6 +55,7 @@ function App() {
        <Route path="users/account/:id" element={<StudentAccountPage/>}/>
        {/* <Route path="/ask.makronexus.com/:user_id" element={<Makronexa/>}/> */}
        <Route path="ask/:user_id" element={<Makronexa/>}/>
+       <Route path="ask/:user_id/detect_text" element={<AIDetector/>}/>
        <Route path="/:user_id/datasets" element={<DataSetsPage/>}/>
        <Route path="/:user_id/datasets/:dataset_name/:dataset_id/ask" element={<MakronexaDataset/>}/>
        <Route path="/:user_id/datasets/:dataset_id" element={<DataSetSettingsPage/>}/>

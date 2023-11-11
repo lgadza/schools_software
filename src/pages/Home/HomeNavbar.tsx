@@ -5,8 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen, faCalendarCheck, faChevronDown, faChevronUp, faLightbulb, faListCheck, faLocationCrosshairs, faMagnifyingGlassMinus, faPeopleGroup, faPerson, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import SignInModal from '../../components/Modal/SignIn';
 
 const HomeNavbar: React.FC = () => {
+  const [showSignInModal,setShowSignInModal]=useState(false)
   const [isSearchActive, setIsSearchActive] = useState(false);
   const [isMobileNavActive, setIsMobileNavActive] = useState(false);
   const [isSolutionsDropdownOpen, setIsSolutionsDropdownOpen] = useState(false); // Added state for the Solutions dropdown
@@ -179,7 +181,7 @@ const navigate=useNavigate()
           <div className='px-2 d-flex'>
             <Button
               className="btn btn-primary me-1 d-flex justify-content-end">
-              <Link to="/login"> <span className='text-white fw-bolder'>Login</span></Link>
+              <Link to="" onClick={()=>setShowSignInModal(true)}> <span className='text-white fw-bolder'>Login</span></Link>
             </Button>
             <Button
               className="btn btn-primary  d-flex justify-content-end">
@@ -188,6 +190,7 @@ const navigate=useNavigate()
           </div>
         </nav>
       </div>
+      <SignInModal show={showSignInModal} onClose={()=>setShowSignInModal(false)}/>
     </div>
   );
 };
