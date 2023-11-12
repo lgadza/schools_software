@@ -1,10 +1,10 @@
-import { IconDefinition, faArrowCircleDown,faBoltLightning, faChevronUp, faComments,  faGear,  faPaperPlane,  faPlus,  faPowerOff,  faSun,  faTrashCan, faWarning } from "@fortawesome/free-solid-svg-icons"
+import { IconDefinition, faArrowCircleDown,faBoltLightning, faChevronUp, faComments,  faFile,  faGear,  faImage,  faPaperPlane,  faPlus,  faPowerOff,  faSun,  faTrashCan, faWarning } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // import SearchBar from "./SearchBar"
 import md_logo_small from "../assets/md_logo_small.png"
 import { CompanyName } from "../assets/data/company"
 import {  useEffect, useRef, useState } from "react"
-import { Button, Col, Dropdown, Row, Spinner } from "react-bootstrap"
+import { Button, Col, Dropdown, Form, Row, Spinner } from "react-bootstrap"
 import { useSelector } from "react-redux"
 import { RootState } from "../redux/store"
 // import { useDispatch } from "react-redux"
@@ -21,6 +21,7 @@ import { Link } from "react-router-dom"
 import katex from 'katex';
 import 'katex/dist/katex.min.css'
 import ImageCard from "./ImageCard"
+import DropdownItem from "react-bootstrap/esm/DropdownItem"
 interface MathEquationProps {
   latex: string;
 }
@@ -374,46 +375,139 @@ const Loader: React.FC = () => {
   );
 };
 
-const FilesIcons:React.FC=()=>{
-     const [isClipping, setIsClipping] = useState(false);
+const FilesIcons: React.FC = () => {
+  const [isClipping, setIsClipping] = useState(false);
+  const [imageQuestion,setImageQuestion]=useState("")
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const dropdownRef = useRef<HTMLButtonElement | null>(null);
   const handleClipping = () => {
-    isClipping ? setIsClipping(false) : setIsClipping(true);
+    setIsClipping((prevIsClipping) => !prevIsClipping);
   };
-  return(
-    <div className="clip-files">
-            <Icon.Paperclip className="header" onClick={handleClipping} size={25} />
-            {isClipping && (
-              <div className="d-flex files flex-column">
-                <label htmlFor="image">
-                  <span className=" clip-image ">
-                    {" "}
-                    <Icon.ImageFill color="white" size={20} />
-                  </span>
-                </label>
-                <input
-                  id="image"
-                  type="file"
-                  style={{ visibility: "hidden" }}
-                  //   onChange={handleAvatar}
-                />
-                <label htmlFor="file">
-                  <span className="clip-file ">
-                    {" "}
-                    <Icon.FileEarmarkFill color="white"  size={20} />
-                  </span>
-                </label>
-                <input
-                  id="file"
-                  type="file"
-                  style={{ visibility: "hidden" }}
-                  //   onChange={handleAvatar}
-                />
-              </div>
-            )}
-          </div>
-  )
-}
+  const formatBytes=(bytes: number)=> {
+    if (bytes === 0) return '0 Bytes';
+  
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+  
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+  
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)).toLocaleString() + ' ' + sizes[i];
+  }
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files && event.target.files[0];
 
+    if (file) {
+      setSelectedFile(file);
+      console.log(selectedFile,"SELECTED FILES")
+    }
+  };
+const handleInputImageQuestion=(e:React.ChangeEvent<HTMLInputElement>)=>{
+  setImageQuestion(e.target.value)
+}
+  const handleDelete = () => {
+    setSelectedFile(null);
+
+  };
+  const handleImageQuestion=()=>{
+    dispatch()
+  }
+
+  // const handleEdit = () => {
+  //   // Add your logic for editing the selected file
+  //   console.log('Editing the selected file:', selectedFile);
+  // };
+
+  useEffect(() => {
+    console.log(selectedFile, "SELECTED FILE");
+  }, [selectedFile]);
+  useEffect(() => {
+    if (selectedFile && dropdownRef.current) {
+      // Programmatically toggle the Dropdown when there is a selected file
+      dropdownRef.current.click();
+    }
+  }, [selectedFile]);
+  return (
+    <div className="clip-files">
+      <Icon.Paperclip className="header" onClick={handleClipping} size={25} />
+      {isClipping && (
+        <div className="d-flex files flex-column">
+          <label htmlFor="image">
+            <span className="clip-image">
+              {' '}
+              <Icon.ImageFill color="white" size={20} />
+            </span>
+          </label>
+          <input
+            id="image"
+            type="file"
+            style={{ visibility: 'hidden' }}
+            onChange={handleFileChange}
+          />
+
+          <label htmlFor="file">
+            <span className="clip-file">
+              {' '}
+              <Icon.FileEarmarkFill color="white" size={20} />
+            </span>
+          </label>
+          <input
+            id="file"
+            type="file"
+            style={{ visibility: 'hidden' }}
+            onChange={handleFileChange}
+          />
+        </div>
+      )}
+        {selectedFile && (
+            <Dropdown>
+                <Dropdown.Toggle
+                split
+                variant="success"
+                id="dropdown-split-basic"
+                ref={dropdownRef}
+                size="lg"
+              />
+              <Dropdown.Menu align="start" className="dark-box-shadow"  >
+           
+                <Dropdown.Item >
+                <div  className='d-flex content_bg  mb-3 p-3 justify-content-between'>
+                <div>
+                  <div>
+                    <FontAwesomeIcon className='me-2 text-dark' icon={faImage}/> <span className='text-dark'>
+                    {selectedFile.name}
+                      </span>
+                  </div>
+                  <div>
+                    <span className='text-dark'>{selectedFile.type}</span>
+                    <strong className='ms-3 text-dark'>{formatBytes(selectedFile.size)}</strong>
+                  </div>
+                </div>
+                <div>
+                  <FontAwesomeIcon className='text-danger cursor-pointer' onClick={handleDelete} icon={faTrashCan}/>
+                </div>
+              </div>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <div className="d-flex align-items-center">
+
+                  <Form.Control
+  as="textarea"
+  rows={3} // Set the number of rows according to your design
+  className="text-dark"
+  value={imageQuestion}
+  onChange={handleInputImageQuestion}
+  placeholder="Ask about the picture"
+/>
+
+                <FontAwesomeIcon onClick={handleImageQuestion} className="header ms-2" icon={faPaperPlane}/>
+                  </div>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          )}
+    </div>
+  );
+};
 const MakronexaOverview: React.FC = () => {
   const examplePrompts = [
     "Explain Newton's law in simple terms",

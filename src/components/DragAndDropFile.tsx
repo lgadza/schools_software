@@ -196,7 +196,7 @@ setSelectedFiles(remainingFiles)
                 <div>
                    <div className='mb-4'>
               <h5>Documents to upload</h5>
-              <span className='text-muted'>bytes upload credit:<strong className='ms-1'>UNKNOWN</strong></span>
+              {/* <small className='text-muted'>bytes upload credit:UNKNOWN</small> */}
                 </div>
               <ul>
               {selectedFiles.map((file, index) => (

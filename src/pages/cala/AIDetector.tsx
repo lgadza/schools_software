@@ -57,7 +57,7 @@ const AIDetector: React.FC = () => {
                   <Form>
                     <Form.Group>
                       <Form.Label className="color-header d-flex">AI Content Detector</Form.Label>
-                      <div className="text-secondary pb-4 text-left">
+                      <div className="text-secondary pb-4 text-start">
                         <small>
                           Our AI plagiarism detector identifies dishonesty by comparing submissions, detecting patterns, and flagging potential plagiarism, including <span className="bg-warning p-1 text-dark">AI-generated content</span>. It serves as a dual-purpose tool, promoting proper citation and upholding academic integrity.
                         </small>
@@ -78,6 +78,22 @@ const AIDetector: React.FC = () => {
                   <div className="d-flex py-5">
                     <AIDetectorPieChart data={analyzedText?.data} />
                   </div>
+                    <ul className="mb-4">
+                        {analyzedText?.data && analyzedText.data.gpt_generated_sentences.map((sentence:string,index:number)=>{
+                            return(
+
+                        <li key={index} className="d-flex px-4">
+                        <div className="color-header  text-start">{index+1}</div>
+                           <small className="d-flex">{sentence}</small>
+                        </li>
+                            )
+                        })}
+                       
+                        {analyzedText?.data && analyzedText.data.feedback_message!=="e" &&
+                        <div>
+                           <small className="text-success text-uppercase d-flex ms-4  fw-bold">{analyzedText.data.feedback_message}</small>
+                        </div>}
+                    </ul>
                 </Card>
               </Col>
             </Row>

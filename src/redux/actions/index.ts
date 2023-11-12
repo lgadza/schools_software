@@ -1055,6 +1055,57 @@ export const  detectAiTextWithZeroGPT  = (text:string) => {
         }
     }
   };
+export const  askImageInput  = (accessToken:string,file:File,user_id:string,question:string,chat_id:string) => {
+    
+    return async (dispatch:Dispatch)=>{
+        const options:RequestInit={
+          method: 'POST',
+          headers:{
+            Accept:"application.json",
+            "Content-Type":"application/json",
+            Authorization:"Bearer " + `${accessToken}`
+        },
+            body:JSON.stringify({file:file,user_id:user_id,question:question})
+            
+        }
+        try{
+            const response=await fetch(`${BE_PROD_URL}/ai/chats/${chat_id}`,options)
+            if(response.ok){
+                const results=await response.json();
+                dispatch({
+                    type:POST_TEXT_TO_DETECT_FOR_AI,
+                    payload:results
+                });
+                setTimeout(()=>{
+                   dispatch({
+                    type:POST_TEXT_TO_DETECT_FOR_AI_LOADING,
+                    payload:false,
+                   });
+                },100);
+            }else{
+                console.log("error")
+                dispatch({
+                    type:POST_TEXT_TO_DETECT_FOR_AI_LOADING,
+                    payload:false,
+                });
+                dispatch({
+                    type:POST_TEXT_TO_DETECT_FOR_AI_ERROR,
+                    payload:true,
+                })
+            }
+        }catch(error){
+            console.log(error)
+            dispatch({
+                type:POST_TEXT_TO_DETECT_FOR_AI_LOADING,
+                payload:false,
+            });
+            dispatch({
+                type:POST_TEXT_TO_DETECT_FOR_AI_ERROR,
+                payload:true,
+            })
+        }
+    }
+  };
 export const postUserAddress = (accessToken:string,address:AddressInterface,user_id:string) => {
     
     return async (dispatch:Dispatch)=>{
