@@ -22,6 +22,7 @@ import putUserAISettings from "../reducers/putUserAISettings";
 import getAllUserAISettings from "../reducers/getAllUserAISettings";
 import getAllDatasetFiles from "../reducers/getAllDatasetFiles";
 import detectAiText from "../reducers/detectAiTextReducer";
+import postAnalyzeImage from "../reducers/postAnalyzeImageReducer";
 
 
 const persistConfig = {
@@ -53,6 +54,7 @@ const mainReducer = combineReducers({
   getAllUserAISettings:getAllUserAISettings,
   chat:chatReducer,
   detectAiText:detectAiText,
+  postAnalyzeImage:postAnalyzeImage,
 });
 
 const persistedReducer = persistReducer(persistConfig, mainReducer);

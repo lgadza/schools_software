@@ -8,7 +8,7 @@ import { Button, Col, Dropdown, Form, Row, Spinner } from "react-bootstrap"
 import { useSelector } from "react-redux"
 import { RootState } from "../redux/store"
 // import { useDispatch } from "react-redux"
-import { chatWithAi, dalleImageQuery, deleteChat, getAllAiChats, getChatMessages, imageQuery, logoutUser, newChat } from "../redux/actions"
+import { chatWithAi, dalleImageQuery, deleteChat, getAllAiChats, getChatMessages, imageQuery, logoutUser, newChat, postAnalyzeImage } from "../redux/actions"
 // import { Dispatch } from "redux"
 import "./MakronexusAi.css"
 import { SearchImage, UserRegistration } from "../Types"
@@ -22,6 +22,8 @@ import katex from 'katex';
 import 'katex/dist/katex.min.css'
 import ImageCard from "./ImageCard"
 import DropdownItem from "react-bootstrap/esm/DropdownItem"
+import axios, { AxiosResponse } from "axios"
+import { Dispatch } from "redux"
 interface MathEquationProps {
   latex: string;
 }
@@ -84,6 +86,7 @@ export interface Message {
     imageSrc?: string;
     from:string;
     type:string;
+    imageUrl?:string
   }
   
   interface MobileNavProps{
@@ -374,18 +377,28 @@ const Loader: React.FC = () => {
     </div>
   );
 };
+interface FilesIconInterface {
+  accessToken: string;
+  user_id: string;
+  // imageUrl: string;
+  // question: string;
+  chat_id: string;
+}
 
-const FilesIcons: React.FC = () => {
+const FilesIcons: React.FC<FilesIconInterface> = ({accessToken,chat_id,user_id}) => {
+  const BE_URL=import.meta.env.VITE_BE_PROD_URL
+    const dispatch:Dispatch<any> =useDispatch()
   const [isClipping, setIsClipping] = useState(false);
   const [imageQuestion,setImageQuestion]=useState("")
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const dropdownRef = useRef<HTMLButtonElement | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const handleClipping = () => {
     setIsClipping((prevIsClipping) => !prevIsClipping);
   };
   const formatBytes=(bytes: number)=> {
     if (bytes === 0) return '0 Bytes';
-  
     const k = 1024;
     const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
   
@@ -408,14 +421,54 @@ const handleInputImageQuestion=(e:React.ChangeEvent<HTMLInputElement>)=>{
     setSelectedFile(null);
 
   };
-  const handleImageQuestion=()=>{
-    dispatch()
+  const handleImageQuestion=async()=>{
+    if (!selectedFile) {
+      setError('Please select a file');
+      return;
+    }
+    const formData = new FormData();
+    formData.append('file', selectedFile);
+
+    setLoading(true);
+    setError(null);
+
+    try {
+      const response: AxiosResponse = await axios.post(`${BE_URL}/users/files/${user_id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      // Handle successful response
+      const imageUrl = response.data.url;
+      if (imageUrl) {
+        console.log('File uploaded successfully', imageUrl);
+        dispatch(postAnalyzeImage(accessToken, imageUrl, user_id, imageQuestion, chat_id));
+      } else {
+        setError('Error: Image URL is missing in the response');
+      }
+    } catch (error) {
+      // Handle error
+      if (axios.isAxiosError(error)) {
+        // Axios specific error handling
+        if (error.response) {
+          console.error('Server responded with an error:', error.response.data);
+        } else if (error.request) {
+          console.error('No response received from the server');
+        } else {
+          console.error('Error setting up the request:', error.message);
+        }
+      } else {
+        // Handle non-Axios errors
+        console.error('Non-Axios error:', error);
+      }
+
+      setError('Error uploading file');
+    } finally {
+      setLoading(false);
+    }
   }
 
-  // const handleEdit = () => {
-  //   // Add your logic for editing the selected file
-  //   console.log('Editing the selected file:', selectedFile);
-  // };
 
   useEffect(() => {
     console.log(selectedFile, "SELECTED FILE");
@@ -469,7 +522,7 @@ const handleInputImageQuestion=(e:React.ChangeEvent<HTMLInputElement>)=>{
               />
               <Dropdown.Menu align="start" className="dark-box-shadow"  >
            
-                <Dropdown.Item >
+            {error && <AlertBox type="danger" message={error}/>}
                 <div  className='d-flex content_bg  mb-3 p-3 justify-content-between'>
                 <div>
                   <div>
@@ -486,9 +539,13 @@ const handleInputImageQuestion=(e:React.ChangeEvent<HTMLInputElement>)=>{
                   <FontAwesomeIcon className='text-danger cursor-pointer' onClick={handleDelete} icon={faTrashCan}/>
                 </div>
               </div>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <div className="d-flex align-items-center">
+              <div className="d-flex mb-3 justify-content-center align-items-center">
+                {loading && 
+              <Spinner/>
+                }
+              </div>
+                
+                  <div className="d-flex px-3 align-items-center">
 
                   <Form.Control
   as="textarea"
@@ -501,7 +558,7 @@ const handleInputImageQuestion=(e:React.ChangeEvent<HTMLInputElement>)=>{
 
                 <FontAwesomeIcon onClick={handleImageQuestion} className="header ms-2" icon={faPaperPlane}/>
                   </div>
-                </Dropdown.Item>
+              
               </Dropdown.Menu>
             </Dropdown>
           )}
@@ -758,6 +815,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                         } text-start p-2`}
                       >
                         <div className="d-flex align-items-center">
+                          {section.imageUrl &&  (<ImageCard  context={section.message} imageUrl={section.imageUrl} altText="img"/>)}
                         <small className="text-dark">
                         {section.message}
                         </small>
@@ -856,7 +914,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                 </div>
                 )
               }
-                <FilesIcons/>
+                <FilesIcons user_id={user.id!} accessToken={token.accessToken} chat_id={currentChat}/>
                 <div className="d-flex align-items-center">  
                     <input
                     type="text"

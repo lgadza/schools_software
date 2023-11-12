@@ -42,6 +42,10 @@ export const POST_USER_AI_SETTINGS="POST_USER_AI_SETTINGS"
 export const POST_USER_AI_SETTINGS_ERROR="POST_USER_AI_SETTINGS_ERROR"
 export const POST_USER_AI_SETTINGS_LOADING="POST_USER_AI_SETTINGS_LOADING"
 
+export const POST_ANALYZE_IMAGE="POST_ANALYZE_IMAGE"
+export const POST_ANALYZE_IMAGE_ERROR="POST_ANALYZE_IMAGE_ERROR"
+export const POST_ANALYZE_IMAGE_LOADING="POST_ANALYZE_IMAGE_LOADING"
+
 export const GET_USER_AI_SETTINGS="GET_USER_AI_SETTINGS"
 export const GET_USER_AI_SETTINGS_ERROR="GET_USER_AI_SETTINGS_ERROR"
 export const GET_USER_AI_SETTINGS_LOADING="GET_USER_AI_SETTINGS_LOADING"
@@ -1055,7 +1059,7 @@ export const  detectAiTextWithZeroGPT  = (text:string) => {
         }
     }
   };
-export const  askImageInput  = (accessToken:string,file:File,user_id:string,question:string,chat_id:string) => {
+export const  postAnalyzeImage  = (accessToken:string,imageUrl:string,user_id:string,question:string,chat_id:string) => {
     
     return async (dispatch:Dispatch)=>{
         const options:RequestInit={
@@ -1065,42 +1069,42 @@ export const  askImageInput  = (accessToken:string,file:File,user_id:string,ques
             "Content-Type":"application/json",
             Authorization:"Bearer " + `${accessToken}`
         },
-            body:JSON.stringify({file:file,user_id:user_id,question:question})
+            body:JSON.stringify({imageUrl:imageUrl,user_id:user_id,question:question})
             
         }
         try{
-            const response=await fetch(`${BE_PROD_URL}/ai/chats/${chat_id}`,options)
+            const response=await fetch(`${BE_PROD_URL}/ai/chats/${chat_id}/analyze-image`,options)
             if(response.ok){
                 const results=await response.json();
                 dispatch({
-                    type:POST_TEXT_TO_DETECT_FOR_AI,
+                    type:POST_ANALYZE_IMAGE,
                     payload:results
                 });
                 setTimeout(()=>{
                    dispatch({
-                    type:POST_TEXT_TO_DETECT_FOR_AI_LOADING,
+                    type:POST_ANALYZE_IMAGE_LOADING,
                     payload:false,
                    });
                 },100);
             }else{
                 console.log("error")
                 dispatch({
-                    type:POST_TEXT_TO_DETECT_FOR_AI_LOADING,
+                    type:POST_ANALYZE_IMAGE_LOADING,
                     payload:false,
                 });
                 dispatch({
-                    type:POST_TEXT_TO_DETECT_FOR_AI_ERROR,
+                    type:POST_ANALYZE_IMAGE_ERROR,
                     payload:true,
                 })
             }
         }catch(error){
             console.log(error)
             dispatch({
-                type:POST_TEXT_TO_DETECT_FOR_AI_LOADING,
+                type:POST_ANALYZE_IMAGE_LOADING,
                 payload:false,
             });
             dispatch({
-                type:POST_TEXT_TO_DETECT_FOR_AI_ERROR,
+                type:POST_ANALYZE_IMAGE_ERROR,
                 payload:true,
             })
         }
