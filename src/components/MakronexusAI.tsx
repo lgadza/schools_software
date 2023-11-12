@@ -1,4 +1,4 @@
-import { IconDefinition, faArrowCircleDown,faBoltLightning, faChevronUp, faComments,  faFile,  faGear,  faImage,  faPaperPlane,  faPlus,  faPowerOff,  faSun,  faTrashCan, faWarning } from "@fortawesome/free-solid-svg-icons"
+import { IconDefinition, faArrowCircleDown,faBoltLightning, faChevronUp, faComments,   faGear,  faImage,  faPaperPlane,  faPlus,  faPowerOff,  faSun,  faTrashCan, faWarning } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // import SearchBar from "./SearchBar"
 import md_logo_small from "../assets/md_logo_small.png"
@@ -21,7 +21,6 @@ import { Link } from "react-router-dom"
 import katex from 'katex';
 import 'katex/dist/katex.min.css'
 import ImageCard from "./ImageCard"
-import DropdownItem from "react-bootstrap/esm/DropdownItem"
 import axios, { AxiosResponse } from "axios"
 import { Dispatch } from "redux"
 interface MathEquationProps {
@@ -414,6 +413,25 @@ const FilesIcons: React.FC<FilesIconInterface> = ({accessToken,chat_id,user_id})
       console.log(selectedFile,"SELECTED FILES")
     }
   };
+  const handleGetChatMessages = async () => {
+    setIsChatMessagesLoading(true);
+    if (currentChat) {
+      try {
+        const chatMessages = await getChatMessages(token.accessToken, currentChat, user.id);
+  
+        if (chatMessages[0].makronexaQAs.length > 0) {
+          setMessages(chatMessages[0].makronexaQAs);
+          setIsChatMessagesLoading(false);
+        }
+  
+        setErrorChatMessages(""); 
+      } catch (err) {
+        setErrorChatMessages("An error occurred while fetching data"); 
+      } finally {
+        setIsChatMessagesLoading(false); 
+      }
+    }
+  };
 const handleInputImageQuestion=(e:React.ChangeEvent<HTMLInputElement>)=>{
   setImageQuestion(e.target.value)
 }
@@ -443,7 +461,8 @@ const handleInputImageQuestion=(e:React.ChangeEvent<HTMLInputElement>)=>{
       const imageUrl = response.data.url;
       if (imageUrl) {
         console.log('File uploaded successfully', imageUrl);
-        dispatch(postAnalyzeImage(accessToken, imageUrl, user_id, imageQuestion, chat_id));
+       await  dispatch(postAnalyzeImage(accessToken, imageUrl, user_id, imageQuestion, chat_id));
+       handleGetChatMessages()
       } else {
         setError('Error: Image URL is missing in the response');
       }
@@ -814,9 +833,9 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                           section.from === "user" ? "main_bg" : "content_bg"
                         } text-start p-2`}
                       >
-                        <div className="d-flex align-items-center">
+                        <div className="d-flex  flex-column">
                           {section.imageUrl &&  (<ImageCard  context={section.message} imageUrl={section.imageUrl} altText="img"/>)}
-                        <small className="text-dark">
+                        <small className="text-dark text-start mt-1 d-flex">
                         {section.message}
                         </small>
                         {section.message===messages[messages.length-1].message && loading && <Loader/>}

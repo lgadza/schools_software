@@ -119,7 +119,7 @@ export interface Message {
 const [errorChatMessages, setErrorChatMessages] = useState("");
 console.log(errorChatMessages)
 
-    const navigate=useNavigate()
+    // const navigate=useNavigate()
     const dispatch = useDispatch();
 
     const [showAlert, setShowAlert] = useState(false);

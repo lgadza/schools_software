@@ -81,8 +81,8 @@ export const LOGIN_USER_LOADING="LOGIN_USER_LOADING"
 export const ACTIVE_NAV="ACTIVE_NAV"
 
 const BE_PROD_URL=import.meta.env.VITE_BE_PROD_URL
-const AI_DETECTOR_URL  =import.meta.env.VITE_AI_DETECTOR_URL
-const DETECTOR_KEY=import.meta.env.VITE_AI_DETECTOR_KEY
+// const AI_DETECTOR_URL  =import.meta.env.VITE_AI_DETECTOR_URL
+// const DETECTOR_KEY=import.meta.env.VITE_AI_DETECTOR_KEY
 export const setChatMessages = (messages: Message[]) => ({
     type: 'SET_CHAT_MESSAGES',
     payload: messages,
