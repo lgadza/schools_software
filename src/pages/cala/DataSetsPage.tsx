@@ -1,6 +1,6 @@
 import { Row ,Container, Col} from "react-bootstrap"
 import AccountTopNavigationBar from "../../components/AccountTopNavigationBar"
-import md_logo_small from "../../assets/md_logo_small.png"
+import md_logo_small from "../../assets/md_logo_small4.png"
 import { useEffect } from "react"
 import { useSelector,useDispatch } from "react-redux"
 import { RootState } from "../../redux/store"
@@ -40,7 +40,7 @@ const DataSetsPage=():JSX.Element=>{
                    <img
               src={md_logo_small}
               alt="makronexa"
-              style={{ width: `${50}px`, height: `${50}px`, borderRadius: "5%",objectFit:"contain" }}
+              style={{ width: `${140}px`, height: `${50}px`, borderRadius: "5%",objectFit:"contain" }}
               className="img_component logo"
             />
                    </div>

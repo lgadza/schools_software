@@ -2,6 +2,7 @@ import { IconDefinition, faArrowCircleDown,faBoltLightning, faChevronUp, faComme
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 // import SearchBar from "./SearchBar"
 import md_logo_small from "../assets/md_logo_small.png"
+import mobile_logo from "../assets/md_logo_small4.png"
 import { CompanyName } from "../assets/data/company"
 import {  useEffect, useRef, useState } from "react"
 import { Button, Col, Dropdown, Form, Row, Spinner } from "react-bootstrap"
@@ -670,9 +671,9 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
       <div className="log">
       <div className="d-flex px-2">
             <img
-              src={md_logo_small}
+              src={mobile_logo}
               alt={CompanyName}
-              style={{ width: `${50}px`, height: `${50}px`, borderRadius: "5%",objectFit:"contain" }}
+              style={{ width: `${140}px`, height: `${50}px`, borderRadius: "5%",objectFit:"contain" }}
               className="img_component logo"
             />
           </div>

@@ -13,7 +13,7 @@
   /* --main-bg: rgb(32, 32, 32);
   --content-bg: rgb(32, 32, 32); */
  
-  --content-bg-2: rgba(2, 230, 242, 0.702);
+  --content-bg-2: rgb(26, 182, 193);
   --bg-1: rgb(37, 46, 65);
   --bg-1: white;
   --bg-2: rgb(42, 57, 66);
@@ -130,7 +130,6 @@ option{
  }
 .content_bg-2{
   background-color: var(--content-bg-2) !important;
-  background: linear-gradient(to right, rgb(46, 209, 209,.4) 0%, rgb(51, 8, 104,0.7) 100%);
 }
 
 .main_bg.list-group-flush{
@@ -162,6 +161,9 @@ a{
 }
 .read-the-docs {
   color: #888;
+}
+.cala-sidebar{
+  background-color: var(--content-bg-2);
 }
 input:focus {
   color: var(--textColor) !important;

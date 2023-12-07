@@ -15,7 +15,7 @@ const CalaSideNavbar: React.FC<CalaSideNavbarProps> = ({ user_id }) => {
         setActiveComponent(component)
     }
     return( 
-         <div className="px-4 w-100 mt-3" style={{ height: "100vh", overflowY: "scroll"}}>
+         <div className="px-4 w-100 pt-3 cala-sidebar" style={{ height: "100vh", overflowY: "scroll"}}>
             <div className="d-flex px-2">
               <img
                 src={md_logo_small}
@@ -27,21 +27,21 @@ const CalaSideNavbar: React.FC<CalaSideNavbarProps> = ({ user_id }) => {
             <Nav className="flex-column mt-4 w-100">
                 <Nav.Item>
                 <Link to={`/ask/${user_id}`} 
-                          className={`d-flex nowrap header align-items-center px-2 py-2 ${activeComponent === "MakronexusAI" ? "active" : ""}`}>
-                        <small>Makronexa</small>
+                          className={`d-flex nowrap text-white align-items-center px-2 py-2 `}>
+                        <small className={`${activeComponent === "MakronexusAI" ? "text-dark" : ""}`}>Makronexa</small>
                 </Link>
                 </Nav.Item>
                 <Nav.Item>
-                <Link to="" className='d-flex align-items-center nowrap px-2 py-2'><small className="text-nowrap header">My Projects</small></Link>
+                <Link to="" className='d-flex align-items-center nowrap px-2 py-2'><small className="text-nowrap text-white">My Projects</small></Link>
                 </Nav.Item>
                 <Nav.Item>
-                   <Link to={`/${user_id}/datasets`} onClick={()=>handleNavigationClick("DataSets")} className={`d-flex w-100 nowrap align-items-center px-2 py-2 ${activeComponent === "DataSets" ? "active" : ""}`}> 
-                   <small className="text-nowrap header">DataSets</small>
+                   <Link to={`/${user_id}/datasets`} onClick={()=>handleNavigationClick("DataSets")} className={`d-flex w-100 nowrap align-items-center px-2 py-2 `}> 
+                   <small className={`text-nowrap ${activeComponent === "DataSets" ? "text-dark" : "text-white"}`}>DataSets</small>
                    </Link> 
                    </Nav.Item> 
                    <Nav.Item>
-                   <Link to={`/ask/${user_id}/detect_text`} className={`d-flex nowrap align-items-center px-2 py-2 ${activeComponent === "Settings" ? "active" : ""}`} onClick={() => handleNavigationClick("DataSetSettings")} >
-                    <small className="text-nowrap header">AI detector</small>
+                   <Link to={`/ask/${user_id}/detect_text`} className={`d-flex nowrap align-items-center px-2 py-2 `} onClick={() => handleNavigationClick("DataSetSettings")} >
+                    <small className={`text-nowrap  ${activeComponent === "Settings" ? "text-dark" : "text-white"}`}>AI detector</small>
                        </Link>
                 </Nav.Item>
             </Nav>
