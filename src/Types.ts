@@ -36,10 +36,10 @@ export interface UserRegistration{
   first_name:string;
   last_name:string;
   second_name?:string;
-  date_of_birth:string|null;
+  date_of_birth?:string|null;
   gender:string;
   avatar?:string
-  citizenship:string;
+  citizenship?:string;
   phone_number:string;
   email:string;
   policy_acceptance:boolean;

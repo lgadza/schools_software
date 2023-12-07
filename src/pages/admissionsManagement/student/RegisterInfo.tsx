@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 // import { allUsers } from "../../../assets/data/usersForRegistration.js";
 import { Dispatch } from "redux";
+import { allUsers } from "../../../assets/data/usersForRegistration.js";
 const initialFormData: UserRegistration = {
   first_name: "",
   email: "",
@@ -112,6 +113,28 @@ const handleChange = (e: any) => {
       clearTimeout(timer);
     };
   };
+  const handleRegistrationAll = async () => {
+    setSignUpClicked(true);
+    setAlertVisible(true);
+  
+    for (const user of allUsers) {
+      await dispatch<any>(UserRegister(user));
+  
+      // Adding a 5-second delay
+      await new Promise((resolve) => setTimeout(resolve, 5000));
+    }
+  
+    // Set a timer to hide the alert after all registrations are done
+    const timer = setTimeout(() => {
+      setAlertVisible(false);
+    }, 3000);
+  
+    // Return a cleanup function to clear the timeout when the component unmounts
+    return () => {
+      clearTimeout(timer);
+    };
+  };
+  
 
   useEffect(() => {
     if (formData.password !== confirmPassword && formData.password && confirmPassword) {
@@ -299,6 +322,19 @@ const handleChange = (e: any) => {
             >
               {isLoading && signUpClicked && <Spinner className="spinner-border-sm me-2" />}
               <span>Register</span>
+            </Button>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Button
+              variant="primary"
+              onClick={handleRegistrationAll}
+              className={`main_bg w-100 mt-3 d-flex justify-content-center align-items-center content_bg-2`}
+              type="submit"
+            >
+              {isLoading && signUpClicked && <Spinner className="spinner-border-sm me-2" />}
+              <span>Register All</span>
             </Button>
           </Col>
         </Row>

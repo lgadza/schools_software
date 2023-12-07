@@ -135,7 +135,7 @@
     justify-content: space-between;
     align-items: center;
     height: 50px;
-    /* overflow: hidden; */
+    
   }
   
   .home-navbar .navbar img {
@@ -148,12 +148,7 @@
     display: flex;
     
   }
-  .logo{
-    /* background-color: rgb(0, 0, 0,0.7); */
-    border-radius: 2.5px;
-    padding: 4px;
-    
-  }
+
   
   .home-navbar .nav-item a {
     color: #000;
