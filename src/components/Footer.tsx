@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import logo from "../assets/md_logo_small.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faTwitter, faLinkedin, faFacebookF } from '@fortawesome/free-brands-svg-icons';
+import {  faLinkedin, faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelopeOpen,  faMapMarkerAlt, faPaperPlane, faPhone } from '@fortawesome/free-solid-svg-icons';
 import "./Footer.css"
 import { CompanyName } from '../assets/data/company';
@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
               <a href='https://www.google.com/maps/search/06 Zwierzyniecka, Bialystok, Poland'>
                 <FontAwesomeIcon className='contact-icons' icon={faMapMarkerAlt} />
                 <div className="cta-text">
-                  <h4>Find us</h4>
+                  <div>Find us</div>
                   <span>06 Zwierzyniecka, Bialystok, Poland</span>
                 </div>
                 </a>
@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
                 <a href='tel:+48794144892'>
                 <FontAwesomeIcon className='contact-icons' icon={faPhone} />
                 <div className="cta-text">
-                  <h4>Call us</h4>
+                  <div>Call us</div>
                   <span>+48 794144892</span>
                 </div>
                 </a>
@@ -45,7 +45,7 @@ const Footer: React.FC = () => {
               <a href='mailto:siuolgadza@gmail.com'>
                 <FontAwesomeIcon className='contact-icons' icon={faEnvelopeOpen} />
                 <div className="cta-text">
-                  <h4>E-mail us</h4>
+                  <div>E-mail us</div>
                   <span>info@makronexus.com</span>
                 </div>
                 </a>
@@ -70,14 +70,11 @@ const Footer: React.FC = () => {
                 <div className="footer-social-icon">
                   <span className='d-flex'>Follow us</span>
                   <div className='d-flex'>
-                  <a href="#">
+                  <a href="https://www.facebook.com/makronexus/" target="_blank" rel="noopener noreferrer">
                     <FontAwesomeIcon icon={faFacebookF} className="facebook-bg" />
                   </a>
-                  <a href="#">
-                    <FontAwesomeIcon icon={faTwitter} className="twitter-bg" />
-                  </a>
-                  <a href="#">
-                    <FontAwesomeIcon icon={faLinkedin} className="linkedIn-bg" />
+                  <a href="https://www.linkedin.com/company/makronexus"  target="_blank" rel="noopener noreferrer">
+                    <FontAwesomeIcon icon={faLinkedin} className="linkedIn-bg" style={{fontSize:"25px"}}/>
                   </a>
                   </div>
                   
@@ -102,9 +99,6 @@ const Footer: React.FC = () => {
                   <li className='cursor-pointer' onClick={() => setModalShow(true)}>
                   <a > Contact us </a>
                   </li>
-                  {/* <li>
-                    <a className="header" href="#">Latest News</a>
-                  </li> */}
                 </ul>
               </div>
             </div>

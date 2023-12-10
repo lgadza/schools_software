@@ -51,7 +51,6 @@ const MssRegisterPage=():JSX.Element=>{
   </a>
 </div>
 </div>
-
          </Col>
             <Col md={6} >
             <RegisterInfo/>
