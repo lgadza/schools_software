@@ -6,7 +6,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { UserLogin, getUserData} from '../redux/actions';
 import { RootState } from '../redux/store';
 import { Dispatch } from 'redux';
-// import { CompanyName } from '../assets/data/company';
+import backgroundImage from "../assets/background-image.png"
+import md_logo_small from "../assets/md_logo_small4.png"
+import { CompanyName } from "../assets/data/company";
 import AlertBox from './Alerts';
 export interface LoginCredentialsInterface {
   email: string,
@@ -71,22 +73,39 @@ console.log(accessToken,"CRED")
   };
 
   return (
-    <Container >
+    <Container fluid style={{
+      backgroundImage: `url(${backgroundImage})`,
+      backgroundSize: 'cover', 
+      backgroundPosition: 'center', 
+      backgroundRepeat: 'no-repeat', 
+      width: '100vw', 
+      height: '100vh',
+      position: 'relative', 
+    }} >
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.7)', // Semi-transparent black
+        zIndex: 1, // Ensure it's above the background image but below the content
+      }}></div>
       {isError && sign_in && (
       <div className='register-alert'>
         <AlertBox type="danger" message='The email/password entered is incorrect'/>
       </div>
       )}
-      <Row className='d-flex justify-content-center  align-item-center'>
-        <Col className='login_container content_bg pt-5 col-sm-10 col-md-6 col-xl-4' >
-          {/* <div className="imageContainer mb-3">
-            <img
-              src={m_logo}
-              alt={CompanyName}
-              style={{ width: "100px", height: "120px" }}
-              className="img_component logo"
-            />
-          </div> */}
+      <Row className='d-flex justify-content-center  align-item-center'  >
+        <Col className='login_container content_bg pt-4 col-sm-10 col-md-6 col-xl-4' style={{zIndex:2, opacity:"0.8"}} >
+        <div className="mb-4">
+                <img
+                    src={md_logo_small}
+                    alt={CompanyName}
+                    className="img_component d-flex"
+                    style={{width:"150px",objectFit:"contain"}}
+                />
+                </div>
 
           <Form onSubmit={handleSubmit} className='px-2'>
             <Form.Group>

@@ -7,13 +7,15 @@ import { UserRegister } from "../../../redux/actions";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../redux/store/index.js";
 // import { useNavigate } from "react-router-dom";
+import md_logo_small from "../../../assets/md_logo_small4.png"
+import { CompanyName } from "../../../assets/data/company";
 import AlertBox from "../../../components/Alerts.js";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 // import { allUsers } from "../../../assets/data/usersForRegistration.js";
 import { Dispatch } from "redux";
-import { allUsers } from "../../../assets/data/usersForRegistration.js";
+// import { allUsers } from "../../../assets/data/usersForRegistration.js";
 const initialFormData: UserRegistration = {
   first_name: "",
   email: "",
@@ -113,27 +115,27 @@ const handleChange = (e: any) => {
       clearTimeout(timer);
     };
   };
-  const handleRegistrationAll = async () => {
-    setSignUpClicked(true);
-    setAlertVisible(true);
+  // const handleRegistrationAll = async () => {
+  //   setSignUpClicked(true);
+  //   setAlertVisible(true);
   
-    for (const user of allUsers) {
-      await dispatch<any>(UserRegister(user));
+  //   for (const user of allUsers) {
+  //     await dispatch<any>(UserRegister(user));
   
-      // Adding a 5-second delay
-      await new Promise((resolve) => setTimeout(resolve, 5000));
-    }
+  //     // Adding a 5-second delay
+  //     await new Promise((resolve) => setTimeout(resolve, 5000));
+  //   }
   
-    // Set a timer to hide the alert after all registrations are done
-    const timer = setTimeout(() => {
-      setAlertVisible(false);
-    }, 3000);
+  //   // Set a timer to hide the alert after all registrations are done
+  //   const timer = setTimeout(() => {
+  //     setAlertVisible(false);
+  //   }, 3000);
   
-    // Return a cleanup function to clear the timeout when the component unmounts
-    return () => {
-      clearTimeout(timer);
-    };
-  };
+  //   // Return a cleanup function to clear the timeout when the component unmounts
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+  // };
   
 
   useEffect(() => {
@@ -166,7 +168,7 @@ const handleChange = (e: any) => {
   };
  
   return (
-    <div className="content_bg register-form p-3">
+    <div className="register-form p-3 mx-2" style={{backgroundColor:"white",opacity:"0.8", height:"95vh",overflowX:"scroll", borderRadius:"5px"}}>
       {isError && alertVisible && (
         <div className="register-alert">
           <AlertBox type="danger" message={`${isError && "Error during registration, try again later!"}`} />
@@ -177,6 +179,14 @@ const handleChange = (e: any) => {
           <AlertBox type="info" message={response.message} />
         </div>
       )}
+                      <div className="mb-2">
+                <img
+                    src={md_logo_small}
+                    alt={CompanyName}
+                    className="img_component d-flex"
+                    style={{width:"150px",objectFit:"contain"}}
+                />
+                </div>
       <Form onSubmit={handleSubmit}>
         <Row>
           <Col>
@@ -325,7 +335,7 @@ const handleChange = (e: any) => {
             </Button>
           </Col>
         </Row>
-        <Row>
+        {/* <Row>
           <Col>
             <Button
               variant="primary"
@@ -337,7 +347,7 @@ const handleChange = (e: any) => {
               <span>Register All</span>
             </Button>
           </Col>
-        </Row>
+        </Row> */}
         <div className="d-flex justify-content-end align-items-center my-3">
         Already have an account yet? 
         <Link to="/login" >

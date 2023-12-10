@@ -8,6 +8,8 @@ import { useDispatch } from 'react-redux';
 import AlertBox from '../Alerts';
 import { Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import md_logo_small from "../../assets/md_logo_small4.png"
+import { CompanyName } from "../../assets/data/company";
 
 interface SignInModalProps {
   onClose: () => void;
@@ -78,9 +80,17 @@ const SignInModal: React.FC<SignInModalProps> = ({ onClose, show }) => {
     };
 
   return (
-    <Modal show={show} onHide={onClose} centered>
+    <Modal show={show} onHide={onClose} centered >
       <Modal.Header closeButton>
-        <Modal.Title>Sign In</Modal.Title>
+        {/* <Modal.Title>Sign I n</Modal.Title> */}
+        <div>
+                <img
+                    src={md_logo_small}
+                    alt={CompanyName}
+                    className="img_component d-flex"
+                    style={{width:"150px",objectFit:"contain"}}
+                />
+                </div>
       </Modal.Header>
       <Modal.Body className='d-flex justify-content-between align-items-center'>
 
@@ -90,8 +100,8 @@ const SignInModal: React.FC<SignInModalProps> = ({ onClose, show }) => {
         <AlertBox type="danger" message='The email/password entered is incorrect'/>
       </div>
       )}
-      <Row className='d-flex justify-content-center pt-4  align-item-center'>
-        <Col className=' content_bg ' >
+      <Row className='d-flex justify-content-center pt-4  align-item-center' >
+        <Col className=' content_bg ' style={{ opacity:"0.8"}}>
           <Form onSubmit={handleSubmit} className='px-2'>
             <Form.Group>
               <Form.Control type="email" name='email' value={loginCredentials.email} onChange={handleChange} placeholder="Enter email" className="mb-3" />
