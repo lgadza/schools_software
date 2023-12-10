@@ -124,19 +124,19 @@ const navigate=useNavigate()
 
   return (
     <main className="main pricing flow">
-      <h4 className="main__heading color-header">Pricing</h4>
-      <h5 className="">All plans are cancellable anytime</h5>
+      <h6 className="main__heading color-header">Pricing</h6>
+      <h5 className="textMediumSize">All plans are cancellable anytime</h5>
       <div className="main__cards cards">
         <div className="cards__inner" ref={cardsContainerInnerRef}>
           {cards.map((card, index) => (
             <div className="cards__card card" key={index}>
-              <h2 className="card__heading">{card.heading}</h2>
+              <h2 className="card__heading textMediumSize">{card.heading}</h2>
               <p className="card__price">{card.price}</p>
               <ul role="list" className="card__bullets flow">
                 {card.bullets.map((bullet, bulletIndex) => (
                   <li key={bulletIndex} className='d-flex'>
                     <FontAwesomeIcon className='me-1' icon={faCheckCircle} style={{color:"rgb(40, 167, 69,0.8)"}}/>
-                    <small className='text-start'>{bullet}</small>
+                    <small className='text-start textSmallSize'>{bullet}</small>
                   </li>
                 ))}
               </ul>
@@ -159,7 +159,7 @@ const navigate=useNavigate()
                 }).catch(error=>{
                   console.error(error.error)
                 })
-              }} className="card__cta cta">{card.ctaText}</a>
+              }} className="card__cta cta textSmallSize">{card.ctaText}</a>
             </div>
           ))}
         </div>

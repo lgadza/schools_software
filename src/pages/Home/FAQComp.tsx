@@ -16,7 +16,7 @@ const FAQComp: React.FC<FAQCompoProps> = ({FAQItems}) => {
     <div className="container FAQ">
 <Row>
   <Col md={6}>
-  <h4 className='d-flex py-2 color-header text-start'>Frequently Asked Questions</h4>
+  <h6 className='d-flex py-2 color-header text-start '>Frequently Asked Questions</h6>
       <div className="FAQ">
         {FAQItems.map((item:FAQItem) => (
           <div className="FAQ-item" key={item.id}>
@@ -26,12 +26,12 @@ const FAQComp: React.FC<FAQCompoProps> = ({FAQItems}) => {
               aria-expanded={expandedId === item.id ? 'true' : 'false'}
               onClick={() => toggleFAQ(item.id)}
             >
-              <span className="FAQ-title">{item.question}</span>
+              <span className="FAQ-title textMediumSize">{item.question}</span>
               <span className="icon" aria-hidden="true"></span>
             </button>
             {expandedId === item.id && (
               <div className="FAQ-content">
-                <p>{item.answer}</p>
+                <p className='textSmallSize'>{item.answer}</p>
               </div>
             )}
           </div>

@@ -38,10 +38,10 @@ const AboutUs=():JSX.Element=>{
           
           <Col md={4} className="mb-3">
           <div className="card">
-            <h4 className="mb-3">
+            <h4 className="mb-3 textMediumSize">
             Who We Are
             </h4>
-            <p className="text-start">
+            <p className="text-start textSmallSize">
             <small>
             At Makronexus, we are more than just a team; we are a collective of passionate professionals united by our unwavering dedication to technology and education. Our dynamic group brings together a diverse tapestry of experience in software development, artificial intelligence, and education. It's at this intersection of knowledge and innovation that we craft truly exceptional solutions.
             </small>
@@ -53,10 +53,10 @@ const AboutUs=():JSX.Element=>{
           </Col>
           <Col md={4} className="mb-3">
           <div className="card">
-            <h4 className="mb-3">
+            <h4 className="mb-3 textMediumSize">
             Our Mission
             </h4>
-            <p className="text-start">
+            <p className="text-start textSmallSize">
             <small>We're on a mission to provide schools with an all-in-one, affordable, and future-ready platform that makes education seamless, exciting, and accessible to everyone, ensuring quality learning for all.
             </small> 
             </p>
@@ -67,10 +67,10 @@ const AboutUs=():JSX.Element=>{
           </Col>
           <Col md={4} className="mb-3">
           <div className="card">
-            <h4 className="mb-3">
+            <h4 className="mb-3 textMediumSize">
             What We Do
             </h4>
-            <p className="text-start">
+            <p className="text-start textSmallSize">
             <small>
             Makronexus specializes in developing innovative school management software that seamlessly connects secondary schools, primary schools, and educational institutions of all sizes across Zimbabwe. Our software is designed to simplify administrative tasks, enhance communication, foster an enriched learning environment, empowering students and educators to engage in research and educational discovery and improve the overall learning experience.
             </small>
@@ -84,16 +84,16 @@ const AboutUs=():JSX.Element=>{
             <div className="mt-5 card text-center">     
       <ul className="tree d-flex justify-content-center">
         <li>
-          <h4>Our Core Values</h4>
+          <h4 className="textMediumSize">Our Core Values</h4>
           <ul>
             <li>
             <div className="core-values">
            <div className="text-center">
            <FontAwesomeIcon icon={faLightbulb} className="icon about-us-icon"/>
            </div>
-                 <p>Innovation</p>
+                 <p className="textMediumSize">Innovation</p>
                  <div className="text-start">
-                    <small>
+                    <small className="textSmallSize">
                     We thrive on innovation, constantly seeking new ways to improve education through technology.
                     </small>
                  </div>
@@ -104,9 +104,9 @@ const AboutUs=():JSX.Element=>{
             <div className="text-center">
                 <Icon.PatchCheckFill className="icon about-us-icon"/>
                 </div>
-                 <p>Quality</p>
+                 <p className="textMediumSize">Quality</p>
                  <div className="text-start">
-                    <small>
+                    <small className="textSmallSize">
                     We are committed to delivering high-quality, reliable solutions that make a meaningful impact.
                     </small>
                  </div>
@@ -117,9 +117,9 @@ const AboutUs=():JSX.Element=>{
             <div className="text-center">
                  <Icon.UniversalAccess className="icon about-us-icon"/>
             </div>
-                 <p>Accessibility</p>
+                 <p className="textMediumSize">Accessibility</p>
                  <div className="text-start">
-                    <small>
+                    <small className="textSmallSize">
                     We believe that education should be accessible to everyone, and we design our software with inclusivity in mind.
                     </small>
                  </div>
@@ -130,9 +130,9 @@ const AboutUs=():JSX.Element=>{
             <div className="text-center">
                 <FontAwesomeIcon icon={faHandshake} className="icon about-us-icon"/>
             </div>
-                 <p>Collaboration</p>
+                 <p className="textMediumSize">Collaboration</p>
                  <div className="text-start">
-                    <small>
+                    <small className="textSmallSize">
                     Collaboration is at the heart of what we do. We work closely with educators, students, and administrators to create solutions that truly meet their needs.
                     </small>
                  </div>
@@ -146,10 +146,10 @@ const AboutUs=():JSX.Element=>{
             <PushButton url='/register' message='Join us'/>
             </div>
             <div className="mt-5">
-                <Row>
-                    <Col md={6}>
+                <Row >
+                    <Col md={6} className="d-flex align-items-center">
                     <div className="text-start">
-                    <h4 className="text-start my-3">
+                    <h4 className="text-start textMediumSize my-3">
                     Let’s build Zimbabwe’s most preferred school operating system together
                     </h4>
             <PushButton url='/register' message='Join Us on Our Journey'/>

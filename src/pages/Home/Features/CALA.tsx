@@ -42,7 +42,7 @@ const CALAFeature: React.FC = () => {
     <AICanvasAnimation/>
   </div>
  <div className='col-md-8 d-none d-md-block d-flex align-items-start justify-content-center flex-column'>
- <div className=" ">
+ <div className="cala-courasel">
               <h1 className="text-start text-nowrap">
                 Use Makronexa to
               </h1>
@@ -66,14 +66,14 @@ const CALAFeature: React.FC = () => {
                 <div className="cala-content p-3 mt-3">
                   <h2 className="text-start mb-3">Learn Faster.💪</h2>
                   <h2 className="text-start header "> Work Smarter. 🧠 </h2>
-                  <h5 className="text-start py-2">Utilize the AI assistant to help your CALA project research</h5>
+                  <h5 className="text-start py-2 textMediumSize">Utilize the AI assistant to help your CALA project research</h5>
                   <ul>
                     {quickFeatures.map((feature) => (
                       <li key={feature.id} className="d-flex  my-3">
                         <FontAwesomeIcon icon={faCheckCircle} />
                         <div className="d-flex ms-3  flex-column">
-                          <span className="text-start"><strong>{feature.title} </strong></span>
-                          <small className="text-start text-muted">{feature.description} </small>
+                          <span className="text-start textMediumSize"><strong>{feature.title} </strong></span>
+                          <small className="text-start text-muted textSmallSize">{feature.description} </small>
                         </div>
                       </li>
                     ))}
@@ -82,12 +82,12 @@ const CALAFeature: React.FC = () => {
                 <div className="cala-user mt-5">
                     <div className='for-teachers'>
                         <span className="teacher p-4"><FontAwesomeIcon icon={faChalkboardTeacher} style= {{fontSize:"20px"}}/></span>
-                        <h4 className="mt-4">For teachers</h4>
+                        <h4 className="mt-4 textMediumSize">For teachers</h4>
                         <VerticalTimeline  timelineItems={teacherItems}/>
                     </div>
                     <div className='for-student'>
                         <span className="student p-4"><FontAwesomeIcon icon={faGraduationCap} color='black' style={{fontSize:"20px"}}/></span>
-                        <h4 className="mt-4">For Students</h4>
+                        <h4 className="mt-4 textMediumSize">For Students</h4>
                         <VerticalTimeline timelineItems={studentsItems} />
                     </div>
                 </div>

@@ -16,7 +16,7 @@ interface StepProps {
 }
 const Step:React.FC<StepProps> = ({ title, image, icon, description, iconClass }) => (
   <div className="steps-one">
-    <h5>{title}</h5>
+    <h5 className='textMediumSize text-white'>{title}</h5>
     <div className="step-wrap">
       <div className="steps-stops">
         <div className="verticle-line back-orange"></div>
@@ -32,7 +32,7 @@ const Step:React.FC<StepProps> = ({ title, image, icon, description, iconClass }
     </div>
     <div className="inverted-pane-warp back-blue">
       <div className="ps-2 pt-2 inverted-steps-pane text-start">
-        <small>{description}</small>
+        <small className='textSmallSize'>{description}</small>
       </div>
     </div>
   </div>
@@ -50,7 +50,7 @@ const HorizontalTimeline: React.FC = () => {
     {
       title: 'Extraction',
       image: textExtration,
-      icon: <Icon.FiletypeExe size={30} />,
+      icon: <Icon.FiletypeExe size={30} color='white' />,
       description: 'Extract text and data from uploaded files through advanced parsing.',
       iconClass: 'fileExe',
     },
@@ -81,7 +81,7 @@ const HorizontalTimeline: React.FC = () => {
     <section id="horizontal-process">
       <div className="row">
         <div className="section-heading">
-          <h4 className="text-center orange my-3 color-header">How it works</h4>
+          <h6 className="text-center orange my-3 color-header">How it works</h6>
         </div>
       </div>
       <div className="container-fluid">

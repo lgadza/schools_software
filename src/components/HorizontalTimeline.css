@@ -76,7 +76,8 @@
     width: 155px;
     background: #9b3636;
     margin-left: 10px;
-    /* font-size: 0.75rem; */
+    font-weight:300;
+    font-size: 0.75rem;
     background: #0F2027;  
     color: white;
     background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027); 

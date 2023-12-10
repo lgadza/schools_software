@@ -4,7 +4,12 @@
   height: 60vh;
 
 }
-  
+ .cala-courasel h1 {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: white;
+    font-size: 40px;
+  }
   .text.typing {
     
     font-weight: bold;

@@ -19,7 +19,8 @@
   --bg-2: rgb(42, 57, 66);
   --textMediumSize:1rem;
   --textColor: white;
-  --textSize:  0.75rem;
+  /* --textSize:  0.75rem; */
+  --textSize: 14px;
   --textColor2:rgb(2, 178, 175);
   --blackAndWhite: black;
   --bg-gradient: rgb(49, 76, 87);

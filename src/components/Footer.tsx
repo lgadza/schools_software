@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
                   </a>
                 </div>
                 <div className="footer-text">
-                  <p>
+                  <p className='textSmallSize'>
                   The next-gen School Learning Management System with AI-powered features for personalized learning and better student outcome
                   </p>
                 </div>
@@ -108,7 +108,7 @@ const Footer: React.FC = () => {
                   <h3 className='py-3'>Subscribe</h3>
                 </div>
                 <div className="footer-text mb-25">
-                  <p>Don’t miss any updates of our new features and extensions!</p>
+                  <p className='textSmallSize'>Don’t miss any updates of our new features and extensions!</p>
                 </div>
                 <div className="subscribe-form">
                   <form action="#">

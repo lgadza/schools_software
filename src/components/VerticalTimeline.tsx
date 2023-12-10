@@ -35,11 +35,11 @@ const VerticalTimeline = ({timelineItems}:{timelineItems:timelineItemsProps[]}):
               <div className='text-start px-2 mt-3'>
                 <FontAwesomeIcon icon={item.icon} style={{ fontSize: "2rem", color: item.color }} />
               </div>
-              <h5 className='text-start d-flex my-2 px-2 color-header'>{item.title}</h5>
+              <h6 className='text-start d-flex my-2 px-2 color-header'>{item.title}</h6>
               <div className='text-start px-2'>
-                <small>{item.description}</small>
+                <small className='textSmallSize'>{item.description}</small>
               </div>
-              <a href="#" className='header d-flex px-2 my-4'>Learn more!</a>
+              <a href="#" className='header textSmallSize d-flex px-2 my-4'>Learn more!</a>
             </div>
           </div>
         ))}
