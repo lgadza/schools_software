@@ -7,7 +7,7 @@ export const PushButton: React.FC<{ message: string,url?:string }> = ({ message,
     <div id="push-btn" onClick={()=>{
        if(url)  return navigate(url)
     }}>
-      <div className="push-btn">
+      <div className="push-btn textMediumSize">
         {message}
       </div>
     </div>

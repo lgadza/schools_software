@@ -69,7 +69,7 @@ const Carousel: React.FC = () => {
               <span className="progressbar">
                 <span className="progressbar-fill"></span>
               </span>
-              <span className='label-nav'>
+              <span className='label-nav textMediumSize'>
                Intro
               </span>
             </label>
@@ -77,19 +77,19 @@ const Carousel: React.FC = () => {
               <span className="progressbar">
                 <span className="progressbar-fill"></span>
               </span>
-              <span className='label-nav'> CALA</span>
+              <span className='label-nav textMediumSize'> CALA</span>
             </label>
             <label htmlFor="banner3" onClick={() => handleBannerClick(3)}>
               <span className="progressbar">
                 <span className="progressbar-fill"></span>
               </span>
-              <span className='label-nav'> Efficiency</span>
+              <span className='label-nav textMediumSize'> Efficiency</span>
             </label>
             <label htmlFor="banner4" onClick={() => handleBannerClick(4)}>
               <span className="progressbar">
                 <span className="progressbar-fill"></span>
               </span>
-              <span className='label-nav'>Simplicity</span>
+              <span className='label-nav textMediumSize'>Simplicity</span>
             </label>
           </div>
         </nav>

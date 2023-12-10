@@ -47,7 +47,7 @@ import HomeAIInfo from "./HomeAIInfo";
               <Carousel />
             </div>
             <Container className="px-5">
-                <h4 className="p-4 d-flex text-start color-header"> Empower and elevate success for all.</h4>
+                <h6 className="p-4 d-flex text-start color-header"> Empower and elevate success for all.</h6>
               <div className="better-for-card">
               <Row className="mb-5">
               {betterCardList.map((card)=>{
@@ -55,10 +55,10 @@ import HomeAIInfo from "./HomeAIInfo";
                   <Col md={6} className="role_card" key={card.id}>
                   <div id={card.title} className="info_section  mx-3">
                     <div className="role_header">
-                      <h5 className="px-2 pt-4 text-start">{card.title}</h5>
+                      <h5 className="px-2 textMediumSize pt-4 text-start">{card.title}</h5>
                     </div>
                     <div className="role_desc text-start px-2">
-                      <small className="text text-start">{card.description}</small>
+                      <small className="text textSmallSize text-start">{card.description}</small>
                     </div>
                   </div>
                   <div className={`blur_back ${card.title}_back`} />
@@ -69,13 +69,13 @@ import HomeAIInfo from "./HomeAIInfo";
               </div>
               <div className="simplify-feature-container my-5 main-bg">
               <div className="h3">
-                <h4 className="text-start d-flex color-header p-3">Streamline your institute's management<br/> with simplicity. </h4>
+                <h6 className="text-start d-flex color-header p-3">Streamline your institute's management<br/> with simplicity. </h6>
                 </div> 
                 <SimplifyProcess/>
               </div>
               <div className="simplify-feature-container my-5 main-bg">
               <div className="h3">
-                <h4 className="text-start d-flex color-header p-3">You are one question away from the correct answer. </h4>
+                <h6 className="text-start d-flex color-header p-3">You are one question away from the correct answer. </h6>
                 </div> 
                 <HomeAIInfo/>
               </div>

@@ -71,10 +71,10 @@ const HomeAIInfo: React.FC = () => {
       <input type="radio" id="feature3" className="sec-1-input" name="feature" checked={currentFeature === 3} />
       <div className="row my-4 me-2">
         <div className="col col-12 col-sm-12 col-md-6 ">
-          <h3 className="text-start header mb-3">Mankronexa </h3>
-          <h4 className="text-start">
+          <h5 className="text-start header mb-3">Mankronexa </h5>
+          <h6 className="text-start textMediumSize">
             Mankronexa is generative AI that organizes all your knowledge
-          </h4>
+          </h6>
           <ul>
             {HomeIAFeatures.map((feature) => (
               <li
@@ -85,9 +85,9 @@ const HomeAIInfo: React.FC = () => {
                 key={feature.id}
               >
                 <div className="d-flex flex-column">
-                  <span className="my-3 simplify-feature-text">{feature.heading} </span>
+                  <span className="my-3 simplify-feature-text textMediumSize">{feature.heading} </span>
                   {currentCard === feature.id && (
-                    <small className="simplify-feature-text">{feature.content} </small>
+                    <small className="simplify-feature-text textSmallSize">{feature.content} </small>
                   )}
                 </div>
                 <span

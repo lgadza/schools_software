@@ -64,7 +64,7 @@ const CALAFeature: React.FC = () => {
             <Row className="my-5">
               <Col lg={8}>
                 <div className="cala-content p-3 mt-3">
-                  <h2 className="text-start mb-3">Learn <br />Faster.💪</h2>
+                  <h2 className="text-start mb-3">Learn Faster.💪</h2>
                   <h2 className="text-start header "> Work Smarter. 🧠 </h2>
                   <h5 className="text-start py-2">Utilize the AI assistant to help your CALA project research</h5>
                   <ul>
@@ -73,7 +73,7 @@ const CALAFeature: React.FC = () => {
                         <FontAwesomeIcon icon={faCheckCircle} />
                         <div className="d-flex ms-3  flex-column">
                           <span className="text-start"><strong>{feature.title} </strong></span>
-                          <span className="text-start text-muted">{feature.description} </span>
+                          <small className="text-start text-muted">{feature.description} </small>
                         </div>
                       </li>
                     ))}
