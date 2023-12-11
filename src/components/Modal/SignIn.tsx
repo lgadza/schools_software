@@ -113,18 +113,18 @@ const SignInModal: React.FC<SignInModalProps> = ({ onClose, show }) => {
             <div className='d-flex justify-content-between align-items-center'>
               <Form.Check label="Remember me" />
               <Link to="">
-                <span className='header'>Set a new password</span>
+                <span className='header textMediumSize'>Set a new password</span>
               </Link>
             </div>
 
             <div className='my-3'>
-              <Button variant="primary" type="submit" disabled={!isFormValid()} className={`main_bg w-100 mt-3 d-flex align-items-center justify-content-center ${isFormValid()?"content_bg-2":"bg-secondary"}`} onClick={handleLogin}>
+              <Button variant="primary" type="submit" disabled={!isFormValid()} className={`main_bg w-100 mt-3 d-flex align-items-center justify-content-center ${isFormValid()?"content_bg-2 textMediumSize":"bg-secondary"}`} onClick={handleLogin}>
                 {isLoading && sign_in&& (
                 <Spinner className='spinner-border-sm me-2'/>
                 )}
                 Sign in
               </Button>
-              <Link to="/register" className=' d-flex justify-content-end align-items-center my-3 text-dark'>Don't have an account yet? <span className='px-3 py-2 header'>Register</span></Link>
+              <Link to="/register" className=' d-flex justify-content-end align-items-center my-3 text-dark textMediumSize'>Don't have an account yet? <span className='px-3 py-2 header textMediumSize'>Register</span></Link>
             </div>
           </Form>
 
@@ -133,7 +133,7 @@ const SignInModal: React.FC<SignInModalProps> = ({ onClose, show }) => {
     </Container>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={()=>{onClose()}}>
+        <Button variant="secondary" className='textMediumSize' onClick={()=>{onClose()}}>
           Close
         </Button>
       </Modal.Footer>

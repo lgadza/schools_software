@@ -55,7 +55,7 @@ const PageProgress: React.FC<PageProgressProps> = ({ steps }) => {
         {steps.map((step, index) => (
           <div
             key={index}
-            className={`step-label ${index === currentStep ? "active main_bg" : ""}`}
+            className={`step-label textSmallSize ${index === currentStep ? "active main_bg" : ""}`}
           >
             {step.label}
           </div>

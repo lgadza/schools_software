@@ -190,13 +190,13 @@ const handleChange = (e: any) => {
       <Form onSubmit={handleSubmit}>
         <Row>
           <Col>
-            <Form.Label className="d-flex">
+            <Form.Label className="d-flex textMediumSize">
               First name <span className="text-danger">*</span>
             </Form.Label>
             <Form.Control placeholder="First name" name="first_name" value={formData.first_name} required onChange={handleChange} />
           </Col>
           <Col>
-            <Form.Label className="d-flex">
+            <Form.Label className="d-flex textMediumSize">
               Last name <span className="text-danger">*</span>
             </Form.Label>
             <Form.Control placeholder="Last name" required name="last_name" value={formData.last_name} onChange={handleChange} />
@@ -206,7 +206,7 @@ const handleChange = (e: any) => {
       <Form className="my-3" onSubmit={handleSubmit}>
         <Row>
           <Col>
-            <Form.Label className="d-flex">
+            <Form.Label className="d-flex textMediumSize">
               Email <span className="text-danger">*</span>{" "}
             </Form.Label>
             <Form.Control
@@ -219,7 +219,7 @@ const handleChange = (e: any) => {
             />
           </Col>
           <Col>
-            <Form.Label className="d-flex">
+            <Form.Label className="d-flex textMediumSize">
               Gender<span className="text-danger">*</span>
             </Form.Label>
             <Form.Control as="select" required name="gender" value={formData.gender} onChange={handleChange}>
@@ -233,7 +233,7 @@ const handleChange = (e: any) => {
       <Form className="my-3" onSubmit={handleSubmit}>
         <Row>
           <Col>
-            <Form.Label className="d-flex">
+            <Form.Label className="d-flex textMediumSize">
               Code <span className="text-danger">*</span>
             </Form.Label>
             <Form.Control as="select" required name="country_code" value={formData.country_code} onChange={handleChange}>
@@ -244,7 +244,7 @@ const handleChange = (e: any) => {
             </Form.Control>
           </Col>
           <Col>
-            <Form.Label className="d-flex">
+            <Form.Label className="d-flex textMediumSize">
               Phone <span className="text-danger">*</span>
             </Form.Label>
             <Form.Control
@@ -267,7 +267,7 @@ const handleChange = (e: any) => {
       <Form className="my-3" onSubmit={handleSubmit}>
         <Row>
           <Col>
-            <Form.Label className="d-flex">
+            <Form.Label className="d-flex textMediumSize">
               Password <span className="text-danger">*</span>
             </Form.Label>
             <Form.Control
@@ -281,7 +281,7 @@ const handleChange = (e: any) => {
             />
           </Col>
           <Col className="password-input-container">
-            <Form.Label className="d-flex">
+            <Form.Label className="d-flex textMediumSize">
               Confirm password <span className="text-danger">*</span>
             </Form.Label>
             <Form.Control
@@ -310,7 +310,7 @@ const handleChange = (e: any) => {
                 
               />
               <Form.Label className="mx-2 text-start">
-                <small>
+                <small className="textSmallSize">
                   I consent to the processing of my data for the purposes of the current and future admission in accordance with the provisions of Regulation of Zimbabwe. More about the principles of personal data processing in the PRIVACY POLICY
                 </small>
               </Form.Label>
@@ -324,14 +324,14 @@ const handleChange = (e: any) => {
             <Button
               variant="primary"
               onClick={handleRegistration}
-              className={`main_bg w-100 mt-3 d-flex justify-content-center align-items-center ${
+              className={`main_bg w-100  d-flex justify-content-center align-items-center ${
                 isFormValid() ? "content_bg-2" : ""
               }`}
               type="submit"
               disabled={!isFormValid()}
             >
               {isLoading && signUpClicked && <Spinner className="spinner-border-sm me-2" />}
-              <span>Register</span>
+              <span className="textMediumSize">Register</span>
             </Button>
           </Col>
         </Row>
@@ -348,17 +348,17 @@ const handleChange = (e: any) => {
             </Button>
           </Col>
         </Row> */}
-        <div className="d-flex justify-content-end align-items-center my-3">
+        <div className="d-flex justify-content-end align-items-center my-3 textMediumSize">
         Already have an account yet? 
         <Link to="/login" >
-          <span className="px-3 py-2 header">Sign in</span>
+          <span className="px-3 py-2 header textMediumSize">Sign in</span>
         </Link>
         </div>
         {!passwordValid && formData.password &&(
-              <div><small className="text-danger">Password must have at least 6 characters and contain at least 1 letter and 1 digit</small></div>
+              <div><small className="text-danger textSmallSize">Password must have at least 6 characters and contain at least 1 letter and 1 digit</small></div>
             )}
         {passwordsDoNotMatch && formData.password &&confirmPassword &&(
-              <div><small className="text-danger">Password do not match</small></div>
+              <div><small className="text-danger textSmallSize">Password do not match</small></div>
             )}
       </Form>
     </div>

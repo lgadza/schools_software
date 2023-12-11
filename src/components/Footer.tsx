@@ -88,16 +88,16 @@ const Footer: React.FC = () => {
                 </div>
                 <ul>
                   <li>
-                    <a  href="/">Home</a>
+                    <a className='textMediumSize'  href="/">Home</a>
                   </li>
                   <li>
-                    <a  href="/about">About us</a>
+                    <a className='textMediumSize' href="/about">About us</a>
                   </li>
                   <li>
-                    <a  href="#">Our Services</a>
+                    <a className='textMediumSize'  href="#">Our Services</a>
                   </li>
                   <li className='cursor-pointer' onClick={() => setModalShow(true)}>
-                  <a > Contact us </a>
+                  <a className='textMediumSize'> Contact us </a>
                   </li>
                 </ul>
               </div>
@@ -112,7 +112,7 @@ const Footer: React.FC = () => {
                 </div>
                 <div className="subscribe-form">
                   <form action="#">
-                    <input type="text" placeholder="Email Address" />
+                    <input type="text" className='textMediumSize' placeholder="Email Address" />
                     <div className='send-btn'>
                       <FontAwesomeIcon icon={faPaperPlane} className='send-icon' />
                     </div>
@@ -136,17 +136,17 @@ const Footer: React.FC = () => {
                     <div className="col-xl-6 col-lg-6 text-center text-lg-left d-flex align-items-center">
                     <img src={logo} style={{width:"20px"}} alt="logo" />
                         <div className="ps-2 copyright-text">
-                            <p className='text-nowrap'>Copyright	&copy; {CompanyName}.. {year} All rights reserved.</p>
+                            <p className='text-nowrap textSmallSize'>Copyright	&copy; {CompanyName}.. {year} All rights reserved.</p>
                         </div>
                     </div>
                     <div className="col-xl-6 col-lg-6 d-none d-lg-block text-right">
                         <div className="footer-menu">
                             <ul>
-                                <li><a href="/">Home</a></li>
-                                <li><a href="#">Terms</a></li>
-                                <li><a href="#">Privacy</a></li>
-                                <li><a href="#">Policy</a></li>
-                                <li onClick={() => setModalShow(true)}><a>Contact</a></li>
+                                <li><a className='textSmallSize' href="/">Home</a></li>
+                                <li><a className='textSmallSize' href="#">Terms</a></li>
+                                <li><a className='textSmallSize' href="#">Privacy</a></li>
+                                <li className='textSmallSize'><a href="#">Policy</a></li>
+                                <li onClick={() => setModalShow(true)}><a className='textSmallSize'>Contact</a></li>
                             </ul>
                         </div>
                     </div>
