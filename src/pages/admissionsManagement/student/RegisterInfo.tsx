@@ -189,13 +189,13 @@ const handleChange = (e: any) => {
                 </div>
       <Form onSubmit={handleSubmit}>
         <Row>
-          <Col>
+          <Col md={6}  className="my-2">
             <Form.Label className="d-flex textMediumSize">
               First name <span className="text-danger">*</span>
             </Form.Label>
             <Form.Control placeholder="First name" name="first_name" value={formData.first_name} required onChange={handleChange} />
           </Col>
-          <Col>
+          <Col md={6}  className="my-2">
             <Form.Label className="d-flex textMediumSize">
               Last name <span className="text-danger">*</span>
             </Form.Label>
@@ -203,9 +203,9 @@ const handleChange = (e: any) => {
           </Col>
         </Row>
       </Form>
-      <Form className="my-3" onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Row>
-          <Col>
+          <Col md={6}  className="my-2">
             <Form.Label className="d-flex textMediumSize">
               Email <span className="text-danger">*</span>{" "}
             </Form.Label>
@@ -218,7 +218,7 @@ const handleChange = (e: any) => {
               isInvalid={!emailValid && !!formData.email} 
             />
           </Col>
-          <Col>
+          <Col md={6}  className="my-2">
             <Form.Label className="d-flex textMediumSize">
               Gender<span className="text-danger">*</span>
             </Form.Label>
@@ -230,9 +230,9 @@ const handleChange = (e: any) => {
           </Col>
         </Row>
       </Form>
-      <Form className="my-3" onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Row>
-          <Col>
+          <Col md={6}  className="my-2" >
             <Form.Label className="d-flex textMediumSize">
               Code <span className="text-danger">*</span>
             </Form.Label>
@@ -243,7 +243,7 @@ const handleChange = (e: any) => {
               <option value="+48">+48</option>
             </Form.Control>
           </Col>
-          <Col>
+          <Col md={6}  className="my-2">
             <Form.Label className="d-flex textMediumSize">
               Phone <span className="text-danger">*</span>
             </Form.Label>
@@ -264,9 +264,9 @@ const handleChange = (e: any) => {
           </Col>
         </Row>
       </Form>
-      <Form className="my-3" onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Row>
-          <Col>
+          <Col md={6}  className="my-2">
             <Form.Label className="d-flex textMediumSize">
               Password <span className="text-danger">*</span>
             </Form.Label>
@@ -298,9 +298,9 @@ const handleChange = (e: any) => {
           </Col>
         </Row>
       </Form>
-      <Form className="my-3" onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Row>
-          <Col>
+          <Col md={6}  className="my-2">
             <div className="d-flex">
               <Form.Check
                 type="checkbox"
@@ -318,9 +318,9 @@ const handleChange = (e: any) => {
           </Col>
         </Row>
       </Form>
-      <Form className="my-3" onSubmit={handleSubmit}>
+      <Form onSubmit={handleSubmit}>
         <Row>
-          <Col>
+          <Col md={6}  className="my-2">
             <Button
               variant="primary"
               onClick={handleRegistration}
@@ -336,7 +336,7 @@ const handleChange = (e: any) => {
           </Col>
         </Row>
         {/* <Row>
-          <Col>
+          <Col md={6}  className="my-2">
             <Button
               variant="primary"
               onClick={handleRegistrationAll}

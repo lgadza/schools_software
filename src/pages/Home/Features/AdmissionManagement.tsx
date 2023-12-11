@@ -108,13 +108,13 @@ const AdmissionManagement: React.FC = () => {
             <div className="content-container">
               <Container fluid className="px-0 mb-5">
                   <HomeNavbar />
-                <Container className="px-5">
+                <Container className="px-5" >
                 <SunRaise/>
                     <Row className="mb-5">
                         <Col xl={8}>
                   <AdmissionManagementContent/>
                         </Col>
-                        <Col md={4} className="d-none d-xl-block px-5">
+                        <Col md={4} className="d-none d-xl-block px-5 mt-2">
                             <ExploreMoreFeatures/>
                         </Col>
                     </Row>
