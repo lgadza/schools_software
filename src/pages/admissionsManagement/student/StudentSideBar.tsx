@@ -5,50 +5,50 @@ const StudentSideBar=({source,activeComponent,handleNavigationClick}:{activeComp
     
     return(
         <div>
-<ul className="d-flex flex-column align-items-start student_account">
-{/* <h5 className="d-flex">Chapters</h5> */}
-    <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "PersonalData" ? "text-dark" : "header"}`}
+<ul className="d-flex align-items-center flex-column align-items-start student_account">
+{/* <h5 className="d-flex align-items-center">Chapters</h5> */}
+    <li className={`p-2 w-100 d-flex align-items-center nav-item border-radius-round ${activeComponent === "PersonalData" ? "text-dark" : "header"}`}
           onClick={() => handleNavigationClick("PersonalData")}>
-        <FontAwesomeIcon icon={faUser}/>
-        <span className="mx-2 ">Personal data</span>
+        <FontAwesomeIcon icon={faUser} className="textSmallSize"/>
+        <span className="mx-2 textMediumSize">Personal data</span>
     </li>
     
-    <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Address" ? "text-dark" : "header"}`}
+    <li className={`p-2 w-100 d-flex align-items-center nav-item border-radius-round ${activeComponent === "Address" ? "text-dark" : "header"}`}
           onClick={() => handleNavigationClick("Address")}>
-        <FontAwesomeIcon icon={faLocation}/>
-        <span className="mx-2 ">Address</span>
+        <FontAwesomeIcon icon={faLocation} className="textSmallSize"/>
+        <span className="mx-2 textMediumSize">Address</span>
     </li>
-    <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Documents" ? "text-dark" : "header"}`}
+    <li className={`p-2 w-100 d-flex align-items-center nav-item border-radius-round ${activeComponent === "Documents" ? "text-dark" : "header"}`}
           onClick={() => handleNavigationClick("Documents")}>
-        <FontAwesomeIcon icon={faFile}/>
-        <span className="mx-2 ">Documents</span>
+        <FontAwesomeIcon icon={faFile} className="textSmallSize"/>
+        <span className="mx-2 textMediumSize">Documents</span>
     </li>
-    <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Guardian" ? "text-dark" : "header"}`}
+    <li className={`p-2 w-100 d-flex align-items-center nav-item border-radius-round ${activeComponent === "Guardian" ? "text-dark" : "header"}`}
           onClick={() => handleNavigationClick("Guardian")}>
-        <FontAwesomeIcon icon={faPeopleGroup}/>
-        <span className="mx-2 ">Guardian/Parents</span>
+        <FontAwesomeIcon icon={faPeopleGroup} className="textSmallSize"/>
+        <span className="mx-2 textMediumSize">Guardian/Parents</span>
     </li>
     {source==="student" &&(
       <>
-        <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Application" ? "text-dark" : "header"}`}
+        <li className={`p-2 w-100 d-flex align-items-center nav-item border-radius-round ${activeComponent === "Application" ? "text-dark" : "header"}`}
           onClick={() => handleNavigationClick("Application")}>
-        <FontAwesomeIcon icon={faPaperPlane}/>
-        <span className="mx-2 ">Application</span>
+        <FontAwesomeIcon icon={faPaperPlane} className="textSmallSize"/>
+        <span className="mx-2 textMediumSize">Application</span>
     </li>
-    <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Interview" ? "text-dark" : "header"}`}
+    <li className={`p-2 w-100 d-flex align-items-center nav-item border-radius-round ${activeComponent === "Interview" ? "text-dark" : "header"}`}
           onClick={() => handleNavigationClick("Interview")}>
-        <FontAwesomeIcon icon={faPenToSquare}/>
-        <span className="mx-2 ">Interview/Exam</span>
+        <FontAwesomeIcon icon={faPenToSquare} className="textSmallSize"/>
+        <span className="mx-2 textMediumSize">Interview/Exam</span>
     </li>
-    <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "ProgramInformation" ? "text-dark" : "header"}`}
+    <li className={`p-2 w-100 d-flex align-items-center nav-item border-radius-round ${activeComponent === "ProgramInformation" ? "text-dark" : "header"}`}
           onClick={() => handleNavigationClick("ProgramInformation")}>
-        <FontAwesomeIcon icon={faCircleInfo}/>
-        <span className="mx-2 ">Program information</span>
+        <FontAwesomeIcon icon={faCircleInfo} className="textSmallSize"/>
+        <span className="mx-2 textMediumSize">Program information</span>
     </li>
-    <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Settings" ? "text-dark" : "header"}`}
+    <li className={`p-2 w-100 d-flex align-items-center nav-item border-radius-round ${activeComponent === "Settings" ? "text-dark" : "header"}`}
           onClick={() => handleNavigationClick("Settings")}>
-        <FontAwesomeIcon icon={faGear}/>
-        <span className="mx-2 ">Settings</span>
+        <FontAwesomeIcon icon={faGear} className="textSmallSize"/>
+        <span className="mx-2 textMediumSize">Settings</span>
     </li>
       </>
     )}

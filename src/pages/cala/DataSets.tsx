@@ -49,13 +49,13 @@ const DataSets= ({token,user_id}:{token:string,user_id:string}):JSX.Element => {
     <Container className="component-margin-top">
       {isError && isErrorHide && <AlertBox type="danger" message='Error fetching data'/>}
       <div>
-        <div className='d-flex'><small className='link-item header  cursor-pointer' onClick={()=>navigate(`/ask/${user_id}`)}>Makronexa</small> <span>/</span><small>Datasets</small></div>
+        <div className='d-flex'><small className='textSmallSize link-item header  cursor-pointer' onClick={()=>navigate(`/ask/${user_id}`)}>Makronexa</small> <span>/</span><small className='textSmallSize'>Datasets</small></div>
       
-            <h6 className='d-flex pb-2 mb-3'>Datasets</h6>
+            <h6 className='d-flex pb-2 mb-3 textSmallSize'>Datasets</h6>
        <div className='content_bg'>
        <div className='d-flex justify-content-end p-4'>
        <Button className="btn-primary d-flex py-2 px-4 content_bg content_bg-2 " onClick={() => setModalShow(true)}>
-              <FontAwesomeIcon className="d-xl-block me-2 d-none" icon={faPlus} /> <span className="text-nowrap">New</span>
+              <FontAwesomeIcon className="textSmallSize d-xl-block me-2 d-none" icon={faPlus} /> <span className="text-nowrap textSmallSize">New</span>
             </Button>
        </div>
        <Row className="dataset-item main_bg py-2 mx-1 mb-3">
@@ -63,16 +63,16 @@ const DataSets= ({token,user_id}:{token:string,user_id:string}):JSX.Element => {
             
           </Col>
           <Col xs={5} className="name-column text-start">
-            <strong className='text-dark'>Name</strong>
+            <strong className='text-dark textMediumSize'>Name</strong>
           </Col>
           <Col xs={4} className="created-column text-start">
-            <strong className='text-dark'>Created</strong>
+            <strong className='text-dark textMediumSize'>Created</strong>
           </Col>
           <Col xs={1} className="chat-icon-column text-dark ">
-            <strong className='d-none d-md-block'>Ask</strong>
+            <strong className='d-none d-md-block textMediumSize'>Ask</strong>
           </Col>
           <Col xs={1} className="delete-icon-column text-danger">
-           <strong className='d-none d-md-block'>Delete</strong>
+           <strong className='d-none d-md-block textMediumSize'>Delete</strong>
           </Col>
         </Row>
         {isLoading?(
@@ -84,23 +84,23 @@ const DataSets= ({token,user_id}:{token:string,user_id:string}):JSX.Element => {
           <Col xs={1} className="icon-column d-none d-md-block text-start">
           <FontAwesomeIcon icon={faDatabase} />
           </Col>
-          <Col xs={5} className="name-column text-start header cursor-pointer" onClick={() => navigate(`/${params.user_id}/datasets/${item.dataset_name}`)}>
+          <Col xs={5} className="name-column text-start header cursor-pointer textSmallSize" onClick={() => navigate(`/${params.user_id}/datasets/${item.dataset_name}`)}>
             {item.dataset_name}
           </Col>
-          <Col xs={4} className="created-column header text-start">
+          <Col xs={4} className="created-column header text-start textSmallSize">
         {new Date(item.createdAt!).toLocaleDateString('en-GB')}
         </Col>
 
-          <Col xs={1} className="chat-icon-column">
+          <Col xs={1} className="chat-icon-column textSmallSize">
             <FontAwesomeIcon icon={faComment} onClick={()=>navigate(`/${user_id}/datasets/${item.dataset_name}/${item.id}/ask`)} className='header cursor-pointer' />
           </Col>
-          <Col xs={1} className="delete-icon-column">
+          <Col xs={1} className="delete-icon-column textSmallSize">
             <FontAwesomeIcon icon={faTrashCan} onClick={()=>handleDeleteDataset(item.id!)} className='text-danger cursor-pointer' />
           </Col>
         </Row>
       ))):(
         <div className='pb-4'>
-          <small className='text-muted'>No dataset available, create one</small>
+          <small className='text-muted textSmallSize'>No dataset available, create one</small>
         </div>
       )}
         </div>

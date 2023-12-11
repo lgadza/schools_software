@@ -146,7 +146,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
       </div>
       <div className='d-flex align-items-center justify-content-between'>
       <div>
-      <small className='link-item header cursor-pointer' onClick={() => navigate(`/ask/${user_id}`)}>Makronexa</small> <span>/</span><small className='link-item header cursor-pointer' onClick={() => navigate(`/${user_id}/datasets`)}>Datasets</small> <span>/</span><small >{dataSet.dataset_name}</small>
+      <small className='link-item textSmallSize header cursor-pointer' onClick={() => navigate(`/ask/${user_id}`)}>Makronexa</small> <span>/</span><small className='link-item header cursor-pointer textSmallSize' onClick={() => navigate(`/${user_id}/datasets`)}>Datasets</small> <span>/</span><small className='textSmallSize'>{dataSet.dataset_name}</small>
       </div>
       <div className='me-2  chatbot-nav'>
               <Button className='' onClick={()=>navigate(`/${user_id}/datasets/${dataSet.dataset_name}/${dataSet.id}/ask`)}>
@@ -156,7 +156,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
               </Button>
             </div>
       </div>
-      <h6 className='d-flex pb-2 my-3'>{dataSet.dataset_name}</h6></div>}
+      <h6 className='d-flex pb-2 my-3 textMediumSize'>{dataSet.dataset_name}</h6></div>}
       <Row>
         <div className='  col-sm-12 mb-4 col-xl-6'>
        {isLoading?(<div>
@@ -164,9 +164,9 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
         </div>):(
         <div>
          <div className='d-flex align-items-center justify-content-between content_bg px-3 py-2'>
-           <span className='me-5 text-dark'>Share</span>
+           <span className='me-5 text-dark textSmallSize'>Share</span>
            {/* <ToggleSwitch checked={shared} onChange={() => setShared(!shared)} /> */}
-           <Link to={""} className='header text-small' onClick={()=>{
+           <Link to={""} className='header textSmallSize text-small' onClick={()=>{
             setSharingLink(`${FE_PRODUCTION_BASE_URL}/${user_id}/datasets/${dataSet.dataset_name}/${dataSet.id}/ask`)
             setShowSharing(true)
             }}>Link</Link>
@@ -176,18 +176,18 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
            <Alert variant='success' className='d-flex flex-column my-4  text-start'>
              <div className='d-flex justify-content-between'>
                <div>
-                 <FontAwesomeIcon icon={faInfoCircle} />
-                 <span className='mx-2'>Info</span>
+                 <FontAwesomeIcon icon={faInfoCircle} className='textMediumSize' />
+                 <span className='mx-2 textMediumSize'>Info</span>
                </div>
-               <FontAwesomeIcon className='cursor-pointer' onClick={handleTempAlert} icon={faX} />
+               <FontAwesomeIcon className='textSmallSize cursor-pointer' onClick={handleTempAlert} icon={faX} />
              </div>
              <div className='d-flex flex-column text-dark'>
-               <small style={{fontSize:"14px"}}>Temperature adjusts how creative Makronexa's writing is. When you turn the temperature up, Makronexa gets more imaginative and can come up with different ideas. But if you turn it down,Makronexa sticks to safer, more predictable choices.</small>
+               <small className='textSmallSize'>Temperature adjusts how creative Makronexa's writing is. When you turn the temperature up, Makronexa gets more imaginative and can come up with different ideas. But if you turn it down,Makronexa sticks to safer, more predictable choices.</small>
              </div>
            </Alert>
          )}
          <div className='d-flex align-items-center content_bg my-4 px-3'>
-           <span className='me-3 text-dark'>
+           <span className='me-3 text-dark textSmallSize'>
              Temperature
            </span>
            <RangeSlider onTemperatureChange={handleTemperatureChange} currentTemperature={dataSet.temperature !== null ? dataSet.temperature * 10 : 0} />
@@ -196,13 +196,13 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
            <Alert variant='success' className='d-flex flex-column text-start'>
              <div className='d-flex justify-content-between'>
                <div>
-                 <FontAwesomeIcon icon={faInfoCircle} />
-                 <span className='mx-2'>Info</span>
+                 <FontAwesomeIcon icon={faInfoCircle} className='textMediumSize' />
+                 <span className='mx-2 textMediumSize'>Info</span>
                </div>
-               <FontAwesomeIcon className='cursor-pointer' onClick={handleAlert} icon={faX} />
+               <FontAwesomeIcon className='cursor-pointer textSmallSize' onClick={handleAlert} icon={faX} />
              </div>
              <div className='d-flex flex-column text-dark'>
-               <small style={{fontSize:"14px"}}>You can give Makronexa a personality,for instance, request specific language for the answer.</small>
+               <small className='textSmallSize'>You can give Makronexa a personality,for instance, request specific language for the answer.</small>
                <small style={{fontSize:"14px"}}>For instance, try to add</small>
                <small style={{fontSize:"14px"}}> --- Answer in the German language.</small>
                <small style={{fontSize:"14px"}}>to request answers to be in the German language.</small>
@@ -210,7 +210,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
            </Alert>
          )}
          <div className='d-flex justify-content-between my-4'>
-           <div>Model</div>
+           <div className='textSmallSize'>Model</div>
            {/* {models.length > 0 ? (
              <select name="models" className="py-3 px-2" id="model" onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
                setCurrentModel(e.target.value);
@@ -225,7 +225,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
 
          </div>
          <div className='d-flex my-4 text-start'>
-           <span className='me-5'>Name</span>
+           <span className='me-5 textSmallSize'>Name</span>
            <input
              type="text"
              placeholder='Makronexus'
@@ -237,7 +237,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
            </div>
          </div>
          <div className='d-flex flex-column text-start mt-3'>
-           <div className='me-5 my-2'>Personality</div>
+           <div className='me-5 my-2 textSmallSize'>Personality</div>
            <textarea
              name='text'
              rows={5}
@@ -253,7 +253,7 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
              onClick={handleUpdateDataset}
              disabled={isSubmitting}
            >
-             <small>Update</small>
+             <small className='textSmallSize'>Update</small>
            </Button>
          </div>
          </div>
@@ -262,11 +262,11 @@ const DataSetSettings: React.FC<DataSetSettingsProps> = ({ token, user_id }) => 
         <div className='col-xl-6 mb-5'>
           <div className='d-flex justify-content-end'>
             <div className='me-2'>
-              <Button className='content_bg' onClick={() => { handleComponentChange("uploadedDocs") }}><FontAwesomeIcon icon={faFolder} style={{ color: "rgb(234, 191, 70)" }} /><span className='ms-2 text-dark' >Docs</span>
+              <Button className='content_bg' onClick={() => { handleComponentChange("uploadedDocs") }}><FontAwesomeIcon icon={faFolder} className='textSmallSize' style={{ color: "rgb(234, 191, 70)" }} /><span className='ms-2 text-dark textSmallSize' >Docs</span>
               </Button>
             </div>
             <div className='me-2'>
-              <Button className='content_bg' onClick={() => { handleComponentChange("uploadDocs") }}><FontAwesomeIcon icon={faFolderPlus} style={{ color: "rgb(234, 191, 70)" }} /><span className='ms-2 text-dark'>Upload</span>
+              <Button className='content_bg' onClick={() => { handleComponentChange("uploadDocs") }}><FontAwesomeIcon icon={faFolderPlus} className='textSmallSize' style={{ color: "rgb(234, 191, 70)" }} /><span className='ms-2 text-dark textSmallSize'>Upload</span>
               </Button>
             </div>
             {/* <div className='d-none d-md-block me-2'>

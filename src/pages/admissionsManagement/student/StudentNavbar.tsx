@@ -1,6 +1,6 @@
 import { Button, Container, Dropdown } from "react-bootstrap"
 import Image from "../../../components/Image"
-import md_logo from "../../../assets/md_logo_small.png"
+import md_logo from "../../../assets/md_logo_small4.png"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {faChevronDown} from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom"
@@ -38,7 +38,7 @@ const handleDeleteAccount=()=>{
                     src={md_logo}
                     alt={CompanyName}
                     className="img_component d-flex"
-                    style={{height:"30px"}}
+                    style={{width:"150px"}}
                 />
             </div>
             
@@ -57,14 +57,14 @@ const handleDeleteAccount=()=>{
   <Image src={personalInfo.avatar} height={30} width={30} alt={personalInfo.first_name} />
 ) }
 
-          <span className="px-2 text-dark">{personalInfo?.first_name} {personalInfo?.last_name} </span>
-          <FontAwesomeIcon className="text-dark" icon={faChevronDown}/>
+          <span className="px-2 text-dark textSmallSize">{personalInfo?.first_name} {personalInfo?.last_name} </span>
+          <FontAwesomeIcon className="text-dark textSmallSize" icon={faChevronDown}/>
             </Dropdown.Toggle>
 
             <Dropdown.Menu className="px-2">
               
                 <div className="d-flex px-3 my-2  textColor justify-content-between">
-          <span className="text-dark">{personalInfo?.first_name} {personalInfo?.last_name} </span>
+          <span className="text-dark textMediumSize">{personalInfo?.first_name} {personalInfo?.last_name} </span>
           {personalInfo.avatar && personalInfo.avatar !== '' && (
           <Image src={personalInfo.avatar} height={30} width={30} alt={personalInfo.first_name} />
         ) }
@@ -72,7 +72,7 @@ const handleDeleteAccount=()=>{
             <hr className="my-0 py-0" />
               
               <Dropdown.Item>
-                <Link to="" className="header">
+                <Link to="" className="header textSmallSize">
                   Change photo
                 </Link>
               </Dropdown.Item>
@@ -80,7 +80,7 @@ const handleDeleteAccount=()=>{
               <Dropdown.Item className="mb-3" onClick={handleLogout}>
                 <Link
                   to=""
-                  className="header"
+                  className="header textSmallSize"
                 >
                   Log out
                 </Link>
@@ -91,7 +91,7 @@ const handleDeleteAccount=()=>{
                   onClick={handleDeleteAccount}
                   className="textColor w-100"
                 >
-                  <Button className="bg-danger w-100">Delete account</Button>
+                  <Button className="bg-danger w-100 textSmallSize">Delete account</Button>
                 </div>
              
             </Dropdown.Menu>

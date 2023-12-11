@@ -56,11 +56,11 @@ const CreateDatasetModal: React.FC<MyVerticallyCenteredModalProps> = (props) => 
       } */}
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
-          <h5>Create Dataset</h5>
+          <h5 className='textMediumSize'>Create Dataset</h5>
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <h5 className='mb-3'> Name <span className='text-danger'>*</span></h5>
+        <h5 className='mb-3 textMediumSize'> Name <span className='text-danger'>*</span></h5>
         <Form.Group>
           <Form.Control
             type="text"
@@ -77,7 +77,7 @@ const CreateDatasetModal: React.FC<MyVerticallyCenteredModalProps> = (props) => 
             disabled={datasetName.trim() === ''}
           >
              {isLoading && createDataset&& (
-                <Spinner className='spinner-border-sm me-2'/>
+                <Spinner className='spinner-border-sm me-2 textMediumSize'/>
                 )}
             CREATE DATASET
           </Button>

@@ -57,14 +57,14 @@ setGuardian((data)=>({
   {guardian_types && (
     <>
   
-<h5 className="d-flex mb-4 text-dark">Guardian/Parent</h5>
-<span className="d-flex text-muted mb-2">
+<h5 className="d-flex mb-4 text-dark textMediumSize ">Guardian/Parent</h5>
+<span className="d-flex text-muted textSmallSize mb-2">
             Fill all fields with <span className="text-danger mx-2">*</span>  to update
           </span>
     <Form onSubmit={handleSubmit}>
       <Row>
-        <Col>
-        <Form.Label className="d-flex text-dark">Guardian first_name <span className="text-danger">*</span></Form.Label>
+        <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">Guardian first_name <span className="text-danger">*</span></Form.Label>
           <Form.Control
            placeholder="First_name"
            name="first_name"
@@ -73,8 +73,8 @@ setGuardian((data)=>({
             onChange={handleChange}
             />
         </Col>
-        <Col>
-        <Form.Label className="d-flex text-dark">Guardian last_name <span className="text-danger">*</span></Form.Label>
+        <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">Guardian last_name <span className="text-danger">*</span></Form.Label>
           <Form.Control 
           placeholder="Last_name" 
           required
@@ -86,10 +86,10 @@ setGuardian((data)=>({
       </Row>
     </Form>
     
-    <Form className="my-3" onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Row>
-        <Col>
-        <Form.Label className="d-flex text-dark">Code<span className="text-danger">*</span></Form.Label>
+        <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">Code<span className="text-danger">*</span></Form.Label>
           <Form.Control  as="select" required
           name="country_code"
           value={guardian.country_code}
@@ -99,8 +99,8 @@ setGuardian((data)=>({
           <option value="27">27</option>
           </Form.Control>
         </Col>
-        <Col>
-        <Form.Label className="d-flex text-dark">Mobile number<span className="text-danger">*</span></Form.Label>
+        <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">Mobile number<span className="text-danger">*</span></Form.Label>
           <Form.Control type="tel" 
           placeholder="Phone number" 
           required
@@ -112,10 +112,10 @@ setGuardian((data)=>({
        
       </Row>
     </Form >
-    <Form className="my-3" onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Row>
-      <Col>
-        <Form.Label className="d-flex text-dark">Relationship<span className="text-danger">*</span></Form.Label>
+      <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">Relationship<span className="text-danger">*</span></Form.Label>
           <Form.Control  as="select" required
           name="relationship"
           value={guardian.relationship}
@@ -138,12 +138,12 @@ setGuardian((data)=>({
           )} */}
           </Form.Control>
         </Col>
-        <Col>
+        <Col md={6} className="my-2">
         </Col>
       </Row>
     </Form>
     <div className="d-flex justify-content-end">
-        <Button variant="primary" className="px-3 main_bg content_bg-2">Update</Button>
+        <Button variant="primary" className="px-3 main_bg content_bg-2 textSmallSize">Update</Button>
     </div>
     </>
   )}

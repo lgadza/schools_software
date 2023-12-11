@@ -126,9 +126,9 @@ setSelectedFiles(remainingFiles)
       </div>
       <div className="upload-card content_bg" onDragOver={handleDragOver} onDrop={handleDrop}>
         <div className="upload-card-body">
-          <div className="upload-card-title">Upload your files</div>
-          <div className="upload-card-subtitle">Maximum file size is {MAX_FILE_SIZE_MB}MB</div>
-          <div className="upload-card-subtitle">Supported types: <strong>PDF, and all text files such as TXT, CSV</strong></div>
+          <div className="upload-card-title textMediumSize">Upload your files</div>
+          <div className="upload-card-subtitle textSmallSize">Maximum file size is {MAX_FILE_SIZE_MB}MB</div>
+          <div className="upload-card-subtitle textSmallSize">Supported types: <strong>PDF, and all text files such as TXT, CSV</strong></div>
           <div className="file-upload">
             <input className="file-input" type="file" onChange={handleFileInputChange} multiple />
             <svg
@@ -186,7 +186,7 @@ setSelectedFiles(remainingFiles)
                                 </g>
                             </g>
             </svg>
-        <div className="upload-card-subtitle">Drag n Drop your files here</div>
+        <div className="upload-card-subtitle textSmallSize">Drag n Drop your files here</div>
           </div>
         </div>
       </div>
@@ -195,7 +195,7 @@ setSelectedFiles(remainingFiles)
                {isLoading?(<Loader/>):(
                 <div>
                    <div className='mb-4'>
-              <h5>Documents to upload</h5>
+              <h5 className='textMediumSize'>Documents to upload</h5>
               {/* <small className='text-muted'>bytes upload credit:UNKNOWN</small> */}
                 </div>
               <ul>
@@ -203,31 +203,31 @@ setSelectedFiles(remainingFiles)
         <li key={index} className='d-flex content_bg  mb-3 p-3 justify-content-between'>
           <div>
             <div>
-              <FontAwesomeIcon className='me-2 text-dark' icon={faFile}/> <span className='text-dark'>
+              <FontAwesomeIcon className='me-2 textSmallSize text-dark' icon={faFile}/> <span className='text-dark textSmallSize'>
               {file.name}
                 </span>
             </div>
             <div>
-              <span className='text-dark'>{file.type}</span>
-              <strong className='ms-3 text-dark'>{formatBytes(file.size)}</strong>
+              <span className='text-dark textSmallSize'>{file.type}</span>
+              <strong className='ms-3 text-dark textSmallSize'>{formatBytes(file.size)}</strong>
             </div>
           </div>
           <div>
-            <FontAwesomeIcon className='text-danger cursor-pointer' onClick={()=>handleDeleteFile(file)} icon={faTrashCan}/>
+            <FontAwesomeIcon className='text-danger cursor-pointer textSmallSize' onClick={()=>handleDeleteFile(file)} icon={faTrashCan}/>
           </div>
         </li>
       ))}
               </ul>
               <div> 
                 <Button variant="primary"
-            className='content_bg-2 w-100 font-weight-bold' disabled={selectedFiles.length===0} onClick={handleResourceUpload}> <FontAwesomeIcon icon={faUpload} className='me-2'/>Upload</Button>
+            className='content_bg-2 w-100 textSmallSize font-weight-bold' disabled={selectedFiles.length===0} onClick={handleResourceUpload}> <FontAwesomeIcon icon={faUpload} className='me-2 textSmallSize'/>Upload</Button>
               </div>
                 </div>
                )}
             </div>
           )}
            {errorMessage && (
-                <Alert variant="danger" className="mt-3">
+                <Alert variant="danger" className="mt-3 textSmallSize">
                     {errorMessage}
                 </Alert>
             )}

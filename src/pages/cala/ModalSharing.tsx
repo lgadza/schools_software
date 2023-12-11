@@ -30,19 +30,19 @@ const ModalSharing: React.FC<ModalSharingProps> = ({ onClose, show,link }) => {
   return (
     <Modal show={show} onHide={onClose} centered>
       <Modal.Header closeButton>
-        <Modal.Title>Sharing Link</Modal.Title>
+        <Modal.Title className='textMediumSize'>Sharing Link</Modal.Title>
       </Modal.Header>
       <Modal.Body className='d-flex justify-content-between align-items-center'>
         <Form.Control type="text" value={link} readOnly />
         <FontAwesomeIcon
           icon={copySuccess ? faCheck : faCopy}
-          className={`ms-3 ${copySuccess ? 'text-success' : ''}`}
+          className={`ms-3 textSmallSize ${copySuccess ? 'text-success' : ''}`}
           onClick={!copySuccess ? copyToClipboard : undefined}
           style={{ cursor: !copySuccess ? 'pointer' : 'default' }}
         />
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={()=>{onClose(), setCopySuccess(false)}}>
+        <Button variant="secondary" className='textSmallSize' onClick={()=>{onClose(), setCopySuccess(false)}}>
           Close
         </Button>
       </Modal.Footer>

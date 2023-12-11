@@ -169,14 +169,14 @@ e.preventDefault()
       )}
       {user ? (
         <>
-          <h5 className="d-flex mb-4 text-dark">Address</h5>
-          <span className="d-flex text-muted mb-2">
+          <h5 className="d-flex mb-4 text-dark ">Address</h5>
+          <span className="d-flex text-muted textSmallSize mb-2">
             Fill all fields with <span className="text-danger mx-2">*</span>  to update
           </span>
           <Form onSubmit={handleSubmit}>
       <Row>
-        <Col md={6}>
-        <Form.Label className="d-flex text-dark">Street <span className="text-danger">*</span></Form.Label>
+        <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">Street <span className="text-danger">*</span></Form.Label>
           <Form.Control
            placeholder="Street"
            name="street"
@@ -185,8 +185,8 @@ e.preventDefault()
             onChange={handleChange}
             />
         </Col>
-        <Col md={6} className="mt-3">
-        <Form.Label className="d-flex text-dark">Building number <span className="text-danger">*</span></Form.Label>
+        <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">Building number <span className="text-danger">*</span></Form.Label>
           <Form.Control 
           placeholder="Building number" 
           required
@@ -197,10 +197,10 @@ e.preventDefault()
         </Col>
       </Row>
     </Form>
-    <Form className="my-3" onSubmit={handleSubmit}>
+    <Form  onSubmit={handleSubmit}>
       <Row>
-        <Col md={6}>
-        <Form.Label className="d-flex text-dark">Apartment number </Form.Label>
+        <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">Apartment number </Form.Label>
           <Form.Control 
           placeholder="Apartment number" 
           name="apartment_number"
@@ -208,8 +208,8 @@ e.preventDefault()
           onChange={handleChange}
           />
         </Col>
-        <Col md={6} className="mt-3">
-        <Form.Label className="d-flex text-dark">Postal code
+        <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">Postal code
         </Form.Label>
           <Form.Control 
           placeholder="Post code" 
@@ -220,10 +220,10 @@ e.preventDefault()
         </Col>
       </Row>
     </Form>
-    <Form className="my-3" onSubmit={handleSubmit}>
+    <Form  onSubmit={handleSubmit}>
       <Row>
-      <Col md={6}>
-        <Form.Label className="d-flex text-dark">Location<span className="text-danger">*</span></Form.Label>
+      <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">Location<span className="text-danger">*</span></Form.Label>
           <Form.Control
            placeholder="eg. Pumula South"
             required
@@ -232,13 +232,13 @@ e.preventDefault()
           onChange={handleChange}
             />
         </Col>
-        <Col md={6}></Col>
+        <Col md={6} className="my-2"></Col>
       </Row>
     </Form>
-    <Form className="my-3" onSubmit={handleSubmit}>
+    <Form  onSubmit={handleSubmit}>
       <Row>
-      <Col md={6}>
-        <Form.Label className="d-flex text-dark">Type of settlement<span className="text-danger">*</span></Form.Label>
+      <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">Type of settlement<span className="text-danger">*</span></Form.Label>
           <Form.Control
            as="select"
           
@@ -257,9 +257,9 @@ e.preventDefault()
             <option value="village">Village</option>
           </Form.Control>
         </Col>
-        <Col md={6} className="mt-3">
+        <Col md={6} className="my-2">
        
-        <Form.Label className="d-flex text-dark">Province<span className="text-danger">*</span></Form.Label>
+        <Form.Label className="d-flex text-dark textMediumSize">Province<span className="text-danger">*</span></Form.Label>
     <Form.Control as="select" required
     name="province"
     value={user.address&&!editMode?user.address.province:address.province}
@@ -280,10 +280,10 @@ e.preventDefault()
         </Col>
       </Row>
     </Form>
-    <Form className="my-3" onSubmit={handleSubmit}>
+    <Form  onSubmit={handleSubmit}>
       <Row>
-      <Col md={6}>
-        <Form.Label className="d-flex text-dark">City<span className="text-danger">*</span></Form.Label>
+      <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">City<span className="text-danger">*</span></Form.Label>
           <Form.Control
           as="select"
             required
@@ -304,8 +304,8 @@ e.preventDefault()
         })}
               </Form.Control>
         </Col>
-        <Col md={6} className="mt-3">
-        <Form.Label className="d-flex text-dark">Country<span className="text-danger">*</span></Form.Label>
+        <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">Country<span className="text-danger">*</span></Form.Label>
     <Form.Control as="select" 
     required
     name="country"
@@ -327,7 +327,7 @@ e.preventDefault()
     </Form>
           <div className="d-flex justify-content-end">
             {!user.address ? (
-              <Button variant="primary" className="px-3 content_bg-2 main_bg" disabled={!isAddressValid()} onClick={handleUpdate}>
+              <Button variant="primary" className="px-3 content_bg-2 main_bg textSmallSize" disabled={!isAddressValid()} onClick={handleUpdate}>
                 Update
               </Button>
             ) : (
@@ -338,7 +338,7 @@ e.preventDefault()
                 {editMode && (
                   <Button
                     variant="success"
-                    className="ms-2 px-3"
+                    className="ms-2 px-3 textSmallSize"
                     type="submit"
                     form="personalDataForm"
                     onClick={handleSave}
@@ -351,7 +351,7 @@ e.preventDefault()
           </div>
         </>
       ) : (
-        <p>Loading...</p>
+        <p className="textSmallSize">Loading...</p>
       )}
     </div>
   );

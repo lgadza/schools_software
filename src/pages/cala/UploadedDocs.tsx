@@ -28,7 +28,7 @@ const UploadedDocs = ({token,user_id,dataset_id}:{token:string,user_id:string,da
         
             <div className='text-start mt-4'>
                 <div className='mb-4'>
-              <h5>Uploaded documents</h5>
+              <h5 className='textMediumSize'>Uploaded documents</h5>
                 </div>
                       {isLoading?(<Loader/>):(
                     <ul> 
@@ -41,18 +41,18 @@ const UploadedDocs = ({token,user_id,dataset_id}:{token:string,user_id:string,da
                               <li key={file.id} className='d-flex content_bg  mb-3 p-3 justify-content-between'>
                               <div>
                                   <div>
-                                  <FontAwesomeIcon className='me-2 text-dark' icon={faFile}/> 
-                                  <span className='text-dark'>
+                                  <FontAwesomeIcon className='me-2 text-dark textSmallSize' icon={faFile}/> 
+                                  <span className='text-dark textSmallSize'>
                                      {file.name}
                                     </span>
                                   </div>
                                   <div>
-                                  <span className='text-dark'>{file.type}</span>
-                                  <strong className='ms-3 text-dark'>{new Date(file.createdAt).toLocaleDateString('en-GB')}</strong>
+                                  <span className='text-dark textSmallSize'>{file.type}</span>
+                                  <strong className='ms-3 text-dark textSmallSize'>{new Date(file.createdAt).toLocaleDateString('en-GB')}</strong>
                                   </div>
                               </div>
                               <div>
-                                  <FontAwesomeIcon onClick={()=>handleDeleteDatasetFile(file.id)} className='text-danger cursor-pointer'  icon={faTrashCan}/>
+                                  <FontAwesomeIcon onClick={()=>handleDeleteDatasetFile(file.id)} className='text-danger cursor-pointer textSmallSize'  icon={faTrashCan}/>
                               </div>
                               </li>
                             )
@@ -60,7 +60,7 @@ const UploadedDocs = ({token,user_id,dataset_id}:{token:string,user_id:string,da
                           }
                           </div>
                         ):(
-                          <li  className='d-flex content_bg  mb-3 p-3 justify-content-between'>
+                          <li  className='d-flex content_bg  mb-3 p-3 justify-content-between textSmallSize text-muted'>
                          No files available
                           </li>
                         )

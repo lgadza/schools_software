@@ -636,7 +636,7 @@ const OverviewSection: React.FC<{ icon: IconDefinition; title: string; items: st
   return (
     <div className="d-flex flex-column ">
       <FontAwesomeIcon icon={icon} style={{ color: color || "inherit" }} />
-      <span className="mt-1">{title}</span>
+      <span className="mt-1 textMediumSize">{title}</span>
       <ul>
         {items.map((item, index) => (
           <li key={index} className={`text-start content_bg card my-3 p-2 ${className}`}
@@ -644,7 +644,7 @@ const OverviewSection: React.FC<{ icon: IconDefinition; title: string; items: st
 
           }
           >
-            <small>{item}</small>
+            <small className="textSmallSize">{item}</small>
           </li>
         ))}
       </ul>
@@ -787,7 +787,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
       <Button className="btn-primary content_bg-2 " onClick={async()=>{
               await handleNewChat()
               }}>
-              <FontAwesomeIcon className="d-xl-block me-1 d-none" icon={faPlus} /> <small className="text-nowrap">New chat</small>
+              <FontAwesomeIcon className="d-xl-block me-1 d-none" icon={faPlus} /> <small className="text-nowrap textSmallSize">New chat</small>
             </Button>
     </nav>
   );
@@ -836,7 +836,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                       >
                         <div className="d-flex  flex-column">
                           {section.imageUrl &&  (<ImageCard  context={section.message} imageUrl={section.imageUrl} altText="img"/>)}
-                        <small className="text-dark text-start mt-1 d-flex">
+                        <small className="text-dark text-start mt-1 d-flex textSmallSize">
                         {section.message}
                         </small>
                         {section.message===messages[messages.length-1].message && loading && <Loader/>}
@@ -860,7 +860,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                         })}
                       </div>
                     ):(
-                      <small>
+                      <small className="textSmallSize">
                             <pre id="ai-respond-text-holder" style={{
                               whiteSpace: "pre-wrap",
                               wordWrap: "break-word",
@@ -868,7 +868,8 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                               fontFamily:"sans-serif",
                               lineHeight: "1.8",
                               color:"black",
-                            }}>
+                              fontSize:"12px"
+                            }} >
                               {section.from !== "user" && section.message.trimStart() === currentAnswer.trimStart()
                                 ? <ExtractLaTeXExpressions text={animatedText} />
                                 : <ExtractLaTeXExpressions text={section.message.trimStart()} />}
@@ -968,7 +969,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
             <Button className="btn-primary py-2 d-flex justify-content-center me-2 w-100 content_bg-2" onClick={async()=>{
               await handleNewChat()
             }}>
-              <FontAwesomeIcon className="d-xl-block me-1 d-none" icon={faPlus} /> <small className="text-nowrap">New chat</small>
+              <FontAwesomeIcon className="d-xl-block me-1 d-none" icon={faPlus} /> <small className="text-nowrap textSmallSize">New chat</small>
             </Button>
            {!isChatLoading||chats.length>0?(
           <div className="my-3">
@@ -990,7 +991,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
                 className={`${currentChat===chat.id?"text-dark":"header"}`}
                   icon={faComments}  />
                   {chat.makronexaQAs.length > 0 &&(
-                  <span className={`ms-2 text-start chat_header_name ${currentChat===chat.id?" text-dark":"header"}`} >
+                  <span className={`ms-2 text-start chat_header_name textSmallSize ${currentChat===chat.id?" text-dark":"header"}`} >
                     {chat.makronexaQAs[0].message}
                   </span>
                   )}

@@ -34,7 +34,7 @@ const AlertBox: React.FC<AlertBoxProps> = ({ type ,message,loading}) => {
             </div>
             <div className={`tip-box-${type}`}>
                 <p className='my-1 p-0'>
-                    <small className='text-nowrap'>
+                    <small className='text-nowrap textSmallSize'>
                      {message}
                     </small>
                 </p>

@@ -21,7 +21,7 @@ import AlertBox from "../../../../components/Alerts"
 import { useNavigate } from "react-router-dom"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faChevronUp, faCircleInfo, faCircleNotch, faFile, faGear, faImage, faLocation, faPenToSquare, faPeopleGroup, faPowerOff, faUser } from "@fortawesome/free-solid-svg-icons"
-import md_logo_small from "../../../../assets/md_logo_small.png"
+import md_logo_small from "../../../../assets/md_logo_small4.png"
 import { CompanyName } from "../../../../assets/data/company"
 import { UserRegistration } from "../../../../Types"
 import { Link } from "react-router-dom"
@@ -57,7 +57,7 @@ const MobileNav= ({source,activeComponent,handleNavigationClick,user,token}:{act
             <img
               src={md_logo_small}
               alt={CompanyName}
-              style={{ width: `${50}px`, height: `${50}px`, borderRadius: "0%",objectFit:"contain" }}
+              style={{ width: `${100}px`, borderRadius: "0%",objectFit:"contain" }}
               className="img_component"
             />
           </div>
@@ -68,57 +68,57 @@ const MobileNav= ({source,activeComponent,handleNavigationClick,user,token}:{act
           <ul className="d-flex flex-column ">  
           <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "PersonalData" ? "active" : ""}`}
           onClick={() => handleNavigationClick("PersonalData")}>
-        <FontAwesomeIcon icon={faUser}/>
-        <span className="mx-2 ">Personal data</span>
+        <FontAwesomeIcon icon={faUser} className="textSmallSize"/>
+        <span className="mx-2 textSmallSize">Personal data</span>
     </li>
     
     <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Address" ? "active" : ""}`}
           onClick={() => handleNavigationClick("Address")}>
         <FontAwesomeIcon icon={faLocation}/>
-        <span className="mx-2 ">Address</span>
+        <span className="mx-2 textSmallSize ">Address</span>
     </li>
     <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Documents" ? "active" : ""}`}
           onClick={() => handleNavigationClick("Documents")}>
         <FontAwesomeIcon icon={faFile}/>
-        <span className="mx-2 ">Documents</span>
+        <span className="mx-2 textSmallSize ">Documents</span>
     </li>
     <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Guardian" ? "active" : ""}`}
           onClick={() => handleNavigationClick("Guardian")}>
         <FontAwesomeIcon icon={faPeopleGroup}/>
-        <span className="mx-2 ">Guardian/Parents</span>
+        <span className="mx-2 textSmallSize ">Guardian/Parents</span>
     </li>
     {source==="student" &&(
       <>
         <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Status" ? "active" : ""}`}
           onClick={() => handleNavigationClick("Status")}>
         <FontAwesomeIcon icon={faCircleNotch}/>
-        <span className="mx-2 ">Status</span>
+        <span className="mx-2 textSmallSize ">Status</span>
     </li>
     <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Interview" ? "active" : ""}`}
           onClick={() => handleNavigationClick("Interview")}>
         <FontAwesomeIcon icon={faPenToSquare}/>
-        <span className="mx-2 ">Interview/Exam</span>
+        <span className="mx-2 textSmallSize ">Interview/Exam</span>
     </li>
     <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "ProgramInformation" ? "active" : ""}`}
           onClick={() => handleNavigationClick("ProgramInformation")}>
         <FontAwesomeIcon icon={faCircleInfo}/>
-        <span className="mx-2 ">Program information</span>
+        <span className="mx-2 textSmallSize ">Program information</span>
     </li>
     <li className={`p-2 w-100 d-flex nav-item border-radius-round ${activeComponent === "Settings" ? "active" : ""}`}
           onClick={() => handleNavigationClick("Settings")}>
         <FontAwesomeIcon icon={faGear}/>
-        <span className="mx-2 ">Settings</span>
+        <span className="mx-2 textSmallSize ">Settings</span>
     </li>
       </>
     )}
             </ul>
             </div>
-            <div className="user-logout w-100 content_bg pb-2">
+            <div className="user-logout w-100 content_bg_2 pb-2">
             <Dropdown>
 <Dropdown.Toggle className="navbar-item w-100 d-flex justify-content-between align-items-center">
       <div className="pt-2">
             <Image src={user.avatar ||`https://img.freepik.com/free-icon/user_318-159711.jpg?size=626&ext=jpg&uid=R36208328&ga=GA1.1.377730112.1687240299&semt=ais`} height={30} width={30} alt="avatar"/>
-                <span className="px-2 py-0">{user.first_name} {user.last_name}</span>
+                <span className="px-2 py-0  textSmallSize">{user.first_name} {user.last_name}</span>
             </div>
              <FontAwesomeIcon style={{fontSize:"0.8rem"}} icon={faChevronUp}/>         
 </Dropdown.Toggle>
@@ -128,14 +128,14 @@ const MobileNav= ({source,activeComponent,handleNavigationClick,user,token}:{act
     <Link to={`/users/account/${user.id}`} className="textColor px-2">
     {/* <FontAwesomeIcon icon={faGear}/> */}
     <Image src={user.avatar ||`https://img.freepik.com/free-icon/user_318-159711.jpg?size=626&ext=jpg&uid=R36208328&ga=GA1.1.377730112.1687240299&semt=ais`} height={30} width={30} alt="avatar"/>
-      <span className="px-2">{user.email}</span>
+      <span className="px-2 textSmallSize text-dark">{user.email}</span>
     </Link>
   </Dropdown.Item>
   <hr className="my-0 py-0" />
   <Dropdown.Item className="py-2">
     <Link to={`/${user.id}/datasets`} className="textColor px-2">
-    <FontAwesomeIcon style={{fontSize:"14px"}} icon={faImage}/>
-      <small className="px-2">Change photo</small>
+    <FontAwesomeIcon style={{fontSize:"14px"}} icon={faImage} color="black"/>
+      <small className="px-2 textSmallSize text-dark textSmallSize">Change photo</small>
     </Link>
   </Dropdown.Item>
   <hr className="my-0 py-0" />
@@ -144,8 +144,8 @@ const MobileNav= ({source,activeComponent,handleNavigationClick,user,token}:{act
       onClick={handleLogout}
       className="textColor px-2"
     >
-    <FontAwesomeIcon style={{fontSize:"14px"}} icon={faPowerOff}/>
-<small className="px-2">
+    <FontAwesomeIcon style={{fontSize:"14px"}} icon={faPowerOff} className="text-dark"/>
+<small className="px-2 text-dark textSmallSize">
       Log out
 </small>
     </div>
@@ -154,7 +154,7 @@ const MobileNav= ({source,activeComponent,handleNavigationClick,user,token}:{act
                   onClick={handleDeleteAccount}
                   className="textColor"
                 >
-                  <Button className="bg-danger w-100">Delete account</Button>
+                  <Button className="bg-danger w-100 textSmallSize">Delete account</Button>
                 </div>
  
 </Dropdown.Menu>
@@ -287,20 +287,20 @@ dispatch(getUserData(accessToken.accessToken))
                 <Image
                   src={personalInfo.avatar}
                   alt="Profile Avatar"
-                  width={130}
-                  height={130}
+                  width={100}
+                  height={100}
                 />
                 <div className="d-flex flex-column justify-content-center align-items-center change-profile">
-                  <Icon.CameraFill size={25} />
-                  <small>Change</small>
-                  <small>profile picture</small>
+                  <Icon.CameraFill size={20} />
+                  <small className="textSmallSize">Change</small>
+                  <small className="textSmallSize"> picture</small>
                 </div>
               </div>
             </Dropdown.Toggle>
 
             <Dropdown.Menu className="w-50">
               <Dropdown.Item as="div" className="py-1">
-                <label htmlFor="profile" style={{color:"white"}}>
+                <label htmlFor="profile" style={{color:"white"}} className="textSmallSize">
                   Upload Photo
                 </label>
                 <input
@@ -310,15 +310,15 @@ dispatch(getUserData(accessToken.accessToken))
                   onChange={handleAvatar}
                 />
               </Dropdown.Item>
-              <Dropdown.Item onClick={removeProfilePicture} className="py-2">
+              <Dropdown.Item onClick={removeProfilePicture} className="py-2 textSmallSize">
                 Remove Photo
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
                     <div className="d-flex flex-column align-items-start px-3">
-                        <h5>{personalInfo.first_name} {personalInfo.last_name}</h5>
-                    <small className="text-muted">{personalInfo.phone_number}</small>
-                    <small className="text-muted">{personalInfo.email}</small>
+                        <h5 className="textMediumSize text-dark">{personalInfo.first_name} {personalInfo.last_name}</h5>
+                    <small className="text-muted textSmallSize">{personalInfo.phone_number}</small>
+                    <small className="text-muted textSmallSize">{personalInfo.email}</small>
                     </div>
                 </Col>
                 )}

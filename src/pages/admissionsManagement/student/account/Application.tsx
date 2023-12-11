@@ -12,13 +12,13 @@ interface ApplicationProps{
 // Reusable Card component
 const ApplicationCard:React.FC<ApplicationProps> = ({ title, location, applied, status }) => (
   <Card className=" my-3 p-3">
-    <Card.Title className="text-start text-dark">{title}</Card.Title>
+    <Card.Title className="text-start text-dark textMediumSize">{title}</Card.Title>
     <Card.Body>
-      <Card.Text className="text-start text-dark">Location: {location}</Card.Text>
-      <Card.Subtitle className="text-start text-muted">Applied: {applied}</Card.Subtitle>
+      <Card.Text className="text-start text-dark textSmallSize">Location: {location}</Card.Text>
+      <Card.Subtitle className="text-start text-muted textSmallSize">Applied: {applied}</Card.Subtitle>
     </Card.Body>
-    <Card.Footer className="text-end text-success">
-      Status: <span className={` p-2 ms-2 ${status==="accepted"?"header":status==="rejected"?"text-danger":"text-muted"}`}>{status}</span>
+    <Card.Footer className="textSmallSize text-end text-success">
+      Status: <span className={`textSmallSize p-2 ms-2 ${status==="accepted"?"header":status==="rejected"?"text-danger":"text-muted"}`}>{status}</span>
     </Card.Footer>
   </Card>
 );
@@ -46,11 +46,12 @@ const Application = (): JSX.Element => {
       <Form>
         <Row>
           <Col>
-            <Form.Label className="d-flex text-dark">
+            <Form.Label className="d-flex text-dark textMediumSize">
               Level <span className="text-danger">*</span>
             </Form.Label>
-            <Form.Select required value={selectedLevel} onChange={handleLevelChange}>
-              <option>Select level</option>
+            <Form.Select required value={selectedLevel} onChange={handleLevelChange} className="
+            textSmallSize">
+              <option className="textSmallSize">Select level</option>
               {gradesAndForms.map((level) => (
                 <option value={level.value} key={level.value}>
                   {level.label}
@@ -59,7 +60,7 @@ const Application = (): JSX.Element => {
             </Form.Select>
           </Col>
           <Col>
-            <Form.Label className="d-flex text-dark">
+            <Form.Label className="d-flex text-dark textMediumSize">
               Select School <span className="text-danger">*</span>
             </Form.Label>
             <Select
@@ -79,11 +80,11 @@ const Application = (): JSX.Element => {
       </Form>
       <div className="d-flex mt-4 justify-content-end">
         <Button variant="primary" disabled={!isApplicationValid()} className="px-3 main_bg content_bg-2">
-          <Icon.Send /> <span>Apply</span>
+          <Icon.Send  className="textSmallSize"/> <span className="textSmallSize">Apply</span>
         </Button>
       </div>
         <div className="steps-bar mt-4">
-              <h6 className="text-start text-dark">My Applications</h6>
+              <h6 className="text-start text-dark textMediumSize">My Applications</h6>
             </div>
             <Row>
               {[1, 2, 3].map((index) => (

@@ -108,8 +108,8 @@ const handleSave=async()=>{
 <h5 className="d-flex mb-4 text-dark">Personal data</h5>
     <Form onSubmit={handleSubmit}>
       <Row>
-        <Col>
-        <Form.Label className="d-flex text-dark">First name <span className="text-danger">*</span></Form.Label>
+        <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">First name <span className="text-danger">*</span></Form.Label>
           <Form.Control
            placeholder="First name"
            name="first_name"
@@ -118,8 +118,8 @@ const handleSave=async()=>{
             onChange={handleChange}
             />
         </Col>
-        <Col>
-        <Form.Label className="d-flex text-dark">Last name <span className="text-danger">*</span></Form.Label>
+        <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">Last name <span className="text-danger">*</span></Form.Label>
           <Form.Control 
           placeholder="Last name" 
           required
@@ -130,10 +130,10 @@ const handleSave=async()=>{
         </Col>
       </Row>
     </Form>
-    <Form className="my-3" onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Row>
-        <Col>
-        <Form.Label className="d-flex text-dark">Second name </Form.Label>
+        <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">Second name </Form.Label>
           <Form.Control 
           placeholder="Second name" 
           name="second_name"
@@ -141,8 +141,8 @@ const handleSave=async()=>{
           onChange={handleChange}
           />
         </Col>
-        <Col>
-        <Form.Label className="d-flex text-dark">Date of birth<span className="text-danger">*</span></Form.Label>
+        <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">Date of birth<span className="text-danger">*</span></Form.Label>
           <Form.Control 
           placeholder="Date of birth" 
            required
@@ -154,10 +154,10 @@ const handleSave=async()=>{
       </Row>
     </Form>
    
-    <Form className="my-3" onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Row>
-        <Col>
-        <Form.Label className="d-flex text-dark">Code<span className="text-danger">*</span></Form.Label>
+        <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">Code<span className="text-danger">*</span></Form.Label>
           <Form.Control  as="select" required
           name="country_code"
           value={!editMode?user.country_code:personalData.country_code}
@@ -167,8 +167,8 @@ const handleSave=async()=>{
           <option value="27">27</option>
           </Form.Control>
         </Col>
-        <Col>
-        <Form.Label className="d-flex text-dark">Mobile number<span className="text-danger">*</span></Form.Label>
+        <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">Mobile number<span className="text-danger">*</span></Form.Label>
           <Form.Control type="number" 
           placeholder="Phone number" 
           required
@@ -181,12 +181,12 @@ const handleSave=async()=>{
        
       </Row>
     </Form >
-    <Form className="my-3" onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit}>
       <Row>
        
-        <Col>
+        <Col md={6} className="my-2">
        
-        <Form.Label className="d-flex text-dark">Gender<span className="text-danger">*</span></Form.Label>
+        <Form.Label className="d-flex text-dark textMediumSize">Gender<span className="text-danger">*</span></Form.Label>
     <Form.Control as="select" required
     name="gender"
     value={!editMode?user.gender:personalData.gender}
@@ -197,8 +197,8 @@ const handleSave=async()=>{
     </Form.Control>
   
         </Col>
-        <Col>
-        <Form.Label className="d-flex text-dark">Citizenship<span className="text-danger">*</span></Form.Label>
+        <Col md={6} className="my-2">
+        <Form.Label className="d-flex text-dark textMediumSize">Citizenship<span className="text-danger">*</span></Form.Label>
           <Form.Control type="tel" 
           placeholder="citizenship" 
           required
@@ -210,11 +210,11 @@ const handleSave=async()=>{
       </Row>
     </Form>
     <div className="d-flex justify-content-end">
-         <Button variant="primary" className="px-3 content_bg-2 main_bg" onClick={handleEditClick}>
+         <Button variant="primary" className="px-3 content_bg-2 textSmallSize main_bg" onClick={handleEditClick}>
           {editMode ? "Cancel" : "Edit"}
         </Button>
         {editMode && (
-          <Button variant="success" className="ms-2 px-3" type="submit" form="personalDataForm" onClick={handleSave}>
+          <Button variant="success" className="ms-2 textSmallSize px-3" type="submit" form="personalDataForm" onClick={handleSave}>
             Save
           </Button>
         )}

@@ -28,20 +28,20 @@ const CalaSideNavbar: React.FC<CalaSideNavbarProps> = ({ user_id }) => {
                 <Nav.Item>
                 <Link to={`/ask/${user_id}`} 
                           className={`d-flex nowrap text-white align-items-center px-2 py-2 `}>
-                        <small className={`${activeComponent === "MakronexusAI" ? "text-dark" : ""}`}>Makronexa</small>
+                        <small className={`textMediumSize ${activeComponent === "MakronexusAI" ? "text-dark" : ""}`}>Makronexa</small>
                 </Link>
                 </Nav.Item>
                 <Nav.Item>
-                <Link to="" className='d-flex align-items-center nowrap px-2 py-2'><small className="text-nowrap text-white">My Projects</small></Link>
+                <Link to="" className='d-flex align-items-center nowrap px-2 py-2'><small className="text-nowrap text-white textMediumSize">My Projects</small></Link>
                 </Nav.Item>
                 <Nav.Item>
                    <Link to={`/${user_id}/datasets`} onClick={()=>handleNavigationClick("DataSets")} className={`d-flex w-100 nowrap align-items-center px-2 py-2 `}> 
-                   <small className={`text-nowrap ${activeComponent === "DataSets" ? "text-dark" : "text-white"}`}>DataSets</small>
+                   <small className={`textMediumSize text-nowrap ${activeComponent === "DataSets" ? "text-dark" : "text-white"}`}>DataSets</small>
                    </Link> 
                    </Nav.Item> 
                    <Nav.Item>
                    <Link to={`/ask/${user_id}/detect_text`} className={`d-flex nowrap align-items-center px-2 py-2 `} onClick={() => handleNavigationClick("DataSetSettings")} >
-                    <small className={`text-nowrap  ${activeComponent === "Settings" ? "text-dark" : "text-white"}`}>AI detector</small>
+                    <small className={`textMediumSize text-nowrap  ${activeComponent === "Settings" ? "text-dark" : "text-white"}`}>AI detector</small>
                        </Link>
                 </Nav.Item>
             </Nav>
