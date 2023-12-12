@@ -28,6 +28,7 @@ import AccountDeletionConfirmation from "./components/AccountDeletionConfirmatio
 import MakronexaDataset from "./pages/cala/MakronexaDataset.js"
 import AboutUs from "./pages/Home/AboutUs.js"
 import AIDetector from "./pages/cala/AIDetector.js"
+import PartnerShips from "./pages/Home/Features/partership/PartnerShips.js"
 
 // mss makro_school_solution
 function App() {
@@ -47,6 +48,7 @@ function App() {
         <Route path="login" element={<Login/>}/>
         <Route path="plans" element={<Plans/>}/>
         <Route path="features" element={<Features/>}/>
+        <Route path="partnership" element={<PartnerShips/>}/>
         <Route path="features/admission_management" element={<AdmissionManagement/>}/>
         <Route path="features/makronexa" element={<CALAFeature/>}/>
         <Route path=":user_role/account/:user_id" element={<Pages/>}/>

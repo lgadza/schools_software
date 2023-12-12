@@ -149,7 +149,7 @@ const navigate=useNavigate()
             <li className=" px-3 py-2 nav-list-item header fw-bolder" onClick={()=>navigate("/plans")}>
                Plans 
             </li>
-            <li className="  p-2 nav-list-item header fw-bolder">
+            <li className="  p-2 nav-list-item header fw-bolder" onClick={()=>navigate("/partnership")} >
               Partnerships
             </li>
             <li onClick={()=>navigate("/about")} className=" py-2 me-2 px-3 nav-list-item header fw-bolder">

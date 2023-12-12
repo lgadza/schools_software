@@ -1,9 +1,8 @@
 import React, {useRef, useState } from 'react';
 import "./ContactUs.css"
 import { Modal } from 'react-bootstrap';
-// import { useDispatch } from 'react-redux';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMapMarkerAlt, faPhone } from '@fortawesome/free-solid-svg-icons';
+import md_logo_small from "../assets/md_logo_small4.png"
+
 interface ContactUsModalProps {
   show: boolean;
   onHide: () => void;
@@ -45,24 +44,29 @@ const ContactUs: React.FC<ContactUsModalProps> = (props) => {
     <Modal
       {...props}
       aria-labelledby="contained-modal-title-vcenter"
-      size="xl"
+      size="lg"
       centered
     >
       <Modal.Header closeButton className='main_bg'>
         <Modal.Title id="contained-modal-title-vcenter">
-        <div className="title">Contact Us</div>
+        <img
+                    src={md_logo_small}
+                    alt="Makronexus"
+                    className="img_component d-flex"
+                    style={{width:"150px",objectFit:"contain"}}
+                />
         </Modal.Title>
       </Modal.Header>
       <Modal.Body className='main_bg'>
       <section className="contact-page-section">
       <div className="container">
-          <div className="sec-title">         
-                <h4>Let's Get in Touch.</h4>
-            </div>
             <div className="inner-container">
               <div className="row clearfix">
-                    <div className="form-column col-lg-8 col-sm-12 col-xs-12">
+                    <div className="form-column col-lg-12 col-sm-12 col-xs-12">
                       <div className="inner-column main_bg">
+              <div className="sec-title">         
+                    <h5>Let's Get in Touch.</h5>
+                </div>
                             <div className="contact-form">
                             <form onSubmit={handleSubmit} id="contact-form">
                         <div className="row clearfix">
@@ -125,7 +129,7 @@ const ContactUs: React.FC<ContactUsModalProps> = (props) => {
                             ></textarea>
                           </div>
                           <div className="form-group col-md-12 col-sm-12 co-xs-12">
-                            <button type="submit" className="content_bg content_bg-2">Send Now</button>
+                            <button type="submit" className="content_bg content_bg-2 textSmallSize">Send Now</button>
                           </div>
                         </div>
                       </form>
@@ -133,7 +137,7 @@ const ContactUs: React.FC<ContactUsModalProps> = (props) => {
                         </div>
                     </div>
                     
-                    <div className="info-column col-md-4 col-sm-12 col-xs-12">
+                    {/* <div className="info-column col-md-4 col-sm-12 col-xs-12">
                       <div className="inner-column card">
                           <h5 className='text-center'>Contact Info</h5>
                             <ul className="list-info pt-4">
@@ -155,7 +159,7 @@ const ContactUs: React.FC<ContactUsModalProps> = (props) => {
                                 </li>
                             </ul>
                         </div>
-                    </div>
+                    </div> */}
                     
                 </div>
             </div>

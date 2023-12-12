@@ -1,0 +1,43 @@
+.partners-section {
+    text-align: center;
+
+  }
+  
+  .partners-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+  }
+  
+  .partner-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 20px;
+    border-radius: 5px;
+    background-color: #ffffff; 
+
+  }
+  
+ .icon_background{
+
+    background-color: rgb(26, 182, 193,.2);
+    padding: 5px;
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+ }
+  .partner-title {
+    margin-top: 10px;
+    /* Additional styles for the title text */
+  }
+  
+  .register-button {
+    background-color: #007bff; /* Example color */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    /* Additional button styling */
+  }
+  

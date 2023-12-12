@@ -1,0 +1,48 @@
+.HowWeHelp-bg {
+    /* background-color: #ffffff;  */
+    padding: 2rem 0;
+    border-radius: 5px;
+  }
+  
+ 
+  .image-column img {
+    object-fit: cover;
+    width: 100%;
+    border-radius: 5px;
+  }
+  
+  
+  .content-column {
+    padding: 2rem; 
+  }
+  
+  .list-group-item {
+    border: none; 
+    padding: 0.5rem 0; 
+    margin-bottom: 0.5rem; 
+  }
+
+  .feature-number {
+    background-color: var(--content-bg-2); 
+    color: #ffffff;
+    padding: 0.5rem; 
+    border-radius: 50%; 
+    width: 30px; 
+    height: 30px; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    font-weight: bold; 
+    margin-right: 1rem; 
+  }
+  
+  .feature-title {
+    font-weight: bold; 
+    margin-bottom: 0.25rem; 
+  }
+  
+  .feature-description {
+    color: #6c757d;
+  }
+  
+ 
