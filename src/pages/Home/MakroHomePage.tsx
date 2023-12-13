@@ -11,6 +11,7 @@
   import "./MakroHomePage.css"
 import SimplifyProcess from "./Simplifyprocess";
 import HomeAIInfo from "./HomeAIInfo";
+import CardsComponent from "../../components/Cards";
   // const BetterOutCard: React.FC<imgProps> = ({imgProps}) => {
   //   return (
   //     <div className="role_card" key={imgProps.id} id={imgProps.title}>
@@ -28,12 +29,14 @@ import HomeAIInfo from "./HomeAIInfo";
   //   );
   // };
   const MakroHomePage: React.FC = () => {
+   
     const sections = [
       { label: "Makronexus" },
       { label: "Makronexus" },
       { label: "Makronexus" },
       { label: "Makronexus" },
     ];
+    // Data for the cards
 
     return (
       <div className="page-container">
@@ -47,35 +50,24 @@ import HomeAIInfo from "./HomeAIInfo";
               <Carousel />
             </div>
             <Container className="px-5">
-                <h6 className="p-4 d-flex text-start color-header"> Empower and elevate success for all.</h6>
-              <div className="better-for-card">
-              <Row className="mb-5">
-              {betterCardList.map((card)=>{
+                <h6 className="my-5 d-flex text-start color-header"> Empower and elevate success for all.</h6>
+             
+              <Row className="mb-5 card-list-content">
+              {betterCardList.map((card,index)=>{
                 return(
-                  <Col md={6} className="role_card" key={card.id}>
-                  <div id={card.title} className="info_section  mx-3">
-                    <div className="role_header">
-                      <h5 className="px-2 textMediumSize pt-4 text-start">{card.title}</h5>
-                    </div>
-                    <div className="role_desc text-start px-2">
-                      <small className="text textSmallSize text-start">{card.description}</small>
-                    </div>
-                  </div>
-                  <div className={`blur_back ${card.title}_back`} />
-                </Col>
+                  <CardsComponent title={card.title} copy={card.description} cardNumber={index.toString()}  />
                 )
               })}
             </Row>
-              </div>
               <div className="simplify-feature-container my-5 main-bg">
               <div className="h3">
-                <h6 className="text-start d-flex color-header p-3">Streamline your institute's management<br/> with simplicity. </h6>
+                <h6 className="text-start d-flex color-header my-5">Streamline your institute's management<br/> with simplicity. </h6>
                 </div> 
                 <SimplifyProcess/>
               </div>
               <div className="simplify-feature-container my-5 main-bg">
               <div className="h3">
-                <h6 className="text-start d-flex color-header p-3">You are one question away from the correct answer. </h6>
+                <h6 className="text-start d-flex color-header mt-5">You are one question away from the correct answer. </h6>
                 </div> 
                 <HomeAIInfo/>
               </div>
