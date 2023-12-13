@@ -4,8 +4,8 @@ const SunRaise:React.FC=()=>{
     const RotatingHeroImg:React.FC = () => {
         return (
           <center className="hero">
-            <div id='test' className="container spacing">
-              <img className="devcon rotating" src={logo} style={{width:"150px", height:"150px"}} alt="Geomerty" />
+            <div id='test' className="container mt-5 spacing">
+              <img className="devcon mt-2 rotating" src={logo} style={{width:"150px", height:"150px"}} alt="Geomerty" />
             
             </div>
           </center>

@@ -23,7 +23,7 @@ const Plans: React.FC = () => {
           <HomeNavbar />
           <Container className="px-5 calaAI">
             <Row className="my-5">
-          <Col>
+          <Col className='mt-5'>
           <Pricing/>
           </Col>
             </Row>
