@@ -1,11 +1,12 @@
 import "./SunRaise.css"
+import logo from "../assets/md_logo_small.png"
 const SunRaise:React.FC=()=>{
     const RotatingHeroImg:React.FC = () => {
         return (
           <center className="hero">
             <div id='test' className="container spacing">
-              <img className="devcon rotating" src="http://res.cloudinary.com/lempakz/image/upload/v1501504649/duriangeonodurian_puz6ka.png" alt="Geomerty" />
-              {/* <img className="durian" src="http://res.cloudinary.com/lempakz/image/upload/v1501504654/Durian1_y3rltb.png" alt="Geomerty" /> */}
+              <img className="devcon rotating" src={logo} style={{width:"150px", height:"150px"}} alt="Geomerty" />
+            
             </div>
           </center>
         );
@@ -13,8 +14,8 @@ const SunRaise:React.FC=()=>{
     return(
        <div className="landscape">
         <RotatingHeroImg/>
-            <h1 className="admissions-header">Admission Management </h1>
-            <h1 className="admissions-header2">Software</h1>
+            <h1 className="admissions-header d-none d-md-block">Admission Management </h1>
+            <h1 className=" d-none d-md-block admissions-header2">Software</h1>
   <div className="mountain"></div>
   <div className="mountain mountain-2"></div>
   <div className="mountain mountain-3"></div>

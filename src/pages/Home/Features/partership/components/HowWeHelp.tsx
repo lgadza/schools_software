@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react';
-import { Container, Row, Col, Button, ListGroup } from 'react-bootstrap';
+import { Container, Row, Col, ListGroup } from 'react-bootstrap';
 import './HowWeHelp.css'; 
 import image from "../../../../../assets/how-we-help.png"
 import ContactUs from '../../../../../components/ContactUs';

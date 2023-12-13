@@ -38,12 +38,15 @@ const navigate=useNavigate()
             />
           </a>
           <div className="menu-toggle" id="mobile-menu" onClick={handleMenuToggleClick}>
-            <span className="menu-bar"></span>
-            <span className="menu-bar"></span>
-            <span className="menu-bar"></span>
+            <span className="menu-bar content_bg-2"></span>
+            <span className="menu-bar content_bg-2"></span>
+            <span className="menu-bar content_bg-2"></span>
           </div>
           <ul className={`nav ms-5 ${isSearchActive ? 'search' : 'no-search'}`}>
-            <li className=" py-2 px-3 nav-list-item header fw-bolder"  onClick={toggleSolutionsDropdown}>
+          <li className="  p-2 nav-list-item header fw-bolder" onClick={()=>navigate("/")} >
+              Home
+            </li>
+            <li className=" py-2 px-3 nav-list-item d-none d-md-block header fw-bolder"  onClick={toggleSolutionsDropdown}>
               Solutions
               {isSolutionsDropdownOpen?(
 
@@ -146,6 +149,12 @@ const navigate=useNavigate()
               Features
               <FontAwesomeIcon className='ms-1' icon={faChevronDown} style={{ fontSize: "14px" }} />
             </li> */}
+            <li className=" d-md-none px-3  py-2 nav-list-item header fw-bolder" onClick={()=>navigate("/features/admission_management")}>
+            Admission management
+            </li>
+            <li className="d-md-none px-3 py-2 nav-list-item header fw-bolder" onClick={()=>navigate("/features/makronexa")}>
+               MakronexusAI
+            </li>
             <li className=" px-3 py-2 nav-list-item header fw-bolder" onClick={()=>navigate("/plans")}>
                Plans 
             </li>
@@ -165,7 +174,7 @@ const navigate=useNavigate()
               {isSearchActive &&
                 <FontAwesomeIcon
                   icon={faMagnifyingGlassMinus}
-                  className="search "
+                  className="search header"
                   id="search-icon"
                   onClick={handleSearchIconClick}
                 ></FontAwesomeIcon>
@@ -177,14 +186,14 @@ const navigate=useNavigate()
               />
             </div>
           </ul>
-          <div className='px-2 d-flex'>
+          <div className='px-2 d-flex align-items-center'>
             <Button
               className="btn btn-primary me-1 d-flex justify-content-end">
               <Link to="" onClick={()=>setShowSignInModal(true)}> <span className='header fw-bolder'>Login</span></Link>
             </Button>
             <Button
-              className="btn btn-primary  d-flex justify-content-end">
-              <Link to="/register"> <span className='header fw-bolder'>Register</span></Link>
+              className="btn btn-primary d-none d-md-block d-flex justify-content-end">
+              <Link to="/register"> <button className='text-white  content_bg-2 content_bg fw-bolder'>Register</button></Link>
             </Button>
           </div>
         </nav>

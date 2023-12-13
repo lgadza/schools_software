@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import './CarouselComponent.css'; // Import your CSS styles for the carousel
 import ContactUs from '../../../../../components/ContactUs';
 

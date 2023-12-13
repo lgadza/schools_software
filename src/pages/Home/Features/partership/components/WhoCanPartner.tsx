@@ -10,11 +10,13 @@ interface PartnerCardProps {
 }
 
 const PartnerCard: React.FC<PartnerCardProps> = ({ title, icon }) => (
-  <div className="partner-card col mx-2 my-2 py-4">
+  <div className=" col-xs-12 col-md-3 col-sm-12">
+  <div className="partner-card mx-2 my-2 py-4">
     <div className='icon_background d-flex align-items-center justify-content-center'>
       <FontAwesomeIcon icon={icon} size="3x" className='header' />
     </div>
     <div className="partner-title textSmallSize">{title}</div>
+  </div>
   </div>
 );
 

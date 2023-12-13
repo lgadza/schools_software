@@ -166,14 +166,14 @@
   /* SEARCH FUNCTION */
   
   .home-navbar #search-icon {
-    font-size: 0.9rem;
-    margin-top: 10px;
+    font-size: 1rem;
+    margin-top: 5px;
     margin-left: 15px;
     transition: color 0.3s ease-out;
+    color: red;
   }
   
   .home-navbar #search-icon:hover {
-    color: #3498db;
     cursor: pointer;
   }
   
@@ -228,7 +228,7 @@
   .home-navbar .menu-toggle .menu-bar{
     width: 25px;
     height: 3px;
-    background-color: white;
+    /* background-color: var(--); */
     margin: 5px auto;
     -webkit-transition: all 0.3s ease-in-out;
     -o-transition: all 0.3s ease-in-out;
@@ -330,7 +330,7 @@
     .home-navbar .no-search {
       transform: translateX(100%);
       transition: transform 0.5s ease-in;
-      background-color: rgb(14, 178, 190);
+      background-color: white;
 
 
     }
@@ -340,7 +340,8 @@
       top: 0;
       left: 0;
       right: 0;
-    background-color: rgb(14, 178, 190);
+    background-color: rgb(255, 255, 255);
+    opacity: 0.95;
       min-height: 10vh;
     }
     .navbar.is-active .no-search{
@@ -379,13 +380,13 @@
     }
     
     .navbar li {
-      padding: 15px 0px !important;
+      padding: 6px 0px !important;
       font-weight: 700;
       color:white ;
     }
     
     .navbar li:first-child {
-      margin-top: 50px;
+      margin-top: 10px;
     }
     
     .navbar li a {

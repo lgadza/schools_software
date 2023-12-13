@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Col, Container, Row, Form, Button, Alert, Spinner } from 'react-bootstrap';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import logo from "../assets/favicon.png"
+import logo from "../assets/md_logo_small4.png"
 import { useSelector, useDispatch } from 'react-redux';
 import { emailVerification } from '../redux/actions'; 
 import * as Icon from 'react-bootstrap-icons';
@@ -37,14 +37,24 @@ const EmailVerification: React.FC = () => {
   
   return (
     <Container style={{height:"100vh"}} >
+      
       <Row style={{height:"100%"}} className="d-flex justify-content-center align-items-center pt-5 textColor">
+        
         <Col lg={6}  className="content_bg">
+        <Link className="d-flex mt-4" to={'/'}>
+                            <img
+                    src={logo} 
+                        alt={""}
+                        style={{ width: `${100}px`,  }}
+                        className="img_component"
+                    />              
+                </Link>
           <Row>
             <Col>
               <div className=" ml-3 mt-3  d-flex justify-content-between align-items-center">
-                <h4>Verify email</h4>
+                <strong className='text-dark textMediumSize'>Verify email</strong>
                 <Link to={'/'}>
-                  <Icon.XLg className="textColor" size={20} />
+                  <Icon.XLg className="text-dark" size={20} />
                 </Link>{' '}
               </div>
               <hr />
@@ -57,7 +67,7 @@ const EmailVerification: React.FC = () => {
                 {isError && (
                   <Alert variant="danger" className="mt-5">
                     <Alert.Heading>!You got an error!</Alert.Heading>
-                    <small>Something went wrong on our side, we are working on it, we apologize for the inconvenience caused</small>
+                    <small className='textSmallSize'>Something went wrong on our side, we are working on it, we apologize for the inconvenience caused</small>
                   </Alert>
                 )}
                 {response && emailVerificationResponse && !isError && (
@@ -73,30 +83,34 @@ const EmailVerification: React.FC = () => {
                   <div>
                     {response && !isError?(
 
-                  <Button variant="primary" onClick={()=>{navigate("/")}} className="w-50 my-5 content_bg-2">
+                  <Button variant="primary" onClick={()=>{navigate("/")}} className="w-50 my-5 content_bg-2 text-dark textSmallSize">
                     Explore more
                   </Button>
                        
                     ):(
                         <div className='d-flex flex-column justify-content-center align-items-center'>
+                       
                   <Form.Text>
-                    <strong className='text-white'>Hey {params.user_name}! Please verify your email.</strong>
+                    <small className=' textMediumSize text-dark'>Hey {params.user_name}! Please verify your email.</small>
                   </Form.Text>
-                  <Button onClick={handleVerification} variant="primary" className="w-50 my-5 content_bg-2">
+                  <Button onClick={handleVerification} variant="primary" className="w-50 my-5 content_bg-2 textSmallSize">
                     Verify email
                   </Button>
                   </div> 
                     )}
                   </div>
+                  <div className='d-flex align-items-center justify-content-center'>
+                  <Form.Text className="text-secondary me-2 textSmallSize"><small>@{new Date().getFullYear()} </small></Form.Text>
                   <Link className="mr-auto" to={'/'}>
                             <img
                     src={logo} 
                         alt={""}
-                        style={{ width: `${30}px`, height: `${30}px`,  }}
+                        style={{ width: `${70}px`,  }}
                         className="img_component"
                     />              
                 </Link>
-                  <Form.Text className="text-secondary ms-2"><small>@{new Date().getFullYear()} Makronexus. All rights reserved</small></Form.Text>
+                  <Form.Text className="text-secondary ms-2 textSmallSize"><small> All rights reserved</small></Form.Text>
+                  </div>
                 </Col>
               </Form.Group>
             </Col>
