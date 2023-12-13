@@ -370,9 +370,9 @@
       position: fixed;
       justify-content: start !important;
       align-items: start;
-      top: 55px;
+      top: 62px;
       width: 100%;
-      height: calc(100vh - 55px);
+      height: calc(100vh - 62px);
       transform: translate(-101%);
       text-align: center;
       overflow: hidden;
@@ -380,13 +380,13 @@
     }
     
     .navbar li {
-      padding: 6px 0px !important;
+      padding: 10px 0px !important;
       font-weight: 700;
       color:white ;
     }
     
     .navbar li:first-child {
-      margin-top: 10px;
+      margin-top: 40px;
     }
     
     .navbar li a {
