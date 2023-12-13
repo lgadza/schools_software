@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import logo from "../assets/md_logo_small.png"
+import logo2 from "../assets/md_logo_small42.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {  faLinkedin, faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelopeOpen,  faMapMarkerAlt, faPaperPlane, faPhone } from '@fortawesome/free-solid-svg-icons';
@@ -58,8 +59,9 @@ const Footer: React.FC = () => {
             <div className="col-xl-4 col-lg-4 mb-50">
               <div className="footer-widget">
                 <div className="footer-logo">
-                  <a>
-                    <img src={logo} className="img-fluid" style={{width:"50px"}} alt="logo" />
+                  <a href='/'>
+                    <img src={logo} className="img-fluid" style={{width:"25px"}} alt="logo" />
+                    <img src={logo2} className="img-fluid ms-2" style={{width:"150px"}} alt="logo" />
                   </a>
                 </div>
                 <div className="footer-text">
@@ -135,6 +137,7 @@ const Footer: React.FC = () => {
                 <div className="row">
                     <div className="col-xl-6 col-lg-6 text-center text-lg-left d-flex align-items-center">
                     <img src={logo} style={{width:"20px"}} alt="logo" />
+                    <img src={logo2} className='ms-2' style={{width:"100px"}} alt="logo" />
                         <div className="ps-2 copyright-text">
                             <p className='text-nowrap textSmallSize'>Copyright	&copy; {CompanyName}.. {year} All rights reserved.</p>
                         </div>

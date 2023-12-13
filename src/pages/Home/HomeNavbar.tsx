@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './HomeNavbar.css'; // Create a CSS file for styling and import it here
 import makro_logo from "../../assets/md_logo_small4.png"
+import makro_logo2 from "../../assets/md_logo_small2.png"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookOpen, faCalendarCheck, faChevronDown, faChevronUp, faLightbulb, faListCheck, faLocationCrosshairs, faMagnifyingGlassMinus, faPeopleGroup, faPerson, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { Button } from 'react-bootstrap';
@@ -30,10 +31,16 @@ const navigate=useNavigate()
     <div className="page-wrapper container glow pb-2 home-navbar">
       <div className="nav-wrapper px-0 container">
         <nav className={`navbar text-nowrap ${!isMobileNavActive ? 'mobile-nav' : 'is-active'}`}>
-          <a href='/'>
+          <a href='/' className='d-flex align-items-center'>
+            <img
+              src={makro_logo2}
+              alt="Makro Logo"
+              style={{ width: `${30}px`, height: `${30}px`, borderRadius: "5%",objectFit:"contain" }}
+            />
             <img
               src={makro_logo}
               alt="Makro Logo"
+              className='ms-2'
               style={{ width: `${150}px`, height: `${50}px`, borderRadius: "5%",objectFit:"contain" }}
             />
           </a>
