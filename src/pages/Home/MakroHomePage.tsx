@@ -1,5 +1,5 @@
 
-  import { Col, Container, Row } from "react-bootstrap";
+  import { Container, Row } from "react-bootstrap";
   import HomeNavbar from "./HomeNavbar";
   import Carousel from "./Carousel";
   import FAQComp from "./FAQComp";

@@ -101,6 +101,7 @@
   font-size: 1.5rem;
   line-height: 1.2;
   font-weight: 700;
+  transform: translateY(400%);
 }
 
 .copy {
@@ -109,11 +110,19 @@
   font-style: italic;
   line-height: 1.35;
 }
-
+@media  (max-width:700px) {
+  .card-card {
+    height: 350px;
+  }
+  .content {
+    transform: translateY(calc(150% - 4.5rem));
+  }
+}
 
 @media (hover: hover) and (min-width: 600px) {
   .card-card:after {
-    transform: translateY(0);
+    transform: translateY(10);
+    
   }
 
   .content {
@@ -139,9 +148,11 @@
   }
 
   .card-card:hover .content, .card-card:focus-within .content {
-    transform: translateY(0);
+    transform: translateY(50%);
   }
-
+.card-card:hover .title{
+  transform: translateY(.400%);
+}
   .card-card:hover .content > *:not(.title), .card-card:focus-within .content > *:not(.title) {
     opacity: 1;
     transform: translateY(0);

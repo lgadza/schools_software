@@ -14,7 +14,7 @@ interface CardProps {
     <Col md={3} >
           <div className={`card-card card my-2 card-card${cardNumber}`}>
         <div className="content">
-          <h4 className="title text-start color-header">{title}</h4>
+          <h4 className="title text-start ">{title}</h4>
           <p className="textSmallSize text-start">{copy}</p>
         </div>
       </div>
