@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 import * as Icon from "react-bootstrap-icons";
-import { Card, Col, Row, Modal, Button } from 'react-bootstrap';
+import { Card, Col, Row, Modal} from 'react-bootstrap';
 import "./NewsCard.css";
 
 interface BlogCardProps {
