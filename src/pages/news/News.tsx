@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import HomeNavbar from '../Home/HomeNavbar';
 import Footer from '../../components/Footer';
@@ -6,22 +6,37 @@ import PageProgress from '../../components/PageProgress';
 import NewsCard from '../../components/NewsCard';
 import "./News.css"
 import NewsHero from './components/NewsHero';
-import BlogCard from './components/NewsCard';
+import BlogCard from './components/BlogCard';
 
 const News: React.FC = () => {
+
+    const [activeCard, setActiveCard] = useState(false);
+    const handleClose = () => {
+      setActiveCard(false); // Assuming `setActiveCard` is the state setter function
+    };
   const sections = [
     {label:"Makronexus"},
     { label: "Makronexus" },
     { label: "Makronexus" },
     { label: "Makronexus" },
   ];
+  const content = [
+    "Excited to share the story behind Makronexus, our educational software platform.",
+    "Inspired by the Minister of Primary and Secondary Education's emphasis on accessible, inclusive, and quality education, we recognized a pressing need. With over 6.6 million school-age children, yet only 4.6 million attending school, the gap was glaring.",
+    "The pandemic further exacerbated learning losses, highlighting the urgent need for innovative solutions. Witnessing these challenges firsthand fueled our commitment to make a difference.",
+    "Makronexus emerged as a response to these realities and as a supportive tool in achieving Zimbabwe's Vision 2030. Our platform is not just software; it's a movement, a mission to ensure no child, regardless of their background, is left behind in education.",
+    "By aligning with the government's initiatives and embracing emerging technologies, we're contributing to national efforts for educational modernization and industrialization.",
+    "Let's work together to support this vision and create a brighter future for Zimbabwe's learners!",
+    "\"NYIKA INOVAKWA NEVENE VAYO\"",
+  ];
+  
   const slidesData = [
     {
-      imageUrl: 'https://images.unsplash.com/photo-1596265371388-43edbaadab94?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=301&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=501',
-      title: 'Lorem ipsum dolor sit amet.',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam consectetur cumque dolorum...',
-      date: 'Oct 27, 2019',
-      readMoreUrl: '#'
+      imageUrl: 'https://media.licdn.com/dms/image/D4D22AQHFychcZ-z_ww/feedshare-shrink_1280/0/1702710962550?e=1705536000&v=beta&t=MM57RcFe0BDDZE4yL0heavuHR0cYw6kgUoI4dAr0HZo',
+      title: 'The Genesis of Makronexus.',
+      description: "Inspired by the Minister of Primary and Secondary Education's emphasis on accessible, inclusive, and quality education, we recognized a pressing need. With over 6.6 million school-age children, yet only 4.6 million attending school, the gap was glaring",
+      date: 'Dec 15, 2023',
+      readMoreUrl: '#Makronexus'
     },
     {
       imageUrl: 'https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=303&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=503',
@@ -79,21 +94,22 @@ const News: React.FC = () => {
                     date={card.date}
                     description={card.description}
                     readMoreUrl={card.readMoreUrl}
+                    onToggleModal={() => setActiveCard(true)}
                   />
                   </Col>
                 ))}
             </Row>
             <BlogCard
-                thumbnailSrc="https://cdn2.hubspot.net/hubfs/322787/Mychefcom/images/BLOG/Header-Blog/photo-culinaire-pexels.jpg"
-                authorImgSrc="https://randomuser.me/api/portraits/men/95.jpg"
-                title="Why you Need More Magnesium in Your Daily Diet"
-                authorName="Igor MARTY"
-                content="Magnesium is one of the six essential macro-minerals that is required by the body for energy production and synthesis of protein and enzymes. It contributes to the development of bones and most importantly it is responsible for synthesis of your DNA and RNA. A new report that has appeared in the British Journal of Cancer, gives you another reason to add more magnesium to your diet..."
-                date="JANUARY 12"
-                views={12}
+                thumbnailSrc="https://media.licdn.com/dms/image/D4D22AQHFychcZ-z_ww/feedshare-shrink_1280/0/1702710962550?e=1705536000&v=beta&t=MM57RcFe0BDDZE4yL0heavuHR0cYw6kgUoI4dAr0HZo"
+                title="The Genesis of Makronexus"
+                authorName="Louis Gadza"
+                month="JANUARY "
                 likes={0}
-                comments={0}
-                shares={0}
+                content={content}
+                date={"12"}
+                show={activeCard}
+                // handleClose={toggleModal}
+                handleClose={handleClose}
               />
           </Container>
           <Footer />
