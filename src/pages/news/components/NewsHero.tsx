@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './NewsHero.css'; // Import your CSS styles for the carousel
 
 interface NewsHeroProps {

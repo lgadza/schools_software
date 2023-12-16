@@ -48,6 +48,7 @@ function App() {
         <Route path="register" element={<MssRegisterPage/>}/>
         <Route path="login" element={<Login/>}/>
         <Route path="plans" element={<Plans/>}/>
+        <Route path="news/:erfer" element={<Plans/>}/>
         <Route path="features" element={<Features/>}/>
         <Route path="news" element={<News/>}/>
         <Route path="partnership" element={<PartnerShips/>}/>
@@ -64,8 +65,7 @@ function App() {
        <Route path="/:user_id/datasets/:dataset_name/:dataset_id/ask" element={<MakronexaDataset/>}/>
        <Route path="/:user_id/datasets/:dataset_id" element={<DataSetSettingsPage/>}/>
        <Route path="user/account/delete/confirmation" element={<AccountDeletionConfirmation/>}/>
-       <Route
-              element={<EmailVerification />}
+       <Route element={<EmailVerification />}
               path={`user/verifyEmail/:user_id/:user_name`}
             />
        <Route path='loader' element={<Loader/>} />

@@ -10,10 +10,7 @@ import BlogCard from './components/BlogCard';
 
 const News: React.FC = () => {
 
-    const [activeCard, setActiveCard] = useState(false);
-    const handleClose = () => {
-      setActiveCard(false); // Assuming `setActiveCard` is the state setter function
-    };
+    
   const sections = [
     {label:"Makronexus"},
     { label: "Makronexus" },
@@ -94,7 +91,6 @@ const News: React.FC = () => {
                     date={card.date}
                     description={card.description}
                     readMoreUrl={card.readMoreUrl}
-                    onToggleModal={() => setActiveCard(true)}
                   />
                   </Col>
                 ))}
@@ -107,9 +103,6 @@ const News: React.FC = () => {
                 likes={0}
                 content={content}
                 date={"12"}
-                show={activeCard}
-                // handleClose={toggleModal}
-                handleClose={handleClose}
               />
           </Container>
           <Footer />
