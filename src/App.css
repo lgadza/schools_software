@@ -1,7 +1,12 @@
 
   @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
-
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family:Arial, Helvetica, sans-serif;
+  }
 @property --gradient-angle {
   syntax: "<angle>";
   initial-value: 0deg;
@@ -10,17 +15,13 @@
 :root {
   --main-bg: #eee;
   --content-bg: white;
-  /* --main-bg: rgb(32, 32, 32);
-  --content-bg: rgb(32, 32, 32); */
- 
   --content-bg-2: rgb(26, 182, 193);
   --bg-1: rgb(37, 46, 65);
   --bg-1: white;
   --bg-2: rgb(42, 57, 66);
-  --textMediumSize:1rem;
+  --textMediumSize:0.9rem;
   --textColor: white;
-  /* --textSize:  0.75rem; */
-  --textSize: 14px;
+  --textSize: 13px;
   --textColor2:rgb(2, 178, 175);
   --blackAndWhite: black;
   --bg-gradient: rgb(49, 76, 87);

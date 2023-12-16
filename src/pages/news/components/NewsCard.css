@@ -1,0 +1,113 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+
+
+/* The news_card */
+.news_card {
+  position: relative;
+  min-height: 450px;
+  /* width: 900px; */
+  margin: 200px auto;
+  background-color: #FFF;
+  -webkit-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+}
+
+/* Image on the left side */
+.news_card .thumbnail {
+  float: left;
+  position: relative;
+  left: 0px;
+  top: -70px;
+  height: 320px;
+  width: 530px;
+  -webkit-box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+}
+
+.news_card img.left {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: 100%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+
+.news_card h2 {
+  padding-top: 15px;
+  font-size: 1.3rem;
+  color: #4B4B4B;
+}
+
+
+
+.news_card h6 {
+  padding-top: 8px;
+  margin-right: 6px;
+  text-align: right;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.news_card .separator {
+  margin-top: 10px;
+  border: 1px solid #C3C3C3;
+}
+
+.news_card p {
+  text-align: justify;
+  padding-top: 10px;
+  font-size: 0.95rem;
+  line-height: 150%;
+  color: #4B4B4B;
+}
+
+/* DATE of release */
+.news_card h5 {
+  position: absolute;
+  left: 30px;
+  bottom: -120px;
+  font-size: 6rem;
+  color: #C3C3C3;
+}
+
+.news_card h6 {
+  position: absolute;
+  left: 30px;
+  bottom: -55px;
+  font-size: 2rem;
+  color: #C3C3C3;
+}
+
+
+
+.news_card li {
+  display: inline;
+  list-style: none;
+  padding-right: 20px;
+  color: #7B7B7B;
+}
+/* Floating action button */
+.fab{
+	position : absolute;
+	right : 50px;
+	bottom : -40px;
+	box-sizing: border-box;
+	padding-top: 18px;
+	background-color : #1875D0;
+	width : 80px;
+	height : 80px;
+	color : white;
+	text-align : center;
+	border-radius : 50%;
+	-webkit-box-shadow: 10px 10px 50px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 10px 10px 50px 0px rgba(0,0,0,0.75);
+	box-shadow: 10px 10px 50px 0px rgba(0,0,0,0.75)
+}

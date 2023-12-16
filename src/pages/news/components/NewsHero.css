@@ -1,0 +1,7 @@
+.fade-carousel .slides .slide-1.news-hero {
+    background-image: url("../../../assets/newshero.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  

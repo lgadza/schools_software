@@ -3,9 +3,10 @@ import { Container, Row,Col } from "react-bootstrap";
 import PageProgress from "../../../../components/PageProgress";
 import HomeNavbar from "../../HomeNavbar";
 import Footer from "../../../../components/Footer";
-import CarouselComponent from "./components/CarouselComponent";
+
 import WhoCanPartner from "./components/WhoCanPartner";
 import HowWeHelp from "./components/HowWeHelp";
+import CarouselComponent from "./components/CarouselComponent";
 
 
 

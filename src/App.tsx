@@ -29,6 +29,7 @@ import MakronexaDataset from "./pages/cala/MakronexaDataset.js"
 import AboutUs from "./pages/Home/AboutUs.js"
 import AIDetector from "./pages/cala/AIDetector.js"
 import PartnerShips from "./pages/Home/Features/partership/PartnerShips.js"
+import News from "./pages/news/News.js"
 
 // mss makro_school_solution
 function App() {
@@ -48,6 +49,7 @@ function App() {
         <Route path="login" element={<Login/>}/>
         <Route path="plans" element={<Plans/>}/>
         <Route path="features" element={<Features/>}/>
+        <Route path="news" element={<News/>}/>
         <Route path="partnership" element={<PartnerShips/>}/>
         <Route path="features/admission_management" element={<AdmissionManagement/>}/>
         <Route path="features/makronexa" element={<CALAFeature/>}/>

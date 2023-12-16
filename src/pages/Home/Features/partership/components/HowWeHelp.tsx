@@ -30,7 +30,7 @@ const HowWeHelp = () => {
     <Container fluid className="HowWeHelp-bg">
           <h5 className='color-header'>How Makronexus will enable you?</h5>
       <Row className="align-items-center py-4">
-        <Col md={6} className="text-center d-none d-md-block">
+        <Col md={6}className="text-center">
          <div className='image-column'>
             <img src={image} alt='image'/>
          </div>
