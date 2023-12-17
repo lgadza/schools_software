@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import HomeNavbar from '../Home/HomeNavbar';
 import Footer from '../../components/Footer';
@@ -33,7 +33,7 @@ const News: React.FC = () => {
       title: 'The Genesis of Makronexus.',
       description: "Inspired by the Minister of Primary and Secondary Education's emphasis on accessible, inclusive, and quality education, we recognized a pressing need. With over 6.6 million school-age children, yet only 4.6 million attending school, the gap was glaring",
       date: 'Dec 15, 2023',
-      readMoreUrl: '#Makronexus'
+      readMoreUrl: '/news/wrwrwr'
     },
     {
       imageUrl: 'https://images.unsplash.com/photo-1533227268428-f9ed0900fb3b?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=303&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=503',

@@ -30,6 +30,7 @@ import AboutUs from "./pages/Home/AboutUs.js"
 import AIDetector from "./pages/cala/AIDetector.js"
 import PartnerShips from "./pages/Home/Features/partership/PartnerShips.js"
 import News from "./pages/news/News.js"
+import NewsDetailRead from "./pages/news/NewsDetailRead.js"
 
 // mss makro_school_solution
 function App() {
@@ -48,7 +49,7 @@ function App() {
         <Route path="register" element={<MssRegisterPage/>}/>
         <Route path="login" element={<Login/>}/>
         <Route path="plans" element={<Plans/>}/>
-        <Route path="news/:erfer" element={<Plans/>}/>
+        <Route path="news/:erfer" element={<NewsDetailRead/>}/>
         <Route path="features" element={<Features/>}/>
         <Route path="news" element={<News/>}/>
         <Route path="partnership" element={<PartnerShips/>}/>

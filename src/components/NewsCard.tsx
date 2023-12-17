@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'react-bootstrap-icons';
+import { useNavigate } from 'react-router-dom';
 
 interface NewsCardProps {
   imageUrl: string;
@@ -10,8 +11,9 @@ interface NewsCardProps {
 }
 
 const NewsCard: React.FC<NewsCardProps> = ({ imageUrl, title, date, description, readMoreUrl }) => {
+    const navigate=useNavigate()
   return (
-    <div className="news-card">
+    <div className="news-card" onClick={()=>navigate(`${readMoreUrl}`)}>
       <a href="#" className="news-card__card-link"></a>
       <img src={imageUrl} alt="" className="news-card__image" />
       <div className="news-card__text-wrapper">

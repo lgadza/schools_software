@@ -1,11 +1,9 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto);
-
 
 
 .news_card {
   position: relative;
   min-height: 450px;
-  margin: 200px auto;
+  margin: 160px auto;
   background-color: #FFF;
   -webkit-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
