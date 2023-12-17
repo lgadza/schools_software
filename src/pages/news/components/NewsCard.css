@@ -3,7 +3,8 @@
 .news_card {
   position: relative;
   min-height: 450px;
-  margin: 160px auto;
+  /* width: 900px; */
+  margin: 200px auto;
   background-color: #FFF;
   -webkit-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
