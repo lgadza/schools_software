@@ -217,10 +217,11 @@ input::placeholder{
 .nav-item:hover{
   background-color: var(--content-bg) ;
   cursor: pointer;
+  
 }
 .dark-box-shadow{
   box-shadow: rgba(0, 0, 0, 0.2) 0px 10px 20px;
-
+  
 }
 .link-item:hover{
   color: var(--textColor2);
@@ -231,6 +232,10 @@ input::placeholder{
 }
 .nav-item a.nowrap:hover{
   background-color: var(--main-bg) ;
+}
+.nav-item a.nowrap:hover small{
+  color: black !important;
+
 }
 .show>.btn-primary.dropdown-toggle{
   border-color: transparent !important;

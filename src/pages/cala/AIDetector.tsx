@@ -1,9 +1,7 @@
-import { Button, Card, Col, Form, Row } from "react-bootstrap";
-import { Container } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from 'react';
+import { Button, Card, Col, Form, Row, Container } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import React, { useEffect, useState } from "react";
 import * as Icon from "react-bootstrap-icons";
 import AIDetectorPieChart from "./AIDetectorPieChart";
 import { getUserData, detectAiTextWithZeroGPT } from "../../redux/actions";
@@ -12,7 +10,7 @@ import Loader from "../../components/Loader";
 import AlertBox from "../../components/Alerts";
 import CalaSideNavbar from "./CalaSideNavbar";
 import AccountTopNavigationBar from "../../components/AccountTopNavigationBar";
-import { Dispatch } from "redux";
+import { Dispatch } from 'redux';
 
 const AIDetector: React.FC = () => {
   const dispatch:Dispatch<any> = useDispatch();
@@ -22,18 +20,19 @@ const AIDetector: React.FC = () => {
   const isError = useSelector((state: RootState) => state.detectAiText.isError);
   const isLoading = useSelector((state: RootState) => state.detectAiText.isLoading);
   const [text, setText] = useState("");
-  const { user_id } = useParams();
+  const { user_id } = useParams<{ user_id?: string }>();
   const [analyze, setAnalyze] = useState(false);
 
   useEffect(() => {
-    dispatch(getUserData(accessToken.accessToken));
+    dispatch(getUserData(accessToken));
   }, [dispatch, accessToken]);
 
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
   };
 
-  const handleAnalyzeText = () => {
+  const handleAnalyzeClick = () => {
+    setAnalyze(true);
     dispatch(detectAiTextWithZeroGPT(text));
   };
 
@@ -46,7 +45,7 @@ const AIDetector: React.FC = () => {
       )}
       <Row className="ai-container">
         <Col md={2} className={"pe-0 d-none d-md-block hide-menu"}>
-          <CalaSideNavbar user_id={user?.id || user_id} />
+          <CalaSideNavbar user_id={user?.id || user_id} user_role={user?.role} />
         </Col>
         <Col className="px-0 makronexa-container" md={10}>
           <div className="py-0" style={{ height: "100vh", overflowY: "scroll", overflowX: "hidden" }}>
@@ -56,27 +55,27 @@ const AIDetector: React.FC = () => {
                 <div className="my-5 card">
                   <Form>
                     <Form.Group>
-                      <Form.Label className="color-header d-flex">AI Content Detector</Form.Label>
+                      <Form.Label className="color-header textMediumSize d-flex">AI Content Detector</Form.Label>
                       <div className="text-secondary pb-4 text-start">
-                        <small>
+                        <small className='textSmallSize'>
                           Our AI plagiarism detector identifies dishonesty by comparing submissions, detecting patterns, and flagging potential plagiarism, including <span className="bg-warning p-1 text-dark">AI-generated content</span>. It serves as a dual-purpose tool, promoting proper citation and upholding academic integrity.
                         </small>
                       </div>
-                      <Form.Control as="textarea" rows={15} className="border-secondary border-dotted" placeholder="Paste your text here" onChange={handleTextChange} />
+                      <Form.Control as="textarea" rows={15} className="border-secondary border-dotted textSmallSize" placeholder="Paste your text here" onChange={handleTextChange} />
                     </Form.Group>
-                    <Button onClick={() => { setAnalyze(true), handleAnalyzeText() }} className={`content_bg-2 mt-3 d-flex justify-content-end align-items ${text ? "content_bg-2" : "bg-secondary"}`}>
-                      {isLoading && analyze && <Loader />}
-                      <span className=" ms-3 text-nowrap">Analyze text</span>
-                    </Button>
+                    <Button onClick={handleAnalyzeClick} className={`content_bg-2 mt-3 d-flex justify-content-end align-items ${text ? "content_bg-2" : "bg-secondary"}`}>
+        {isLoading && analyze && <Loader />}
+        <span className=" text-nowrap textSmallSize">Analyze text</span>
+      </Button> 
                   </Form>
                 </div>
               </Col>
               <Col md={4}>
                 <Card className="my-5 p-0">
-                  <Card.Header className="text-start">Results <Icon.ArrowRight /> {analyzedText?.data.is_human_written > analyzedText?.data.is_gpt_generated ? (<span className="text-success">Human written</span>) : (<span className="text-danger">Makronexa Generated</span>)}
+                  <Card.Header className="text-start textSmallSize">Results <Icon.ArrowRight /> {analyzedText?.data.is_human_written > analyzedText?.data.is_gpt_generated ? (<span className="text-success">Human written</span>) : (<span className="text-danger">Makronexa Generated</span>)}
                   </Card.Header>
                   <div className="d-flex py-5">
-                    <AIDetectorPieChart data={analyzedText?.data} />
+                  {analyzedText?.data && <AIDetectorPieChart data={analyzedText.data} />}
                   </div>
                     <ul className="mb-4">
                         {analyzedText?.data && analyzedText.data.gpt_generated_sentences.map((sentence:string,index:number)=>{
@@ -84,7 +83,7 @@ const AIDetector: React.FC = () => {
 
                         <li key={index} className="d-flex px-4">
                         <div className="color-header  text-start">{index+1}</div>
-                           <small className="d-flex">{sentence}</small>
+                           <small className="d-flex textSmallSize">{sentence}</small>
                         </li>
                             )
                         })}

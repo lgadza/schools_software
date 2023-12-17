@@ -31,6 +31,7 @@ import AIDetector from "./pages/cala/AIDetector.js"
 import PartnerShips from "./pages/Home/Features/partership/PartnerShips.js"
 import News from "./pages/news/News.js"
 import NewsDetailRead from "./pages/news/NewsDetailRead.js"
+import ArticleCreator from "./pages/news/ArticleCreator.js"
 
 // mss makro_school_solution
 function App() {
@@ -61,6 +62,7 @@ function App() {
        <Route path="users/account/:id" element={<StudentAccountPage/>}/>
        {/* <Route path="/ask.makronexus.com/:user_id" element={<Makronexa/>}/> */}
        <Route path="ask/:user_id" element={<Makronexa/>}/>
+       <Route path="article/:user_id" element={<ArticleCreator/>}/>
        <Route path="ask/:user_id/detect_text" element={<AIDetector/>}/>
        <Route path="/:user_id/datasets" element={<DataSetsPage/>}/>
        <Route path="/:user_id/datasets/:dataset_name/:dataset_id/ask" element={<MakronexaDataset/>}/>

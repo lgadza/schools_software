@@ -22,7 +22,7 @@ const MakronexaDataset=():JSX.Element=>{
         <Container fluid className="ps-0 ms-0 pages scrollbar">
             <Row className="ai-container">
           <Col md={2} className={"pe-0 d-none d-md-block hide-menu"}>
-        <CalaSideNavbar user_id={user?.id || user_id}/>
+        <CalaSideNavbar user_id={user?.id || user_id} user_role={user?.role}/>
           </Col>
                 <Col className="px-0 makronexa-container" md={10}>
         <div className="py-0" style={{ height: "100vh", overflowY: "scroll" }}>
