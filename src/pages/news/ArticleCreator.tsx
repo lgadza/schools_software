@@ -8,6 +8,7 @@ import { RootState } from "../../redux/store"
 import CalaSideNavbar from "../cala/CalaSideNavbar"
 import AccountTopNavigationBar from "../../components/AccountTopNavigationBar"
 import ArticleInput from "./components/ArticleInput"
+import MobileNav from "../../components/MobileNav"
   
 const ArticleCreator=():JSX.Element=>{
   const dispatch:Dispatch<any> =useDispatch()
@@ -20,6 +21,7 @@ const ArticleCreator=():JSX.Element=>{
     return(
         <Container fluid className="ps-0  ms-0 pages scrollbar">
             <Row className="ai-container">
+                <MobileNav/>
           <Col md={2} className={"pe-0 d-none d-md-block hide-menu"}>
         <CalaSideNavbar user_id={user?.id || user_id} user_role={user?.role}/>
           </Col>

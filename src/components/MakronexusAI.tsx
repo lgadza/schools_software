@@ -660,7 +660,6 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
     dispatch(logoutUser());
     localStorage.removeItem('accessToken');
     navigate('/login') ; 
-  
 }
   const toggleNav = () => {
     setNavActive(!navActive);
@@ -673,7 +672,7 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
             <img
               src={mobile_logo}
               alt={CompanyName}
-              style={{ width: `${140}px`, height: `${50}px`, borderRadius: "5%",objectFit:"contain" }}
+              style={{ width: `${100}px`, height: `${50}px`, borderRadius: "5%",objectFit:"contain" }}
               className="img_component logo"
             />
           </div>
@@ -738,38 +737,38 @@ const MobileNav: React.FC<MobileNavProps> = ({chats}) => {
 <Dropdown.Toggle className="navbar-item w-100 d-flex justify-content-between align-items-center">
       <div className="pt-2">
             <Image src={user.avatar ||`https://img.freepik.com/free-icon/user_318-159711.jpg?size=626&ext=jpg&uid=R36208328&ga=GA1.1.377730112.1687240299&semt=ais`} height={30} width={30} alt="avatar"/>
-                <span className="px-2 py-0">{user.first_name} {user.last_name}</span>
+                <span className="px-2 py-0 textSmallSize">{user.first_name} {user.last_name}</span>
             </div>
              <FontAwesomeIcon style={{fontSize:"0.8rem"}} icon={faChevronUp}/>         
 </Dropdown.Toggle>
 
 <Dropdown.Menu className="py-0"  style={{width:"20rem"}}>
   <Dropdown.Item className="py-2 main_bg">
-    <Link to={`/users/account/${user.id}`} className="textColor px-2">
+    <Link to={`/users/account/${user.id}`} className="textColor px-2 d-flex align-items-center">
     {/* <FontAwesomeIcon icon={faGear}/> */}
-    <Image src={user.avatar ||`https://img.freepik.com/free-icon/user_318-159711.jpg?size=626&ext=jpg&uid=R36208328&ga=GA1.1.377730112.1687240299&semt=ais`} height={30} width={30} alt="avatar"/>
-      <span className="px-2 text-dark">Account</span>
+    <Image src={user.avatar ||`https://img.freepik.com/free-icon/user_318-159711.jpg?size=626&ext=jpg&uid=R36208328&ga=GA1.1.377730112.1687240299&semt=ais`} height={20} width={20} alt="avatar"/>
+      <span className="px-2 text-dark textSmallSize">Account</span>
     </Link>
   </Dropdown.Item>
 {
   (user.role.trim()==="admin" || user.role.trim()==="teacher") && <div>
       <hr className="my-0 py-0" />
   <Dropdown.Item className="py-2 main_bg">
-    <Link to={`/${user.id}/datasets`} className="textColor px-2">
+    <Link to={`/${user.id}/datasets`} className="textColor px-2 d-flex align-items-center">
     <FontAwesomeIcon className="text-dark" icon={faGear}/>
-      <span className="px-2 text-dark">Settings</span>
+      <span className="px-2 text-dark textSmallSize">Settings</span>
     </Link>
   </Dropdown.Item>
   </div>
 }
   <hr className="my-0 py-0" />
-  <Dropdown.Item className="py-2 main_bg">
+  <Dropdown.Item className="py-2 main_bg d-flex align-items-center">
     <div
       onClick={handleLogout}
       className="textColor px-2"
     >
     <FontAwesomeIcon className="text-dark" icon={faPowerOff}/>
-<span className="px-2 text-dark">
+<span className="px-2 text-dark textSmallSize">
       Log out
 </span>
     </div>

@@ -35,13 +35,13 @@ const navigate=useNavigate()
             <img
               src={makro_logo2}
               alt="Makro Logo"
-              style={{ width: `${30}px`, height: `${30}px`, borderRadius: "5%",objectFit:"contain" }}
+              style={{ width: `${28}px`, height: `${28}px`, borderRadius: "5%",objectFit:"contain" }}
             />
             <img
               src={makro_logo}
               alt="Makro Logo"
               className='ms-2'
-              style={{ width: `${150}px`, height: `${50}px`, borderRadius: "5%",objectFit:"contain" }}
+              style={{ width: `${120}px`, height: `${28}px`, borderRadius: "5%",objectFit:"contain" }}
             />
           </a>
           <div className="menu-toggle" id="mobile-menu" onClick={handleMenuToggleClick}>
@@ -50,10 +50,10 @@ const navigate=useNavigate()
             <span className="menu-bar content_bg-2"></span>
           </div>
           <ul className={`nav ms-5 ${isSearchActive ? 'search' : 'no-search'}`}>
-          <li className="  p-2 nav-list-item header fw-bolder" onClick={()=>navigate("/")} >
+          <li className="  p-2 nav-list-item header textMediumSize" onClick={()=>navigate("/")} >
               Home
             </li>
-            <li className=" py-2 px-3 nav-list-item d-none d-md-block header fw-bolder"  onClick={toggleSolutionsDropdown}>
+            <li className=" py-2 px-3 nav-list-item d-none d-md-block header textMediumSize"  onClick={toggleSolutionsDropdown}>
               Solutions
               {isSolutionsDropdownOpen?(
 
@@ -156,22 +156,22 @@ const navigate=useNavigate()
               Features
               <FontAwesomeIcon className='ms-1' icon={faChevronDown} style={{ fontSize: "14px" }} />
             </li> */}
-            <li className=" d-md-none px-3  py-2 nav-list-item header fw-bolder" onClick={()=>navigate("/features/admission_management")}>
+            <li className=" d-md-none px-3  py-2 nav-list-item header textMediumSize" onClick={()=>navigate("/features/admission_management")}>
             Admission management
             </li>
-            <li className="d-md-none px-3 py-2 nav-list-item header fw-bolder" onClick={()=>navigate("/features/makronexa")}>
+            <li className="d-md-none px-3 py-2 nav-list-item header textMediumSize" onClick={()=>navigate("/features/makronexa")}>
                MakronexusAI
             </li>
-            <li className=" px-3 py-2 nav-list-item header fw-bolder" onClick={()=>navigate("/plans")}>
+            <li className=" px-3 py-2 nav-list-item header textMediumSize" onClick={()=>navigate("/plans")}>
                Plans 
             </li>
-            <li className="  p-2 nav-list-item header fw-bolder" onClick={()=>navigate("/partnership")} >
+            <li className="  p-2 nav-list-item header textMediumSize" onClick={()=>navigate("/partnership")} >
               Partnerships
             </li>
-            <li className="  p-2 nav-list-item header fw-bolder" onClick={()=>navigate("/news")} >
+            <li className="  p-2 nav-list-item header textMediumSize" onClick={()=>navigate("/news")} >
               News
             </li>
-            <li onClick={()=>navigate("/about")} className=" py-2 me-2 px-3 nav-list-item header fw-bolder">
+            <li onClick={()=>navigate("/about")} className=" py-2 me-2 px-3 nav-list-item header textMediumSize">
               About us
             </li>
             <div className="d-flex search-container mt-1">
@@ -199,11 +199,11 @@ const navigate=useNavigate()
           <div className='px-2 d-flex align-items-center'>
             <Button
               className="btn btn-primary me-1 d-flex justify-content-end">
-              <Link to="" onClick={()=>setShowSignInModal(true)}> <span className='header fw-bolder'>Login</span></Link>
+              <Link to="" onClick={()=>setShowSignInModal(true)}> <span className='header textMediumSize'>Login</span></Link>
             </Button>
             <Button
               className="btn btn-primary d-none d-md-block d-flex justify-content-end">
-              <Link to="/register"> <button className='text-white  content_bg-2 content_bg fw-bolder'>Register</button></Link>
+              <Link to="/register"> <button className='text-white  content_bg-2 content_bg textMediumSize'>Register</button></Link>
             </Button>
           </div>
         </nav>
