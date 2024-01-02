@@ -25,18 +25,18 @@ const Footer: React.FC = () => {
                 <FontAwesomeIcon className='contact-icons' icon={faMapMarkerAlt} />
                 <div className="cta-text">
                   <div>Find us</div>
-                  <span>06 Zwierzyniecka, Bialystok, Poland</span>
+                  <span>15135 Pumula South, Bulawayo, Zimbabwe</span>
                 </div>
                 </a>
               </div>
             </div>
             <div className="col-xl-4 my-4 col-md-4 mb-30">
               <div className="single-cta">
-                <a href='tel:+48794144892'>
+                <a href='tel:+263780009810'>
                 <FontAwesomeIcon className='contact-icons' icon={faPhone} />
                 <div className="cta-text">
                   <div>Call us</div>
-                  <span>+48 794144892</span>
+                  <span>+263 780009810</span>
                 </div>
                 </a>
               </div>
