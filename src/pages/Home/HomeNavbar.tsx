@@ -30,7 +30,7 @@ const navigate=useNavigate()
   return (
     <div className="page-wrapper container glow pb-2 home-navbar">
       <div className="nav-wrapper px-0 container">
-        <nav className={`navbar text-nowrap ${!isMobileNavActive ? 'mobile-nav' : 'is-active'}`}>
+        <nav className={`navbar  text-nowrap ${!isMobileNavActive ? 'mobile-nav' : 'is-active'}`}>
           <a href='/' className='d-flex align-items-center'>
             <img
               src={makro_logo2}

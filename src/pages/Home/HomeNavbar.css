@@ -402,6 +402,8 @@
     
     .mobile-nav {
     transform: translate(0%)!important;
+    width: 100vw;
+    /* overflow-x: hidden; */
   }
     
     /* SEARCH DISABLED ON MOBILE */

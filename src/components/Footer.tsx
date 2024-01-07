@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
           <div className="row">
             <div className="col-xl-4 my-4 col-md-4 mb-30">
               <div className="single-cta">
-              <a href='https://www.google.com/maps/search/06 Zwierzyniecka, Bialystok, Poland'>
+              <a href='https://www.google.com/maps/search/15135 Pumula South, Bulawayo, Zimbabwe'>
                 <FontAwesomeIcon className='contact-icons' icon={faMapMarkerAlt} />
                 <div className="cta-text">
                   <div>Find us</div>

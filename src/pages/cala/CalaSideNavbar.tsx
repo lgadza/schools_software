@@ -2,6 +2,7 @@ import { Nav} from "react-bootstrap"
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import md_logo_small from "../../assets/md_logo_small.png"
+import makronexus from "../../assets/md_logo_small42.png"
 import { CompanyName } from '../../assets/data/company';
 // import { UserRegistration } from "../../Types";
 interface CalaSideNavbarProps {
@@ -21,8 +22,14 @@ const CalaSideNavbar: React.FC<CalaSideNavbarProps> = ({ user_id,user_role }) =>
               <img
                 src={md_logo_small}
                 alt={CompanyName}
-                style={{ width: `${50}px`, height: `${50}px`, borderRadius: "5%",objectFit:"contain" }}
+                style={{ width: `${40}px`, height: `${40}px`, borderRadius: "5%",objectFit:"contain" }}
                 className="img_component logo"
+              />
+              <img
+                src={makronexus}
+                alt={CompanyName}
+                style={{ width: `${120}px`, height: `${40}px`, borderRadius: "5%",objectFit:"contain" }}
+                className="img_component ms-2 logo"
               />
             </div>
             <Nav className="flex-column mt-4 w-100">

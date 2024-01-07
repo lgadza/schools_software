@@ -36,7 +36,6 @@ body{
   font-family: 'Josefin Sans', sans-serif !important;
 display: block !important;
 color: black !important;
-
 }
 .css-13cymwt-control{
   background-color: transparent !important;
@@ -83,7 +82,8 @@ option{
   background-color: var(--main-bg) !important;
   background-color: white;
   text-align: center;
-  /* min-height: 100vh !important; */
+  /* THIS IS OOOOH */
+  overflow-x: hidden; 
   
 }
 .textColor {
