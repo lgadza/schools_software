@@ -16,10 +16,10 @@ const NewsHero: React.FC<NewsHeroProps> = ({
 }) => {
 
     return (
-        <div className="carousel mt-5 fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
+        <div  className="carousel mt-5 fade-carousel slide" data-ride="carousel" data-interval="4000" id="bs-carousel">
             <div className="carousel-inner">
                 <div className="item slides active">
-                    <div className="slide-1 news-hero">
+                    <div className="slide-1 news-hero" >
                         <div className="overlay"></div>
                     </div>
                     <div className="partnership-hero">

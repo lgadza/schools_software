@@ -26,8 +26,8 @@ const PartnerShips: React.FC = () => {
       <div className="content-container">
         <Container fluid className="px-0 mb-5">
             <HomeNavbar />
-          <Container className="px-5">
             <CarouselComponent/>
+          <Container className="px-5">
             <Row>
               <Col>
               <WhoCanPartner/>

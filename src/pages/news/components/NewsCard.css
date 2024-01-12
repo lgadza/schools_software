@@ -79,7 +79,18 @@
   line-height: 150%;
   color: #4B4B4B;
 }
-
+.article-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.article-content {
+  text-align: justify;
+}
+.post-header{
+  font-weight: 700;
+}
 .news_card li {
   display: inline;
   list-style: none;

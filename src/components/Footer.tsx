@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
             </div>
             <div className="col-xl-4 my-4 col-md-4 mb-30">
               <div className="single-cta">
-              <a href='mailto:siuolgadza@gmail.com'>
+              <a href='mailto:louisgadza@makronexus.com'>
                 <FontAwesomeIcon className='contact-icons' icon={faEnvelopeOpen} />
                 <div className="cta-text">
                   <div>E-mail us</div>
