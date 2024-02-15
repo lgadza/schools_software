@@ -3,6 +3,27 @@
 	background-color: rgb(14, 178, 190) !important;
 	/* background-color: black !important; */
   }
+  /* VIDO */
+  .video-background {
+	position: absolute;
+	width: 100%;
+	left: 50%;
+	top: 50%;
+	height: 100%;
+	object-fit: cover;
+	transform: translate(-50%, -50%);
+	z-index: -1;
+  }
+  .video-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.6); 
+	z-index: 1; 
+  }
+  
 .carousel h1, h2, h3, h4, h5, h6, ul, li {
 	margin: 0;
 	padding: 0;
@@ -329,12 +350,12 @@
 			 }
 			 #section-1 .content-slider .slider .banner .banner-inner-wrapper h1 { font-size: 2em; }
 			 #section-1 .content-slider .slider .banner .banner-inner-wrapper .line { margin: 1.7em auto; }
-			 .carousel-container {
+			 /* .carousel-container {
 				height: 70vh;
 				text-align: center;
 				justify-content: center;
 				align-items: center;
-			  }
+			  } */
 		 
 }
 

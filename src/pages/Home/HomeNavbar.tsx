@@ -165,6 +165,12 @@ const navigate=useNavigate()
             <li className=" px-3 py-2 nav-list-item header textMediumSize" onClick={()=>navigate("/plans")}>
                Plans 
             </li>
+            <li className="px-3 py-2 nav-list-item header textMediumSize">
+              <a href="https://connect.makronexus.com/" target="_blank" rel="noopener noreferrer" className='nav-list-item header textMediumSize'>
+                Community
+              </a>
+            </li>
+
             <li className="  p-2 nav-list-item header textMediumSize" onClick={()=>navigate("/partnership")} >
               Partnerships
             </li>

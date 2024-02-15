@@ -32,6 +32,7 @@ import PartnerShips from "./pages/Home/Features/partership/PartnerShips.js"
 import News from "./pages/news/News.js"
 import NewsDetailRead from "./pages/news/NewsDetailRead.js"
 import ArticleCreator from "./pages/news/ArticleCreator.js"
+import CelebrationPage from "./pages/CelebrationPage.js"
 
 // mss makro_school_solution
 function App() {
@@ -67,6 +68,7 @@ function App() {
        <Route path="/:user_id/datasets" element={<DataSetsPage/>}/>
        <Route path="/:user_id/datasets/:dataset_name/:dataset_id/ask" element={<MakronexaDataset/>}/>
        <Route path="/:user_id/datasets/:dataset_id" element={<DataSetSettingsPage/>}/>
+       <Route path="/celebration" element={<CelebrationPage/>}/>
        <Route path="user/account/delete/confirmation" element={<AccountDeletionConfirmation/>}/>
        <Route element={<EmailVerification />}
               path={`user/verifyEmail/:user_id/:user_name`}

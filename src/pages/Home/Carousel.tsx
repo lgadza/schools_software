@@ -2,7 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import "./Carousel.css"
 import { CompanyName } from '../../assets/data/company';
-import { PushButton } from '../../components/Buttons';
+import { Link } from 'react-router-dom';
+// import { PushButton } from '../../components/Buttons';
 const Carousel: React.FC = () => {
   const [currentBanner, setCurrentBanner] = useState<number>(1);
   const bannerSwitcher = () => {
@@ -20,6 +21,10 @@ const Carousel: React.FC = () => {
 
   return (
     <section id="section-1" className='carousel'>
+       <video autoPlay muted loop className='video-background'>
+        <source src="https://makronexus.s3.eu-central-1.amazonaws.com/vids/makronexus_introduction.mp4" type="video/mp4" />
+      </video>
+      <div className="video-overlay"></div>
       <div className="content-slider">
         <input type="radio" id="banner1" className="sec-1-input" name="banner" checked={currentBanner === 1} />
         <input type="radio" id="banner2" className="sec-1-input" name="banner" checked={currentBanner === 2} />
@@ -41,7 +46,7 @@ const Carousel: React.FC = () => {
             <h1>AI-powered CALA</h1>
             <h1>project assistance</h1>
             <div className="line"></div>
-            <PushButton url='/features/makronexa' message='Learn more!'/>
+            <Link to='/features/makronexa' >Learn more!</Link>
           </div>
         </div>
         <div id="top-banner-3" className="banner">
@@ -50,7 +55,7 @@ const Carousel: React.FC = () => {
             <h1>Effortlessly</h1>
             <h1>manage student data</h1>
             <div className="line"></div>
-            {/* <PushButton url='' message='Learn more!'/> */}
+            {/* <Link to='' message='Learn more!'/> */}
           </div>
         </div>
         <div id="top-banner-4" className="banner">
@@ -59,7 +64,7 @@ const Carousel: React.FC = () => {
             <h1>Simplify </h1>
             <h1> administrative tasks </h1>
             <div className="line"></div>
-            <PushButton url='/features/admission_management' message='Learn more!'/>
+            <Link to='/features/admission_management'>Learn more!</Link>
           </div>
         </div>
         </div>
